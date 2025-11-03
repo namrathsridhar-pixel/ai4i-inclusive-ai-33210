@@ -1,16 +1,15 @@
-import { useState } from "react";
+
 import { motion } from "framer-motion";
 import { BarChart3, Eye, Shield, TrendingUp, ArrowRight, Code2, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import VideoModal from "@/components/VideoModal";
+
 import { DocsLayout } from "@/components/docs/DocsLayout";
 import { SectionHeading } from "@/components/docs/SectionHeading";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { DocSection } from "@/components/docs/DocSection";
 
 const ComponentObserve = () => {
-  const [videoModal, setVideoModal] = useState(false);
 
   const features = [
     {
@@ -178,20 +177,18 @@ const metrics = await observer.getMetrics({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="relative w-full aspect-video rounded-xl overflow-hidden shadow-soft border border-border"
             >
-              <button
-                onClick={() => setVideoModal(true)}
-                className="relative w-full aspect-video bg-muted rounded-xl overflow-hidden group cursor-pointer border border-border shadow-soft hover:shadow-medium transition-all"
-                aria-label="Play Observe overview video"
-              >
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-                  <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-glow">
-                    <svg className="text-secondary-foreground ml-1" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </button>
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/i7Tv5sLzic8"
+                title="AI4I Observe Overview"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0"
+              />
             </motion.div>
           </DocSection>
 
@@ -261,12 +258,6 @@ const metrics = await observer.getMetrics({
         </div>
       </div>
 
-      <VideoModal
-        isOpen={videoModal}
-        onClose={() => setVideoModal(false)}
-        videoSrc="/videos/observe.mp4"
-        title="Observe Overview"
-      />
     </DocsLayout>
   );
 };

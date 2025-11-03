@@ -534,8 +534,17 @@ const Home = () => {
               </CarouselItem>
               <CarouselItem>
                 <div className="bg-card rounded-lg p-8 shadow-medium">
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                    <p className="text-muted-foreground text-lg">Video Coming Soon</p>
+                  <div className="aspect-video rounded-lg overflow-hidden">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/i7Tv5sLzic8"
+                      title="AI4I Observe Overview"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full"
+                    />
                   </div>
                 </div>
               </CarouselItem>
