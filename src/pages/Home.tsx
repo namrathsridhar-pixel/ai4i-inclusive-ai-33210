@@ -236,7 +236,7 @@ const Home = () => {
             }}>
                 <BarChart3 className="text-primary-foreground" size={24} />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative">AI4I Observe</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative">AI4I-Observe</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow">
                 Make Language AI trustworthy through real-world observability across every model and context.
               </p>
@@ -273,7 +273,7 @@ const Home = () => {
             }}>
                 <Users className="text-primary-foreground" size={24} />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative">AI4I Contribute</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative">AI4I-Contribute</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow">
                 Collect multilingual voice and text datasets from citizens.
               </p>
@@ -314,7 +314,7 @@ const Home = () => {
             }}>
                 <Shield className="text-primary-foreground" size={24} />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I Assure</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I-Assure</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Ensure responsible AI use with consent, provenance and policy
               </p>
@@ -357,7 +357,7 @@ const Home = () => {
             }}>
                 <Database className="text-primary-foreground" size={24} />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I Curate</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I-Curate</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Clean, align, and validate multilingual datasets.
               </p>
@@ -400,7 +400,7 @@ const Home = () => {
             }}>
                 <img src={vaultIcon} alt="Vault" className="w-6 h-6 brightness-0 invert" />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I Vault</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I-Vault</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Store, catalog and version language AI models for discovery and reuse.
               </p>
@@ -443,7 +443,7 @@ const Home = () => {
             }}>
                 <MessageSquare className="text-primary-foreground" size={24} />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I Relay</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I-Relay</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Harness real-world feedback to continuously improve language AI models.
               </p>
@@ -486,7 +486,7 @@ const Home = () => {
             }}>
                 <TrendingUp className="text-primary-foreground" size={24} />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I Sustain</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative z-20">AI4I-Sustain</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Enable metering and value to support smarter budgeting and long-term sustainability.
               </p>
