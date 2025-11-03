@@ -58,7 +58,7 @@ const BuildingBlocks = () => {
               <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                 <Globe className="text-primary-foreground" size={24} />
               </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">AI4I- Orchestrate</h2>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">AI4I-Orchestrate</h2>
             </div>
 
             <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8">An intelligent orchestrator that routes models for domain-aware multilingual inference with policy-based selection, ensembles, scaling, and SLA-driven performance ensuring accurate, efficient, and context-sensitive inferencing across diverse AI workloads.</p>
