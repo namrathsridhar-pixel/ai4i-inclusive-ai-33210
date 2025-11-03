@@ -112,10 +112,10 @@ const BuildingBlocks = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-8 md:mb-12">
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-primary/60 hover:text-primary transition-colors duration-300 cursor-pointer">
+              <a href="https://github.com/COSS-India/observe" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-primary/60 hover:text-primary transition-colors duration-300 cursor-pointer">
                 Learn more &gt;
               </a>
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 cursor-pointer">
+              <a href="https://github.com/COSS-India/observe/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 cursor-pointer">
                 Discuss &gt;
               </a>
             </div>
@@ -163,10 +163,10 @@ const BuildingBlocks = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-8 md:mb-12">
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-primary/60 hover:text-primary transition-colors duration-300 cursor-pointer">
+              <a href="https://github.com/COSS-India/ai4i-contribute" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-primary/60 hover:text-primary transition-colors duration-300 cursor-pointer">
                 Learn more &gt;
               </a>
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 cursor-pointer">
+              <a href="https://github.com/COSS-India/ai4i-contribute/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 cursor-pointer">
                 Discuss &gt;
               </a>
             </div>
