@@ -81,20 +81,18 @@ const Home = () => {
                 <span className="block text-[1.25rem] font-medium mt-4 leading-relaxed text-gray-100">Enabling a world where every Voice can Participate, Contribute, and be Heard.</span>
               </motion.h1>
               
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="mt-8"
-              >
-                <a 
-                  href="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button 
-                    className="bg-transparent text-white text-[18px] px-8 py-3 rounded-md font-medium border-2 border-white transition-all duration-300 ease-in-out hover:shadow-[0_0_15px_rgba(255,255,255,0.6),inset_0_0_15px_rgba(255,255,255,0.1)]"
-                  >
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.8,
+              delay: 0.4
+            }} className="mt-8">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform" target="_blank" rel="noopener noreferrer">
+                  <button className="bg-transparent text-white text-[18px] px-8 py-3 rounded-md font-medium border-2 border-white transition-all duration-300 ease-in-out hover:shadow-[0_0_15px_rgba(255,255,255,0.6),inset_0_0_15px_rgba(255,255,255,0.1)]">
                     Join Us
                   </button>
                 </a>
@@ -201,7 +199,7 @@ const Home = () => {
             }}>
                 <Globe className="text-primary-foreground" size={24} />
               </motion.div>
-              <h3 className="text-xl font-heading font-bold mb-3 relative">AI4I Orchestrate</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 relative">AI4I-Orchestrate</h3>
               <p className="text-muted-foreground mb-4 relative flex-grow">
                 Route models intelligently for domain-aware multilingual inference — with policy-based selection, ensembles, scaling, and SLAs.
               </p>
@@ -320,12 +318,12 @@ const Home = () => {
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Ensure responsible AI use with consent, provenance and policy
               </p>
-              <p className="font-medium cursor-default z-20 relative" style={{ 
-                color: '#9CA3AF',
-                fontSize: '0.875rem',
-                letterSpacing: '0.5px',
-                fontWeight: 500
-              }}>
+              <p className="font-medium cursor-default z-20 relative" style={{
+              color: '#9CA3AF',
+              fontSize: '0.875rem',
+              letterSpacing: '0.5px',
+              fontWeight: 500
+            }}>
                 Coming Soon
               </p>
             </motion.div>
@@ -363,12 +361,12 @@ const Home = () => {
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Clean, align, and validate multilingual datasets.
               </p>
-              <p className="font-medium cursor-default z-20 relative" style={{ 
-                color: '#9CA3AF',
-                fontSize: '0.875rem',
-                letterSpacing: '0.5px',
-                fontWeight: 500
-              }}>
+              <p className="font-medium cursor-default z-20 relative" style={{
+              color: '#9CA3AF',
+              fontSize: '0.875rem',
+              letterSpacing: '0.5px',
+              fontWeight: 500
+            }}>
                 Coming Soon
               </p>
             </motion.div>
@@ -406,12 +404,12 @@ const Home = () => {
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Store, catalog and version language AI models for discovery and reuse.
               </p>
-              <p className="font-medium cursor-default z-20 relative" style={{ 
-                color: '#9CA3AF',
-                fontSize: '0.875rem',
-                letterSpacing: '0.5px',
-                fontWeight: 500
-              }}>
+              <p className="font-medium cursor-default z-20 relative" style={{
+              color: '#9CA3AF',
+              fontSize: '0.875rem',
+              letterSpacing: '0.5px',
+              fontWeight: 500
+            }}>
                 Coming Soon
               </p>
             </motion.div>
@@ -449,12 +447,12 @@ const Home = () => {
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Harness real-world feedback to continuously improve language AI models.
               </p>
-              <p className="font-medium cursor-default z-20 relative" style={{ 
-                color: '#9CA3AF',
-                fontSize: '0.875rem',
-                letterSpacing: '0.5px',
-                fontWeight: 500
-              }}>
+              <p className="font-medium cursor-default z-20 relative" style={{
+              color: '#9CA3AF',
+              fontSize: '0.875rem',
+              letterSpacing: '0.5px',
+              fontWeight: 500
+            }}>
                 Coming Soon
               </p>
             </motion.div>
@@ -492,12 +490,12 @@ const Home = () => {
               <p className="text-muted-foreground mb-4 relative flex-grow z-20">
                 Enable metering and value to support smarter budgeting and long-term sustainability.
               </p>
-              <p className="font-medium cursor-default z-20 relative" style={{ 
-                color: '#9CA3AF',
-                fontSize: '0.875rem',
-                letterSpacing: '0.5px',
-                fontWeight: 500
-              }}>
+              <p className="font-medium cursor-default z-20 relative" style={{
+              color: '#9CA3AF',
+              fontSize: '0.875rem',
+              letterSpacing: '0.5px',
+              fontWeight: 500
+            }}>
                 Coming Soon
               </p>
             </motion.div>
