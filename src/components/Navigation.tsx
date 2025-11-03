@@ -4,9 +4,9 @@ import { Menu, X, Globe, BarChart3, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const buildingBlocksMenu = [
-  { id: "ai4i-core", label: "AI4I- Orchestrate", icon: Globe },
-  { id: "observe", label: "AI4I- Observe", icon: BarChart3 },
-  { id: "contribute", label: "AI4I- Contribute", icon: Users },
+  { id: "ai4i-core", label: "AI4I-Orchestrate", icon: Globe },
+  { id: "observe", label: "AI4I-Observe", icon: BarChart3 },
+  { id: "contribute", label: "AI4I-Contribute", icon: Users },
 ];
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
