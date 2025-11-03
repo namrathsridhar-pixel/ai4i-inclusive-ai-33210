@@ -26,14 +26,14 @@ const BuildingBlocks = () => {
           <section className="pt-24 pb-12 bg-gradient-to-b from-accent to-background">
         <div className="container mx-auto max-w-4xl text-center">
           <motion.h1 className="text-4xl md:text-5xl font-heading font-bold mb-6" initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6
-            }}>
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.6
+          }}>
             Building Blocks
           </motion.h1>
           
@@ -44,16 +44,16 @@ const BuildingBlocks = () => {
       {activeSection === "ai4i-core" && <section className="py-20 px-4" id="ai4i-core">
         <div className="container mx-auto max-w-6xl">
           <motion.div initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              duration: 0.6
-            }} className="mb-12">
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                 <Globe className="text-primary-foreground" size={24} />
@@ -61,9 +61,7 @@ const BuildingBlocks = () => {
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">AI4I Orchestrate</h2>
             </div>
 
-            <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8">
-              Route models intelligently for domain-aware multilingual inference — with policy-based selection, ensembles, scaling, and SLAs.
-            </p>
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8">An intelligent orchestrator that routes models for domain-aware multilingual inference with policy-based selection, ensembles, scaling, and SLA-driven performance ensuring accurate, efficient, and context-sensitive inferencing across diverse AI workloads.</p>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-8 md:mb-12">
@@ -76,7 +74,9 @@ const BuildingBlocks = () => {
             </div>
 
             {/* Video Placeholder */}
-            <div className="rounded-lg bg-muted/50 border-2 border-dashed border-muted-foreground/20 w-full max-w-2xl mx-auto" style={{aspectRatio: '16/9'}}>
+            <div className="rounded-lg bg-muted/50 border-2 border-dashed border-muted-foreground/20 w-full max-w-2xl mx-auto" style={{
+              aspectRatio: '16/9'
+            }}>
               <div className="w-full h-full flex items-center justify-center p-4">
                 <p className="text-muted-foreground text-center text-sm md:text-base">Video coming soon</p>
               </div>
@@ -89,16 +89,16 @@ const BuildingBlocks = () => {
       {activeSection === "observe" && <section className="py-20 px-4" id="observe">
         <div className="container mx-auto max-w-6xl">
           <motion.div initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              duration: 0.6
-            }} className="mb-12">
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                 <BarChart3 className="text-primary-foreground" size={24} />
@@ -121,7 +121,9 @@ const BuildingBlocks = () => {
             </div>
 
             {/* Video Placeholder */}
-            <div className="rounded-lg bg-muted/50 border-2 border-dashed border-muted-foreground/20 w-full max-w-2xl mx-auto" style={{aspectRatio: '16/9'}}>
+            <div className="rounded-lg bg-muted/50 border-2 border-dashed border-muted-foreground/20 w-full max-w-2xl mx-auto" style={{
+              aspectRatio: '16/9'
+            }}>
               <div className="w-full h-full flex items-center justify-center p-4">
                 <p className="text-muted-foreground text-center text-sm md:text-base">Video coming soon</p>
               </div>
@@ -138,16 +140,16 @@ const BuildingBlocks = () => {
       {activeSection === "contribute" && <section className="py-20 px-4" id="contribute">
         <div className="container mx-auto max-w-6xl">
           <motion.div initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              duration: 0.6
-            }} className="mb-12">
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                 <Users className="text-primary-foreground" size={24} />
@@ -170,7 +172,9 @@ const BuildingBlocks = () => {
             </div>
 
             {/* Video Placeholder */}
-            <div className="rounded-lg bg-muted/50 border-2 border-dashed border-muted-foreground/20 w-full max-w-2xl mx-auto" style={{aspectRatio: '16/9'}}>
+            <div className="rounded-lg bg-muted/50 border-2 border-dashed border-muted-foreground/20 w-full max-w-2xl mx-auto" style={{
+              aspectRatio: '16/9'
+            }}>
               <div className="w-full h-full flex items-center justify-center p-4">
                 <p className="text-muted-foreground text-center text-sm md:text-base">Video coming soon</p>
               </div>
