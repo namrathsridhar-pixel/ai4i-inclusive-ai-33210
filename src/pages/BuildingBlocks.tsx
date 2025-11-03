@@ -161,13 +161,21 @@ const BuildingBlocks = () => {
               </a>
             </div>
 
-            {/* Video Placeholder */}
-            <div className="rounded-lg bg-muted/50 border-2 border-dashed border-muted-foreground/20 w-full max-w-2xl mx-auto" style={{
+            {/* Video */}
+            <div className="w-full max-w-2xl mx-auto rounded-lg overflow-hidden" style={{
               aspectRatio: '16/9'
             }}>
-              <div className="w-full h-full flex items-center justify-center p-4">
-                <p className="text-muted-foreground text-center text-sm md:text-base">Video coming soon</p>
-              </div>
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/_0KqImO7GMs?si=XtYl6ESXYjnYWGK2"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="w-full h-full"
+              />
             </div>
           </motion.div>
 
