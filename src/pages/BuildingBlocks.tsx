@@ -67,10 +67,10 @@ const BuildingBlocks = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-8 md:mb-12">
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-[#2563EB] hover:text-[#3B82F6] transition-colors duration-300 cursor-pointer">
+              <a href="#" className="inline-flex items-center gap-1 font-medium text-primary/60 hover:text-primary transition-colors duration-300 cursor-pointer">
                 Learn more &gt;
               </a>
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-[#1F2937] hover:text-[#374151] transition-colors duration-300 cursor-pointer">
+              <a href="#" className="inline-flex items-center gap-1 font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 cursor-pointer">
                 Discuss &gt;
               </a>
             </div>
@@ -112,10 +112,10 @@ const BuildingBlocks = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-8 md:mb-12">
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-[#2563EB] hover:text-[#3B82F6] transition-colors duration-300 cursor-pointer">
+              <a href="#" className="inline-flex items-center gap-1 font-medium text-primary/60 hover:text-primary transition-colors duration-300 cursor-pointer">
                 Learn more &gt;
               </a>
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-[#1F2937] hover:text-[#374151] transition-colors duration-300 cursor-pointer">
+              <a href="#" className="inline-flex items-center gap-1 font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 cursor-pointer">
                 Discuss &gt;
               </a>
             </div>
@@ -161,10 +161,10 @@ const BuildingBlocks = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-8 md:mb-12">
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-[#2563EB] hover:text-[#3B82F6] transition-colors duration-300 cursor-pointer">
+              <a href="#" className="inline-flex items-center gap-1 font-medium text-primary/60 hover:text-primary transition-colors duration-300 cursor-pointer">
                 Learn more &gt;
               </a>
-              <a href="#" className="inline-flex items-center gap-1 font-medium text-[#1F2937] hover:text-[#374151] transition-colors duration-300 cursor-pointer">
+              <a href="#" className="inline-flex items-center gap-1 font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 cursor-pointer">
                 Discuss &gt;
               </a>
             </div>
