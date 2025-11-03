@@ -23,22 +23,7 @@ const BuildingBlocks = () => {
       
       <div className="flex-1">
           {/* Hero Section */}
-          <section className="pt-24 pb-12 bg-gradient-to-b from-accent to-background">
-        <div className="container mx-auto max-w-4xl text-center">
-          <motion.h1 className="text-4xl md:text-5xl font-heading font-bold mb-6" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6
-          }}>
-            Building Blocks
-          </motion.h1>
           
-        </div>
-      </section>
 
       {/* AI4I Core */}
       {activeSection === "ai4i-core" && <section className="py-20 px-4" id="ai4i-core">
