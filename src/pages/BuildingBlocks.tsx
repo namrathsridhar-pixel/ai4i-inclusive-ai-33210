@@ -4,8 +4,6 @@ import { useLocation } from "react-router-dom";
 import { Globe, BarChart3, Users, CheckCircle, Database, Eye, GitBranch, Shield, TrendingUp, Smartphone, Github, MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 const BuildingBlocks = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("ai4i-core");
@@ -19,7 +17,6 @@ const BuildingBlocks = () => {
     }
   }, [location.hash]);
   return <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       <div className="flex-1">
       {/* AI4I Core */}
@@ -187,7 +184,6 @@ const BuildingBlocks = () => {
 
       </div>
       
-      <Footer />
     </div>;
 };
 export default BuildingBlocks;

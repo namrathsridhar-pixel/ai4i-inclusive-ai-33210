@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, ArrowRight, Shield, Database, MessageSquare, GitBranch, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import heroBanner from "@/assets/hero-banner-new.png";
 import vaultIcon from "@/assets/vault-icon.png";
@@ -12,8 +10,6 @@ import JoinForm from "@/components/JoinForm";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 const Home = () => {
   return <div className="min-h-screen">
-      <Navigation />
-
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-4 bg-[#0a1628] overflow-hidden">
         {/* Animated background pattern */}
@@ -574,7 +570,6 @@ const Home = () => {
       </section>
 
 
-      <Footer />
     </div>;
 };
 export default Home;

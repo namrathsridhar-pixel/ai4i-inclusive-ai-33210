@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, MessageSquare, Github, Linkedin } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 const Contact = () => {
   return <div className="min-h-screen">
-      <Navigation />
-
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 bg-gradient-to-b from-accent to-background">
         <div className="container mx-auto text-center">
@@ -133,7 +129,6 @@ const Contact = () => {
         </div>
       </section>
 
-      <Footer />
     </div>;
 };
 export default Contact;

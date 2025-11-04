@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { Code, Database, Building2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 
 const GetInvolved = () => {
   const pathways = [
@@ -41,8 +39,6 @@ const GetInvolved = () => {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
-
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 bg-gradient-to-b from-accent to-background">
         <div className="container mx-auto text-center">
@@ -169,8 +165,6 @@ const GetInvolved = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

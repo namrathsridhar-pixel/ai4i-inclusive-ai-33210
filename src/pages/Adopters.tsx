@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import ecosystemImage from "@/assets/ecosystem.png";
 
 const Adopters = () => {
@@ -14,8 +12,6 @@ const Adopters = () => {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
-
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 bg-gradient-to-b from-accent to-background">
         <div className="container mx-auto text-center">
@@ -121,8 +117,6 @@ const Adopters = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
