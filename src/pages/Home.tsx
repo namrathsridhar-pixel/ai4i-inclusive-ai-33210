@@ -106,11 +106,11 @@ const Home = () => {
             delay: 0.2,
             ease: [0.4, 0, 0.2, 1]
           }} className="hidden md:block absolute inset-y-0 right-0 w-2/5 pointer-events-none select-none">
-              <div className="absolute inset-0 bg-no-repeat bg-right-top bg-cover brightness-110 contrast-125 saturate-125" style={{
+              <div className="absolute inset-0 bg-no-repeat bg-right-top bg-cover brightness-105 contrast-110" style={{
               backgroundImage: `url(${heroBanner})`,
               imageRendering: 'crisp-edges'
             }} aria-hidden="true" />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#0a1628]/80" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#0a1628]/60" aria-hidden="true" />
             </motion.div>
           </div>
         </div>
