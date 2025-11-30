@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, ArrowRight, Shield, Database, MessageSquare, GitBranch, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroBanner from "@/assets/hero-world.png";
+import heroBanner from "@/assets/hero-banner-new.png";
 import vaultIcon from "@/assets/vault-icon.png";
 import feedbackIcon from "@/assets/feedback-icon-new.png";
 import abTestingIcon from "@/assets/ab-testing-icon.png";
