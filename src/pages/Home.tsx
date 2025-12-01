@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, ArrowRight, Shield, Database, MessageSquare, GitBranch, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroBanner from "@/assets/hero-banner-final.png";
 import vaultIcon from "@/assets/vault-icon.png";
 import feedbackIcon from "@/assets/feedback-icon-new.png";
 import abTestingIcon from "@/assets/ab-testing-icon.png";
 import JoinForm from "@/components/JoinForm";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { AnimatedHeroBanner } from "@/components/AnimatedHeroBanner";
 const Home = () => {
   return <div className="min-h-screen">
       {/* Hero Section */}
@@ -110,30 +110,11 @@ const Home = () => {
                 ease: [0.4, 0, 0.2, 1]
               }} 
               whileHover={{
-                scale: 1.02,
+                scale: 1.01,
               }}
-              className="hidden md:block absolute inset-y-0 right-0 w-2/5 pointer-events-none select-none"
+              className="hidden md:block"
             >
-              {/* Glow effect behind image */}
-              <motion.div 
-                className="absolute inset-0 blur-3xl opacity-0"
-                animate={{
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                style={{
-                  background: 'radial-gradient(ellipse at center, hsl(216, 100%, 32%, 0.3), transparent 70%)',
-                }}
-              />
-              <div className="absolute inset-0 bg-no-repeat bg-right-top bg-cover brightness-105 contrast-110" style={{
-              backgroundImage: `url(${heroBanner})`,
-              imageRendering: 'crisp-edges'
-            }} aria-hidden="true" />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#0a1628]/60" aria-hidden="true" />
+              <AnimatedHeroBanner />
             </motion.div>
           </div>
         </div>
