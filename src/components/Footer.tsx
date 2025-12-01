@@ -22,23 +22,19 @@ const Footer = () => {
               <Link to="/privacy" className="hover:text-foreground transition-colors">
                 Privacy Policy
               </Link>
-              <span className="mx-2"></span>
-              <Linkedin 
-                size={20} 
-                className="text-foreground/80" 
-                aria-label="LinkedIn Icon (placeholder)"
-              />
-              <Youtube 
-                size={20} 
-                className="text-foreground/80" 
-                aria-label="YouTube Icon (placeholder)"
-              />
             </div>
           </div>
 
-          {/* Right Section - Copyright */}
-          <div className="text-sm text-foreground/80">
-            <span>© 2025-2026 All Rights Reserved</span>
+          {/* Right Section - Social Media */}
+          <div className="flex items-center gap-6 text-sm text-foreground/80">
+            <div className="flex items-center gap-2">
+              <Linkedin size={20} aria-label="LinkedIn Icon (placeholder)" />
+              <span>LinkedIn</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Youtube size={20} aria-label="YouTube Icon (placeholder)" />
+              <span>Youtube</span>
+            </div>
           </div>
         </div>
       </div>
