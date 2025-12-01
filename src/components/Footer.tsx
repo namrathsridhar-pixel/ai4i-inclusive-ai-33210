@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Linkedin, Youtube } from "lucide-react";
 const Footer = () => {
   return <footer className="bg-[#F3F3F3] border-t border-border">
       <div className="container mx-auto px-4 py-6">
@@ -21,6 +22,17 @@ const Footer = () => {
               <Link to="/privacy" className="hover:text-foreground transition-colors">
                 Privacy Policy
               </Link>
+              <span className="mx-2"></span>
+              <Linkedin 
+                size={20} 
+                className="text-foreground/80" 
+                aria-label="LinkedIn Icon (placeholder)"
+              />
+              <Youtube 
+                size={20} 
+                className="text-foreground/80" 
+                aria-label="YouTube Icon (placeholder)"
+              />
             </div>
           </div>
 
