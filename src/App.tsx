@@ -11,6 +11,7 @@ import LanguageParticles from "./components/LanguageParticles";
 import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import WhoWeAre from "./pages/WhoWeAre";
 import Blogs from "./pages/Blogs";
 import BuildingBlocks from "./pages/BuildingBlocks";
 import ComponentCore from "./pages/ComponentCore";
@@ -48,6 +49,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<PageTransition><Home /></PageTransition>} />
             <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+            <Route path="/who-we-are" element={<PageTransition><WhoWeAre /></PageTransition>} />
             <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
             <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
             <Route path="/components/core" element={<PageTransition><ComponentCore /></PageTransition>} />
