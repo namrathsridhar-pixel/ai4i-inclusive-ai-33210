@@ -14,8 +14,8 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const navLinks = [{
-    name: "About Us",
-    path: "/about"
+    name: "Who We Are",
+    path: "/who-we-are"
   }, {
     name: "Building Blocks",
     path: "/building-blocks"
