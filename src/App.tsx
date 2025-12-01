@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import BuildingBlocks from "./pages/BuildingBlocks";
 import ComponentCore from "./pages/ComponentCore";
 import ComponentObserve from "./pages/ComponentObserve";
@@ -40,6 +41,7 @@ const App = () => (
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/building-blocks" element={<BuildingBlocks />} />
           <Route path="/components/core" element={<ComponentCore />} />
           <Route path="/components/observe" element={<ComponentObserve />} />
