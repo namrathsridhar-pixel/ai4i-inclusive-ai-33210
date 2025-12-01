@@ -20,6 +20,9 @@ const Navigation = () => {
     name: "Building Blocks",
     path: "/building-blocks"
   }, {
+    name: "Blogs",
+    path: "/blogs"
+  }, {
     name: "Join Us",
     path: "https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform",
     external: true

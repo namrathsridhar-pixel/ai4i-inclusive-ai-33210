@@ -1,0 +1,83 @@
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
+const Blogs = () => {
+  const blogPlaceholders = [
+    { id: 1, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
+    { id: 2, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
+    { id: 3, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
+    { id: 4, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
+    { id: 5, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
+    { id: 6, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#0a1628]">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent" />
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Blogs
+            </h1>
+            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
+              Insights, updates, and stories from AI4Inclusion.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Blog Grid Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPlaceholders.map((blog, index) => (
+              <motion.div
+                key={blog.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:bg-white/10 transition-all duration-300 hover:shadow-large hover:-translate-y-2">
+                  {/* Placeholder Image */}
+                  <div className="relative aspect-video bg-gradient-to-br from-primary/30 to-secondary/30 flex items-center justify-center">
+                    <span className="text-white/60 text-2xl font-semibold">
+                      Blog {blog.id}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                      {blog.title}
+                    </h3>
+                    <p className="text-white/70 text-base mb-4 leading-relaxed">
+                      {blog.description}
+                    </p>
+                    <a
+                      href="#"
+                      className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors font-medium"
+                    >
+                      Read More
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Blogs;
