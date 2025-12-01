@@ -22,6 +22,15 @@ interface FloatingGlyph {
 
 export const AnimatedHeroBanner = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  
+  // Preload hero image immediately
+  useEffect(() => {
+    const img = new Image();
+    img.src = heroBanner;
+    img.loading = "eager";
+    img.fetchPriority = "high";
+  }, []);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -115,14 +124,16 @@ export const AnimatedHeroBanner = () => {
   
   return (
     <div className="absolute inset-y-0 right-0 w-2/5 pointer-events-none select-none overflow-hidden">
-      {/* Background static image */}
-      <div 
-        className="absolute inset-0 bg-no-repeat bg-right-top bg-cover brightness-105 contrast-110" 
-        style={{
-          backgroundImage: `url(${heroBanner})`,
-          imageRendering: 'crisp-edges'
-        }} 
-        aria-hidden="true" 
+      {/* Background static image - preloaded with high priority */}
+      <img 
+        ref={imageRef}
+        src={heroBanner}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover object-right-top brightness-105 contrast-110"
+        style={{ imageRendering: 'crisp-edges' }}
+        loading="eager"
+        decoding="sync"
+        aria-hidden="true"
       />
       
       {/* Canvas for particles and data streams */}
