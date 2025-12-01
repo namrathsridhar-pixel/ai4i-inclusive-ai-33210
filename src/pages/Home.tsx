@@ -87,11 +87,11 @@ const Home = () => {
               duration: 0.8,
               delay: 0.4
             }} className="mt-8">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform" target="_blank" rel="noopener noreferrer">
+                <Link to="/join-us">
                   <button className="bg-transparent text-white text-[18px] px-8 py-3 rounded-md font-medium border-2 border-white transition-all duration-300 ease-in-out hover:shadow-[0_0_15px_rgba(255,255,255,0.6),inset_0_0_15px_rgba(255,255,255,0.1)]">
                     Join Us
                   </button>
-                </a>
+                </Link>
               </motion.div>
             </motion.div>
 

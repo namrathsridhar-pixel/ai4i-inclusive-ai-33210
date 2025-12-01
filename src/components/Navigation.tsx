@@ -24,8 +24,7 @@ const Navigation = () => {
     path: "/blogs"
   }, {
     name: "Join Us",
-    path: "https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform",
-    external: true
+    path: "/join-us"
   }];
   const isActive = (path: string) => location.pathname === path;
   const scrollToTop = () => {
@@ -61,22 +60,6 @@ const Navigation = () => {
           <div className="hidden md:flex items-center">
             {navLinks.map((link, index) => {
               const isLastItem = index === navLinks.length - 1;
-              
-              if (link.external) {
-                return (
-                  <div key={link.path} className={!isLastItem ? "mr-6" : ""}>
-                    <a 
-                      href={link.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button variant="ghost" className="font-medium text-white hover:text-white hover:bg-white/10">
-                        {link.name}
-                      </Button>
-                    </a>
-                  </div>
-                );
-              }
               
               if (link.path === "/building-blocks") {
                 return (
@@ -136,22 +119,6 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && <div className="md:hidden pb-4 animate-fade-in">
             {navLinks.map(link => {
-              if (link.external) {
-                return (
-                  <a 
-                    key={link.path} 
-                    href={link.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Button variant="ghost" className="w-full justify-start font-medium text-white hover:text-white hover:bg-white/10 mb-1">
-                      {link.name}
-                    </Button>
-                  </a>
-                );
-              }
-              
               if (link.path === "/building-blocks") {
                 return (
                   <div key={link.path}>

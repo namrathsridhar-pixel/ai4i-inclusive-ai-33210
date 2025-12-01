@@ -19,6 +19,7 @@ import ComponentObserve from "./pages/ComponentObserve";
 import ComponentContribute from "./pages/ComponentContribute";
 import Adopters from "./pages/Adopters";
 import GetInvolved from "./pages/GetInvolved";
+import JoinUs from "./pages/JoinUs";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -57,6 +58,7 @@ const App = () => (
             <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
             <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
             <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
+            <Route path="/join-us" element={<PageTransition><JoinUs /></PageTransition>} />
             <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
             <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
             <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
