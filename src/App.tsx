@@ -4,8 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import LanguageParticles from "./components/LanguageParticles";
+import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Blogs from "./pages/Blogs";
@@ -39,25 +42,28 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <LanguageParticles />
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/building-blocks" element={<BuildingBlocks />} />
-          <Route path="/components/core" element={<ComponentCore />} />
-          <Route path="/components/observe" element={<ComponentObserve />} />
-          <Route path="/components/contribute" element={<ComponentContribute />} />
-          <Route path="/adopters" element={<Adopters />} />
-          <Route path="/get-involved" element={<GetInvolved />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/legal/privacy" element={<Privacy />} />
-          <Route path="/legal/terms" element={<Terms />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes>
+            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+            <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
+            <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
+            <Route path="/components/core" element={<PageTransition><ComponentCore /></PageTransition>} />
+            <Route path="/components/observe" element={<PageTransition><ComponentObserve /></PageTransition>} />
+            <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
+            <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
+            <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
+            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+            <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+            <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+            <Route path="/legal/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+            <Route path="/legal/terms" element={<PageTransition><Terms /></PageTransition>} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+          </Routes>
+        </AnimatePresence>
         <Footer />
       </BrowserRouter>
     </TooltipProvider>

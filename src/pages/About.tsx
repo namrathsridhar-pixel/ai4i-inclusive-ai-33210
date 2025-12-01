@@ -17,9 +17,21 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              About AI4Inclusion
-            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                About AI4Inclusion
+                <motion.span 
+                  className="block h-0.5 bg-gradient-to-r from-primary to-secondary mt-4 mx-auto max-w-xs"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1, delay: 0.4 }}
+                />
+              </h1>
+            </motion.div>
             <p className="text-xl md:text-2xl text-white/80 mb-8 font-medium">
               Building inclusive language AI infrastructure for the world.
             </p>
@@ -36,17 +48,24 @@ const About = () => {
       {/* Why It Matters Section */}
       <section className="py-20 px-4 bg-[#0d1d35]">
         <div className="container mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Why AI4Inclusion?
-            </h2>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                Why AI4Inclusion?
+                <motion.span 
+                  className="block h-0.5 bg-gradient-to-r from-primary to-secondary mt-3 mx-auto"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "140px" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                />
+              </h2>
+            </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
@@ -55,7 +74,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300">
+              <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 card-hover">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-full bg-destructive/20 flex items-center justify-center mb-4">
                     <Shield className="w-8 h-8 text-destructive" />
@@ -78,7 +97,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300">
+              <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 card-hover">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
                     <Database className="w-8 h-8 text-secondary" />
@@ -101,7 +120,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300">
+              <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 card-hover">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
                     <Lightbulb className="w-8 h-8 text-primary" />
@@ -323,7 +342,7 @@ const About = () => {
             className="text-center"
           >
             <Link to="/building-blocks">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white button-glow">
                 Explore All Building Blocks
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
@@ -354,7 +373,7 @@ const About = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white min-w-[200px]">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white min-w-[200px] button-glow">
                   Join the Movement
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>

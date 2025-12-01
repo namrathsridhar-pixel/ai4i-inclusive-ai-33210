@@ -95,17 +95,40 @@ const Home = () => {
               </motion.div>
             </motion.div>
 
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.2,
-            ease: [0.4, 0, 0.2, 1]
-          }} className="hidden md:block absolute inset-y-0 right-0 w-2/5 pointer-events-none select-none">
+            <motion.div 
+              initial={{
+                opacity: 0,
+                y: 30
+              }} 
+              animate={{
+                opacity: 1,
+                y: 0
+              }} 
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.4, 0, 0.2, 1]
+              }} 
+              whileHover={{
+                scale: 1.02,
+              }}
+              className="hidden md:block absolute inset-y-0 right-0 w-2/5 pointer-events-none select-none"
+            >
+              {/* Glow effect behind image */}
+              <motion.div 
+                className="absolute inset-0 blur-3xl opacity-0"
+                animate={{
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                style={{
+                  background: 'radial-gradient(ellipse at center, hsl(216, 100%, 32%, 0.3), transparent 70%)',
+                }}
+              />
               <div className="absolute inset-0 bg-no-repeat bg-right-top bg-cover brightness-105 contrast-110" style={{
               backgroundImage: `url(${heroBanner})`,
               imageRendering: 'crisp-edges'
@@ -119,19 +142,18 @@ const Home = () => {
       {/* What is AI4Inclusion Section */}
       <section className="py-16 px-4" id="what-is-ai4i">
         <div className="container mx-auto max-w-4xl text-center">
-          <motion.h2 className="text-3xl md:text-4xl font-heading font-bold mb-6" initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }}>
-            What is AI4Inclusion?
-          </motion.h2>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
+              What is AI4Inclusion?
+              <motion.span 
+                className="block h-0.5 bg-gradient-to-r from-primary to-secondary mt-2 mx-auto"
+                initial={{ width: 0 }}
+                whileInView={{ width: "120px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              />
+            </h2>
+          </motion.div>
           <motion.p className="text-lg md:text-xl text-muted-foreground mb-4" initial={{
           opacity: 0,
           y: 20
@@ -142,7 +164,7 @@ const Home = () => {
           once: true
         }} transition={{
           duration: 0.6,
-          delay: 0.2
+          delay: 0.3
         }}>
             AI4Inclusion is an initiative that enables nations to build sovereign Language AI Digital Public Infrastructure. It helps countries collect and curate citizen-sourced datasets, and serve native language models through open building blocks — unlocking true digital inclusion, where every citizen can access services and participate in their own spoken language.
           </motion.p>
@@ -166,6 +188,13 @@ const Home = () => {
         }} className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
               Explore Building Blocks
+              <motion.span 
+                className="block h-0.5 bg-gradient-to-r from-primary to-secondary mt-3 mx-auto"
+                initial={{ width: 0 }}
+                whileInView={{ width: "160px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
             </h2>
           </motion.div>
 
