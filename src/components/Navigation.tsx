@@ -51,8 +51,7 @@ const Navigation = () => {
               width={50}
               height={50}
               loading="eager"
-              fetchPriority="high"
-              decoding="async"
+              decoding="sync"
             />
           </Link>
 
