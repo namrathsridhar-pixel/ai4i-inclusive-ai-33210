@@ -15,7 +15,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const navLinks = [{
     name: "About Us",
-    path: "/"
+    path: "/about"
   }, {
     name: "Building Blocks",
     path: "/building-blocks"
