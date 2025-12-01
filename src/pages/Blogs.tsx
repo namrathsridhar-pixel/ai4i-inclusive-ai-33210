@@ -44,9 +44,13 @@ const Blogs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 12px 40px -12px hsl(216, 100%, 32%, 0.25)"
+                }}
                 className="group"
               >
-                <div className="bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:bg-white/10 transition-all duration-300 hover:shadow-large hover:-translate-y-2">
+                <div className="bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:bg-white/10 transition-all duration-300">
                   {/* Placeholder Image */}
                   <div className="relative aspect-video bg-gradient-to-br from-primary/30 to-secondary/30 flex items-center justify-center">
                     <span className="text-white/60 text-2xl font-semibold">
@@ -64,7 +68,7 @@ const Blogs = () => {
                     </p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors font-medium"
+                      className="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors font-medium link-underline"
                     >
                       Read More
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
