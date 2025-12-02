@@ -13,19 +13,21 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlay = () => {
+    // Play immediately when component mounts
+    const playVideo = () => {
       video.play().catch((err) => {
         console.error('Autoplay failed:', err);
       });
     };
 
-    const handleError = () => {
-      onComplete();
-    };
+    // If video is already ready, play immediately
+    if (video.readyState >= 3) {
+      playVideo();
+    } else {
+      video.addEventListener('canplay', playVideo, { once: true });
+    }
 
-    video.addEventListener('canplay', handleCanPlay);
-    video.addEventListener('error', handleError);
-    video.load();
+    video.addEventListener('error', () => onComplete(), { once: true });
 
     // Timeout fallback
     const timeout = setTimeout(() => {
@@ -35,14 +37,14 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
     }, 8000);
 
     return () => {
-      video.removeEventListener('canplay', handleCanPlay);
-      video.removeEventListener('error', handleError);
       clearTimeout(timeout);
     };
   }, [onComplete]);
 
   const handleVideoEnd = () => {
     setIsEnding(true);
+    // Reset scroll to top before closing
+    window.scrollTo(0, 0);
     setTimeout(() => {
       onComplete();
     }, 800);
@@ -50,6 +52,8 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
 
   const handleSkip = () => {
     setIsEnding(true);
+    // Reset scroll to top before closing
+    window.scrollTo(0, 0);
     setTimeout(() => {
       onComplete();
     }, 500);
@@ -68,6 +72,7 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
             muted
             playsInline
             preload="auto"
+            autoPlay
             onEnded={handleVideoEnd}
             src="/videos/intro-video.mp4"
           />
