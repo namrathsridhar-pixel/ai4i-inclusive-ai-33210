@@ -8,8 +8,54 @@ import abTestingIcon from "@/assets/ab-testing-icon.png";
 import JoinForm from "@/components/JoinForm";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { AnimatedHeroBanner } from "@/components/AnimatedHeroBanner";
+import { VideoHeroBanner } from "@/components/VideoHeroBanner";
+import { FullscreenIntro } from "@/components/FullscreenIntro";
+import { useFirstVisit } from "@/hooks/useFirstVisit";
+import { useState, useEffect } from "react";
+
 const Home = () => {
-  return <div className="min-h-screen">
+  const { isFirstVisit, isChecking, markAsVisited } = useFirstVisit();
+  const [showIntro, setShowIntro] = useState(false);
+  const [useVideoHero, setUseVideoHero] = useState(false);
+
+  // Video sources - update these paths once video assets are produced
+  const introVideoSources = {
+    webm: "/videos/intro_1080.webm",
+    mp4: "/videos/intro_1080.mp4",
+  };
+
+  const heroLoopSources = {
+    webm: "/videos/hero_loop.webm",
+    mp4: "/videos/hero_loop.mp4",
+  };
+
+  const posterImage = "/videos/intro_poster.webp";
+
+  // Show intro on first visit after checking is complete
+  useEffect(() => {
+    if (!isChecking && isFirstVisit) {
+      setShowIntro(true);
+    }
+  }, [isChecking, isFirstVisit]);
+
+  const handleIntroComplete = () => {
+    markAsVisited();
+    setShowIntro(false);
+    setUseVideoHero(true);
+  };
+  
+  return (
+    <>
+      {/* Fullscreen Intro - First Visit Only */}
+      {showIntro && (
+        <FullscreenIntro
+          videoSources={introVideoSources}
+          posterImage={posterImage}
+          onComplete={handleIntroComplete}
+        />
+      )}
+
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-4 bg-[#0a1628] overflow-hidden">
         {/* Animated background pattern */}
@@ -114,7 +160,15 @@ const Home = () => {
               }}
               className="hidden md:block"
             >
-              <AnimatedHeroBanner />
+              {useVideoHero ? (
+                <VideoHeroBanner
+                  videoSources={heroLoopSources}
+                  posterImage={posterImage}
+                  isDocked={true}
+                />
+              ) : (
+                <AnimatedHeroBanner />
+              )}
             </motion.div>
           </div>
         </div>
@@ -590,6 +644,8 @@ const Home = () => {
       </section>
 
 
-    </div>;
+    </div>
+    </>
+  );
 };
 export default Home;
