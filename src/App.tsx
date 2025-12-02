@@ -40,10 +40,14 @@ const ScrollToTop = () => {
 
 const AppContent = () => {
   const location = useLocation();
-  const [showIntro, setShowIntro] = useState(() => {
+  const [showIntro, setShowIntro] = useState(false);
+
+  useEffect(() => {
     // Only show intro on homepage and if not seen in this session
-    return location.pathname === "/" && !sessionStorage.getItem("hasSeenIntro");
-  });
+    if (location.pathname === "/" && !sessionStorage.getItem("hasSeenIntro")) {
+      setShowIntro(true);
+    }
+  }, []);
 
   return (
     <>
