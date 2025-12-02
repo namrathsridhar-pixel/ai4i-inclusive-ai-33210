@@ -106,7 +106,7 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
           
           <button
             onClick={handleSkip}
-            className="absolute bottom-8 right-8 px-6 py-2 text-sm text-white/70 hover:text-white border border-white/30 hover:border-white/60 rounded-full backdrop-blur-sm transition-all duration-300 z-10"
+            className="absolute bottom-8 right-8 px-6 py-2 text-sm text-white/70 hover:text-white border border-white/30 hover:border-white/60 rounded-full backdrop-blur-sm transition-all duration-300 z-30"
           >
             Skip Intro
           </button>
