@@ -8,55 +8,51 @@ interface IntroVideoProps {
 const IntroVideo = ({ onComplete }: IntroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isEnding, setIsEnding] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Play immediately when component mounts
     const playVideo = () => {
+      setIsLoading(false);
       video.play().catch((err) => {
         console.error('Autoplay failed:', err);
       });
     };
 
-    // If video is already ready, play immediately
+    // Check if already ready
     if (video.readyState >= 3) {
       playVideo();
     } else {
       video.addEventListener('canplay', playVideo, { once: true });
     }
 
-    video.addEventListener('error', () => onComplete(), { once: true });
+    video.addEventListener('error', () => {
+      setIsLoading(false);
+      onComplete();
+    }, { once: true });
 
-    // Timeout fallback
+    // Timeout fallback - skip after 10 seconds if video won't load
     const timeout = setTimeout(() => {
-      if (video.readyState < 3) {
+      if (isLoading) {
         onComplete();
       }
-    }, 8000);
+    }, 10000);
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [onComplete]);
+    return () => clearTimeout(timeout);
+  }, [onComplete, isLoading]);
 
   const handleVideoEnd = () => {
     setIsEnding(true);
-    // Reset scroll to top before closing
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      onComplete();
-    }, 800);
+    setTimeout(() => onComplete(), 800);
   };
 
   const handleSkip = () => {
     setIsEnding(true);
-    // Reset scroll to top before closing
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      onComplete();
-    }, 500);
+    setTimeout(() => onComplete(), 500);
   };
 
   return (
@@ -66,9 +62,19 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
           className="fixed inset-0 z-[100] bg-[#0a1628]"
           initial={{ opacity: 1 }}
         >
+          {/* Loading spinner */}
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-12 h-12 border-2 border-blue-400/30 border-t-blue-400 rounded-full animate-spin" />
+                <span className="text-white/50 text-sm">Loading...</span>
+              </div>
+            </div>
+          )}
+
           <video
             ref={videoRef}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
             muted
             playsInline
             preload="auto"
