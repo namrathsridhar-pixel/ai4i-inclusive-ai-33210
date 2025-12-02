@@ -40,19 +40,22 @@ const ScrollToTop = () => {
 
 const AppContent = () => {
   const location = useLocation();
-  const [showIntro, setShowIntro] = useState(false);
+  // Show intro on homepage - resets on every page refresh
+  const [showIntro, setShowIntro] = useState(location.pathname === "/");
+  const [hasSeenIntro, setHasSeenIntro] = useState(false);
 
-  useEffect(() => {
-    // Only show intro on homepage and if not seen in this session
-    if (location.pathname === "/" && !sessionStorage.getItem("hasSeenIntro")) {
-      setShowIntro(true);
-    }
-  }, []);
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    setHasSeenIntro(true);
+  };
+
+  // Don't show intro if already seen during this session (navigation)
+  const shouldShowIntro = showIntro && !hasSeenIntro && location.pathname === "/";
 
   return (
     <>
-      {showIntro && (
-        <IntroVideo onComplete={() => setShowIntro(false)} />
+      {shouldShowIntro && (
+        <IntroVideo onComplete={handleIntroComplete} />
       )}
       <ScrollToTop />
       <LanguageParticles />

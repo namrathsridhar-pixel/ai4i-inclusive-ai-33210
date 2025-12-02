@@ -8,37 +8,28 @@ interface IntroVideoProps {
 const IntroVideo = ({ onComplete }: IntroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isEnding, setIsEnding] = useState(false);
-  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const handleCanPlay = () => {
-      setIsReady(true);
       video.play().catch((err) => {
         console.error('Autoplay failed:', err);
-        // If autoplay fails, still show video but user needs to interact
       });
     };
 
-    const handleError = (e: Event) => {
-      console.error('Video error:', e);
-      sessionStorage.setItem("hasSeenIntro", "true");
+    const handleError = () => {
       onComplete();
     };
 
     video.addEventListener('canplay', handleCanPlay);
     video.addEventListener('error', handleError);
-
-    // Force load
     video.load();
 
     // Timeout fallback
     const timeout = setTimeout(() => {
-      if (!isReady) {
-        console.log('Video load timeout');
-        sessionStorage.setItem("hasSeenIntro", "true");
+      if (video.readyState < 3) {
         onComplete();
       }
     }, 8000);
@@ -48,18 +39,16 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
       video.removeEventListener('error', handleError);
       clearTimeout(timeout);
     };
-  }, [onComplete, isReady]);
+  }, [onComplete]);
 
   const handleVideoEnd = () => {
     setIsEnding(true);
-    sessionStorage.setItem("hasSeenIntro", "true");
     setTimeout(() => {
       onComplete();
     }, 800);
   };
 
   const handleSkip = () => {
-    sessionStorage.setItem("hasSeenIntro", "true");
     setIsEnding(true);
     setTimeout(() => {
       onComplete();
@@ -70,11 +59,8 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
     <>
       {!isEnding ? (
         <motion.div
-          className="fixed inset-0 z-[100] bg-[#0a1628] flex items-center justify-center"
+          className="fixed inset-0 z-[100] bg-[#0a1628]"
           initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <video
             ref={videoRef}
@@ -86,7 +72,6 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
             src="/videos/intro-video.mp4"
           />
           
-          {/* Skip button */}
           <button
             onClick={handleSkip}
             className="absolute bottom-8 right-8 px-6 py-2 text-sm text-white/70 hover:text-white border border-white/30 hover:border-white/60 rounded-full backdrop-blur-sm transition-all duration-300 z-10"
