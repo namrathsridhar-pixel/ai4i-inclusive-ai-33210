@@ -24,14 +24,6 @@ export const AnimatedHeroBanner = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   
-  // Preload hero image immediately
-  useEffect(() => {
-    const img = new Image();
-    img.src = heroBanner;
-    img.loading = "eager";
-    img.fetchPriority = "high";
-  }, []);
-  
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -132,7 +124,6 @@ export const AnimatedHeroBanner = () => {
         className="absolute inset-0 w-full h-full object-cover object-right-top brightness-105 contrast-110"
         style={{ imageRendering: 'crisp-edges' }}
         loading="eager"
-        decoding="sync"
         aria-hidden="true"
       />
       
