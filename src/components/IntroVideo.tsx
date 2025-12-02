@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface IntroVideoProps {
   onComplete: () => void;
@@ -8,43 +8,47 @@ interface IntroVideoProps {
 const IntroVideo = ({ onComplete }: IntroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isEnding, setIsEnding] = useState(false);
-  const [videoError, setVideoError] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Check if user has seen the intro in this session
-    const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
-    if (hasSeenIntro) {
-      onComplete();
-      return;
-    }
-
     const video = videoRef.current;
-    if (video) {
-      // Wait for video to be ready before playing
-      video.addEventListener('canplaythrough', () => {
-        video.play().catch(() => {
-          // Autoplay blocked, skip intro
-          onComplete();
-        });
-      });
+    if (!video) return;
 
-      video.addEventListener('error', () => {
-        console.error('Video failed to load');
-        setVideoError(true);
+    const handleCanPlay = () => {
+      setIsReady(true);
+      video.play().catch((err) => {
+        console.error('Autoplay failed:', err);
+        // If autoplay fails, still show video but user needs to interact
+      });
+    };
+
+    const handleError = (e: Event) => {
+      console.error('Video error:', e);
+      sessionStorage.setItem("hasSeenIntro", "true");
+      onComplete();
+    };
+
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('error', handleError);
+
+    // Force load
+    video.load();
+
+    // Timeout fallback
+    const timeout = setTimeout(() => {
+      if (!isReady) {
+        console.log('Video load timeout');
+        sessionStorage.setItem("hasSeenIntro", "true");
         onComplete();
-      });
+      }
+    }, 8000);
 
-      // Fallback: if video doesn't load in 5 seconds, skip
-      const timeout = setTimeout(() => {
-        if (video.readyState < 3) {
-          console.log('Video timeout, skipping intro');
-          onComplete();
-        }
-      }, 5000);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [onComplete]);
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('error', handleError);
+      clearTimeout(timeout);
+    };
+  }, [onComplete, isReady]);
 
   const handleVideoEnd = () => {
     setIsEnding(true);
@@ -62,18 +66,15 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
     }, 500);
   };
 
-  if (videoError) return null;
-
   return (
-    <AnimatePresence>
+    <>
       {!isEnding ? (
         <motion.div
-          className="fixed inset-0 z-[100] bg-[#0a1628]"
+          className="fixed inset-0 z-[100] bg-[#0a1628] flex items-center justify-center"
           initial={{ opacity: 1 }}
-          exit={{ 
-            opacity: 0,
-            transition: { duration: 0.8, ease: "easeInOut" }
-          }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <video
             ref={videoRef}
@@ -82,15 +83,13 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
             playsInline
             preload="auto"
             onEnded={handleVideoEnd}
-          >
-            <source src="/videos/intro-video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+            src="/videos/intro-video.mp4"
+          />
           
           {/* Skip button */}
           <button
             onClick={handleSkip}
-            className="absolute bottom-8 right-8 px-6 py-2 text-sm text-white/70 hover:text-white border border-white/30 hover:border-white/60 rounded-full backdrop-blur-sm transition-all duration-300"
+            className="absolute bottom-8 right-8 px-6 py-2 text-sm text-white/70 hover:text-white border border-white/30 hover:border-white/60 rounded-full backdrop-blur-sm transition-all duration-300 z-10"
           >
             Skip Intro
           </button>
@@ -103,7 +102,7 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         />
       )}
-    </AnimatePresence>
+    </>
   );
 };
 
