@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 
 interface IntroVideoProps {
   onComplete: () => void;
@@ -9,23 +10,25 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isEnding, setIsEnding] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [needsInteraction, setNeedsInteraction] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const playVideo = () => {
+    const handleCanPlay = () => {
       setIsLoading(false);
-      video.play().catch((err) => {
-        console.error('Autoplay failed:', err);
+      // Try to play with audio
+      video.play().catch(() => {
+        // Autoplay with audio blocked - need user interaction
+        setNeedsInteraction(true);
       });
     };
 
-    // Check if already ready
     if (video.readyState >= 3) {
-      playVideo();
+      handleCanPlay();
     } else {
-      video.addEventListener('canplay', playVideo, { once: true });
+      video.addEventListener('canplay', handleCanPlay, { once: true });
     }
 
     video.addEventListener('error', () => {
@@ -33,7 +36,6 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
       onComplete();
     }, { once: true });
 
-    // Timeout fallback - skip after 10 seconds if video won't load
     const timeout = setTimeout(() => {
       if (isLoading) {
         onComplete();
@@ -42,6 +44,14 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
 
     return () => clearTimeout(timeout);
   }, [onComplete, isLoading]);
+
+  const handlePlayClick = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.play();
+      setNeedsInteraction(false);
+    }
+  };
 
   const handleVideoEnd = () => {
     setIsEnding(true);
@@ -72,13 +82,24 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
             </div>
           )}
 
+          {/* Play button for browsers that block autoplay with sound */}
+          {needsInteraction && !isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <button
+                onClick={handlePlayClick}
+                className="flex flex-col items-center gap-4 p-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 group"
+              >
+                <Play className="w-16 h-16 text-white group-hover:scale-110 transition-transform" fill="white" />
+                <span className="text-white text-lg">Click to Play</span>
+              </button>
+            </div>
+          )}
+
           <video
             ref={videoRef}
-            className={`w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-            muted
+            className={`w-full h-full object-cover transition-opacity duration-300 ${isLoading || needsInteraction ? 'opacity-50' : 'opacity-100'}`}
             playsInline
             preload="auto"
-            autoPlay
             onEnded={handleVideoEnd}
             src="/videos/intro-video.mp4"
           />
