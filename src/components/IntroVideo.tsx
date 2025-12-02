@@ -8,6 +8,7 @@ interface IntroVideoProps {
 const IntroVideo = ({ onComplete }: IntroVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isEnding, setIsEnding] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     // Check if user has seen the intro in this session
@@ -19,17 +20,35 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
 
     const video = videoRef.current;
     if (video) {
-      video.play().catch(() => {
-        // Autoplay blocked, skip intro
+      // Wait for video to be ready before playing
+      video.addEventListener('canplaythrough', () => {
+        video.play().catch(() => {
+          // Autoplay blocked, skip intro
+          onComplete();
+        });
+      });
+
+      video.addEventListener('error', () => {
+        console.error('Video failed to load');
+        setVideoError(true);
         onComplete();
       });
+
+      // Fallback: if video doesn't load in 5 seconds, skip
+      const timeout = setTimeout(() => {
+        if (video.readyState < 3) {
+          console.log('Video timeout, skipping intro');
+          onComplete();
+        }
+      }, 5000);
+
+      return () => clearTimeout(timeout);
     }
   }, [onComplete]);
 
   const handleVideoEnd = () => {
     setIsEnding(true);
     sessionStorage.setItem("hasSeenIntro", "true");
-    // Allow transition animation to complete
     setTimeout(() => {
       onComplete();
     }, 800);
@@ -42,6 +61,8 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
       onComplete();
     }, 500);
   };
+
+  if (videoError) return null;
 
   return (
     <AnimatePresence>
@@ -59,9 +80,11 @@ const IntroVideo = ({ onComplete }: IntroVideoProps) => {
             className="w-full h-full object-cover"
             muted
             playsInline
+            preload="auto"
             onEnded={handleVideoEnd}
           >
             <source src="/videos/intro-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
           
           {/* Skip button */}
