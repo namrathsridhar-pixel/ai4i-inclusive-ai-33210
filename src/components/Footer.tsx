@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Youtube } from "lucide-react";
+import logoImage from "@/assets/ai4i-logo-new.png";
 const Footer = () => {
   return <footer className="bg-[#F3F3F3] border-t border-border">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           {/* Left Section - Logo + Links */}
           <div className="flex items-center gap-4">
-            <img src="/ai4i-logo.png" alt="AI4I Logo" className="rounded-sm" style={{
+            <img src={logoImage} alt="AI4I Logo" className="rounded-sm" style={{
             width: '50px',
             height: '50px'
-          }} width={50} height={50} loading="eager" fetchPriority="high" decoding="async" />
+          }} width={50} height={50} loading="eager" />
             
             <div className="hidden md:block w-px h-12 bg-border"></div>
             

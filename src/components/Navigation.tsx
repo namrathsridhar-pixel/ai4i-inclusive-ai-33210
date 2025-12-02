@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe, BarChart3, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImage from "@/assets/ai4i-logo-new.png";
 
 const buildingBlocksMenu = [
   { id: "ai4i-core", label: "AI4I-Orchestrate", icon: Globe },
@@ -44,14 +45,13 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2 group">
             <img 
-              src="/ai4i-logo.png" 
+              src={logoImage} 
               alt="AI4Inclusion Logo" 
-              className="group-hover:scale-110 transition-transform duration-300 rounded-sm brightness-110 contrast-125 saturate-110"
+              className="group-hover:scale-110 transition-transform duration-300 rounded-sm"
               style={{ width: '50px', height: '50px', imageRendering: 'crisp-edges' }}
               width={50}
               height={50}
               loading="eager"
-              decoding="sync"
             />
           </Link>
 
