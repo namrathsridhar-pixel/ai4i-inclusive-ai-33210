@@ -9,6 +9,13 @@ import observeInfographic from "@/assets/observe-infographic.png";
 import observeArchitecture from "@/assets/observe-system-architecture.png";
 import orchestrateHowItWorks from "@/assets/orchestrate-how-it-works.png";
 import orchestrateArchitecture from "@/assets/orchestrate-architecture.png";
+
+// Preload images for immediate display
+const preloadImages = [observeInfographic, observeArchitecture, orchestrateHowItWorks, orchestrateArchitecture];
+preloadImages.forEach((src) => {
+  const img = new Image();
+  img.src = src;
+});
 const BuildingBlocks = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("ai4i-core");
@@ -205,24 +212,38 @@ const BuildingBlocks = () => {
                 <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Orchestrate Architecture</h3>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
-                      <CardContent className="pt-6 relative">
+                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
+                      <CardContent className="p-0 relative">
                         <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                           <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
                             <Maximize2 size={14} />
                             Click to expand
                           </div>
                         </div>
-                        <img src={orchestrateArchitecture} alt="AI4I-Orchestrate Architecture" className="w-full h-auto rounded-lg" />
-                        <p className="text-center text-sm text-muted-foreground mt-4 italic">
-                          Refer to the attached architecture image. This illustrates how Orchestrate unifies ingestion, routing, intelligence, governance, and consumption layers into one runtime for Language AI.
+                        <div className="w-full overflow-hidden rounded-lg">
+                          <img 
+                            src={orchestrateArchitecture} 
+                            alt="AI4I-Orchestrate Architecture" 
+                            className="w-full h-auto min-h-[400px] md:min-h-[500px] lg:min-h-[600px] object-contain rounded-lg"
+                            loading="eager"
+                            decoding="async"
+                            fetchPriority="high"
+                          />
+                        </div>
+                        <p className="text-center text-sm text-muted-foreground mt-4 italic px-4">
+                          This illustrates how Orchestrate unifies ingestion, routing, intelligence, governance, and consumption layers into one runtime for Language AI.
                         </p>
                       </CardContent>
                     </Card>
                   </DialogTrigger>
-                  <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
-                    <div className="p-4">
-                      <img src={orchestrateArchitecture} alt="AI4I-Orchestrate Architecture" className="w-full h-auto" />
+                  <DialogContent className="max-w-[98vw] w-[98vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <div className="p-6">
+                      <img 
+                        src={orchestrateArchitecture} 
+                        alt="AI4I-Orchestrate Architecture" 
+                        className="w-full h-auto"
+                        loading="eager"
+                      />
                       <p className="text-center text-sm text-muted-foreground mt-4 italic">
                         AI4I-Orchestrate Architecture: Unified ingestion, routing, intelligence, governance, and consumption layers
                       </p>
