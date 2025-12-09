@@ -9,9 +9,11 @@ import observeInfographic from "@/assets/observe-infographic.png";
 import observeArchitecture from "@/assets/observe-system-architecture.png";
 import orchestrateHowItWorks from "@/assets/orchestrate-how-it-works.png";
 import orchestrateArchitecture from "@/assets/orchestrate-architecture.png";
+import contributeHowItWorks from "@/assets/contribute-how-it-works.png";
+import contributeArchitecture from "@/assets/contribute-architecture.png";
 
 // Preload images for immediate display
-const preloadImages = [observeInfographic, observeArchitecture, orchestrateHowItWorks, orchestrateArchitecture];
+const preloadImages = [observeInfographic, observeArchitecture, orchestrateHowItWorks, orchestrateArchitecture, contributeHowItWorks, contributeArchitecture];
 preloadImages.forEach((src) => {
   const img = new Image();
   img.src = src;
@@ -523,6 +525,7 @@ const BuildingBlocks = () => {
         {/* Contribute */}
         {activeSection === "contribute" && <section className="pt-32 pb-20 px-4" id="contribute">
             <div className="container mx-auto max-w-6xl">
+              {/* Hero Header */}
               <motion.div initial={{
             opacity: 0,
             y: 20
@@ -541,31 +544,311 @@ const BuildingBlocks = () => {
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">AI4I-Contribute</h2>
                 </div>
 
-                <p className="text-lg md:text-xl text-muted-foreground mb-8 md:mb-12">
-                  It is a ready-to-use, customizable interface that connects seamlessly with the Adopter's back-end systems and carries their own branding through simple configuration.
+                <p className="text-lg md:text-xl text-muted-foreground mb-8">
+                  A community-powered application for collecting, validating, and improving language datasets across regions, accents, and domains.
                 </p>
+              </motion.div>
 
-                {/* Video */}
-                <div className="w-full max-w-2xl mx-auto rounded-lg overflow-hidden" style={{
+              {/* SECTION 1 — How Contribute Works */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.7
+          }} className="mb-16">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">How Contribute Works</h3>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
+                      <CardContent className="pt-6 relative">
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                            <Maximize2 size={14} />
+                            Click to expand
+                          </div>
+                        </div>
+                        <img 
+                          src={contributeHowItWorks} 
+                          alt="How AI4I-Contribute Works" 
+                          className="w-full h-auto rounded-lg"
+                          loading="eager"
+                          decoding="async"
+                          fetchPriority="high"
+                        />
+                        <p className="text-center text-sm text-muted-foreground mt-4 italic">Overcoming challenges in creating diverse, multilingual datasets with a unified, public platform as a Digital Public Good.</p>
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <div className="p-4">
+                      <img src={contributeHowItWorks} alt="How AI4I-Contribute Works" className="w-full h-auto" />
+                      <p className="text-center text-sm text-muted-foreground mt-4 italic">
+                        The Challenge vs The Solution: AI4I-Contribute's Unified Data Collection Platform
+                      </p>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </motion.div>
+
+              {/* SECTION 2 — Why Contribute Matters */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-16">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Why Contribute Matters</h3>
+                <Card className="bg-gradient-to-br from-background to-accent/10 border border-border">
+                  <CardContent className="pt-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      High-quality datasets are the foundation of accurate speech, translation, and LLM systems — but most Indian and global languages lack sufficient training data. Regional dialects, accents, domain-specific terminology, and under-represented communities are rarely included. AI4I-Contribute solves this by enabling citizens, institutions, and developers to collectively build inclusive language datasets that power better Language AI for everyone. It turns data creation into a participatory public good.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* SECTION 3 — What Contribute Enables */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-16">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Contribute Enables</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {[
+                    { icon: <Users size={24} />, title: "Community Voice Collection", description: "Citizens record speech or read curated sentences to build diverse language datasets." },
+                    { icon: <CheckCircle size={24} />, title: "Built-in Validation Workflows", description: "Validators review recordings for accuracy, clarity, pronunciation, and noise quality." },
+                    { icon: <Database size={24} />, title: "Dataset Governance", description: "Track contributors, validation history, dataset maturity, and quality metadata." },
+                    { icon: <Globe size={24} />, title: "Domain-Specific Campaigns", description: "Organizations can launch campaigns for agriculture, education, healthcare, financial inclusion, etc." },
+                    { icon: <Activity size={24} />, title: "Dialect & Accent Coverage", description: "Capture speech variations across regions to improve model performance and inclusivity." },
+                    { icon: <RefreshCcw size={24} />, title: "Seamless Model Improvement Loop", description: "Validated datasets feed into model training pipelines and become available to Orchestrate and Observe." }
+                  ].map((card, index) => <motion.div key={card.title} initial={{
+                opacity: 0,
+                y: 20
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.4,
+                delay: index * 0.05
+              }}>
+                      <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+                        <CardContent className="pt-6">
+                          <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                              {card.icon}
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
+                              <p className="text-sm text-muted-foreground">{card.description}</p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>)}
+                </div>
+              </motion.div>
+
+              {/* SECTION 4 — What Contribute Powers */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-16">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Visualize What Contribute Powers</h3>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  {[
+                    { icon: <BarChart3 size={32} />, title: "Better ASR (Speech-to-Text) Models", description: "Shows improved recognition accuracy across dialects." },
+                    { icon: <Globe size={32} />, title: "Stronger Translation & Multilingual LLMs", description: "Enables models to learn real expressions from real speakers." },
+                    { icon: <Users size={32} />, title: "Inclusive Public Service Applications", description: "Voice-based helplines, IVRs, chatbots, ed-tech platforms, agricultural apps, etc." },
+                    { icon: <Database size={32} />, title: "Local Language Preservation", description: "Stores community voices and linguistic diversity for future datasets and research." }
+                  ].map((card, index) => <motion.div key={card.title} initial={{
+                opacity: 0,
+                y: 20
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.4,
+                delay: index * 0.1
+              }}>
+                      <Card className="h-full group hover:shadow-lg hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-card to-accent/5">
+                        <CardContent className="pt-8 pb-8 text-center">
+                          <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            {card.icon}
+                          </div>
+                          <h4 className="font-heading font-bold text-lg mb-2">{card.title}</h4>
+                          <p className="text-sm text-muted-foreground">{card.description}</p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>)}
+                </div>
+              </motion.div>
+
+              {/* SECTION 5 — Architecture Diagram */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.7
+          }} className="mb-16">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Contribute Architecture Overview</h3>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
+                      <CardContent className="p-0 relative">
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                            <Maximize2 size={14} />
+                            Click to expand
+                          </div>
+                        </div>
+                        <div className="w-full overflow-hidden rounded-lg bg-card/50">
+                          <img 
+                            src={contributeArchitecture} 
+                            alt="AI4I-Contribute Architecture" 
+                            className="w-full h-auto object-contain rounded-lg"
+                            loading="eager"
+                            decoding="async"
+                            fetchPriority="high"
+                          />
+                        </div>
+                        <p className="text-center text-sm text-muted-foreground mt-4 italic px-4">
+                          This illustrates how recording tasks, validation workflows, governance metadata, and dataset packaging flow through the Contribute system.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[98vw] w-[98vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <div className="p-6">
+                      <img 
+                        src={contributeArchitecture} 
+                        alt="AI4I-Contribute Architecture" 
+                        className="w-full h-auto"
+                        loading="eager"
+                      />
+                      <p className="text-center text-sm text-muted-foreground mt-4 italic">
+                        AI4I-Contribute Architecture: Operations inputs, ingestion, routing, storage, intelligence, and consumption layers
+                      </p>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </motion.div>
+
+              {/* SECTION 6 — Contribute in the AI4Inclusion Ecosystem */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-16">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Contribute in the AI4Inclusion Ecosystem</h3>
+                <Card className="bg-gradient-to-br from-background to-accent/10 border border-border">
+                  <CardContent className="pt-6">
+                    <div className="space-y-3 text-muted-foreground leading-relaxed">
+                      <p><strong className="text-foreground">Communities & Institutions</strong> → Record and validate speech</p>
+                      <p><strong className="text-foreground">Contribute</strong> → Packages high-quality datasets</p>
+                      <p><strong className="text-foreground">Model Developers</strong> → Train ASR, TTS, NMT, or LLM models</p>
+                      <p><strong className="text-foreground">Orchestrate</strong> → Hosts and routes models for applications</p>
+                      <p><strong className="text-foreground">Observe</strong> → Monitors model accuracy and drift</p>
+                      <p><strong className="text-foreground">Applications</strong> → Deliver citizen-facing services in every language</p>
+                      <p className="pt-3 border-t border-border/50 mt-4 font-medium text-foreground">
+                        Contribute acts as the data backbone that fuels continuous improvement of Language AI.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* SECTION 7 — Video Demo */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="mb-16">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About Contribute</h3>
+                <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-border" style={{
               aspectRatio: '16/9'
             }}>
                   <iframe width="100%" height="100%" src="https://www.youtube.com/embed/_0KqImO7GMs?si=XtYl6ESXYjnYWGK2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-full h-full" />
                 </div>
+              </motion.div>
 
-                {/* Bottom CTAs */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 pt-8 border-t border-border/50">
-                  <Button asChild size="lg" className="min-w-[160px]">
-                    <a href="https://github.com/COSS-India/ai4i-contribute" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                      Learn more
-                      <ArrowRight size={16} />
-                    </a>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="min-w-[160px]">
-                    <a href="https://github.com/COSS-India/ai4i-contribute/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                      <MessageCircle size={16} />
-                      Discuss
-                    </a>
-                  </Button>
+              {/* SECTION 8 — Unified CTA */}
+              <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} className="bg-gradient-to-br from-primary/5 to-accent/10 rounded-2xl p-8 md:p-12 border border-primary/10">
+                <div className="text-center max-w-2xl mx-auto">
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
+                    Ready to explore AI4I-Contribute?
+                  </h3>
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Learn how to build inclusive language datasets with community participation.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button asChild size="lg" className="min-w-[160px]">
+                      <a href="https://github.com/COSS-India/ai4i-contribute" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                        Learn More
+                        <ArrowRight size={16} />
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="min-w-[160px]">
+                      <a href="https://github.com/COSS-India/ai4i-contribute/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                        <MessageCircle size={16} />
+                        Discuss
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </motion.div>
             </div>
