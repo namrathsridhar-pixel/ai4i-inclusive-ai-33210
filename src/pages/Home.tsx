@@ -10,7 +10,8 @@ import MediaStrip from "@/components/home/MediaStrip";
 import QuickStart from "@/components/home/QuickStart";
 import TrustStrip from "@/components/home/TrustStrip";
 import ResourcesCommunity from "@/components/home/ResourcesCommunity";
-import AdopterLogos from "@/components/home/AdopterLogos";
+import AdopterCarousel from "@/components/home/AdopterCarousel";
+import SolarSystemVisualization from "@/components/home/SolarSystemVisualization";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
@@ -218,6 +219,9 @@ const Home = () => {
         </div>
       </section>
 
+      {/* What AI4Inclusion Enables - Solar System Visualization */}
+      <SolarSystemVisualization />
+
       {/* Interactive Capability Matrix */}
       <CapabilityMatrix />
 
@@ -239,8 +243,8 @@ const Home = () => {
       {/* Resources & Community */}
       <ResourcesCommunity />
 
-      {/* Adopter Logos */}
-      <AdopterLogos />
+      {/* Adopter Carousel */}
+      <AdopterCarousel />
     </div>;
 };
 export default Home;

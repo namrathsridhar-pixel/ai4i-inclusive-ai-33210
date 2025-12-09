@@ -3,12 +3,12 @@ import { ArrowRight } from "lucide-react";
 
 const Blogs = () => {
   const blogPlaceholders = [
-    { id: 1, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
-    { id: 2, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
-    { id: 3, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
-    { id: 4, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
-    { id: 5, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
-    { id: 6, title: "Blog Title Placeholder", description: "This is a short description for the blog content preview." },
+    { id: 1, title: "Coming Soon", description: "Stay tuned for insights and updates from the AI4Inclusion community." },
+    { id: 2, title: "Coming Soon", description: "Stay tuned for insights and updates from the AI4Inclusion community." },
+    { id: 3, title: "Coming Soon", description: "Stay tuned for insights and updates from the AI4Inclusion community." },
+    { id: 4, title: "Coming Soon", description: "Stay tuned for insights and updates from the AI4Inclusion community." },
+    { id: 5, title: "Coming Soon", description: "Stay tuned for insights and updates from the AI4Inclusion community." },
+    { id: 6, title: "Coming Soon", description: "Stay tuned for insights and updates from the AI4Inclusion community." },
   ];
 
   return (
@@ -54,7 +54,7 @@ const Blogs = () => {
                   {/* Placeholder Image */}
                   <div className="relative aspect-video bg-gradient-to-br from-primary/30 to-secondary/30 flex items-center justify-center">
                     <span className="text-white/60 text-2xl font-semibold">
-                      Blog {blog.id}
+                      Coming Soon
                     </span>
                   </div>
 
