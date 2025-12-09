@@ -19,7 +19,6 @@ const featureBlocks = [{
   icon: <Globe className="text-primary-foreground" size={24} />,
   animation: <GlobeAnimation />,
   videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
-  docsUrl: "https://github.com/COSS-India/ai4i-core",
   githubUrl: "https://github.com/COSS-India/ai4i-core",
   discussUrl: "https://github.com/COSS-India/ai4i-core/discussions",
   blockLink: "/building-blocks#ai4i-core"
@@ -30,7 +29,6 @@ const featureBlocks = [{
   icon: <BarChart3 className="text-primary-foreground" size={24} />,
   animation: <ChartAnimation />,
   videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
-  docsUrl: "https://github.com/COSS-India/observe",
   githubUrl: "https://github.com/COSS-India/observe",
   discussUrl: "https://github.com/COSS-India/observe/discussions",
   blockLink: "/building-blocks#observe"
@@ -41,7 +39,6 @@ const featureBlocks = [{
   icon: <Users className="text-primary-foreground" size={24} />,
   animation: <MicrophoneAnimation />,
   videoUrl: "https://www.youtube.com/embed/_0KqImO7GMs",
-  docsUrl: "https://github.com/COSS-India/ai4i-contribute",
   githubUrl: "https://github.com/COSS-India/ai4i-contribute",
   discussUrl: "https://github.com/COSS-India/ai4i-contribute/discussions",
   blockLink: "/building-blocks#contribute"

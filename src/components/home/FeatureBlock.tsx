@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play, FileText, Github, MessageSquare } from "lucide-react";
+import { ArrowRight, Play, Github, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -11,7 +11,6 @@ interface FeatureBlockProps {
   icon: React.ReactNode;
   animation: React.ReactNode;
   videoUrl?: string;
-  docsUrl?: string;
   githubUrl?: string;
   discussUrl?: string;
   reversed?: boolean;
@@ -25,7 +24,6 @@ const FeatureBlock = ({
   icon,
   animation,
   videoUrl,
-  docsUrl,
   githubUrl,
   discussUrl,
   reversed,
@@ -80,16 +78,6 @@ const FeatureBlock = ({
               >
                 <Play size={14} /> Watch Demo
               </button>
-            )}
-            {docsUrl && (
-              <a
-                href={docsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-muted text-foreground rounded-lg text-sm font-medium hover:bg-muted/80 transition-colors"
-              >
-                <FileText size={14} /> Docs
-              </a>
             )}
             {githubUrl && (
               <a
