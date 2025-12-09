@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import observeInfographic from "@/assets/observe-infographic.png";
-import observeArchitecture from "@/assets/observe-architecture.png";
+import observeArchitecture from "@/assets/observe-system-architecture.png";
 const BuildingBlocks = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("ai4i-core");
