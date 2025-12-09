@@ -220,11 +220,11 @@ const BuildingBlocks = () => {
                             Click to expand
                           </div>
                         </div>
-                        <div className="w-full overflow-hidden rounded-lg">
+                        <div className="w-full overflow-hidden rounded-lg bg-card/50">
                           <img 
                             src={orchestrateArchitecture} 
                             alt="AI4I-Orchestrate Architecture" 
-                            className="w-full h-auto min-h-[400px] md:min-h-[500px] lg:min-h-[600px] object-contain rounded-lg"
+                            className="w-full h-auto object-contain rounded-lg"
                             loading="eager"
                             decoding="async"
                             fetchPriority="high"
