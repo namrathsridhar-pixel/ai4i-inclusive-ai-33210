@@ -21,16 +21,6 @@ interface Tooltip {
   title: string;
 }
 
-interface Meteor {
-  id: number;
-  char: string;
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
-  duration: number;
-  delay: number;
-}
 
 const aiServices: Planet[] = [
   { id: "asr", name: "ASR", icon: <Mic size={16} />, description: "Speech-to-Text conversion for all languages", angle: 0 },
@@ -43,23 +33,12 @@ const aiServices: Planet[] = [
   { id: "domain", name: "Domain AI", icon: <Database size={16} />, description: "Domain-specific models for specialized use cases", angle: 315 },
 ];
 
-// Multilingual characters for meteors
-const multilingualChars = [
-  "अ", "ஆ", "క", "ম", "ਪ", "ગ", "ಕ", "മ", "ओ", 
-  "A", "B", "C", "D", "E",
-  "ا", "ب", "ت", "ث",
-  "あ", "い", "う", "え",
-  "中", "文", "字", "語",
-  "α", "β", "γ", "δ",
-  "ह", "क", "ल", "म",
-];
 
 const SolarSystemVisualization = () => {
   const [hoveredElement, setHoveredElement] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const [time, setTime] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [meteors, setMeteors] = useState<Meteor[]>([]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -79,36 +58,6 @@ const SolarSystemVisualization = () => {
     return () => clearInterval(interval);
   }, [prefersReducedMotion]);
 
-  // Generate meteors periodically
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const generateMeteor = () => {
-      const id = Date.now() + Math.random();
-      const char = multilingualChars[Math.floor(Math.random() * multilingualChars.length)];
-      const startX = Math.random() * 100;
-      const startY = -10;
-      const endX = startX + (Math.random() * 40 - 20);
-      const endY = 110;
-      const duration = 3 + Math.random() * 4;
-      const delay = 0;
-
-      setMeteors(prev => [...prev, { id, char, startX, startY, endX, endY, duration, delay }]);
-
-      // Remove meteor after animation
-      setTimeout(() => {
-        setMeteors(prev => prev.filter(m => m.id !== id));
-      }, duration * 1000);
-    };
-
-    // Initial meteors
-    for (let i = 0; i < 3; i++) {
-      setTimeout(generateMeteor, i * 1500);
-    }
-
-    const interval = setInterval(generateMeteor, 2500);
-    return () => clearInterval(interval);
-  }, [prefersReducedMotion]);
 
   const showTooltip = (e: React.MouseEvent, title: string, content: string) => {
     setTooltip({ x: e.clientX, y: e.clientY, content, title });
@@ -159,34 +108,6 @@ const SolarSystemVisualization = () => {
         ))}
       </div>
 
-      {/* Multilingual Meteors */}
-      {meteors.map((meteor) => (
-        <motion.div
-          key={meteor.id}
-          className="absolute text-primary/60 font-bold text-lg pointer-events-none z-10"
-          initial={{ 
-            left: `${meteor.startX}%`, 
-            top: `${meteor.startY}%`,
-            opacity: 0,
-            scale: 0.5
-          }}
-          animate={{ 
-            left: `${meteor.endX}%`, 
-            top: `${meteor.endY}%`,
-            opacity: [0, 0.8, 0.8, 0],
-            scale: [0.5, 1, 1, 0.5]
-          }}
-          transition={{
-            duration: meteor.duration,
-            ease: "linear",
-          }}
-          style={{
-            textShadow: "0 0 10px hsl(216 100% 50% / 0.6)",
-          }}
-        >
-          {meteor.char}
-        </motion.div>
-      ))}
 
       <div className="container mx-auto relative z-10">
         <motion.div

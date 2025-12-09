@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, ArrowRight, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatedHeroBanner } from "@/components/AnimatedHeroBanner";
-import CapabilityMatrix from "@/components/home/CapabilityMatrix";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import ArchitectureTeaser from "@/components/home/ArchitectureTeaser";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
@@ -221,9 +220,6 @@ const Home = () => {
 
       {/* What AI4Inclusion Enables - Solar System Visualization */}
       <SolarSystemVisualization />
-
-      {/* Interactive Capability Matrix */}
-      <CapabilityMatrix />
 
       {/* Architecture Teaser */}
       <ArchitectureTeaser />
