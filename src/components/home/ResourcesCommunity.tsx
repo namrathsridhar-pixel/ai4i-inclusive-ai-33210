@@ -83,13 +83,13 @@ const ResourcesCommunity = () => {
             className="bg-card rounded-xl p-6 shadow-medium border border-border/50"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
                 <Users size={20} />
               </div>
               <h3 className="font-heading font-bold text-lg">Join a Campaign</h3>
             </div>
             <p className="text-muted-foreground text-sm mb-4">
-              Participate in community data collection campaigns. Help build inclusive datasets.
+              Be part of community data collection campaigns. Help build inclusive datasets for underserved languages and dialects.
             </p>
             <a
               href="https://github.com/COSS-India/ai4i-contribute"
@@ -99,7 +99,7 @@ const ResourcesCommunity = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-secondary text-secondary-foreground py-2.5 rounded-lg font-medium hover:bg-secondary/90 transition-colors text-sm"
+                className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm"
               >
                 Explore Campaigns
               </motion.button>
