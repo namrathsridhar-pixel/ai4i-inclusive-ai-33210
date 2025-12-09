@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, ArrowRight, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatedHeroBanner } from "@/components/AnimatedHeroBanner";
-
 import CapabilityMatrix from "@/components/home/CapabilityMatrix";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import ArchitectureTeaser from "@/components/home/ArchitectureTeaser";
@@ -137,7 +136,7 @@ const Home = () => {
                 <span className="block text-3xl md:text-4xl leading-tight lg:text-7xl">AI4Inclusion</span>
               </motion.h1>
 
-              <motion.p className="text-lg md:text-xl text-gray-300 mt-6 leading-relaxed max-w-xl" initial={{
+              <motion.p initial={{
               opacity: 0,
               y: 20
             }} animate={{
@@ -146,7 +145,7 @@ const Home = () => {
             }} transition={{
               duration: 0.8,
               delay: 0.3
-            }}>
+            }} className="text-lg text-gray-300 mt-6 leading-relaxed max-w-xl md:text-2xl">
                 AI4Inclusion empowers nations to build their own Language AI DPI from citizen-sourced datasets to public serving orchestration. It enables true digital inclusion in every spoken language.
               </motion.p>
 
