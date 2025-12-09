@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Globe, BarChart3, Users, CheckCircle, Database, Eye, GitBranch, Shield, TrendingUp, Github, MessageCircle, ArrowRight, Activity, Bell, LineChart, Code2, BookOpen, ExternalLink, Maximize2, ChevronRight } from "lucide-react";
+import { Globe, BarChart3, Users, CheckCircle, Database, GitBranch, Shield, MessageCircle, ArrowRight, Activity, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -10,7 +10,7 @@ import observeArchitecture from "@/assets/observe-architecture.png";
 const BuildingBlocks = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("ai4i-core");
-  const [showDeepCapabilities, setShowDeepCapabilities] = useState(false);
+  
   useEffect(() => {
     // Handle hash navigation on initial load
     if (location.hash) {
@@ -21,62 +21,33 @@ const BuildingBlocks = () => {
     }
   }, [location.hash]);
   const observeCapabilityCards = [{
-    icon: <LineChart size={24} />,
-    title: "Multilingual Model Performance Tracking",
-    description: "Monitor accuracy and quality across all supported languages in real-time."
-  }, {
     icon: <Activity size={24} />,
-    title: "Drift & Quality Monitoring",
-    description: "Detect model degradation and data drift before they impact users."
-  }, {
-    icon: <Shield size={24} />,
-    title: "Governance & Transparency Reporting",
-    description: "Generate compliance reports and audit trails automatically."
-  }, {
-    icon: <Database size={24} />,
-    title: "Usage, Telemetry & Analytics Visibility",
-    description: "Full visibility into system usage patterns and resource consumption."
-  }, {
-    icon: <Users size={24} />,
-    title: "Multi-Tenant Operational Insights",
-    description: "Isolated monitoring views for each tenant with aggregated overviews."
-  }, {
-    icon: <Bell size={24} />,
-    title: "Alerting & Health Monitoring",
-    description: "Proactive notifications when metrics exceed defined thresholds."
-  }, {
-    icon: <MessageCircle size={24} />,
-    title: "Feedback-Driven Improvement Pipeline",
-    description: "Integrate user feedback to continuously improve model quality."
+    title: "Real-time visibility into system & model health",
+    description: "CPU/GPU load, inference latency, throughput, error rates, and more."
   }, {
     icon: <CheckCircle size={24} />,
-    title: "Evidence-Based Model Evaluation",
-    description: "Data-backed evaluation frameworks for model selection and deployment."
-  }];
-  const processSteps = [{
-    number: 1,
-    title: "Collect Telemetry",
-    icon: <Database size={20} />
+    title: "Automated model quality evaluation",
+    description: "Across NMT, ASR, TTS, NER, LLMs — with BLEU, WER, hallucination rate, semantic accuracy."
   }, {
-    number: 2,
-    title: "Normalize & Enrich",
-    icon: <Code2 size={20} />
+    icon: <MessageCircle size={24} />,
+    title: "Feedback-driven improvement loops",
+    description: "Explicit, implicit, and governance feedback feed directly into retraining pipelines."
   }, {
-    number: 3,
-    title: "Aggregate Metrics",
-    icon: <BarChart3 size={20} />
+    icon: <Shield size={24} />,
+    title: "Drift & bias detection",
+    description: "Monitors domain shifts, dialect patterns, fairness across groups, and vocabulary evolution."
   }, {
-    number: 4,
-    title: "Analyze Quality & Drift",
-    icon: <Activity size={20} />
+    icon: <Database size={24} />,
+    title: "Scalable telemetry collection",
+    description: "Billions of events processed reliably: user interactions, model switches, errors, session drops."
   }, {
-    number: 5,
-    title: "Alert & Notify",
-    icon: <Bell size={20} />
+    icon: <GitBranch size={24} />,
+    title: "A/B testing, canary releases & safe deployment",
+    description: "Compare baseline vs new models, shadow mode evaluations, human-in-the-loop validation."
   }, {
-    number: 6,
-    title: "Improve Models & Systems",
-    icon: <TrendingUp size={20} />
+    icon: <Users size={24} />,
+    title: "Unified dashboards for all stakeholders",
+    description: "Engineers, ML researchers, administrators, communities, product owners."
   }];
   return <div className="min-h-screen flex flex-col">
       <div className="flex-1">
@@ -153,80 +124,12 @@ const BuildingBlocks = () => {
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">AI4I-Observe</h2>
                 </div>
 
-                
+                <p className="text-lg md:text-xl text-muted-foreground mb-8">
+                  A unified observability and analytics layer that ensures trustworthy, high-quality, continuously improving Language AI systems at scale.
+                </p>
               </motion.div>
 
-              {/* SECTION 1 — Refined Overview with Layered Explanation */}
-              <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6,
-            delay: 0.1
-          }} className="mb-12 space-y-6">
-                {/* Expandable Deep Capabilities */}
-                <div className="bg-accent/20 rounded-xl p-6 border border-border cursor-pointer hover:bg-accent/30 transition-colors" onClick={() => setShowDeepCapabilities(!showDeepCapabilities)}>
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-heading font-semibold flex items-center gap-2">
-                      <Eye size={20} className="text-primary" />
-                      Deep Capabilities
-                    </h3>
-                    <ChevronRight size={20} className={`text-muted-foreground transition-transform duration-300 ${showDeepCapabilities ? 'rotate-90' : ''}`} />
-                  </div>
-                  <p className="text-sm text-muted-foreground">Click to explore advanced monitoring features</p>
-                  
-                  <motion.div initial={false} animate={{
-                height: showDeepCapabilities ? 'auto' : 0,
-                opacity: showDeepCapabilities ? 1 : 0
-              }} transition={{
-                duration: 0.3
-              }} className="overflow-hidden">
-                    <div className="pt-4 mt-4 border-t border-border space-y-3">
-                      <p className="text-muted-foreground">
-                        AI4I-Observe provides a unified telemetry infrastructure that ingests logs, metrics, traces, and feedback from all AI system components. It normalizes heterogeneous data streams, routes them to appropriate storage backends, and applies intelligent analysis for quality assessment, drift detection, and governance reporting.
-                      </p>
-                      <p className="text-muted-foreground">
-                        The platform supports multi-tenant deployments with isolated views, configurable alerting pipelines, and integration APIs for seamless connection with existing DevOps and MLOps toolchains.
-                      </p>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Outcomes Summary */}
-                <Card className="bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20">
-                  <CardContent className="pt-6">
-                    <h3 className="text-lg font-heading font-semibold mb-3 flex items-center gap-2">
-                      <TrendingUp size={20} className="text-primary" />
-                      Why Observe Matters
-                    </h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Build trust in AI deployments with complete operational visibility</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Ensure fairness and accountability across diverse user populations</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Detect and resolve issues before they impact end users</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Drive continuous improvement with data-driven insights</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* SECTION 2 — Infographic Panel */}
+              {/* SECTION 1 — Infographic Panel (How Observe Works) */}
               <motion.div initial={{
             opacity: 0,
             y: 30
@@ -238,7 +141,7 @@ const BuildingBlocks = () => {
           }} transition={{
             duration: 0.7
           }} className="mb-16">
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Unified Telemetry Architecture</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">How Observe Works</h3>
                 <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-background to-accent/10 border border-border p-4">
                   <img src={observeInfographic} alt="AI4I-Observe: Unified Telemetry & Governance Architecture" className="w-full h-auto rounded-xl" />
                   <p className="text-center text-sm text-muted-foreground mt-4 italic">
@@ -247,7 +150,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* SECTION 3 — Interactive Capability Grid */}
+              {/* SECTION 2 — Interactive Capability Grid */}
               <motion.div initial={{
             opacity: 0,
             y: 20
@@ -290,7 +193,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* SECTION 4 — Architecture Diagram */}
+              {/* SECTION 3 — Architecture Diagram */}
               <motion.div initial={{
             opacity: 0,
             y: 30
@@ -331,55 +234,7 @@ const BuildingBlocks = () => {
                 </Dialog>
               </motion.div>
 
-              {/* SECTION 5 — How Observe Works (Step Flow) */}
-              <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }} className="mb-16">
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">How Observe Works</h3>
-                <div className="relative">
-                  {/* Curved connection line - decorative */}
-                  <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 hidden lg:block" style={{
-                transform: 'translateY(-50%)'
-              }} />
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    {processSteps.map((step, index) => <motion.div key={step.number} initial={{
-                  opacity: 0,
-                  y: 20
-                }} whileInView={{
-                  opacity: 1,
-                  y: 0
-                }} viewport={{
-                  once: true
-                }} transition={{
-                  duration: 0.4,
-                  delay: index * 0.1
-                }} className="relative">
-                        <Card className="h-full text-center hover:shadow-medium hover:-translate-y-1 transition-all duration-300 bg-background">
-                          <CardContent className="pt-6 pb-4">
-                            <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary">
-                              {step.icon}
-                            </div>
-                            <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold mx-auto mb-2">
-                              {step.number}
-                            </div>
-                            <h4 className="text-sm font-heading font-semibold">{step.title}</h4>
-                          </CardContent>
-                        </Card>
-                      </motion.div>)}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* SECTION 6 — Video Demo */}
+              {/* SECTION 4 — Video Demo */}
               <motion.div initial={{
             opacity: 0,
             y: 20
@@ -399,65 +254,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* SECTION 7 — Resources Section */}
-              <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }} className="mb-16">
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Resources</h3>
-                <div className="grid sm:grid-cols-3 gap-4">
-                  <a href="https://github.com/COSS-India/observe" target="_blank" rel="noopener noreferrer" className="block">
-                    <Card className="h-full hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                      <CardContent className="pt-6 text-center">
-                        <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          <GitBranch size={24} />
-                        </div>
-                        <h4 className="font-heading font-semibold mb-1">GitHub Repository</h4>
-                        <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
-                          View source code <ExternalLink size={12} />
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </a>
-
-                  <a href="https://docs.ai4inclusion.org/observe" target="_blank" rel="noopener noreferrer" className="block">
-                    <Card className="h-full hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                      <CardContent className="pt-6 text-center">
-                        <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          <BookOpen size={24} />
-                        </div>
-                        <h4 className="font-heading font-semibold mb-1">Documentation</h4>
-                        <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
-                          Read the docs <ExternalLink size={12} />
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </a>
-
-                  <a href="https://github.com/COSS-India/observe/discussions" target="_blank" rel="noopener noreferrer" className="block">
-                    <Card className="h-full hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                      <CardContent className="pt-6 text-center">
-                        <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          <MessageCircle size={24} />
-                        </div>
-                        <h4 className="font-heading font-semibold mb-1">Discussion Forum</h4>
-                        <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
-                          Join the conversation <ExternalLink size={12} />
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </a>
-                </div>
-              </motion.div>
-
-              {/* SECTION 8 — Unified CTA */}
+              {/* SECTION 5 — Unified CTA */}
               <motion.div initial={{
             opacity: 0,
             y: 20
