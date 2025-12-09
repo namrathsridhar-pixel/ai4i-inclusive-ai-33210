@@ -10,7 +10,6 @@ import observeArchitecture from "@/assets/observe-system-architecture.png";
 const BuildingBlocks = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("ai4i-core");
-  
   useEffect(() => {
     // Handle hash navigation on initial load
     if (location.hash) {
@@ -217,9 +216,7 @@ const BuildingBlocks = () => {
                           </div>
                         </div>
                         <img src={observeArchitecture} alt="AI4I-Observe Operational Architecture" className="w-full h-auto rounded-lg" />
-                        <p className="text-center text-sm text-muted-foreground mt-4 italic">
-                          AI4I-Observe Operational Architecture
-                        </p>
+                        <p className="text-center text-sm text-muted-foreground mt-4 italic">AI4I-Observe System Architecture</p>
                       </CardContent>
                     </Card>
                   </DialogTrigger>
