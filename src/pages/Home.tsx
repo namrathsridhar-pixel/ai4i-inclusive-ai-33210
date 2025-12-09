@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Globe, BarChart3, Users, Cpu, ArrowRight, ArrowDown } from "lucide-react";
+import { Globe, BarChart3, Users, ArrowRight, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatedHeroBanner } from "@/components/AnimatedHeroBanner";
 import OfferingTile from "@/components/home/OfferingTile";
@@ -14,13 +14,6 @@ import ResourcesCommunity from "@/components/home/ResourcesCommunity";
 import AdopterLogos from "@/components/home/AdopterLogos";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
 const offerings = [{
-  icon: <Cpu className="text-primary-foreground" size={24} />,
-  title: "AI4I Core",
-  subtitle: "Hosting & Orchestration",
-  summary: "Host, scale, and serve language AI models.",
-  bullets: ["Deploy ASR, TTS, NMT, and LLM models", "Auto-scaling with load balancing", "Multi-tenant architecture"],
-  link: "/building-blocks#ai4i-core"
-}, {
   icon: <Globe className="text-primary-foreground" size={24} />,
   title: "AI4I Orchestrate",
   subtitle: "Runtime & Governance",
