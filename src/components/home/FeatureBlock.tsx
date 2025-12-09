@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play, Github, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface FeatureBlockProps {
   title: string;
@@ -44,9 +45,11 @@ const FeatureBlock = ({
         <div className="w-full lg:w-1/2">
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="bg-card rounded-xl p-6 shadow-medium border border-border/50 aspect-video flex items-center justify-center relative overflow-hidden"
+            className="bg-card rounded-xl p-8 md:p-12 shadow-medium border border-border/50 aspect-video flex items-center justify-center relative overflow-hidden"
           >
-            {animation}
+            <div className="w-full h-full flex items-center justify-center scale-125 md:scale-150">
+              {animation}
+            </div>
           </motion.div>
         </div>
 
@@ -109,7 +112,10 @@ const FeatureBlock = ({
 
       {videoUrl && (
         <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
-          <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black">
+          <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black" aria-describedby={undefined}>
+            <VisuallyHidden>
+              <DialogTitle>{title} Demo Video</DialogTitle>
+            </VisuallyHidden>
             <div className="aspect-video w-full">
               <iframe
                 src={`${videoUrl}?autoplay=1`}
