@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, ArrowRight, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatedHeroBanner } from "@/components/AnimatedHeroBanner";
-import OfferingTile from "@/components/home/OfferingTile";
+
 import CapabilityMatrix from "@/components/home/CapabilityMatrix";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import ArchitectureTeaser from "@/components/home/ArchitectureTeaser";
@@ -13,28 +13,6 @@ import TrustStrip from "@/components/home/TrustStrip";
 import ResourcesCommunity from "@/components/home/ResourcesCommunity";
 import AdopterLogos from "@/components/home/AdopterLogos";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
-const offerings = [{
-  icon: <Globe className="text-primary-foreground" size={24} />,
-  title: "AI4I Orchestrate",
-  subtitle: "Runtime & Governance",
-  summary: "Single API, model routing, policy control.",
-  bullets: ["Unified API for all language models", "Intelligent routing based on domain", "Policy enforcement and SLA management"],
-  link: "/building-blocks#ai4i-core"
-}, {
-  icon: <BarChart3 className="text-primary-foreground" size={24} />,
-  title: "AI4I Observe",
-  subtitle: "Observability & Governance",
-  summary: "Telemetry, quality, drift and dashboards.",
-  bullets: ["Real-time monitoring and alerting", "Quality drift detection", "Performance analytics dashboards"],
-  link: "/building-blocks#observe"
-}, {
-  icon: <Users className="text-primary-foreground" size={24} />,
-  title: "AI4I Contribute",
-  subtitle: "Community Data",
-  summary: "Crowdsource and validate speech datasets.",
-  bullets: ["Mobile-first data collection", "Built-in validation workflows", "Community governance tools"],
-  link: "/building-blocks#contribute"
-}];
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
   description: "A unified runtime layer that routes inference requests to the best-fit models based on language, domain, cost, and policy. It provides a single API surface for all Language AI capabilities.",
@@ -207,14 +185,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Quick Offerings Strip */}
-      <section className="py-8 px-4 bg-background border-b border-border/50 -mt-8 relative z-20">
-        <div className="container mx-auto">
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide md:justify-center md:flex-wrap">
-            {offerings.map((offering, i) => <OfferingTile key={i} {...offering} />)}
-          </div>
-        </div>
-      </section>
 
       {/* Feature & Offerings Grid */}
       <section className="py-20 px-4" id="building-blocks">
