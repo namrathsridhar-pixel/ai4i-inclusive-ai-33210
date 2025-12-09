@@ -27,14 +27,26 @@ const Footer = () => {
 
           {/* Right Section - Social Media */}
           <div className="flex items-center gap-6 text-sm text-foreground/80">
-            <div className="flex items-center gap-2">
-              <Linkedin size={20} aria-label="LinkedIn Icon (placeholder)" />
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit our LinkedIn page"
+            >
+              <Linkedin size={20} />
               <span>LinkedIn</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Youtube size={20} aria-label="YouTube Icon (placeholder)" />
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+              aria-label="Visit our YouTube channel"
+            >
+              <Youtube size={20} />
               <span>Youtube</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>
