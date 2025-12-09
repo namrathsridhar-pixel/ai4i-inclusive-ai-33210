@@ -21,6 +21,17 @@ interface Tooltip {
   title: string;
 }
 
+interface Meteor {
+  id: number;
+  char: string;
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+  duration: number;
+  delay: number;
+}
+
 const aiServices: Planet[] = [
   { id: "asr", name: "ASR", icon: <Mic size={16} />, description: "Speech-to-Text conversion for all languages", angle: 0 },
   { id: "tts", name: "TTS", icon: <Volume2 size={16} />, description: "Text-to-Speech synthesis with natural voices", angle: 45 },
@@ -32,11 +43,23 @@ const aiServices: Planet[] = [
   { id: "domain", name: "Domain AI", icon: <Database size={16} />, description: "Domain-specific models for specialized use cases", angle: 315 },
 ];
 
+// Multilingual characters for meteors
+const multilingualChars = [
+  "अ", "ஆ", "క", "ম", "ਪ", "ગ", "ಕ", "മ", "ओ", 
+  "A", "B", "C", "D", "E",
+  "ا", "ب", "ت", "ث",
+  "あ", "い", "う", "え",
+  "中", "文", "字", "語",
+  "α", "β", "γ", "δ",
+  "ह", "क", "ल", "म",
+];
+
 const SolarSystemVisualization = () => {
   const [hoveredElement, setHoveredElement] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const [time, setTime] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [meteors, setMeteors] = useState<Meteor[]>([]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -56,6 +79,37 @@ const SolarSystemVisualization = () => {
     return () => clearInterval(interval);
   }, [prefersReducedMotion]);
 
+  // Generate meteors periodically
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const generateMeteor = () => {
+      const id = Date.now() + Math.random();
+      const char = multilingualChars[Math.floor(Math.random() * multilingualChars.length)];
+      const startX = Math.random() * 100;
+      const startY = -10;
+      const endX = startX + (Math.random() * 40 - 20);
+      const endY = 110;
+      const duration = 3 + Math.random() * 4;
+      const delay = 0;
+
+      setMeteors(prev => [...prev, { id, char, startX, startY, endX, endY, duration, delay }]);
+
+      // Remove meteor after animation
+      setTimeout(() => {
+        setMeteors(prev => prev.filter(m => m.id !== id));
+      }, duration * 1000);
+    };
+
+    // Initial meteors
+    for (let i = 0; i < 3; i++) {
+      setTimeout(generateMeteor, i * 1500);
+    }
+
+    const interval = setInterval(generateMeteor, 2500);
+    return () => clearInterval(interval);
+  }, [prefersReducedMotion]);
+
   const showTooltip = (e: React.MouseEvent, title: string, content: string) => {
     setTooltip({ x: e.clientX, y: e.clientY, content, title });
   };
@@ -67,10 +121,10 @@ const SolarSystemVisualization = () => {
 
   const coreGlowIntensity = hoveredElement ? 1.5 : 1;
 
-  // Calculate orbit positions
-  const innerOrbitRadius = 120;
-  const midOrbitRadius = 180;
-  const outerOrbitRadius = 240;
+  // Calculate orbit positions - properly spaced
+  const innerOrbitRadius = 100;  // AI Services orbit
+  const midOrbitRadius = 160;    // AI4I-Observe orbit
+  const outerOrbitRadius = 220;  // AI4I-Contribute orbit
 
   const getOrbitPosition = (angle: number, radius: number, speed: number = 1) => {
     const radians = ((angle + (prefersReducedMotion ? 0 : time * speed)) * Math.PI) / 180;
@@ -105,6 +159,35 @@ const SolarSystemVisualization = () => {
         ))}
       </div>
 
+      {/* Multilingual Meteors */}
+      {meteors.map((meteor) => (
+        <motion.div
+          key={meteor.id}
+          className="absolute text-primary/60 font-bold text-lg pointer-events-none z-10"
+          initial={{ 
+            left: `${meteor.startX}%`, 
+            top: `${meteor.startY}%`,
+            opacity: 0,
+            scale: 0.5
+          }}
+          animate={{ 
+            left: `${meteor.endX}%`, 
+            top: `${meteor.endY}%`,
+            opacity: [0, 0.8, 0.8, 0],
+            scale: [0.5, 1, 1, 0.5]
+          }}
+          transition={{
+            duration: meteor.duration,
+            ease: "linear",
+          }}
+          style={{
+            textShadow: "0 0 10px hsl(216 100% 50% / 0.6)",
+          }}
+        >
+          {meteor.char}
+        </motion.div>
+      ))}
+
       <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -129,7 +212,7 @@ const SolarSystemVisualization = () => {
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Solar System Visualization */}
-          <div className="relative w-full lg:w-2/3 aspect-square max-w-[600px] mx-auto">
+          <div className="relative w-full lg:w-2/3 aspect-square max-w-[550px] mx-auto">
             {/* Orbit rings */}
             {[innerOrbitRadius, midOrbitRadius, outerOrbitRadius].map((radius, i) => (
               <motion.div
@@ -148,18 +231,18 @@ const SolarSystemVisualization = () => {
               />
             ))}
 
-            {/* Core (Sun) - AI4I Core */}
+            {/* Center (Sun) - AI4I-Orchestrate */}
             <motion.div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
               onMouseEnter={(e) => {
-                setHoveredElement("core");
-                showTooltip(e, "AI4I Core", "Hosts, scales, and governs all Language AI models.");
+                setHoveredElement("orchestrate");
+                showTooltip(e, "AI4I-Orchestrate", "Hosts, scales, and governs all Language AI models. The central orchestration engine.");
               }}
               onMouseLeave={hideTooltip}
               whileHover={{ scale: 1.1 }}
             >
               <motion.div
-                className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-primary via-secondary to-primary flex items-center justify-center cursor-pointer"
+                className="relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-primary via-secondary to-primary flex items-center justify-center cursor-pointer"
                 animate={prefersReducedMotion ? {} : {
                   boxShadow: [
                     `0 0 40px ${20 * coreGlowIntensity}px hsl(216 100% 50% / 0.4)`,
@@ -169,17 +252,17 @@ const SolarSystemVisualization = () => {
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                <Globe size={40} className="text-white" />
+                <Globe size={48} className="text-white" />
               </motion.div>
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
-                <p className="text-white font-semibold text-sm">AI4I Core</p>
-                <p className="text-white/60 text-xs">Orchestration Engine</p>
+              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
+                <p className="text-white font-semibold text-sm">AI4I-Orchestrate</p>
+                <p className="text-white/60 text-xs">The Central Engine</p>
               </div>
             </motion.div>
 
-            {/* Inner Orbit - AI Services */}
+            {/* Inner Orbit - AI Services (Planets) */}
             {aiServices.map((service) => {
-              const pos = getOrbitPosition(service.angle, innerOrbitRadius, 0.2);
+              const pos = getOrbitPosition(service.angle, innerOrbitRadius, 0.15);
               const isHovered = hoveredElement === service.id;
               
               return (
@@ -199,19 +282,19 @@ const SolarSystemVisualization = () => {
                   animate={{ scale: isHovered ? 1.3 : 1 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary/80 to-secondary/80 flex items-center justify-center cursor-pointer shadow-lg ${isHovered ? 'ring-2 ring-white/50' : ''}`}>
+                  <div className={`w-9 h-9 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-primary/80 to-secondary/80 flex items-center justify-center cursor-pointer shadow-lg ${isHovered ? 'ring-2 ring-white/50' : ''}`}>
                     {service.icon}
                   </div>
-                  <p className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-white/80 text-[10px] whitespace-nowrap">
+                  <p className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-[9px] whitespace-nowrap">
                     {service.name}
                   </p>
                 </motion.div>
               );
             })}
 
-            {/* Mid Orbit - AI4I Observe */}
+            {/* Mid Orbit - AI4I-Observe (Satellite) */}
             {useMemo(() => {
-              const observePos = getOrbitPosition(45, midOrbitRadius, 0.1);
+              const observePos = getOrbitPosition(60, midOrbitRadius, 0.08);
               const isHovered = hoveredElement === "observe";
               
               return (
@@ -224,37 +307,35 @@ const SolarSystemVisualization = () => {
                   }}
                   onMouseEnter={(e) => {
                     setHoveredElement("observe");
-                    showTooltip(e, "AI4I Observe", "Real-time monitoring, telemetry, drift detection, governance dashboards.");
+                    showTooltip(e, "AI4I-Observe", "Real-time monitoring, telemetry, drift detection, governance dashboards.");
                   }}
                   onMouseLeave={hideTooltip}
                   animate={{ scale: isHovered ? 1.2 : 1 }}
                 >
                   <motion.div 
-                    className={`relative w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center cursor-pointer shadow-lg ${isHovered ? 'ring-2 ring-cyan-400/50' : ''}`}
-                    animate={prefersReducedMotion ? {} : { rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center cursor-pointer shadow-lg ${isHovered ? 'ring-2 ring-cyan-400/50' : ''}`}
                   >
-                    <BarChart3 size={24} className="text-white" />
+                    <BarChart3 size={22} className="text-white" />
                     {/* Scanning beam */}
                     {!prefersReducedMotion && (
                       <motion.div
-                        className="absolute w-20 h-0.5 bg-gradient-to-r from-cyan-400 to-transparent origin-left"
+                        className="absolute w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-transparent origin-left"
                         animate={{ rotate: 360 }}
                         transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                       />
                     )}
                   </motion.div>
                   <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center whitespace-nowrap">
-                    <p className="text-cyan-400 font-semibold text-xs">AI4I Observe</p>
-                    <p className="text-white/50 text-[10px]">Analytics Satellite</p>
+                    <p className="text-cyan-400 font-semibold text-xs">AI4I-Observe</p>
+                    <p className="text-white/50 text-[9px]">Analytics Satellite</p>
                   </div>
                 </motion.div>
               );
             }, [hoveredElement, time, prefersReducedMotion])}
 
-            {/* Outer Orbit - AI4I Contribute */}
+            {/* Outer Orbit - AI4I-Contribute (Satellite) */}
             {useMemo(() => {
-              const contributePos = getOrbitPosition(200, outerOrbitRadius, 0.05);
+              const contributePos = getOrbitPosition(210, outerOrbitRadius, 0.04);
               const isHovered = hoveredElement === "contribute";
               
               return (
@@ -267,40 +348,40 @@ const SolarSystemVisualization = () => {
                   }}
                   onMouseEnter={(e) => {
                     setHoveredElement("contribute");
-                    showTooltip(e, "AI4I Contribute", "Crowdsourced speech data, validation, and dataset expansion.");
+                    showTooltip(e, "AI4I-Contribute", "Crowdsourced speech data, validation, and dataset expansion.");
                   }}
                   onMouseLeave={hideTooltip}
                   animate={{ scale: isHovered ? 1.2 : 1 }}
                 >
-                  <div className={`relative w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center cursor-pointer shadow-lg ${isHovered ? 'ring-2 ring-green-400/50' : ''}`}>
-                    <Users size={24} className="text-white" />
-                    {/* Data particles */}
+                  <div className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center cursor-pointer shadow-lg ${isHovered ? 'ring-2 ring-green-400/50' : ''}`}>
+                    <Users size={22} className="text-white" />
+                    {/* Data particles flowing inward */}
                     {!prefersReducedMotion && [...Array(5)].map((_, i) => (
                       <motion.div
                         key={i}
                         className="absolute w-1.5 h-1.5 rounded-full bg-green-400"
                         animate={{
-                          x: [0, -50 - Math.random() * 100],
-                          y: [0, Math.sin(i) * 30],
+                          x: [0, -60 - Math.random() * 80],
+                          y: [0, Math.sin(i * 1.2) * 40],
                           opacity: [1, 0],
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 2.5,
                           repeat: Infinity,
-                          delay: i * 0.4,
+                          delay: i * 0.5,
                         }}
                       />
                     ))}
                   </div>
                   <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center whitespace-nowrap">
-                    <p className="text-green-400 font-semibold text-xs">AI4I Contribute</p>
-                    <p className="text-white/50 text-[10px]">Data Satellite</p>
+                    <p className="text-green-400 font-semibold text-xs">AI4I-Contribute</p>
+                    <p className="text-white/50 text-[9px]">Data Satellite</p>
                   </div>
                 </motion.div>
               );
             }, [hoveredElement, time, prefersReducedMotion])}
 
-            {/* Connection lines - only show on hover */}
+            {/* Connection lines - show on hover */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ overflow: 'visible' }}>
               <defs>
                 <linearGradient id="lineGradientBlue" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -311,8 +392,7 @@ const SolarSystemVisualization = () => {
               
               {/* Pulsing data lines from Observe to planets */}
               {hoveredElement === "observe" && aiServices.map((service, i) => {
-                const servicePos = getOrbitPosition(service.angle, innerOrbitRadius, 0.2);
-                const observePos = getOrbitPosition(45, midOrbitRadius, 0.1);
+                const servicePos = getOrbitPosition(service.angle, innerOrbitRadius, 0.15);
                 return (
                   <motion.line
                     key={`observe-${service.id}`}
@@ -397,14 +477,14 @@ const SolarSystemVisualization = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="fixed z-50 bg-black/90 backdrop-blur-sm rounded-lg p-3 border border-white/20 pointer-events-none max-w-xs"
+            className="fixed z-50 bg-foreground/95 text-background px-4 py-3 rounded-lg shadow-xl max-w-xs pointer-events-none"
             style={{
-              left: tooltip.x + 10,
-              top: tooltip.y + 10,
+              left: tooltip.x + 15,
+              top: tooltip.y + 15,
             }}
           >
-            <p className="text-white font-semibold text-sm">{tooltip.title}</p>
-            <p className="text-white/70 text-xs mt-1">{tooltip.content}</p>
+            <p className="font-semibold text-sm mb-1">{tooltip.title}</p>
+            <p className="text-xs opacity-80">{tooltip.content}</p>
           </motion.div>
         )}
       </AnimatePresence>
