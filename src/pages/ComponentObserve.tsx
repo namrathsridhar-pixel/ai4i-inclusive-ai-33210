@@ -374,6 +374,102 @@ const ComponentObserve = () => {
             </div>
           </DocSection>
 
+          {/* SECTION: Why Observe Matters */}
+          <DocSection>
+            <SectionHeading id="why-observe-matters" level={2}>
+              Why Observe Matters
+            </SectionHeading>
+            <div className="space-y-6">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Language AI systems are powerful but fragile: models degrade, dialects vary, and real-world usage evolves. Observe ensures reliability, transparency and continuous improvement.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                  <span className="text-muted-foreground">Multilingual AI is complex — each language and dialect behaves differently.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                  <span className="text-muted-foreground">Models degrade over time — continual evaluation is required.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                  <span className="text-muted-foreground">Operational risks must be detected early (latency, errors, capacity).</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                  <span className="text-muted-foreground">Governance demands transparent, auditable evidence for policy compliance.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                  <span className="text-muted-foreground">Scalable telemetry enables cross-adopter insights and reuse.</span>
+                </li>
+              </ul>
+            </div>
+          </DocSection>
+
+          {/* SECTION: Observe in the AI4Inclusion Ecosystem */}
+          <DocSection>
+            <SectionHeading id="observe-ecosystem" level={2}>
+              Observe in the AI4Inclusion Ecosystem
+            </SectionHeading>
+            <div className="space-y-6">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Observe acts as the intelligence and governance layer of AI4Inclusion. It strengthens AI4I-Orchestrate, guides AI4I-Contribute, and ensures the entire ecosystem remains transparent, reliable, and continuously improving.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Card className="h-full hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+                    <CardContent className="pt-6">
+                      <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center mb-4">
+                        <Eye size={24} className="text-secondary" />
+                      </div>
+                      <h4 className="font-heading font-semibold text-lg mb-2">Visibility Across All AI Workloads</h4>
+                      <p className="text-sm text-muted-foreground">Monitor every model, service, and API running on Orchestrate with unified dashboards, metrics, and alerts.</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                >
+                  <Card className="h-full hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+                    <CardContent className="pt-6">
+                      <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center mb-4">
+                        <Activity size={24} className="text-secondary" />
+                      </div>
+                      <h4 className="font-heading font-semibold text-lg mb-2">Quality & Performance Assurance</h4>
+                      <p className="text-sm text-muted-foreground">Track latency, accuracy, drift, failures, and language-level variations for reliable large-scale AI systems.</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <Card className="h-full hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+                    <CardContent className="pt-6">
+                      <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center mb-4">
+                        <TrendingUp size={24} className="text-secondary" />
+                      </div>
+                      <h4 className="font-heading font-semibold text-lg mb-2">Governance & Continuous Improvement</h4>
+                      <p className="text-sm text-muted-foreground">Provide usage analytics, compliance insights, and model health trends to support evidence-based improvement.</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
+            </div>
+          </DocSection>
+
           {/* Quick Start */}
           <DocSection>
             <SectionHeading id="quick-start" level={2}>
