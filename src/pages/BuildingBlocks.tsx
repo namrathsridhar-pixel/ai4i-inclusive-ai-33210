@@ -5,7 +5,7 @@ import { Globe, BarChart3, Users, CheckCircle, Database, GitBranch, Shield, Mess
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import observeHowItWorks from "@/assets/observe-architecture-new.png";
+import observeInfographic from "@/assets/observe-infographic.png";
 import observeArchitecture from "@/assets/observe-architecture.png";
 const BuildingBlocks = () => {
   const location = useLocation();
@@ -143,13 +143,9 @@ const BuildingBlocks = () => {
           }} className="mb-16">
                 <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">How Observe Works</h3>
                 <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-background to-accent/10 border border-border p-4">
-                  <img 
-                    src={observeHowItWorks} 
-                    alt="Language AI Ecosystem: Observe & Analytics Building Block" 
-                    className="w-full h-auto rounded-xl [clip-path:inset(0_2%_0_0)]" 
-                  />
+                  <img src={observeInfographic} alt="AI4I-Observe: Unified Telemetry & Governance Architecture" className="w-full h-auto rounded-xl" />
                   <p className="text-center text-sm text-muted-foreground mt-4 italic">
-                    Language AI Ecosystem: Observe & Analytics Building Block
+                    AI4I-Observe: Unified Telemetry & Governance Architecture
                   </p>
                 </div>
               </motion.div>
