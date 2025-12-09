@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, FileText, MessageSquare, Mail, Users } from "lucide-react";
+import { Github, MessageSquare, Mail, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ResourcesCommunity = () => {
@@ -35,16 +35,6 @@ const ResourcesCommunity = () => {
             className="flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg font-medium hover:bg-foreground/90 transition-colors"
           >
             <Github size={18} /> GitHub
-          </motion.a>
-          <motion.a
-            href="https://github.com/COSS-India/ai4i-core"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-          >
-            <FileText size={18} /> Documentation
           </motion.a>
           <motion.a
             href="https://github.com/COSS-India/ai4i-core/discussions"
