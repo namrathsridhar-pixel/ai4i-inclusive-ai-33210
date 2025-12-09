@@ -1,15 +1,26 @@
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { BarChart3, Eye, Shield, TrendingUp, ArrowRight, Code2, Zap } from "lucide-react";
+import { 
+  BarChart3, Eye, Shield, TrendingUp, ArrowRight, Code2, Zap, 
+  Activity, AlertTriangle, LineChart, Users, Database, Bell,
+  MessageSquare, CheckCircle, GitBranch, BookOpen, ExternalLink,
+  Maximize2, X, ChevronRight
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 import { DocsLayout } from "@/components/docs/DocsLayout";
 import { SectionHeading } from "@/components/docs/SectionHeading";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { DocSection } from "@/components/docs/DocSection";
 
+import observeInfographic from "@/assets/observe-infographic.png";
+import observeArchitecture from "@/assets/observe-architecture.png";
+
 const ComponentObserve = () => {
+  const [showDeepCapabilities, setShowDeepCapabilities] = useState(false);
 
   const features = [
     {
@@ -32,6 +43,58 @@ const ComponentObserve = () => {
       title: "Quality Metrics",
       description: "Track key indicators like BLEU scores, word error rates, and user satisfaction metrics.",
     },
+  ];
+
+  const capabilityCards = [
+    {
+      icon: <LineChart size={24} />,
+      title: "Multilingual Model Performance Tracking",
+      description: "Monitor accuracy and quality across all supported languages in real-time."
+    },
+    {
+      icon: <Activity size={24} />,
+      title: "Drift & Quality Monitoring",
+      description: "Detect model degradation and data drift before they impact users."
+    },
+    {
+      icon: <Shield size={24} />,
+      title: "Governance & Transparency Reporting",
+      description: "Generate compliance reports and audit trails automatically."
+    },
+    {
+      icon: <Database size={24} />,
+      title: "Usage, Telemetry & Analytics Visibility",
+      description: "Full visibility into system usage patterns and resource consumption."
+    },
+    {
+      icon: <Users size={24} />,
+      title: "Multi-Tenant Operational Insights",
+      description: "Isolated monitoring views for each tenant with aggregated overviews."
+    },
+    {
+      icon: <Bell size={24} />,
+      title: "Alerting & Health Monitoring",
+      description: "Proactive notifications when metrics exceed defined thresholds."
+    },
+    {
+      icon: <MessageSquare size={24} />,
+      title: "Feedback-Driven Improvement Pipeline",
+      description: "Integrate user feedback to continuously improve model quality."
+    },
+    {
+      icon: <CheckCircle size={24} />,
+      title: "Evidence-Based Model Evaluation",
+      description: "Data-backed evaluation frameworks for model selection and deployment."
+    }
+  ];
+
+  const processSteps = [
+    { number: 1, title: "Collect Telemetry", icon: <Database size={20} /> },
+    { number: 2, title: "Normalize & Enrich", icon: <Code2 size={20} /> },
+    { number: 3, title: "Aggregate Metrics", icon: <BarChart3 size={20} /> },
+    { number: 4, title: "Analyze Quality & Drift", icon: <Activity size={20} /> },
+    { number: 5, title: "Alert & Notify", icon: <Bell size={20} /> },
+    { number: 6, title: "Improve Models & Systems", icon: <TrendingUp size={20} /> }
   ];
 
   return (
@@ -66,15 +129,81 @@ const ComponentObserve = () => {
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="max-w-4xl">
-          {/* Overview */}
+          {/* SECTION 1 — Refined Overview */}
           <DocSection>
             <SectionHeading id="overview" level={2}>
               Overview
             </SectionHeading>
-            <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Observe ensures that AI systems remain accountable, fair, and transparent. By providing comprehensive monitoring and analytics capabilities, we empower organizations to build trust in their AI deployments and continuously improve model performance across diverse user populations.
-              </p>
+            <div className="space-y-6">
+              {/* Plain-language explanation */}
+              <div className="prose prose-lg max-w-none">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Observe ensures that AI systems remain accountable, fair, and transparent. By providing comprehensive monitoring and analytics capabilities, we empower organizations to build trust in their AI deployments and continuously improve model performance across diverse user populations.
+                </p>
+              </div>
+
+              {/* Layered overview - expandable */}
+              <motion.div 
+                className="bg-accent/20 rounded-xl p-6 border border-border cursor-pointer hover:bg-accent/30 transition-colors"
+                onClick={() => setShowDeepCapabilities(!showDeepCapabilities)}
+                whileHover={{ scale: 1.005 }}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-heading font-semibold flex items-center gap-2">
+                    <Eye size={20} className="text-secondary" />
+                    Deep Capabilities
+                  </h3>
+                  <ChevronRight 
+                    size={20} 
+                    className={`text-muted-foreground transition-transform duration-300 ${showDeepCapabilities ? 'rotate-90' : ''}`} 
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground">Click to explore advanced monitoring features</p>
+                
+                <motion.div
+                  initial={false}
+                  animate={{ height: showDeepCapabilities ? 'auto' : 0, opacity: showDeepCapabilities ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-4 mt-4 border-t border-border space-y-3">
+                    <p className="text-muted-foreground">
+                      AI4I-Observe provides a unified telemetry infrastructure that ingests logs, metrics, traces, and feedback from all AI system components. It normalizes heterogeneous data streams, routes them to appropriate storage backends, and applies intelligent analysis for quality assessment, drift detection, and governance reporting.
+                    </p>
+                    <p className="text-muted-foreground">
+                      The platform supports multi-tenant deployments with isolated views, configurable alerting pipelines, and integration APIs for seamless connection with existing DevOps and MLOps toolchains.
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Outcomes summary */}
+              <Card className="bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20">
+                <CardContent className="pt-6">
+                  <h3 className="text-lg font-heading font-semibold mb-3 flex items-center gap-2">
+                    <TrendingUp size={20} className="text-primary" />
+                    Why Observe Matters
+                  </h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Build trust in AI deployments with complete operational visibility</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Ensure fairness and accountability across diverse user populations</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Detect and resolve issues before they impact end users</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Drive continuous improvement with data-driven insights</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </DocSection>
 
@@ -103,6 +232,145 @@ const ComponentObserve = () => {
                   </Card>
                 </motion.div>
               ))}
+            </div>
+          </DocSection>
+
+          {/* SECTION 2 — Infographic Panel */}
+          <DocSection>
+            <SectionHeading id="telemetry-architecture" level={2}>
+              Unified Telemetry Architecture
+            </SectionHeading>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="rounded-2xl overflow-hidden bg-gradient-to-br from-background to-accent/10 border border-border p-4"
+            >
+              <img 
+                src={observeInfographic} 
+                alt="AI4I-Observe: Unified Telemetry & Governance Architecture" 
+                className="w-full h-auto rounded-xl"
+              />
+              <p className="text-center text-sm text-muted-foreground mt-4 italic">
+                AI4I-Observe: Unified Telemetry & Governance Architecture
+              </p>
+            </motion.div>
+          </DocSection>
+
+          {/* SECTION 3 — Interactive Capability Grid */}
+          <DocSection>
+            <SectionHeading id="capabilities" level={2}>
+              What Observe Enables
+            </SectionHeading>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+              {capabilityCards.map((card, index) => (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                >
+                  <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+                    <CardContent className="pt-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-secondary/20 rounded-lg flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+                          {card.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
+                          <p className="text-sm text-muted-foreground">{card.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </DocSection>
+
+          {/* SECTION 4 — Architecture Diagram */}
+          <DocSection>
+            <SectionHeading id="system-architecture" level={2}>
+              System Architecture
+            </SectionHeading>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
+                    <CardContent className="pt-6 relative">
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                          <Maximize2 size={14} />
+                          Click to expand
+                        </div>
+                      </div>
+                      <img 
+                        src={observeArchitecture} 
+                        alt="AI4I-Observe Operational Architecture" 
+                        className="w-full h-auto rounded-lg"
+                      />
+                      <p className="text-center text-sm text-muted-foreground mt-4 italic">
+                        AI4I-Observe Operational Architecture
+                      </p>
+                    </CardContent>
+                  </Card>
+                </DialogTrigger>
+                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                  <div className="p-4">
+                    <img 
+                      src={observeArchitecture} 
+                      alt="AI4I-Observe Operational Architecture" 
+                      className="w-full h-auto"
+                    />
+                    <p className="text-center text-sm text-muted-foreground mt-4 italic">
+                      AI4I-Observe Operational Architecture
+                    </p>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </motion.div>
+          </DocSection>
+
+          {/* SECTION 5 — How Observe Works (Step Flow) */}
+          <DocSection>
+            <SectionHeading id="how-it-works" level={2}>
+              How Observe Works
+            </SectionHeading>
+            <div className="relative">
+              {/* Curved connection line - decorative */}
+              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-secondary/40 to-primary/20 hidden lg:block" style={{ transform: 'translateY(-50%)' }} />
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {processSteps.map((step, index) => (
+                  <motion.div
+                    key={step.number}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="relative"
+                  >
+                    <Card className="h-full text-center hover:shadow-medium hover:-translate-y-1 transition-all duration-300 bg-background">
+                      <CardContent className="pt-6 pb-4">
+                        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary">
+                          {step.icon}
+                        </div>
+                        <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold mx-auto mb-2">
+                          {step.number}
+                        </div>
+                        <h4 className="text-sm font-heading font-semibold">{step.title}</h4>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </DocSection>
 
@@ -167,7 +435,7 @@ const metrics = await observer.getMetrics({
             </div>
           </DocSection>
 
-          {/* Video Demo */}
+          {/* SECTION 6 — Video Demo */}
           <DocSection>
             <SectionHeading id="demo" level={2}>
               See It In Action
@@ -177,7 +445,7 @@ const metrics = await observer.getMetrics({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full aspect-video rounded-xl overflow-hidden shadow-soft border border-border"
+              className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-border"
             >
               <iframe
                 width="100%"
@@ -238,23 +506,113 @@ const metrics = await observer.getMetrics({
             </div>
           </DocSection>
 
-          {/* Get Started CTA */}
+          {/* SECTION 7 — Resources Section */}
           <DocSection>
-            <div className="bg-gradient-to-br from-secondary/5 to-primary/5 rounded-2xl p-8 md:p-12 border border-secondary/10">
+            <SectionHeading id="resources" level={2}>
+              Resources
+            </SectionHeading>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <motion.a
+                href="https://github.com/COSS-India/observe"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="block"
+              >
+                <Card className="h-full hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <CardContent className="pt-6 text-center">
+                    <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <GitBranch size={24} />
+                    </div>
+                    <h4 className="font-heading font-semibold mb-1">GitHub Repository</h4>
+                    <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      View source code <ExternalLink size={12} />
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.a>
+
+              <motion.a
+                href="https://docs.ai4inclusion.org/observe"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="block"
+              >
+                <Card className="h-full hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <CardContent className="pt-6 text-center">
+                    <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <BookOpen size={24} />
+                    </div>
+                    <h4 className="font-heading font-semibold mb-1">Documentation</h4>
+                    <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      Read the docs <ExternalLink size={12} />
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.a>
+
+              <motion.a
+                href="https://github.com/COSS-India/observe/discussions"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="block"
+              >
+                <Card className="h-full hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <CardContent className="pt-6 text-center">
+                    <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <MessageSquare size={24} />
+                    </div>
+                    <h4 className="font-heading font-semibold mb-1">Discussion Forum</h4>
+                    <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      Join the conversation <ExternalLink size={12} />
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.a>
+            </div>
+          </DocSection>
+
+          {/* SECTION 8 — Unified CTA */}
+          <DocSection>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-gradient-to-br from-secondary/5 to-primary/5 rounded-2xl p-8 md:p-12 border border-secondary/10"
+            >
               <div className="text-center max-w-2xl mx-auto">
                 <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                  Ready to Get Started?
+                  Ready to explore AI4I-Observe?
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">
                   Learn how to implement comprehensive observability in your AI systems.
                 </p>
-                <a href="https://docs.ai4inclusion.org" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="font-medium shadow-soft hover:shadow-medium transition-all">
-                    View Full Documentation <ArrowRight className="ml-2" size={20} />
-                  </Button>
-                </a>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a href="https://github.com/COSS-India/observe" target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="font-medium shadow-soft hover:shadow-medium transition-all w-full sm:w-auto">
+                      Learn More <ArrowRight className="ml-2" size={20} />
+                    </Button>
+                  </a>
+                  <a href="https://github.com/COSS-India/observe/discussions" target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" variant="outline" className="font-medium hover:bg-accent transition-all w-full sm:w-auto">
+                      Discuss <ArrowRight className="ml-2" size={20} />
+                    </Button>
+                  </a>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </DocSection>
         </div>
       </div>
