@@ -163,7 +163,7 @@ const Home = () => {
               duration: 0.8,
               delay: 0.2
             }}>
-                <span className="block text-3xl md:text-4xl lg:text-5xl leading-tight">AI4Inclusion</span>
+                <span className="block text-3xl md:text-4xl leading-tight lg:text-7xl">AI4Inclusion</span>
               </motion.h1>
 
               <motion.p className="text-lg md:text-xl text-gray-300 mt-6 leading-relaxed max-w-xl" initial={{
