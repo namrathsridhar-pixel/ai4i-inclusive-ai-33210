@@ -9,20 +9,20 @@ const ArchitectureTeaser = () => {
 
   return (
     <>
-      <section className="py-16 px-4">
+      <section className="py-8 px-4">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-2xl overflow-hidden shadow-large group cursor-pointer"
+            className="relative rounded-2xl overflow-hidden shadow-large group cursor-pointer max-h-[400px]"
             onClick={() => setIsOpen(true)}
           >
             <img
               src={aiLifecycleEcosystem}
               alt="The Continuous AI Lifecycle for Language Ecosystems"
-              className="w-full h-auto object-cover"
+              className="w-full h-full object-cover object-center"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
@@ -47,24 +47,22 @@ const ArchitectureTeaser = () => {
       </section>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-background overflow-hidden [&>button]:hidden">
-          <div className="relative w-full h-full flex flex-col">
-            <div className="flex items-center justify-between p-4 border-b border-border">
-              <h3 className="font-heading font-bold">The Continuous AI Lifecycle for Language Ecosystems</h3>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
-              >
-                <X size={20} />
-              </button>
-            </div>
-            <div className="flex-1 overflow-auto p-4 flex items-center justify-center">
-              <img
-                src={aiLifecycleEcosystem}
-                alt="The Continuous AI Lifecycle for Language Ecosystems"
-                className="max-w-full max-h-full object-contain"
-              />
-            </div>
+        <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-background overflow-hidden [&>button]:hidden flex flex-col">
+          <div className="flex items-center justify-between p-3 border-b border-border shrink-0">
+            <h3 className="font-heading font-bold text-sm md:text-base">The Continuous AI Lifecycle for Language Ecosystems</h3>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-2 hover:bg-muted rounded-lg transition-colors"
+            >
+              <X size={20} />
+            </button>
+          </div>
+          <div className="flex-1 p-4 flex items-center justify-center min-h-0">
+            <img
+              src={aiLifecycleEcosystem}
+              alt="The Continuous AI Lifecycle for Language Ecosystems"
+              className="w-full h-full object-contain"
+            />
           </div>
         </DialogContent>
       </Dialog>
