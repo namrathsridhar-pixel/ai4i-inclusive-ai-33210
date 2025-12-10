@@ -3,13 +3,12 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import LanguageParticles from "./components/LanguageParticles";
 import PageTransition from "./components/PageTransition";
-import IntroVideo from "./components/IntroVideo";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import WhoWeAre from "./pages/WhoWeAre";
@@ -39,24 +38,8 @@ const ScrollToTop = () => {
 };
 
 const AppContent = () => {
-  const location = useLocation();
-  // Show intro on homepage - resets on every page refresh
-  const [showIntro, setShowIntro] = useState(location.pathname === "/");
-  const [hasSeenIntro, setHasSeenIntro] = useState(false);
-
-  const handleIntroComplete = () => {
-    setShowIntro(false);
-    setHasSeenIntro(true);
-  };
-
-  // Don't show intro if already seen during this session (navigation)
-  const shouldShowIntro = showIntro && !hasSeenIntro && location.pathname === "/";
-
   return (
     <>
-      {shouldShowIntro && (
-        <IntroVideo onComplete={handleIntroComplete} />
-      )}
       <ScrollToTop />
       <LanguageParticles />
       <Navigation />
