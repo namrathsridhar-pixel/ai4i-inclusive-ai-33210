@@ -248,7 +248,9 @@ const LanguageNetworkHero = () => {
       }} className="font-heading font-bold text-white leading-tight">
           <span className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">AI4Inclusion</span>
           <br />
-          
+          <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-blue-200/90 mt-2 block">
+            Language AI Infrastructure for the World
+          </span>
         </motion.h1>
 
         <motion.p initial={{
