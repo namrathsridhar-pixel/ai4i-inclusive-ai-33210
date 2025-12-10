@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ZoomIn, X, Move } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import orchestrateArchitecture from "@/assets/orchestrate-architecture.png";
+import aiLifecycleEcosystem from "@/assets/ai-lifecycle-ecosystem.png";
 
 const ArchitectureTeaser = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,25 +22,25 @@ const ArchitectureTeaser = () => {
             onClick={() => setIsOpen(true)}
           >
             <img
-              src={orchestrateArchitecture}
-              alt="AI4Inclusion System Architecture"
+              src={aiLifecycleEcosystem}
+              alt="The Continuous AI Lifecycle for Language Ecosystems"
               className="w-full h-auto object-cover"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
             <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 px-4 text-center">
               <h3 className="text-white font-heading font-bold text-xl md:text-2xl mb-2">
-                System Architecture Overview
+                The Continuous AI Lifecycle for Language Ecosystems
               </h3>
               <p className="text-white/80 text-sm mb-4 max-w-xl">
-                From data ingestion to model serving — see how AI4Inclusion components work together
+                From data creation to model serving — see how AI4Inclusion components work together in a self-improving cycle
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 bg-white text-foreground px-5 py-2.5 rounded-lg font-medium text-sm shadow-medium hover:bg-white/90 transition-colors"
               >
-                <ZoomIn size={16} /> View Full Architecture
+                <ZoomIn size={16} /> View Full Diagram
               </motion.button>
             </div>
             <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -52,7 +52,7 @@ const ArchitectureTeaser = () => {
         <DialogContent className="max-w-[98vw] w-[98vw] h-[90vh] p-0 bg-background overflow-hidden">
           <div className="relative w-full h-full flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <h3 className="font-heading font-bold">AI4Inclusion Architecture</h3>
+              <h3 className="font-heading font-bold">The Continuous AI Lifecycle for Language Ecosystems</h3>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Move size={14} /> Drag to pan
@@ -84,8 +84,8 @@ const ArchitectureTeaser = () => {
               <motion.img
                 drag
                 dragMomentum={false}
-                src={orchestrateArchitecture}
-                alt="AI4Inclusion Architecture Diagram"
+                src={aiLifecycleEcosystem}
+                alt="The Continuous AI Lifecycle for Language Ecosystems"
                 style={{ scale, x: position.x, y: position.y }}
                 className="cursor-grab active:cursor-grabbing max-w-none"
                 onDrag={(_, info) => {
