@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import { Globe, BarChart3, Users, ArrowRight, ArrowDown } from "lucide-react";
-import { Link } from "react-router-dom";
-import { AnimatedHeroBanner } from "@/components/AnimatedHeroBanner";
+import { Globe, BarChart3, Users } from "lucide-react";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import ArchitectureTeaser from "@/components/home/ArchitectureTeaser";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
@@ -9,8 +7,8 @@ import MediaStrip from "@/components/home/MediaStrip";
 import QuickStart from "@/components/home/QuickStart";
 import TrustStrip from "@/components/home/TrustStrip";
 import ResourcesCommunity from "@/components/home/ResourcesCommunity";
-import AdopterCarousel from "@/components/home/AdopterCarousel";
 import SolarSystemVisualization from "@/components/home/SolarSystemVisualization";
+import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
@@ -44,142 +42,9 @@ const featureBlocks = [{
   blockLink: "/building-blocks#contribute"
 }];
 const Home = () => {
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
   return <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-4 bg-[#0a1628] overflow-hidden min-h-[90vh] flex items-center">
-        {/* Animated background pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="hsl(216, 100%, 32%)" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="hsl(205, 100%, 38%)" stopOpacity="0.2" />
-              </linearGradient>
-            </defs>
-            {[...Array(8)].map((_, i) => <motion.line key={i} x1={`${i * 15}%`} y1="0" x2={`${100 - i * 10}%`} y2="100%" stroke="url(#lineGradient)" strokeWidth="1" initial={{
-            pathLength: 0,
-            opacity: 0
-          }} animate={{
-            pathLength: 1,
-            opacity: [0.1, 0.3, 0.1]
-          }} transition={{
-            pathLength: {
-              duration: 3,
-              delay: i * 0.2,
-              repeat: Infinity,
-              repeatDelay: 1
-            },
-            opacity: {
-              duration: 3,
-              delay: i * 0.2,
-              repeat: Infinity,
-              repeatDelay: 1
-            }
-          }} />)}
-          </svg>
-        </div>
-
-        {/* Language glyph particles */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {["अ", "க", "অ", "ا", "语", "A", "आ", "ங", "খ", "ب"].map((char, i) => <motion.span key={i} className="absolute text-white/10 font-heading select-none" style={{
-          left: `${10 + i * 9}%`,
-          top: `${20 + i % 3 * 25}%`,
-          fontSize: `${14 + i % 3 * 4}px`
-        }} animate={{
-          y: [-10, -30, -10],
-          opacity: [0.05, 0.15, 0.05]
-        }} transition={{
-          duration: 4 + i * 0.5,
-          repeat: Infinity,
-          delay: i * 0.3
-        }}>
-              {char}
-            </motion.span>)}
-        </div>
-
-        {/* Ambient blue glow */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/2 h-full pointer-events-none">
-          <div className="absolute inset-0 blur-3xl opacity-60" style={{
-          background: "radial-gradient(ellipse 800px 600px at 30% 50%, hsl(210, 100%, 50%, 0.15), hsl(210, 100%, 45%, 0.08) 40%, transparent 70%)"
-        }} />
-        </div>
-
-        <div className="container mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8
-          }} className="pl-4 md:pl-12">
-              <motion.h1 className="font-heading font-bold leading-tight text-white" initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.8,
-              delay: 0.2
-            }}>
-                <span className="block text-3xl md:text-4xl leading-tight lg:text-7xl">AI4Inclusion</span>
-              </motion.h1>
-
-              <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.8,
-              delay: 0.3
-            }} className="text-lg text-gray-300 mt-6 leading-relaxed max-w-xl md:text-2xl">
-                AI4Inclusion empowers nations to build their own Language AI DPI from citizen-sourced datasets to public serving orchestration. It enables true digital inclusion in every spoken language.
-              </motion.p>
-
-              <motion.div initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.8,
-              delay: 0.4
-            }} className="mt-8 flex flex-wrap gap-4">
-                <button onClick={() => scrollToSection("building-blocks")} className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-medium">
-                  Explore Building Blocks <ArrowDown size={18} />
-                </button>
-                <button onClick={() => scrollToSection("quick-start")} className="bg-transparent text-white px-6 py-3 rounded-lg font-medium border-2 border-white/50 hover:border-white hover:bg-white/10 transition-all flex items-center gap-2">
-                  Get Started <ArrowRight size={18} />
-                </button>
-              </motion.div>
-            </motion.div>
-
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.2
-          }} className="hidden md:block">
-              <AnimatedHeroBanner />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <LanguageNetworkHero />
 
 
       {/* Feature & Offerings Grid */}
@@ -238,9 +103,6 @@ const Home = () => {
 
       {/* Resources & Community */}
       <ResourcesCommunity />
-
-      {/* Adopter Carousel */}
-      <AdopterCarousel />
     </div>;
 };
 export default Home;

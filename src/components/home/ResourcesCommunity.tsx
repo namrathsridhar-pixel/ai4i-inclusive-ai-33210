@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, MessageSquare, Mail, Users } from "lucide-react";
+import { Github, MessageSquare, Mail, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ResourcesCommunity = () => {
@@ -84,26 +84,19 @@ const ResourcesCommunity = () => {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                <Users size={20} />
+                <Calendar size={20} />
               </div>
-              <h3 className="font-heading font-bold text-lg">Join a Campaign</h3>
+              <h3 className="font-heading font-bold text-lg">Attend an AI4Inclusion Event</h3>
             </div>
             <p className="text-muted-foreground text-sm mb-4">
-              Be part of community data collection campaigns. Help build inclusive datasets for underserved languages and dialects.
+              Join upcoming workshops, talks, and community sessions hosted by AI4Inclusion. Learn about Language AI, Digital Public Goods, and how AI4I is transforming inclusion at scale.
             </p>
-            <a
-              href="https://github.com/COSS-India/ai4i-contribute"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              disabled
+              className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg font-medium opacity-70 cursor-not-allowed text-sm"
             >
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm"
-              >
-                Explore Campaigns
-              </motion.button>
-            </a>
+              Explore Events
+            </button>
           </motion.div>
         </div>
       </div>
