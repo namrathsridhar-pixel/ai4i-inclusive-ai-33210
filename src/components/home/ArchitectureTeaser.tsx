@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ZoomIn, X, Move } from "lucide-react";
+import { Maximize2, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import aiLifecycleEcosystem from "@/assets/ai-lifecycle-ecosystem.png";
 
 const ArchitectureTeaser = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scale, setScale] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   return (
     <>
@@ -40,7 +38,7 @@ const ArchitectureTeaser = () => {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 bg-white text-foreground px-5 py-2.5 rounded-lg font-medium text-sm shadow-medium hover:bg-white/90 transition-colors"
               >
-                <ZoomIn size={16} /> View Full Diagram
+                <Maximize2 size={16} /> View Full Screen
               </motion.button>
             </div>
             <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -49,48 +47,22 @@ const ArchitectureTeaser = () => {
       </section>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-[98vw] w-[98vw] h-[90vh] p-0 bg-background overflow-hidden">
+        <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-background overflow-hidden">
           <div className="relative w-full h-full flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <h3 className="font-heading font-bold">The Continuous AI Lifecycle for Language Ecosystems</h3>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Move size={14} /> Drag to pan
-                </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setScale(Math.max(0.5, scale - 0.25))}
-                    className="px-3 py-1 bg-muted rounded text-sm hover:bg-muted/80"
-                  >
-                    -
-                  </button>
-                  <span className="text-sm w-16 text-center">{Math.round(scale * 100)}%</span>
-                  <button
-                    onClick={() => setScale(Math.min(3, scale + 0.25))}
-                    className="px-3 py-1 bg-muted rounded text-sm hover:bg-muted/80"
-                  >
-                    +
-                  </button>
-                </div>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 hover:bg-muted rounded-lg transition-colors"
-                >
-                  <X size={20} />
-                </button>
-              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 hover:bg-muted rounded-lg transition-colors"
+              >
+                <X size={20} />
+              </button>
             </div>
-            <div className="flex-1 overflow-auto p-4">
-              <motion.img
-                drag
-                dragMomentum={false}
+            <div className="flex-1 overflow-auto p-4 flex items-center justify-center">
+              <img
                 src={aiLifecycleEcosystem}
                 alt="The Continuous AI Lifecycle for Language Ecosystems"
-                style={{ scale, x: position.x, y: position.y }}
-                className="cursor-grab active:cursor-grabbing max-w-none"
-                onDrag={(_, info) => {
-                  setPosition({ x: position.x + info.delta.x, y: position.y + info.delta.y });
-                }}
+                className="max-w-full max-h-full object-contain"
               />
             </div>
           </div>
