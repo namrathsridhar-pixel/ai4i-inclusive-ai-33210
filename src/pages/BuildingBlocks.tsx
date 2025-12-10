@@ -575,61 +575,7 @@ const BuildingBlocks = () => {
                 <SaaSFeatureGrid cards={observeMattersCards} />
               </motion.div>
 
-              {/* SECTION 3 — Observe in the AI4Inclusion Ecosystem - Visual Flow */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
-              >
-                <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Observe in the AI4Inclusion Ecosystem</h3>
-                  <p className="text-muted-foreground text-center max-w-2xl mx-auto">Observe acts as the intelligence layer, strengthening the entire ecosystem.</p>
-                </div>
-                <EcosystemFlow 
-                  steps={observeEcosystemFlow} 
-                  finalOutcome="Transparent, Reliable & Continuously Improving AI" 
-                />
-              </motion.div>
-
-              {/* SECTION 4 — Interactive Capability Grid */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
-              >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Observe Enables</h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
-                  {observeCapabilityCards.map((card, index) => (
-                    <motion.div
-                      key={card.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                    >
-                      <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
-                        <CardContent className="pt-6">
-                          <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                              {card.icon}
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
-                              <p className="text-sm text-muted-foreground">{card.description}</p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* SECTION 5 — Architecture Diagram */}
+              {/* SECTION 3 — Architecture Diagram (moved after Why Observe Matters) */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -669,6 +615,60 @@ const BuildingBlocks = () => {
                     </div>
                   </DialogContent>
                 </Dialog>
+              </motion.div>
+
+              {/* SECTION 4 — What Observe Enables */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-16"
+              >
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Observe Enables</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                  {observeCapabilityCards.map((card, index) => (
+                    <motion.div
+                      key={card.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                    >
+                      <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+                        <CardContent className="pt-6">
+                          <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                              {card.icon}
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
+                              <p className="text-sm text-muted-foreground">{card.description}</p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* SECTION 5 — Observe in the AI4Inclusion Ecosystem - Visual Flow (moved after What Observe Enables) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-16"
+              >
+                <div className="mb-8">
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Observe in the AI4Inclusion Ecosystem</h3>
+                  <p className="text-muted-foreground text-center max-w-2xl mx-auto">Observe acts as the intelligence layer, strengthening the entire ecosystem.</p>
+                </div>
+                <EcosystemFlow 
+                  steps={observeEcosystemFlow} 
+                  finalOutcome="Transparent, Reliable & Continuously Improving AI" 
+                />
               </motion.div>
 
               {/* SECTION 6 — Video Demo */}
