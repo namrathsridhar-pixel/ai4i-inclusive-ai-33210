@@ -351,50 +351,7 @@ const BuildingBlocks = () => {
                 <SaaSFeatureGrid cards={orchestrateMattersCards} />
               </motion.div>
 
-              {/* SECTION 3 — What Orchestrate Enables */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
-              >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Orchestrate Enables</h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {[
-                    { icon: <Layers size={24} />, title: "Unified APIs", description: "One consistent API for all Language AI services—speech, translation, LLMs, OCR—simplifying integration across applications." },
-                    { icon: <Route size={24} />, title: "Smart Model Routing", description: "Intelligently routes requests to the best model based on language, domain, cost, and performance requirements." },
-                    { icon: <Shield size={24} />, title: "Governance & Policy Control", description: "Enforces rules on data access, usage quotas, compliance, and national policies across the entire ecosystem." },
-                    { icon: <Gauge size={24} />, title: "Metering & Quotas", description: "Tracks usage, enforces rate limits, and provides cost visibility for sustainable AI operations." },
-                    { icon: <Eye size={24} />, title: "Observability & Quality Monitoring", description: "Real-time visibility into model health, quality metrics, and system performance across all services." },
-                    { icon: <RefreshCcw size={24} />, title: "Continuous Improvement Loop", description: "Feedback from users and quality monitoring automatically feeds back to improve models over time." }
-                  ].map((card, index) => (
-                    <motion.div
-                      key={card.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                    >
-                      <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
-                        <CardContent className="pt-6">
-                          <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                              {card.icon}
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
-                              <p className="text-sm text-muted-foreground">{card.description}</p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* SECTION 4 — Architecture Diagram */}
+              {/* SECTION 3 — Architecture Diagram (moved before What Orchestrate Enables) */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -437,6 +394,49 @@ const BuildingBlocks = () => {
                     </div>
                   </DialogContent>
                 </Dialog>
+              </motion.div>
+
+              {/* SECTION 4 — What Orchestrate Enables */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-16"
+              >
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Orchestrate Enables</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {[
+                    { icon: <Layers size={24} />, title: "Unified APIs", description: "One consistent API for all Language AI services—speech, translation, LLMs, OCR—simplifying integration across applications." },
+                    { icon: <Route size={24} />, title: "Smart Model Routing", description: "Intelligently routes requests to the best model based on language, domain, cost, and performance requirements." },
+                    { icon: <Shield size={24} />, title: "Governance & Policy Control", description: "Enforces rules on data access, usage quotas, compliance, and national policies across the entire ecosystem." },
+                    { icon: <Gauge size={24} />, title: "Metering & Quotas", description: "Tracks usage, enforces rate limits, and provides cost visibility for sustainable AI operations." },
+                    { icon: <Eye size={24} />, title: "Observability & Quality Monitoring", description: "Real-time visibility into model health, quality metrics, and system performance across all services." },
+                    { icon: <RefreshCcw size={24} />, title: "Continuous Improvement Loop", description: "Feedback from users and quality monitoring automatically feeds back to improve models over time." }
+                  ].map((card, index) => (
+                    <motion.div
+                      key={card.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                    >
+                      <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+                        <CardContent className="pt-6">
+                          <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                              {card.icon}
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
+                              <p className="text-sm text-muted-foreground">{card.description}</p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
 
               {/* SECTION 5 — Orchestrate in the AI4Inclusion Ecosystem - Visual Flow */}
@@ -806,7 +806,52 @@ const BuildingBlocks = () => {
                 <SaaSFeatureGrid cards={contributeMattersCards} />
               </motion.div>
 
-              {/* SECTION 3 — What Contribute Enables */}
+              {/* SECTION 3 — Architecture Diagram (moved after Why Contribute Matters) */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="mb-16"
+              >
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Contribute Architecture Overview</h3>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
+                      <CardContent className="p-0 relative">
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                            <Maximize2 size={14} />
+                            Click to expand
+                          </div>
+                        </div>
+                        <div className="w-full overflow-hidden rounded-lg bg-card/50">
+                          <img 
+                            src={contributeArchitectureNew} 
+                            alt="AI4I-Contribute Architecture" 
+                            className="w-full h-auto object-contain rounded-lg"
+                            loading="eager"
+                            decoding="async"
+                            fetchPriority="high"
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[98vw] w-[98vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <div className="p-6">
+                      <img 
+                        src={contributeArchitectureNew} 
+                        alt="AI4I-Contribute Architecture" 
+                        className="w-full h-auto"
+                        loading="eager"
+                      />
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </motion.div>
+
+              {/* SECTION 4 — What Contribute Enables */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -886,52 +931,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* SECTION 5 — Architecture Diagram */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="mb-16"
-              >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Contribute Architecture Overview</h3>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
-                      <CardContent className="p-0 relative">
-                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
-                            <Maximize2 size={14} />
-                            Click to expand
-                          </div>
-                        </div>
-                        <div className="w-full overflow-hidden rounded-lg bg-card/50">
-                          <img 
-                            src={contributeArchitectureNew} 
-                            alt="AI4I-Contribute Architecture" 
-                            className="w-full h-auto object-contain rounded-lg"
-                            loading="eager"
-                            decoding="async"
-                            fetchPriority="high"
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-[98vw] w-[98vw] max-h-[95vh] p-0 bg-background overflow-auto">
-                    <div className="p-6">
-                      <img 
-                        src={contributeArchitectureNew} 
-                        alt="AI4I-Contribute Architecture" 
-                        className="w-full h-auto"
-                        loading="eager"
-                      />
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </motion.div>
-
-              {/* SECTION 6 — Contribute in the AI4Inclusion Ecosystem - Visual Flow */}
+              {/* SECTION 5 — Contribute in the AI4Inclusion Ecosystem - Visual Flow */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
