@@ -47,7 +47,7 @@ const ArchitectureTeaser = () => {
       </section>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-background overflow-hidden">
+        <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-background overflow-hidden [&>button]:hidden">
           <div className="relative w-full h-full flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <h3 className="font-heading font-bold">The Continuous AI Lifecycle for Language Ecosystems</h3>
