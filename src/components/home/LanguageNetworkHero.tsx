@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { useEffect, useRef } from "react";
+import CyclingSubheading from "./CyclingSubheading";
 
 // Indian language characters for network nodes
 const languageChars = [
@@ -235,7 +236,7 @@ const LanguageNetworkHero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl">
+      <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl group">
         <motion.h1 initial={{
         opacity: 0,
         y: 30
@@ -247,8 +248,7 @@ const LanguageNetworkHero = () => {
         delay: 0.2
       }} className="font-heading font-bold text-white leading-tight">
           <span className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">AI4Inclusion</span>
-          <br />
-          <span className="text-3xl md:text-4xl xl:text-6xl text-blue-200/90 mt-2 block lg:text-4xl">A Future Where Language Is No Barrier</span>
+          <CyclingSubheading />
         </motion.h1>
 
         <motion.p initial={{
