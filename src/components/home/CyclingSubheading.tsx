@@ -1,0 +1,151 @@
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Pause, Play } from "lucide-react";
+
+const translations = [
+  { text: "ভাষাৰ কোনো বাধা নথকা ভৱিষ্যৎ", dir: "ltr" },
+  { text: "ভাষা যেখানে আর বাধা নয় এমন এক ভবিষ্যৎ", dir: "ltr" },
+  { text: "दानि होनाय आरो थांनाय नङा फोरमों", dir: "ltr" },
+  { text: "ज़बान कोई रोक न बने ऐह्जा भविष्य", dir: "ltr" },
+  { text: "એક એવું ભવિષ્ય જ્યાં ભાષા કોઈ અવરોધ ન બને", dir: "ltr" },
+  { text: "एक ऐसा भविष्य जहाँ भाषा कोई बाधा न हो", dir: "ltr" },
+  { text: "ಭಾಷೆ ಯಾವುದೇ ಅಡ್ಡಿಯಾಗದ ಭವಿಷ್ಯ", dir: "ltr" },
+  { text: "ایک مستقبل جِتھ زبان کوئی رکاوٹ نہ بنن", dir: "rtl" },
+  { text: "भविश्यात जें भास अडथळो ना जाव", dir: "ltr" },
+  { text: "जहिया भाषा आब रुकावट नहि", dir: "ltr" },
+  { text: "ഭാഷ ഒരു തടസ്സമാകാത്ത ഒരു ഭാവി", dir: "ltr" },
+  { text: "ভাষা অত্তবা লোই अदुबा मথমौ ভবিষ্যৎ", dir: "ltr" },
+  { text: "जिथे भाषा अडथळा ठरत नाही असे भविष्य", dir: "ltr" },
+  { text: "जहाँ भाषा कुनै बाधा हुँदैन यस्तो भविष्य", dir: "ltr" },
+  { text: "ଯେଉଁଠାରେ ଭାଷା ବାଧା ନୁହେଁ ସେମିତି ଭବିଷ୍ୟତ", dir: "ltr" },
+  { text: "ਇਕੋ ਭਵਿੱਖ ਜਿਥੇ ਭਾਸ਼ਾ ਕੋਈ ਰੁਕਾਵਟ ਨਹੀਂ", dir: "ltr" },
+  { text: "यत्र भाषा न अवरोधः भवति तादृशं भविष्य", dir: "ltr" },
+  { text: "ᱵᱟᱨᱟᱝ ᱟᱞᱚᱢ ᱵᱟᱹᱫᱤ ᱫᱟᱹᱲᱤᱠ ᱵᱷᱤᱡᱽ", dir: "ltr" },
+  { text: "اهڙو مستقبل جتي ٻولي ڪا رڪاوٽ ناهي", dir: "rtl" },
+  { text: "மொழி தடையாக இல்லாத ஒரு எதிர்காலம்", dir: "ltr" },
+  { text: "భాష అడ్డంకి కాని భవిష్యత్తు", dir: "ltr" },
+  { text: "ایک ایسا مستقبل جہاں زبان کوئی رکاوٹ نہ हो", dir: "rtl" },
+  { text: "A Future Where Language Is No Barrier", dir: "ltr" },
+  { text: "Un futuro donde el idioma no sea una barrera", dir: "ltr" },
+  { text: "Un avenir où la langue n'est plus une barrière", dir: "ltr" },
+  { text: "Eine Zukunft, in der Sprache keine Barriere ist", dir: "ltr" },
+  { text: "语言不再成为障碍的未来", dir: "ltr" },
+  { text: "言語が障壁とならない未来", dir: "ltr" },
+  { text: "언어가 장벽이 되지 않는 미래", dir: "ltr" },
+  { text: "مستقبل لا تكون فيه اللغة عائقًا", dir: "rtl" },
+  { text: "Будущее, где язык — не преграда", dir: "ltr" },
+  { text: "Um futuro onde a língua não seja uma barreira", dir: "ltr" },
+];
+
+const DISPLAY_DURATION = 3500; // 3.5 seconds
+const CROSSFADE_DURATION = 0.6; // 0.6 seconds
+
+const CyclingSubheading = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Check for reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  // Cycle through translations
+  useEffect(() => {
+    if (prefersReducedMotion || isPaused) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % translations.length);
+    }, DISPLAY_DURATION);
+
+    return () => clearInterval(interval);
+  }, [isPaused, prefersReducedMotion]);
+
+  const handlePauseToggle = useCallback(() => {
+    setIsPaused((prev) => !prev);
+  }, []);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handlePauseToggle();
+    }
+  }, [handlePauseToggle]);
+
+  // If reduced motion is preferred, show English only
+  if (prefersReducedMotion) {
+    return (
+      <span className="text-3xl md:text-4xl xl:text-5xl text-blue-200/90 mt-2 block font-medium">
+        A Future Where Language Is No Barrier
+      </span>
+    );
+  }
+
+  const current = translations[currentIndex];
+
+  return (
+    <div
+      className="relative mt-2"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+    >
+      {/* Accessible live region */}
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        className="min-h-[3.5rem] md:min-h-[4rem] xl:min-h-[4.5rem] flex items-center justify-center"
+      >
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={currentIndex}
+            dir={current.dir}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: CROSSFADE_DURATION, ease: "easeInOut" }}
+            className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)]"
+            style={{
+              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+            }}
+          >
+            {current.text}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+
+      {/* Pause/Play control */}
+      <button
+        onClick={handlePauseToggle}
+        onKeyDown={handleKeyDown}
+        aria-label={isPaused ? "Play translation cycling" : "Pause translation cycling"}
+        className="absolute -right-8 md:-right-12 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+        style={{ opacity: isPaused ? 1 : undefined }}
+      >
+        {isPaused ? (
+          <Play size={14} className="text-blue-200/70" />
+        ) : (
+          <Pause size={14} className="text-blue-200/70" />
+        )}
+      </button>
+
+      {/* Noscript fallback */}
+      <noscript>
+        <span className="text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium">
+          A Future Where Language Is No Barrier
+        </span>
+      </noscript>
+    </div>
+  );
+};
+
+export default CyclingSubheading;
