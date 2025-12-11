@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 
 const translations = [
+  { text: "A Future Where Language Is No Barrier", dir: "ltr" },
   { text: "ভাষাৰ কোনো বাধা নথকা ভৱিষ্যৎ", dir: "ltr" },
   { text: "ভাষা যেখানে আর বাধা নয় এমন এক ভবিষ্যৎ", dir: "ltr" },
   { text: "दानि होनाय आरो थांनाय नङा फोरमों", dir: "ltr" },
@@ -25,7 +26,6 @@ const translations = [
   { text: "மொழி தடையாக இல்லாத ஒரு எதிர்காலம்", dir: "ltr" },
   { text: "భాష అడ్డంకి కాని భవిష్యత్తు", dir: "ltr" },
   { text: "ایک ایسا مستقبل جہاں زبان کوئی رکاوٹ نہ हो", dir: "rtl" },
-  { text: "A Future Where Language Is No Barrier", dir: "ltr" },
   { text: "Un futuro donde el idioma no sea una barrera", dir: "ltr" },
   { text: "Un avenir où la langue n'est plus une barrière", dir: "ltr" },
   { text: "Eine Zukunft, in der Sprache keine Barriere ist", dir: "ltr" },
@@ -99,21 +99,21 @@ const CyclingSubheading = () => {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      {/* Accessible live region */}
+      {/* Accessible live region with fixed height to prevent layout shift */}
       <div
         aria-live="polite"
         aria-atomic="true"
-        className="min-h-[3.5rem] md:min-h-[4rem] xl:min-h-[4.5rem] flex items-center justify-center"
+        className="h-[4rem] md:h-[5rem] xl:h-[6rem] flex items-center justify-center relative"
       >
         <AnimatePresence mode="wait">
           <motion.span
             key={currentIndex}
             dir={current.dir}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: CROSSFADE_DURATION, ease: "easeInOut" }}
-            className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)]"
+            className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)] absolute inset-0 flex items-center justify-center"
             style={{
               fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
             }}
