@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Globe, BarChart3, Users } from "lucide-react";
 import FeatureBlock from "@/components/home/FeatureBlock";
-import ArchitectureTeaser from "@/components/home/ArchitectureTeaser";
+import AnimatedLifecycleDiagram from "@/components/home/AnimatedLifecycleDiagram";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
 import MediaStrip from "@/components/home/MediaStrip";
 import QuickStart from "@/components/home/QuickStart";
@@ -86,8 +86,8 @@ const Home = () => {
       {/* What AI4Inclusion Enables - Solar System Visualization */}
       <SolarSystemVisualization />
 
-      {/* Architecture Teaser */}
-      <ArchitectureTeaser />
+      {/* Animated Lifecycle Diagram */}
+      <AnimatedLifecycleDiagram />
 
       {/* Key Capabilities Grid */}
       <KeyCapabilities />
