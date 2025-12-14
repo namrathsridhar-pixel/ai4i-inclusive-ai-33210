@@ -2,7 +2,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Maximize2, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import aiLifecycleImage from "@/assets/ai-lifecycle-animated.png";
+import { DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import aiLifecycleImage from "@/assets/ai-lifecycle-ecosystem.png";
 
 interface StageInfo {
   id: string;
@@ -431,6 +433,10 @@ const AnimatedLifecycleDiagram = () => {
       {/* Full screen dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-white overflow-hidden [&>button]:hidden flex flex-col">
+          <VisuallyHidden>
+            <DialogTitle>The Continuous AI Lifecycle for Language Ecosystems</DialogTitle>
+            <DialogDescription>Interactive diagram showing the AI lifecycle from data creation to model serving</DialogDescription>
+          </VisuallyHidden>
           <div className="flex items-center justify-between p-4 border-b border-border shrink-0 bg-gradient-to-r from-slate-50 to-white">
             <div>
               <h3 className="font-heading font-bold text-base md:text-lg">

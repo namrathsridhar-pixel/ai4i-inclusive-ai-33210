@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 // Import new architecture images
 import orchestrateArchitectureNew from "@/assets/orchestrate-architecture-new.png";
@@ -329,6 +330,10 @@ const BuildingBlocks = () => {
                     </Card>
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>How AI4I-Orchestrate Powers Every Language AI Request</DialogTitle>
+                      <DialogDescription>Visual diagram showing the orchestration workflow</DialogDescription>
+                    </VisuallyHidden>
                     <div className="p-4">
                       <img src={orchestrateHowItWorks} alt="How AI4I-Orchestrate Works" className="w-full h-auto" loading="eager" />
                     </div>
@@ -359,7 +364,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Orchestrate Architecture</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Orchestrate: The Smart Control Plane for Language AI</h3>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
@@ -384,6 +389,10 @@ const BuildingBlocks = () => {
                     </Card>
                   </DialogTrigger>
                   <DialogContent className="max-w-[98vw] w-[98vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>AI4I-Orchestrate: The Smart Control Plane for Language AI</DialogTitle>
+                      <DialogDescription>Architecture diagram showing the smart control plane</DialogDescription>
+                    </VisuallyHidden>
                     <div className="p-6">
                       <img 
                         src={orchestrateArchitectureNew} 
@@ -583,7 +592,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Observe System Architecture</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Observe: The Feedback Engine for Language AI</h3>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
@@ -605,6 +614,10 @@ const BuildingBlocks = () => {
                     </Card>
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>AI4I-Observe: The Feedback Engine for Language AI</DialogTitle>
+                      <DialogDescription>Architecture diagram showing the feedback engine</DialogDescription>
+                    </VisuallyHidden>
                     <div className="p-4">
                       <img 
                         src={observeArchitectureNew} 
@@ -784,6 +797,10 @@ const BuildingBlocks = () => {
                     </Card>
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>How AI4I-Contribute Builds High-Quality Language Datasets</DialogTitle>
+                      <DialogDescription>Visual diagram showing the data contribution workflow</DialogDescription>
+                    </VisuallyHidden>
                     <div className="p-4">
                       <img src={contributeHowItWorks} alt="How AI4I-Contribute Works" className="w-full h-auto" loading="eager" />
                     </div>
@@ -814,7 +831,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Contribute Architecture Overview</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-Contribute: The Data Factory for Sovereign Language AI</h3>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
@@ -839,6 +856,10 @@ const BuildingBlocks = () => {
                     </Card>
                   </DialogTrigger>
                   <DialogContent className="max-w-[98vw] w-[98vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>AI4I-Contribute: The Data Factory for Sovereign Language AI</DialogTitle>
+                      <DialogDescription>Architecture diagram showing the data factory</DialogDescription>
+                    </VisuallyHidden>
                     <div className="p-6">
                       <img 
                         src={contributeArchitectureNew} 

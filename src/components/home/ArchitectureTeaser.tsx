@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Maximize2, X } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import aiLifecycleEcosystem from "@/assets/ai-lifecycle-ecosystem.png";
 
 const ArchitectureTeaser = () => {
@@ -48,6 +49,10 @@ const ArchitectureTeaser = () => {
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-[98vw] w-[98vw] h-[95vh] p-0 bg-background overflow-hidden [&>button]:hidden flex flex-col">
+          <VisuallyHidden>
+            <DialogTitle>The Continuous AI Lifecycle for Language Ecosystems</DialogTitle>
+            <DialogDescription>Interactive diagram showing the AI lifecycle from data creation to model serving</DialogDescription>
+          </VisuallyHidden>
           <div className="flex items-center justify-between p-3 border-b border-border shrink-0">
             <h3 className="font-heading font-bold text-sm md:text-base">The Continuous AI Lifecycle for Language Ecosystems</h3>
             <button
