@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { DocsLayout } from "@/components/docs/DocsLayout";
 import { SectionHeading } from "@/components/docs/SectionHeading";
@@ -323,6 +324,10 @@ const ComponentObserve = () => {
                   </Card>
                 </DialogTrigger>
                 <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                  <VisuallyHidden>
+                    <DialogTitle>AI4I-Observe Operational Architecture</DialogTitle>
+                    <DialogDescription>Detailed architecture diagram</DialogDescription>
+                  </VisuallyHidden>
                   <div className="p-4">
                     <img 
                       src={observeArchitecture} 
