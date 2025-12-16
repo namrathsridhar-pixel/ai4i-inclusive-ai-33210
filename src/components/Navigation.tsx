@@ -2,12 +2,17 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe, BarChart3, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const buildingBlocksMenu = [
   { id: "ai4i-core", label: "AI4I-Orchestrate", icon: Globe },
   { id: "observe", label: "AI4I-Observe", icon: BarChart3 },
   { id: "contribute", label: "AI4I-Contribute", icon: Users },
 ];
+
+// Links that are coming soon and should not navigate
+const comingSoonPaths = ["/who-we-are"];
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showBuildingBlocksMenu, setShowBuildingBlocksMenu] = useState(false);
@@ -97,6 +102,24 @@ const Navigation = () => {
                 );
               }
               
+              // Handle "Coming Soon" links
+              if (comingSoonPaths.includes(link.path)) {
+                return (
+                  <div key={link.path} className={!isLastItem ? "mr-6" : ""}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button variant="ghost" className="font-medium text-white hover:text-white hover:bg-white/10 cursor-default">
+                          {link.name}
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Coming soon...</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
+                );
+              }
+              
               return (
                 <div key={link.path} className={!isLastItem ? "mr-6" : ""}>
                   <Link to={link.path} onClick={link.path === "/" ? handleHomeClick : undefined}>
@@ -143,6 +166,22 @@ const Navigation = () => {
                       })}
                     </div>
                   </div>
+                );
+              }
+              
+              // Handle "Coming Soon" links in mobile
+              if (comingSoonPaths.includes(link.path)) {
+                return (
+                  <Tooltip key={link.path}>
+                    <TooltipTrigger asChild>
+                      <Button variant="ghost" className="w-full justify-start font-medium mb-1 text-white hover:text-white hover:bg-white/10 cursor-default">
+                        {link.name}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Coming soon...</p>
+                    </TooltipContent>
+                  </Tooltip>
                 );
               }
               
