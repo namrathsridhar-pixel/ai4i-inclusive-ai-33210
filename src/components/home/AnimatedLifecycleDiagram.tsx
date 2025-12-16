@@ -10,37 +10,37 @@ const AnimatedLifecycleDiagram = () => {
 
   return (
     <>
-      <section className="py-8 px-4">
-        <div className="container mx-auto">
+      <section className="py-6 px-4">
+        <div className="container mx-auto max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-2xl overflow-hidden shadow-large group cursor-pointer bg-white"
+            className="relative rounded-xl overflow-hidden group cursor-pointer bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
             onClick={() => setIsOpen(true)}
           >
-            {/* Static image */}
+            {/* Static image with increased contrast */}
             <img
               src={aiLifecycleImage}
               alt="The Continuous AI Lifecycle for Language Ecosystems"
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain contrast-110 saturate-110"
               loading="eager"
               fetchPriority="high"
             />
             
-            {/* Hover overlay with expand button */}
-            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300 flex items-end justify-end p-4">
+            {/* Hover overlay with shadow effect and expand button */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-end p-3">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 bg-foreground text-background px-4 py-2 rounded-lg font-medium text-sm shadow-medium"
+                className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 bg-white text-foreground px-3 py-1.5 rounded-lg font-medium text-xs shadow-lg"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsOpen(true);
                 }}
               >
-                <Maximize2 size={16} /> Expand
+                <Maximize2 size={14} /> Expand
               </motion.button>
             </div>
           </motion.div>
@@ -54,23 +54,23 @@ const AnimatedLifecycleDiagram = () => {
             <DialogTitle>The Continuous AI Lifecycle for Language Ecosystems</DialogTitle>
             <DialogDescription>Diagram showing the AI lifecycle from data creation to model serving</DialogDescription>
           </VisuallyHidden>
-          <div className="flex items-center justify-between p-4 border-b border-border shrink-0">
-            <h3 className="font-heading font-bold text-base md:text-lg">
+          <div className="flex items-center justify-between p-3 border-b border-border shrink-0">
+            <h3 className="font-heading font-semibold text-sm md:text-base text-foreground">
               The Continuous AI Lifecycle for Language Ecosystems
             </h3>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 hover:bg-muted rounded-lg transition-colors"
+              className="p-1.5 hover:bg-muted rounded-lg transition-colors"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
           
-          <div className="flex-1 p-4 flex items-center justify-center min-h-0 bg-white">
+          <div className="flex-1 p-3 flex items-center justify-center min-h-0 bg-white">
             <img
               src={aiLifecycleImage}
               alt="The Continuous AI Lifecycle for Language Ecosystems"
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-full object-contain contrast-110 saturate-110"
             />
           </div>
         </DialogContent>
