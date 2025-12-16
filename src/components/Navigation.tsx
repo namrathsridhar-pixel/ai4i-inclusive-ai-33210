@@ -112,7 +112,7 @@ const Navigation = () => {
                           {link.name}
                         </Button>
                       </TooltipTrigger>
-                      <TooltipContent>
+                      <TooltipContent className="bg-[#0a1628] text-white border-white/20">
                         <p>Coming soon...</p>
                       </TooltipContent>
                     </Tooltip>
@@ -178,7 +178,7 @@ const Navigation = () => {
                         {link.name}
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent>
+                    <TooltipContent className="bg-[#0a1628] text-white border-white/20">
                       <p>Coming soon...</p>
                     </TooltipContent>
                   </Tooltip>
