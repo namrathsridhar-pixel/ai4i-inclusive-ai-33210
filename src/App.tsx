@@ -32,6 +32,13 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Track page view in GA4 for SPA route changes
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('config', 'G-X0CZVDK1KV', {
+        page_path: pathname,
+      });
+    }
   }, [pathname]);
 
   return null;
