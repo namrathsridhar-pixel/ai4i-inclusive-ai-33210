@@ -61,7 +61,7 @@ const SnowfallEffect = ({ isActive }: SnowfallEffectProps) => {
       snowflakesRef.current.forEach((flake) => {
         ctx.beginPath();
         ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+        ctx.fillStyle = `rgba(135, 206, 235, ${flake.opacity})`;
         ctx.fill();
 
         // Update position
