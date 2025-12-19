@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Globe, BarChart3, Users } from "lucide-react";
+import { Globe, BarChart3, Users, Snowflake } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import AnimatedLifecycleDiagram from "@/components/home/AnimatedLifecycleDiagram";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
@@ -9,6 +11,7 @@ import TrustStrip from "@/components/home/TrustStrip";
 import ResourcesCommunity from "@/components/home/ResourcesCommunity";
 import SolarSystemVisualization from "@/components/home/SolarSystemVisualization";
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
+import SnowfallEffect from "@/components/SnowfallEffect";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
@@ -42,7 +45,36 @@ const featureBlocks = [{
   blockLink: "/building-blocks#contribute"
 }];
 const Home = () => {
-  return <div className="min-h-screen">
+  const [isSnowing, setIsSnowing] = useState(false);
+
+  return <div className="min-h-screen relative">
+      {/* Snowfall Effect */}
+      <SnowfallEffect isActive={isSnowing} />
+      
+      {/* Let it Snow Button - Fixed in top right */}
+      <motion.div 
+        className="fixed top-20 right-4 z-50"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setIsSnowing(!isSnowing)}
+          className={`
+            border-white/20 bg-white/5 backdrop-blur-sm
+            hover:bg-white/10 hover:border-white/30
+            text-white/80 hover:text-white
+            transition-all duration-300
+            ${isSnowing ? 'bg-white/15 border-white/40' : ''}
+          `}
+        >
+          <Snowflake className={`w-4 h-4 mr-2 ${isSnowing ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }} />
+          {isSnowing ? 'Stop snow' : 'Let it snow'} ❄️
+        </Button>
+      </motion.div>
+
       {/* Hero Section */}
       <LanguageNetworkHero />
 
