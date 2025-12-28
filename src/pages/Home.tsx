@@ -22,7 +22,6 @@ const featureBlocks = [{
   videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
   githubUrl: "https://github.com/COSS-India/ai4i-core",
   discussUrl: "https://github.com/COSS-India/ai4i-core/discussions",
-  gitbookUrl: "https://ai4inclusion.gitbook.io/ai4i-orchestrate",
   blockLink: "/building-blocks#ai4i-core"
 }, {
   title: "AI4I-Observe",
@@ -33,7 +32,6 @@ const featureBlocks = [{
   videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
   githubUrl: "https://github.com/COSS-India/observe",
   discussUrl: "https://github.com/COSS-India/observe/discussions",
-  gitbookUrl: "https://ai4inclusion.gitbook.io/ai4i-observe",
   blockLink: "/building-blocks#observe"
 }, {
   title: "AI4I-Contribute",
@@ -44,7 +42,6 @@ const featureBlocks = [{
   videoUrl: "https://www.youtube.com/embed/_0KqImO7GMs",
   githubUrl: "https://github.com/COSS-India/ai4i-contribute",
   discussUrl: "https://github.com/COSS-India/ai4i-contribute/discussions",
-  gitbookUrl: "https://ai4inclusion.gitbook.io/ai4i-contribute",
   blockLink: "/building-blocks#contribute"
 }];
 

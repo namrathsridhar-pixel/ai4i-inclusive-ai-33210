@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Users, Database, GitBranch, Award, ArrowRight, Code2, Zap } from "lucide-react";
+import { Users, Database, GitBranch, Award, BookOpen, Code2, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import VideoModal from "@/components/VideoModal";
@@ -250,9 +250,10 @@ console.log('Dataset uploaded:', dataset.id);`}
                   Join our community and start contributing to inclusive AI development.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="https://docs.ai4inclusion.org" target="_blank" rel="noopener noreferrer">
+                  <a href="https://ai4inclusion.gitbook.io/ai4i-contribute" target="_blank" rel="noopener noreferrer">
                     <Button size="lg" className="font-medium shadow-soft hover:shadow-medium transition-all">
-                      View Full Documentation <ArrowRight className="ml-2" size={20} />
+                      <BookOpen className="mr-2" size={20} />
+                      📘 View Technical Documentation on GitBook
                     </Button>
                   </a>
                   <a href="/get-involved">

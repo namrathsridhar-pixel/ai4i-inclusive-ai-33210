@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Globe, Languages, Mic, FileText, ArrowRight, Code2, Zap } from "lucide-react";
+import { Globe, Languages, Mic, FileText, BookOpen, Code2, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import VideoModal from "@/components/VideoModal";
@@ -242,9 +242,10 @@ console.log(result.translatedText);
                 <p className="text-lg text-muted-foreground mb-8">
                   Explore our comprehensive documentation to integrate AI4I Core into your applications.
                 </p>
-                <a href="https://docs.ai4inclusion.org" target="_blank" rel="noopener noreferrer">
+                <a href="https://ai4inclusion.gitbook.io/ai4i-orchestrate" target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="font-medium shadow-soft hover:shadow-medium transition-all">
-                    View Full Documentation <ArrowRight className="ml-2" size={20} />
+                    <BookOpen className="mr-2" size={20} />
+                    📘 View Technical Documentation on GitBook
                   </Button>
                 </a>
               </div>
