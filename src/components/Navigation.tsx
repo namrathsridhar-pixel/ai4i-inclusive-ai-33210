@@ -11,7 +11,7 @@ const buildingBlocksMenu = [
 ];
 
 // Links that are coming soon and should not navigate
-const comingSoonPaths = ["/who-we-are"];
+const comingSoonPaths = ["/who-we-are", "/blogs"];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);

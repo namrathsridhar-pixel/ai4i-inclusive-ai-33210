@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { Download, Code, Users, Clock, ArrowRight } from "lucide-react";
+import { Download, Code, Users, Clock, ArrowRight, Building2, Rocket, FlaskConical } from "lucide-react";
 
 interface AdoptionPath {
   icon: React.ReactNode;
   title: string;
+  persona: string;
   description: string;
   timeToValue: string;
   cta: string;
@@ -12,25 +13,28 @@ interface AdoptionPath {
 
 const paths: AdoptionPath[] = [
   {
-    icon: <Download size={28} />,
-    title: "Adopt",
-    description: "Download and deploy the full AI4Inclusion stack. Self-host on your infrastructure with complete control.",
+    icon: <Building2 size={28} />,
+    title: "Deploy",
+    persona: "For governments & DPI owners",
+    description: "Deploy a national language AI runtime. Self-host the full AI4Inclusion stack on your infrastructure with complete control and sovereignty.",
     timeToValue: "Deploy in < 1 day (demo)",
     cta: "Get Started",
     link: "https://github.com/COSS-India",
   },
   {
-    icon: <Code size={28} />,
+    icon: <Rocket size={28} />,
     title: "Integrate",
-    description: "Use our APIs and SDKs to integrate Language AI capabilities into your existing applications.",
+    persona: "For developers & startups",
+    description: "Integrate governed language AI APIs. Use our APIs and SDKs to add Language AI capabilities to your existing applications.",
     timeToValue: "Integrate in < 1 week",
     cta: "View Docs",
     link: "https://github.com/COSS-India/ai4i-core",
   },
   {
-    icon: <Users size={28} />,
+    icon: <FlaskConical size={28} />,
     title: "Contribute",
-    description: "Join data collection campaigns or contribute code. Help build inclusive Language AI for everyone.",
+    persona: "For researchers & communities",
+    description: "Strengthen datasets and evaluation. Join data collection campaigns, contribute code, or help evaluate and improve language models.",
     timeToValue: "Start contributing today",
     cta: "Join Community",
     link: "https://github.com/COSS-India/ai4i-contribute",
@@ -79,7 +83,8 @@ const QuickStart = () => {
               <div className="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-primary-foreground mb-5 shadow-soft">
                 {path.icon}
               </div>
-              <h3 className="font-heading font-bold text-xl mb-3">{path.title}</h3>
+              <h3 className="font-heading font-bold text-xl mb-1">{path.title}</h3>
+              <p className="text-primary text-sm font-medium mb-3">{path.persona}</p>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 {path.description}
               </p>
