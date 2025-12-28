@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, Code, Users, Clock, ArrowRight, Building2, Rocket, FlaskConical } from "lucide-react";
+import { Download, Code, Users, Clock, ArrowRight } from "lucide-react";
 
 interface AdoptionPath {
   icon: React.ReactNode;
@@ -13,28 +13,28 @@ interface AdoptionPath {
 
 const paths: AdoptionPath[] = [
   {
-    icon: <Building2 size={28} />,
-    title: "Deploy",
-    persona: "For governments & DPI owners",
-    description: "Deploy a national language AI runtime. Self-host the full AI4Inclusion stack on your infrastructure with complete control and sovereignty.",
-    timeToValue: "Deploy in < 1 day (demo)",
+    icon: <Download size={28} />,
+    title: "Adopt",
+    persona: "For Organizations",
+    description: "Download and deploy the full AI4Inclusion stack on your own infrastructure with complete control and sovereignty.",
+    timeToValue: "Up and running in < 1 day",
     cta: "Get Started",
     link: "https://github.com/COSS-India",
   },
   {
-    icon: <Rocket size={28} />,
+    icon: <Code size={28} />,
     title: "Integrate",
-    persona: "For developers & startups",
-    description: "Integrate governed language AI APIs. Use our APIs and SDKs to add Language AI capabilities to your existing applications.",
-    timeToValue: "Integrate in < 1 week",
+    persona: "For Developers",
+    description: "Use our APIs and SDKs to integrate Language AI capabilities into your existing applications.",
+    timeToValue: "First API call in < 1 week",
     cta: "View Docs",
     link: "https://github.com/COSS-India/ai4i-core",
   },
   {
-    icon: <FlaskConical size={28} />,
+    icon: <Users size={28} />,
     title: "Contribute",
-    persona: "For researchers & communities",
-    description: "Strengthen datasets and evaluation. Join data collection campaigns, contribute code, or help evaluate and improve language models.",
+    persona: "For Communities",
+    description: "Join data collection campaigns or contribute code to help build inclusive language technologies.",
     timeToValue: "Start contributing today",
     cta: "Join Community",
     link: "https://github.com/COSS-India/ai4i-contribute",
