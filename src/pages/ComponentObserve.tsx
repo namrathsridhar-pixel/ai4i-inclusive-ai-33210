@@ -701,9 +701,10 @@ const metrics = await observer.getMetrics({
                   Learn how to implement comprehensive observability in your AI systems.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="https://github.com/COSS-India/observe" target="_blank" rel="noopener noreferrer">
+                  <a href="https://ai4inclusion.gitbook.io/ai4i-observe" target="_blank" rel="noopener noreferrer">
                     <Button size="lg" className="font-medium shadow-soft hover:shadow-medium transition-all w-full sm:w-auto">
-                      Learn More <ArrowRight className="ml-2" size={20} />
+                      <BookOpen className="mr-2" size={20} />
+                      📘 View Technical Documentation on GitBook
                     </Button>
                   </a>
                   <a href="https://github.com/COSS-India/observe/discussions" target="_blank" rel="noopener noreferrer">
