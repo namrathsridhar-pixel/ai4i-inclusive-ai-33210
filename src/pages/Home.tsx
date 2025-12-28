@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, Snowflake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FeatureBlock from "@/components/home/FeatureBlock";
-import AnimatedLifecycleDiagram from "@/components/home/AnimatedLifecycleDiagram";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
 import MediaStrip from "@/components/home/MediaStrip";
 import QuickStart from "@/components/home/QuickStart";
@@ -13,37 +12,42 @@ import SolarSystemVisualization from "@/components/home/SolarSystemVisualization
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 import SnowfallEffect from "@/components/SnowfallEffect";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
+
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
   description: "A unified runtime layer that routes inference requests to the best-fit models based on language, domain, cost, and policy. It provides a single API surface for all Language AI capabilities.",
-  bullets: ["Multi-model inference routing with fallback chains", "Policy-based model selection and governance", "Cost-aware routing with SLA enforcement", "Ensemble support for improved accuracy"],
+  bullets: ["Multi-model inference routing with fallback chains", "Policy-based model selection and governance", "Cost-aware routing with SLA enforcement", "Centralized observability and metering for governed runtime orchestration"],
   icon: <Globe className="text-primary-foreground" size={24} />,
   animation: <GlobeAnimation />,
   videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
   githubUrl: "https://github.com/COSS-India/ai4i-core",
   discussUrl: "https://github.com/COSS-India/ai4i-core/discussions",
+  gitbookUrl: "https://ai4inclusion.gitbook.io/ai4i-orchestrate",
   blockLink: "/building-blocks#ai4i-core"
 }, {
   title: "AI4I-Observe",
-  description: "A comprehensive observability platform that monitors Language AI model performance in production. It captures telemetry, detects quality drift, and provides actionable insights.",
-  bullets: ["Real-time telemetry and event streaming", "Quality drift detection and alerting", "Performance dashboards and analytics", "Evidence-based retraining recommendations"],
+  description: "A unified observability and feedback layer that monitors Language AI model performance in production. It captures telemetry, detects quality drift, and provides actionable insights.",
+  bullets: ["Real-time telemetry and event streaming", "Quality drift detection and alerting", "Performance dashboards and analytics", "Structured feedback signals feeding evaluation and improvement pipelines"],
   icon: <BarChart3 className="text-primary-foreground" size={24} />,
   animation: <ChartAnimation />,
   videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
   githubUrl: "https://github.com/COSS-India/observe",
   discussUrl: "https://github.com/COSS-India/observe/discussions",
+  gitbookUrl: "https://ai4inclusion.gitbook.io/ai4i-observe",
   blockLink: "/building-blocks#observe"
 }, {
   title: "AI4I-Contribute",
-  description: "A community-powered application for collecting, validating, and improving language datasets across regions, accents, and domains. It turns data creation into a participatory public good.",
-  bullets: ["Mobile-first offline data collection", "Built-in validation workflows", "Domain-specific campaign support", "Dialect and accent coverage tracking"],
+  description: "A data ingestion and annotation building block that enables large-scale, participatory creation of high-quality language datasets across regions, dialects, and domains. It operationalizes inclusive data creation as a reusable Digital Public Good.",
+  bullets: ["Multi-modal, mobile-friendly data collection across speech, text, image, and video", "Built-in human-in-the-loop validation and quality assurance workflows", "Targeted, domain-aware data collection and enrichment", "Language, dialect, and accent coverage tracking"],
   icon: <Users className="text-primary-foreground" size={24} />,
   animation: <MicrophoneAnimation />,
   videoUrl: "https://www.youtube.com/embed/_0KqImO7GMs",
   githubUrl: "https://github.com/COSS-India/ai4i-contribute",
   discussUrl: "https://github.com/COSS-India/ai4i-contribute/discussions",
+  gitbookUrl: "https://ai4inclusion.gitbook.io/ai4i-contribute",
   blockLink: "/building-blocks#contribute"
 }];
+
 const Home = () => {
   const [isSnowing, setIsSnowing] = useState(false);
 
@@ -118,10 +122,7 @@ const Home = () => {
       {/* What AI4Inclusion Enables - Solar System Visualization */}
       <SolarSystemVisualization />
 
-      {/* Animated Lifecycle Diagram */}
-      <AnimatedLifecycleDiagram />
-
-      {/* Key Capabilities Grid */}
+      {/* Key Capabilities Mind-Map */}
       <KeyCapabilities />
 
       {/* Media Strip */}

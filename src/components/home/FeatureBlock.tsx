@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Github, MessageSquare } from "lucide-react";
+import { ArrowRight, Play, Github, MessageSquare, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -14,6 +14,7 @@ interface FeatureBlockProps {
   videoUrl?: string;
   githubUrl?: string;
   discussUrl?: string;
+  gitbookUrl?: string;
   reversed?: boolean;
   blockLink: string;
 }
@@ -27,6 +28,7 @@ const FeatureBlock = ({
   videoUrl,
   githubUrl,
   discussUrl,
+  gitbookUrl,
   reversed,
   blockLink,
 }: FeatureBlockProps) => {
@@ -104,7 +106,20 @@ const FeatureBlock = ({
             )}
           </div>
 
-          <Link to={blockLink} className="inline-flex items-center gap-2 mt-4 text-primary font-medium hover:gap-3 transition-all text-sm">
+          {/* GitBook Documentation Link */}
+          {gitbookUrl && (
+            <a
+              href={gitbookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-muted-foreground hover:text-foreground text-sm transition-colors border border-border/50 rounded-lg hover:border-border hover:bg-muted/30"
+            >
+              <BookOpen size={14} />
+              📘 View detailed technical documentation on GitBook
+            </a>
+          )}
+
+          <Link to={blockLink} className="inline-flex items-center gap-2 mt-4 ml-2 text-primary font-medium hover:gap-3 transition-all text-sm">
             Learn more about {title} <ArrowRight size={14} />
           </Link>
         </div>
