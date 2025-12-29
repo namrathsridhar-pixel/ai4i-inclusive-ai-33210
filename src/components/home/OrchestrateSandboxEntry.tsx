@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Shield, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 const OrchestrateSandboxEntry = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
-      className="mt-16 bg-gradient-to-br from-card via-card to-muted/30 rounded-2xl border border-border/60 p-8 md:p-10"
-    >
+  return <motion.div initial={{
+    opacity: 0,
+    y: 30
+  }} whileInView={{
+    opacity: 1,
+    y: 0
+  }} viewport={{
+    once: true,
+    margin: "-50px"
+  }} transition={{
+    duration: 0.5
+  }} className="mt-16 bg-gradient-to-br from-card via-card to-muted/30 rounded-2xl border border-border/60 p-8 md:p-10">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
         {/* Content Side */}
         <div className="w-full lg:w-1/2">
@@ -18,16 +21,9 @@ const OrchestrateSandboxEntry = () => {
             Experience AI4I-Orchestrate in Action
           </h4>
           
-          <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
-            See how AI4I-Orchestrate routes, governs, and optimizes language AI requests in real time—delivering the right model for every request with full observability.
-          </p>
+          <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">Experience live language AI inferences with real-time visibility into performance, quality, and usage.</p>
 
-          <a
-            href="https://orchestrate-sandbox.ai4i.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block"
-          >
+          <a href="https://orchestrate-sandbox.ai4i.dev" target="_blank" rel="noopener noreferrer" className="inline-block">
             <Button size="lg" className="font-semibold group">
               Try the Orchestrate Sandbox
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -110,8 +106,6 @@ const OrchestrateSandboxEntry = () => {
           </div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 };
-
 export default OrchestrateSandboxEntry;
