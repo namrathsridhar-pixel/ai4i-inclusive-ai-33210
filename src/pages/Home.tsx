@@ -12,6 +12,7 @@ import SolarSystemVisualization from "@/components/home/SolarSystemVisualization
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 import SnowfallEffect from "@/components/SnowfallEffect";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
+import OrchestrateSandboxEntry from "@/components/home/OrchestrateSandboxEntry";
 
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
@@ -111,7 +112,13 @@ const Home = () => {
           </motion.div>
 
           <div className="space-y-20 max-w-6xl mx-auto">
-            {featureBlocks.map((block, i) => <FeatureBlock key={block.title} {...block} reversed={i % 2 === 1} />)}
+            {featureBlocks.map((block, i) => (
+              <div key={block.title}>
+                <FeatureBlock {...block} reversed={i % 2 === 1} />
+                {/* Add Sandbox Entry after AI4I-Orchestrate */}
+                {i === 0 && <OrchestrateSandboxEntry />}
+              </div>
+            ))}
           </div>
         </div>
       </section>
