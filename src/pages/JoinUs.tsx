@@ -22,91 +22,52 @@ const JoinUs = () => {
             </p>
           </motion.div>
 
-          {/* Hero Image Placeholder */}
+          {/* Hero Image with Embedded Form */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full rounded-xl mb-16 overflow-hidden"
+            className="w-full rounded-xl overflow-hidden border border-border/30 bg-card/50"
           >
+            {/* Hero Image */}
             <img 
               src={joinUsHeroImage}
               alt="AI4Inclusion Community - Multilingual Language Technology"
-              className="w-full h-auto object-cover rounded-xl"
+              className="w-full h-auto object-cover"
               loading="eager"
               fetchPriority="high"
               decoding="async"
               style={{ imageRendering: 'crisp-edges' }}
             />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Join Form Section */}
-      <section className="py-16 px-4 bg-background">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-              Join us!
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Join AI4Inclusion in revolutionizing language technology through digital innovation. Together, we can build 
-              inclusive AI infrastructure, bridge language gaps, and empower communities with tools for growth and participation.
-            </p>
-            <p className="text-base text-muted-foreground mt-6">
-              We're looking forward to building AI4Inclusion with you and connecting you with all the wonderful stakeholders 
-              in our community. Stay connected with us through the form below.
-            </p>
-          </motion.div>
-
-          {/* Embedded Google Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full bg-card rounded-xl shadow-large overflow-hidden border border-border/50"
-          >
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform?embedded=true"
-              width="100%"
-              height="1200"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="AI4Inclusion Join Us Form"
-              className="w-full"
-            >
-              Loading form...
-            </iframe>
-          </motion.div>
-
-          {/* Additional Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
-          >
-            <p className="text-sm text-muted-foreground">
-              If the form doesn't load, you can{" "}
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline font-medium"
+            
+            {/* Form Container */}
+            <div className="px-4 md:px-8 py-8 bg-background/80 backdrop-blur-sm">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform?embedded=true"
+                width="100%"
+                height="1200"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+                title="AI4Inclusion Join Us Form"
+                className="w-full rounded-lg"
               >
-                open it in a new tab
-              </a>
-              .
-            </p>
+                Loading form...
+              </iframe>
+              
+              <p className="text-sm text-muted-foreground text-center mt-6">
+                If the form doesn't load, you can{" "}
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline font-medium"
+                >
+                  open it in a new tab
+                </a>
+                .
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
