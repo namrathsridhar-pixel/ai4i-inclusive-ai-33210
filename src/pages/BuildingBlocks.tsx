@@ -325,6 +325,8 @@ const BuildingBlocks = () => {
                           className="w-full h-auto rounded-lg"
                           loading="eager"
                           fetchPriority="high"
+                          decoding="async"
+                          style={{ imageRendering: 'crisp-edges' }}
                         />
                       </CardContent>
                     </Card>
@@ -335,7 +337,7 @@ const BuildingBlocks = () => {
                       <DialogDescription>Visual diagram showing the orchestration workflow</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
-                      <img src={orchestrateHowItWorks} alt="How AI4I-Orchestrate Works" className="w-full h-auto" loading="eager" />
+                      <img src={orchestrateHowItWorks} alt="How AI4I-Orchestrate Works" className="w-full h-auto" loading="eager" style={{ imageRendering: 'crisp-edges' }} />
                     </div>
                   </DialogContent>
                 </Dialog>
