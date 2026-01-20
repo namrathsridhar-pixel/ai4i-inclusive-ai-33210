@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import joinUsHeroImage from "@/assets/join-us-hero.png";
 
 const JoinUs = () => {
   return (
@@ -26,14 +27,17 @@ const JoinUs = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full h-[300px] md:h-[400px] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl mb-16 flex items-center justify-center border border-border/50"
+            className="w-full rounded-xl mb-16 overflow-hidden"
           >
-            <div className="text-center">
-              <p className="text-2xl md:text-3xl font-heading font-bold text-muted-foreground/60">
-                Community Hero Image
-              </p>
-              <p className="text-sm text-muted-foreground/50 mt-2">Placeholder for collaboration visual</p>
-            </div>
+            <img 
+              src={joinUsHeroImage}
+              alt="AI4Inclusion Community - Multilingual Language Technology"
+              className="w-full h-auto object-cover rounded-xl"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              style={{ imageRendering: 'crisp-edges' }}
+            />
           </motion.div>
         </div>
       </section>
