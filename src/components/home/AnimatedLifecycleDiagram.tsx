@@ -26,7 +26,7 @@ const AnimatedLifecycleDiagram = () => {
               alt="The Continuous AI Lifecycle for Language Ecosystems"
               className="w-full h-auto object-contain contrast-110 saturate-110"
               loading="eager"
-              fetchPriority="high"
+              decoding="async"
             />
             
             {/* Hover overlay with shadow effect and expand button */}

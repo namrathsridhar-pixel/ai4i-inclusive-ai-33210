@@ -35,7 +35,6 @@ const JoinUs = () => {
               alt="AI4Inclusion Community - Multilingual Language Technology"
               className="w-full h-auto object-cover"
               loading="eager"
-              fetchPriority="high"
               decoding="async"
               style={{ imageRendering: 'crisp-edges' }}
             />

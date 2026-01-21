@@ -324,7 +324,6 @@ const BuildingBlocks = () => {
                           alt="How AI4I-Orchestrate Works" 
                           className="w-full h-auto rounded-lg"
                           loading="eager"
-                          fetchPriority="high"
                           decoding="async"
                           style={{ imageRendering: 'crisp-edges' }}
                         />
@@ -384,7 +383,6 @@ const BuildingBlocks = () => {
                             className="w-full h-auto object-contain rounded-lg"
                             loading="eager"
                             decoding="async"
-                            fetchPriority="high"
                           />
                         </div>
                       </CardContent>
@@ -566,7 +564,7 @@ const BuildingBlocks = () => {
                     alt="AI4I-Observe: Unified Telemetry & Governance Architecture" 
                     className="w-full h-auto rounded-xl"
                     loading="eager"
-                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
               </motion.div>
@@ -610,7 +608,7 @@ const BuildingBlocks = () => {
                           alt="AI4I-Observe System Architecture" 
                           className="w-full h-auto rounded-lg"
                           loading="eager"
-                          fetchPriority="high"
+                          decoding="async"
                         />
                       </CardContent>
                     </Card>
@@ -793,7 +791,7 @@ const BuildingBlocks = () => {
                           alt="How AI4I-Contribute Works" 
                           className="w-full h-auto rounded-lg"
                           loading="eager"
-                          fetchPriority="high"
+                          decoding="async"
                         />
                       </CardContent>
                     </Card>
@@ -851,7 +849,6 @@ const BuildingBlocks = () => {
                             className="w-full h-auto object-contain rounded-lg"
                             loading="eager"
                             decoding="async"
-                            fetchPriority="high"
                           />
                         </div>
                       </CardContent>
