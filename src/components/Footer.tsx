@@ -16,7 +16,6 @@ const Footer = () => {
               width={50}
               height={50}
               loading="eager"
-              fetchPriority="high"
               decoding="async"
             />
             
