@@ -12,17 +12,17 @@ interface MediaItem {
 const mediaItems: MediaItem[] = [
   {
     title: "AI4I Introduction",
-    thumbnail: "/videos/intro-video.mp4",
-    videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
+    thumbnail: "https://img.youtube.com/vi/NE_NID6OyzI/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/NE_NID6OyzI",
   },
   {
     title: "AI4I-Orchestrate Demo",
-    thumbnail: "/videos/intro-video.mp4",
+    thumbnail: "https://img.youtube.com/vi/5zLdk3-gvYU/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
   },
   {
     title: "AI4I-Observe Demo",
-    thumbnail: "/videos/intro-video.mp4",
+    thumbnail: "https://img.youtube.com/vi/i7Tv5sLzic8/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
   },
 ];
@@ -64,7 +64,13 @@ const MediaStrip = () => {
                 onClick={() => setActiveVideo(item.videoUrl)}
                 className="bg-card rounded-xl overflow-hidden shadow-medium hover:shadow-large transition-all cursor-pointer group"
               >
-                <div className="aspect-video relative bg-foreground/10">
+                <div className="aspect-video relative bg-foreground/10 overflow-hidden">
+                  <img 
+                    src={item.thumbnail} 
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <motion.div
                       whileHover={{ scale: 1.1 }}
