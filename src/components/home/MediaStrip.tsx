@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface MediaItem {
   title: string;
@@ -12,17 +13,17 @@ interface MediaItem {
 const mediaItems: MediaItem[] = [
   {
     title: "AI4I Introduction",
-    thumbnail: "https://img.youtube.com/vi/NE_NID6OyzI/maxresdefault.jpg",
+    thumbnail: "https://img.youtube.com/vi/NE_NID6OyzI/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/NE_NID6OyzI",
   },
   {
     title: "AI4I-Orchestrate Demo",
-    thumbnail: "https://img.youtube.com/vi/5zLdk3-gvYU/maxresdefault.jpg",
+    thumbnail: "https://img.youtube.com/vi/5zLdk3-gvYU/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
   },
   {
     title: "AI4I-Observe Demo",
-    thumbnail: "https://img.youtube.com/vi/i7Tv5sLzic8/maxresdefault.jpg",
+    thumbnail: "https://img.youtube.com/vi/i7Tv5sLzic8/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
   },
 ];
@@ -91,7 +92,10 @@ const MediaStrip = () => {
       </section>
 
       <Dialog open={!!activeVideo} onOpenChange={() => setActiveVideo(null)}>
-        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black">
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black" aria-describedby={undefined}>
+          <VisuallyHidden>
+            <DialogTitle>Video Player</DialogTitle>
+          </VisuallyHidden>
           <div className="aspect-video w-full">
             {activeVideo && (
               <iframe
