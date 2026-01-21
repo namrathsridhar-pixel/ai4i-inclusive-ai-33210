@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import orchestrateSandboxPreview from "@/assets/orchestrate-sandbox-preview.png";
 
 const OrchestrateSandboxEntry = () => {
@@ -23,20 +24,20 @@ const OrchestrateSandboxEntry = () => {
             Experience live language AI inferences with real-time visibility into performance, quality, and usage.
           </p>
 
-          <a
-            href="https://orchestrate-sandbox.ai4i.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block"
-          >
-            <Button size="lg" className="font-semibold group">
-              Try the Orchestrate Sandbox
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </a>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button size="lg" className="font-semibold group cursor-default">
+                Try the Orchestrate Sandbox
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent className="bg-[#0a1628] text-white border-white/20">
+              <p>Coming soon...</p>
+            </TooltipContent>
+          </Tooltip>
 
           <p className="text-xs text-muted-foreground mt-3">
-            No signup required · Sample requests included
+            Coming soon · Sample requests included
           </p>
         </div>
 
