@@ -105,8 +105,8 @@ const Home = () => {
       {/* Quick Start / Adoption Paths */}
       <QuickStart />
 
-      {/* Trust & Governance Strip */}
-      <TrustStrip />
+      {/* Trust & Governance Strip - Removed per user request */}
+      {/* <TrustStrip /> */}
 
       {/* Resources & Community */}
       <ResourcesCommunity />
