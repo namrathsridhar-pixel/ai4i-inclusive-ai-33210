@@ -19,7 +19,7 @@ const Terms = () => {
             <div className="prose prose-lg max-w-none space-y-6">
               <p className="text-muted-foreground">
                 This website{" "}
-                <a href="https://ai4inclusion.org/" className="text-primary hover:underline">http://ai4inclusion.org</a>{" "}
+                <a href="https://ai4inclusion.org/" className="text-primary hover:underline">https://ai4inclusion.org</a>{" "}
                 ("Website") has been developed and is being maintained by COSS ("COSS").
               </p>
 
