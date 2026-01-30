@@ -28,7 +28,7 @@ const paths: AdoptionPath[] = [
     description: "Use our APIs and SDKs to integrate Language AI capabilities into your existing applications.",
     timeToValue: "First API call in < 1 week",
     cta: "View Docs",
-    link: "https://github.com/COSS-India/ai4i-core",
+    link: "https://github.com/COSS-India/ai4i-core/wiki",
   },
   {
     icon: <Users size={28} />,
