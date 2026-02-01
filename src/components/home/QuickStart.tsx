@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, Code, Users, Clock, ArrowRight } from "lucide-react";
+import { Download, Code, Users, ArrowRight } from "lucide-react";
 
 interface AdoptionPath {
   icon: React.ReactNode;
@@ -88,10 +88,6 @@ const QuickStart = () => {
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 {path.description}
               </p>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                <Clock size={12} />
-                {path.timeToValue}
-              </div>
               <div className="flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
                 {path.cta} <ArrowRight size={14} />
               </div>

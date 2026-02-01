@@ -12,17 +12,17 @@ interface MediaItem {
 
 const mediaItems: MediaItem[] = [
   {
-    title: "AI4I Introduction",
+    title: "AI4I Request Lifecycle",
     thumbnail: "https://img.youtube.com/vi/NE_NID6OyzI/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/NE_NID6OyzI",
   },
   {
-    title: "AI4I-Orchestrate Demo",
-    thumbnail: "https://img.youtube.com/vi/5zLdk3-gvYU/hqdefault.jpg",
-    videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
+    title: "AI4I-Orchestrate",
+    thumbnail: "https://img.youtube.com/vi/jEuKOasl0ws/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/jEuKOasl0ws",
   },
   {
-    title: "AI4I-Observe Demo",
+    title: "AI4I-Observe",
     thumbnail: "https://img.youtube.com/vi/i7Tv5sLzic8/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
   },
