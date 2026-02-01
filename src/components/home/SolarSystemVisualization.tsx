@@ -61,7 +61,7 @@ const aiServices: Planet[] = [{
   angle: 196
 }, {
   id: "audio-lang-detect",
-  name: "Audio Lang Detect",
+  name: "Audio Language Detection",
   icon: <Mic size={16} />,
   description: "Detect language from audio input",
   angle: 229
