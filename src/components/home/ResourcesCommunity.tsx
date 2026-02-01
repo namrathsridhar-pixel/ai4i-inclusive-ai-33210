@@ -1,8 +1,44 @@
-import { motion } from "framer-motion";
-import { Github, MessageSquare, Mail, Calendar } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, MessageSquare, Mail, Bell, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+const emailSchema = z.string().trim().email({ message: "Please enter a valid email address" });
 
 const ResourcesCommunity = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setEmailError("");
+    
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      setEmailError(result.error.errors[0].message);
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsModalOpen(false);
+      setEmail("");
+      toast({
+        title: "Successfully subscribed!",
+        description: "You'll be the first to know about upcoming AI4Inclusion events.",
+      });
+    }, 1000);
+  };
   return (
     <section className="py-16 px-4 bg-gradient-to-b from-accent/30 to-background">
       <div className="container mx-auto max-w-4xl">
@@ -84,21 +120,68 @@ const ResourcesCommunity = () => {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                <Calendar size={20} />
+                <Bell size={20} />
               </div>
-              <h3 className="font-heading font-bold text-lg">Attend an AI4Inclusion Event</h3>
+              <h3 className="font-heading font-bold text-lg">Stay Updated on AI4Inclusion</h3>
             </div>
             <p className="text-muted-foreground text-sm mb-4">
-              Join upcoming workshops, talks, and community sessions hosted by AI4Inclusion. Learn about Language AI, Digital Public Goods, and how AI4I is transforming inclusion at scale.
+              Be the first to know about upcoming events, workshops, and community sessions from AI4Inclusion.
             </p>
-            <button
-              disabled
-              className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg font-medium opacity-70 cursor-not-allowed text-sm"
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setIsModalOpen(true)}
+              className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm"
             >
-              Explore Events
-            </button>
+              Get Notified
+            </motion.button>
           </motion.div>
         </div>
+
+        {/* Email Subscription Modal */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogTitle className="text-xl font-heading font-bold">Get Notified</DialogTitle>
+            <p className="text-muted-foreground text-sm mt-1">
+              Subscribe to receive updates about AI4Inclusion events, workshops, and community sessions.
+            </p>
+            <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setEmailError("");
+                  }}
+                  className={emailError ? "border-destructive" : ""}
+                />
+                {emailError && (
+                  <p className="text-destructive text-xs">{emailError}</p>
+                )}
+              </div>
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 py-2.5 rounded-lg font-medium border border-border hover:bg-muted transition-colors text-sm"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-1 bg-primary text-primary-foreground py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm disabled:opacity-70"
+                >
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
+                </button>
+              </div>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

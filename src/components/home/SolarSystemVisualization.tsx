@@ -21,50 +21,68 @@ const aiServices: Planet[] = [{
   id: "asr",
   name: "ASR",
   icon: <Mic size={16} />,
-  description: "Speech-to-Text conversion for all languages",
+  description: "Automatic Speech Recognition - Speech-to-Text conversion",
   angle: 0
-}, {
-  id: "tts",
-  name: "TTS",
-  icon: <Volume2 size={16} />,
-  description: "Text-to-Speech synthesis with natural voices",
-  angle: 45
 }, {
   id: "nmt",
   name: "NMT",
   icon: <Languages size={16} />,
   description: "Neural Machine Translation across languages",
-  angle: 90
+  angle: 33
+}, {
+  id: "tts",
+  name: "TTS",
+  icon: <Volume2 size={16} />,
+  description: "Text-to-Speech synthesis with natural voices",
+  angle: 65
 }, {
   id: "ocr",
   name: "OCR",
   icon: <FileText size={16} />,
-  description: "Text extraction from images and documents",
-  angle: 135
+  description: "Optical Character Recognition from images and documents",
+  angle: 98
 }, {
   id: "llm",
-  name: "LLM",
+  name: "LLMs",
   icon: <Brain size={16} />,
   description: "Large Language Models for understanding and generation",
-  angle: 180
+  angle: 130
 }, {
-  id: "voice",
-  name: "Voice Bio",
-  icon: <Fingerprint size={16} />,
-  description: "Voice biometrics for secure authentication",
-  angle: 225
-}, {
-  id: "dialect",
-  name: "Dialects",
+  id: "transliteration",
+  name: "Transliteration",
   icon: <MessageSquare size={16} />,
-  description: "Dialect adaptation for regional accuracy",
-  angle: 270
+  description: "Script conversion between different writing systems",
+  angle: 163
 }, {
-  id: "domain",
-  name: "Domain AI",
+  id: "lang-detect",
+  name: "Language Detection",
+  icon: <Globe size={16} />,
+  description: "Detect and identify text language automatically",
+  angle: 196
+}, {
+  id: "audio-lang-detect",
+  name: "Audio Lang Detect",
+  icon: <Mic size={16} />,
+  description: "Detect language from audio input",
+  angle: 229
+}, {
+  id: "speaker-diarization",
+  name: "Speaker Diarization",
+  icon: <Fingerprint size={16} />,
+  description: "Identify and separate different speakers in audio",
+  angle: 262
+}, {
+  id: "lang-diarization",
+  name: "Language Diarization",
   icon: <Database size={16} />,
-  description: "Domain-specific models for specialized use cases",
-  angle: 315
+  description: "Identify language switches within audio",
+  angle: 295
+}, {
+  id: "ner",
+  name: "NER",
+  icon: <Zap size={16} />,
+  description: "Named Entity Recognition - Extract entities from text",
+  angle: 327
 }];
 
 const SolarSystemVisualization = () => {

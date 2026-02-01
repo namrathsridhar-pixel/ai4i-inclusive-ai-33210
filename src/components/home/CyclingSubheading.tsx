@@ -3,38 +3,38 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 
 const translations = [
-  { text: "A Future Where Language Is No Barrier", dir: "ltr" },
-  { text: "ভাষাৰ কোনো বাধা নথকা ভৱিষ্যৎ", dir: "ltr" },
-  { text: "ভাষা যেখানে আর বাধা নয় এমন এক ভবিষ্যৎ", dir: "ltr" },
-  { text: "दानि होनाय आरो थांनाय नङा फोरमों", dir: "ltr" },
-  { text: "ज़बान कोई रोक न बने ऐह्जा भविष्य", dir: "ltr" },
-  { text: "એક એવું ભવિષ્ય જ્યાં ભાષા કોઈ અવરોધ ન બને", dir: "ltr" },
-  { text: "एक ऐसा भविष्य जहाँ भाषा कोई बाधा न हो", dir: "ltr" },
-  { text: "ಭಾಷೆ ಯಾವುದೇ ಅಡ್ಡಿಯಾಗದ ಭವಿಷ್ಯ", dir: "ltr" },
-  { text: "ایک مستقبل جِتھ زبان کوئی رکاوٹ نہ بنن", dir: "rtl" },
-  { text: "भविश्यात जें भास अडथळो ना जाव", dir: "ltr" },
-  { text: "जहिया भाषा आब रुकावट नहि", dir: "ltr" },
-  { text: "ഭാഷ ഒരു തടസ്സമാകാത്ത ഒരു ഭാവി", dir: "ltr" },
-  { text: "ভাষা অত্তবা লোই अदुबा मথমौ ভবিষ্যৎ", dir: "ltr" },
-  { text: "जिथे भाषा अडथळा ठरत नाही असे भविष्य", dir: "ltr" },
-  { text: "जहाँ भाषा कुनै बाधा हुँदैन यस्तो भविष्य", dir: "ltr" },
-  { text: "ଯେଉଁଠାରେ ଭାଷା ବାଧା ନୁହେଁ ସେମିତି ଭବିଷ୍ୟତ", dir: "ltr" },
-  { text: "ਇਕੋ ਭਵਿੱਖ ਜਿਥੇ ਭਾਸ਼ਾ ਕੋਈ ਰੁਕਾਵਟ ਨਹੀਂ", dir: "ltr" },
-  { text: "यत्र भाषा न अवरोधः भवति तादृशं भविष्य", dir: "ltr" },
-  { text: "ᱵᱟᱨᱟᱝ ᱟᱞᱚᱢ ᱵᱟᱹᱫᱤ ᱫᱟᱹᱲᱤᱠ ᱵᱷᱤᱡᱽ", dir: "ltr" },
-  { text: "اهڙو مستقبل جتي ٻولي ڪا رڪاوٽ ناهي", dir: "rtl" },
-  { text: "மொழி தடையாக இல்லாத ஒரு எதிர்காலம்", dir: "ltr" },
-  { text: "భాష అడ్డంకి కాని భవిష్యత్తు", dir: "ltr" },
-  { text: "ایک ایسا مستقبل جہاں زبان کوئی رکاوٹ نہ हो", dir: "rtl" },
-  { text: "Un futuro donde el idioma no sea una barrera", dir: "ltr" },
-  { text: "Un avenir où la langue n'est plus une barrière", dir: "ltr" },
-  { text: "Eine Zukunft, in der Sprache keine Barriere ist", dir: "ltr" },
-  { text: "语言不再成为障碍的未来", dir: "ltr" },
-  { text: "言語が障壁とならない未来", dir: "ltr" },
-  { text: "언어가 장벽이 되지 않는 미래", dir: "ltr" },
-  { text: "مستقبل لا تكون فيه اللغة عائقًا", dir: "rtl" },
-  { text: "Будущее, где язык — не преграда", dir: "ltr" },
-  { text: "Um futuro onde a língua não seja uma barreira", dir: "ltr" },
+  { text: "A Future Where Language Is No Barrier", lang: "English", dir: "ltr" },
+  { text: "ভাষাৰ কোনো বাধা নথকা ভৱিষ্যৎ", lang: "Assamese", dir: "ltr" },
+  { text: "ভাষা যেখানে আর বাধা নয় এমন এক ভবিষ্যৎ", lang: "Bengali", dir: "ltr" },
+  { text: "रोंगौथाव दं भाषा नङा बादि", lang: "Bodo", dir: "ltr" },
+  { text: "इक ऐसा भविक्ख जित्थै भाशा कोई रोक नेईं", lang: "Dogri", dir: "ltr" },
+  { text: "એક એવું ભવિષ્ય જ્યાં ભાષા કોઈ અવરોધ ન બને", lang: "Gujarati", dir: "ltr" },
+  { text: "एक ऐसा भविष्य जहाँ भाषा कोई बाधा न हो", lang: "Hindi", dir: "ltr" },
+  { text: "ಭಾಷೆ ಯಾವುದೇ ಅಡ್ಡಿಯಾಗದ ಭವಿಷ್ಯ", lang: "Kannada", dir: "ltr" },
+  { text: "یہِ مستقبل یَتھ زَبان کانہٕ رُکاوٹ نہٕ بَنِ", lang: "Kashmiri", dir: "rtl" },
+  { text: "एक असो भविश्य जंय भास आडो येना", lang: "Konkani", dir: "ltr" },
+  { text: "एगो अइसन भविष्य जहाँ भाषा कोनो बाधा नै हो", lang: "Maithili", dir: "ltr" },
+  { text: "ഭാഷ ഒരു തടസ്സമാകാത്ത ഒരു ഭാവി", lang: "Malayalam", dir: "ltr" },
+  { text: "লোন অমা চাংফবদ ওইদবা তুংগী", lang: "Manipuri", dir: "ltr" },
+  { text: "जिथे भाषा अडथळा ठरत नाही असे भविष्य", lang: "Marathi", dir: "ltr" },
+  { text: "जहाँ भाषा कुनै बाधा हुँदैन यस्तो भविष्य", lang: "Nepali", dir: "ltr" },
+  { text: "ଯେଉଁଠାରେ ଭାଷା ବାଧା ନୁହେଁ ସେମିତି ଭବିଷ୍ୟତ", lang: "Odia", dir: "ltr" },
+  { text: "ਇੱਕ ਭਵਿੱਖ ਜਿੱਥੇ ਭਾਸ਼ਾ ਕੋਈ ਰੁਕਾਵਟ ਨਹੀਂ", lang: "Punjabi", dir: "ltr" },
+  { text: "यत्र भाषा न अवरोधः भवति तादृशं भविष्यम्", lang: "Sanskrit", dir: "ltr" },
+  { text: "ᱡᱟᱦᱟᱸ ᱯᱟᱹᱨᱥᱤ ᱵᱟᱹᱫᱷᱟ ᱵᱟᱭ ᱠᱟᱱᱟ", lang: "Santali", dir: "ltr" },
+  { text: "اهڙو مستقبل جتي ٻولي ڪا رڪاوٽ نه هجي", lang: "Sindhi", dir: "rtl" },
+  { text: "மொழி தடையாக இல்லாத ஒரு எதிர்காலம்", lang: "Tamil", dir: "ltr" },
+  { text: "భాష అడ్డంకి కాని భవిష్యత్తు", lang: "Telugu", dir: "ltr" },
+  { text: "ایک ایسا مستقبل جہاں زبان کوئی رکاوٹ نہ ہو", lang: "Urdu", dir: "rtl" },
+  { text: "Un futuro donde el idioma no sea una barrera", lang: "Spanish", dir: "ltr" },
+  { text: "Un avenir où la langue n'est plus une barrière", lang: "French", dir: "ltr" },
+  { text: "Eine Zukunft, in der Sprache keine Barriere ist", lang: "German", dir: "ltr" },
+  { text: "语言不再成为障碍的未来", lang: "Chinese", dir: "ltr" },
+  { text: "言語が障壁とならない未来", lang: "Japanese", dir: "ltr" },
+  { text: "언어가 장벽이 되지 않는 미래", lang: "Korean", dir: "ltr" },
+  { text: "مستقبل لا تكون فيه اللغة عائقًا", lang: "Arabic", dir: "rtl" },
+  { text: "Будущее, где язык — не преграда", lang: "Russian", dir: "ltr" },
+  { text: "Um futuro onde a língua não seja uma barreira", lang: "Portuguese", dir: "ltr" },
 ];
 
 const DISPLAY_DURATION = 3500; // 3.5 seconds
@@ -83,9 +83,14 @@ const CyclingSubheading = () => {
   // If reduced motion is preferred, show English only
   if (prefersReducedMotion) {
     return (
-      <span className="text-3xl md:text-4xl xl:text-5xl text-blue-200/90 mt-2 block font-medium">
-        A Future Where Language Is No Barrier
-      </span>
+      <div className="text-center">
+        <span className="text-3xl md:text-4xl xl:text-5xl text-blue-200/90 mt-2 block font-medium">
+          A Future Where Language Is No Barrier
+        </span>
+        <span className="text-sm md:text-base text-blue-300/70 mt-2 block font-medium tracking-wide">
+          English
+        </span>
+      </div>
     );
   }
 
@@ -103,22 +108,37 @@ const CyclingSubheading = () => {
       <div
         aria-live="polite"
         aria-atomic="true"
-        className="h-[4rem] md:h-[5rem] xl:h-[6rem] flex items-center justify-center relative"
+        className="flex flex-col items-center justify-center"
       >
+        <div className="h-[4rem] md:h-[5rem] xl:h-[6rem] flex items-center justify-center relative w-full">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={currentIndex}
+              dir={current.dir}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: CROSSFADE_DURATION, ease: "easeInOut" }}
+              className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)] absolute inset-0 flex items-center justify-center"
+              style={{
+                fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+              }}
+            >
+              {current.text}
+            </motion.span>
+          </AnimatePresence>
+        </div>
+        {/* Language label */}
         <AnimatePresence mode="wait">
           <motion.span
-            key={currentIndex}
-            dir={current.dir}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: CROSSFADE_DURATION, ease: "easeInOut" }}
-            className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)] absolute inset-0 flex items-center justify-center"
-            style={{
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-            }}
+            key={`lang-${currentIndex}`}
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: CROSSFADE_DURATION * 0.5, ease: "easeInOut" }}
+            className="text-sm md:text-base text-blue-300/70 mt-2 font-medium tracking-wide"
           >
-            {current.text}
+            {current.lang}
           </motion.span>
         </AnimatePresence>
       </div>
