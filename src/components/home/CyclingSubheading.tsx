@@ -110,36 +110,31 @@ const CyclingSubheading = () => {
         aria-atomic="true"
         className="flex flex-col items-center justify-center"
       >
-        <div className="h-[4rem] md:h-[5rem] xl:h-[6rem] flex items-center justify-center relative w-full">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={currentIndex}
-              dir={current.dir}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: CROSSFADE_DURATION, ease: "easeInOut" }}
-              className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)] absolute inset-0 flex items-center justify-center"
-              style={{
-                fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              }}
-            >
-              {current.text}
-            </motion.span>
-          </AnimatePresence>
-        </div>
-        {/* Language label */}
         <AnimatePresence mode="wait">
-          <motion.span
-            key={`lang-${currentIndex}`}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            transition={{ duration: CROSSFADE_DURATION * 0.5, ease: "easeInOut" }}
-            className="text-sm md:text-base text-blue-300/70 mt-2 font-medium tracking-wide"
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: CROSSFADE_DURATION, ease: "easeInOut" }}
+            className="flex flex-col items-center"
           >
-            {current.lang}
-          </motion.span>
+            <div className="h-[4rem] md:h-[5rem] xl:h-[6rem] flex items-center justify-center w-full">
+              <span
+                dir={current.dir}
+                className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)] text-center"
+                style={{
+                  fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+                }}
+              >
+                {current.text}
+              </span>
+            </div>
+            {/* Language label */}
+            <span className="text-sm md:text-base text-blue-300/70 mt-2 font-medium tracking-wide">
+              {current.lang}
+            </span>
+          </motion.div>
         </AnimatePresence>
       </div>
 
