@@ -23,7 +23,7 @@ const Navigation = () => {
     { name: "Building Blocks", path: "/building-blocks" },
     { name: "Events", path: "/events" },
     // { name: "Blogs", path: "/blogs" },
-    { name: "Join Us", path: "/join-us" },
+    { name: "Get in Touch", path: "/join-us" },
   ];
   const isActive = (path: string) => location.pathname === path;
   const scrollToTop = () => {
