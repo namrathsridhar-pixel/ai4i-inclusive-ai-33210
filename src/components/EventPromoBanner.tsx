@@ -45,18 +45,8 @@
  );
  
  const EventPromoBanner = () => {
-   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
    const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
- 
-   useEffect(() => {
-     // Check if banner was dismissed in this session
-     const dismissed = sessionStorage.getItem("eventBannerDismissed");
-     if (!dismissed) {
-       // Small delay for better UX
-       const showTimer = setTimeout(() => setIsOpen(true), 500);
-       return () => clearTimeout(showTimer);
-     }
-   }, []);
  
    useEffect(() => {
      const timer = setInterval(() => {
@@ -68,7 +58,6 @@
  
    const handleClose = () => {
      setIsOpen(false);
-     sessionStorage.setItem("eventBannerDismissed", "true");
    };
  
    return (
