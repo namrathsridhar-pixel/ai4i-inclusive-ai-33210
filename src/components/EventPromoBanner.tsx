@@ -3,7 +3,7 @@
  import { motion, AnimatePresence } from "framer-motion";
  import { Dialog, DialogContent } from "@/components/ui/dialog";
  import { Button } from "@/components/ui/button";
- import bannerImage from "@/assets/india-ai-summit-banner.png";
+ import bannerBg from "@/assets/india-ai-summit-bg.png";
  
  const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
  
@@ -65,12 +65,13 @@
        <DialogContent className="max-w-4xl p-0 border-0 overflow-hidden bg-transparent shadow-2xl">
          <div className="relative w-full">
            {/* Background Image */}
-            {/* Deep gradient background instead of image to avoid text overlap */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#1a3a5c]" />
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${bannerBg})` }}
+            />
            
            {/* Gradient Overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/10" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/60 via-transparent to-transparent" />
            
            {/* Content */}
            <div className="relative z-10 p-6 md:p-10 min-h-[400px] md:min-h-[480px] flex flex-col justify-between">
