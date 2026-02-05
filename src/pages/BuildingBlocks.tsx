@@ -479,7 +479,7 @@ const BuildingBlocks = () => {
                   <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/5zLdk3-gvYU?si=wTUB-wd8PPjT9kZ_"
+                    src="https://www.youtube.com/embed/jEuKOasl0ws"
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
