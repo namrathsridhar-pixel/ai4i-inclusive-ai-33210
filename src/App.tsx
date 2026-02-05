@@ -20,6 +20,7 @@ import ComponentContribute from "./pages/ComponentContribute";
 import Adopters from "./pages/Adopters";
 import GetInvolved from "./pages/GetInvolved";
 import JoinUs from "./pages/JoinUs";
+import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -63,6 +64,7 @@ const AppContent = () => {
           <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
           <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
           <Route path="/join-us" element={<PageTransition><JoinUs /></PageTransition>} />
+          <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
           <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
           <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
