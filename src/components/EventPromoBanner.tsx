@@ -5,6 +5,10 @@
  import { Button } from "@/components/ui/button";
  import bannerBg from "@/assets/india-ai-summit-bg.png";
  
+// Cache-busting version - increment when updating the background image
+const BANNER_VERSION = "v2";
+const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
+
  const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
  
  interface TimeLeft {
@@ -45,10 +49,21 @@
  );
  
  const EventPromoBanner = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
    const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
  
    useEffect(() => {
+    // Preload the background image before showing the modal
+    const img = new Image();
+    img.onload = () => {
+      setImageLoaded(true);
+      setIsOpen(true);
+    };
+    img.src = bannerBgUrl;
+  }, []);
+
+  useEffect(() => {
      const timer = setInterval(() => {
        setTimeLeft(calculateTimeLeft());
      }, 60000); // Update every minute
@@ -66,8 +81,8 @@
          <div className="relative w-full">
            {/* Background Image */}
             <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${bannerBg})` }}
+               className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+               style={{ backgroundImage: `url(${bannerBgUrl})` }}
             />
            
            {/* Gradient Overlay for better text readability */}

@@ -3,6 +3,10 @@
  import { useState, useEffect } from "react";
  import bannerBg from "@/assets/india-ai-summit-bg.png";
  
+// Cache-busting version - keep in sync with EventPromoBanner
+const BANNER_VERSION = "v2";
+const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
+
  const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
  
  interface TimeLeft {
@@ -82,7 +86,7 @@
              {/* Background Image */}
              <div 
                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-               style={{ backgroundImage: `url(${bannerBg})` }}
+              style={{ backgroundImage: `url(${bannerBgUrl})` }}
              />
              
              {/* Gradient Overlay */}
