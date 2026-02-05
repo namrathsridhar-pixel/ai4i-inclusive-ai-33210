@@ -83,7 +83,7 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
            {/* Background Image */}
             <div 
                className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-               style={{ backgroundImage: `url(${bannerBgUrl})` }}
+                style={{ backgroundImage: `url(${bannerBgUrl})`, backgroundPosition: 'right center' }}
             />
            
            {/* Gradient Overlay for better text readability */}
@@ -127,7 +127,7 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: 0.4 }}
-                 className="text-sm md:text-base lg:text-lg text-white/70 leading-relaxed"
+                  className="text-xs md:text-sm lg:text-base text-white/70 leading-relaxed"
                >
                  Building inclusive, India-first Language AI infrastructure to power governance, public services, and citizen-scale adoption.
                </motion.p>
@@ -157,7 +157,7 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
                 className="flex flex-col sm:flex-row sm:items-center gap-4"
                >
                  {/* Location Info */}
-                 <p className="text-sm md:text-base lg:text-lg text-white/70">
+                  <p className="text-xs md:text-sm text-white/70">
                     New Delhi · 16–20 February 2026 · Booth: TBA
                  </p>
                   
