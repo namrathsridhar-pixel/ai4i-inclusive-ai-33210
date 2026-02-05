@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Globe, Languages, Mic, FileText, BookOpen, Code2, Zap } from "lucide-react";
+import { Globe, Languages, Mic, FileText, BookOpen, Code2, Zap, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import VideoModal from "@/components/VideoModal";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { DocsLayout } from "@/components/docs/DocsLayout";
 import { SectionHeading } from "@/components/docs/SectionHeading";
 import { CodeBlock } from "@/components/docs/CodeBlock";
@@ -11,6 +12,7 @@ import { DocSection } from "@/components/docs/DocSection";
 
 const ComponentCore = () => {
   const [videoModal, setVideoModal] = useState(false);
+  const youtubeVideoUrl = "https://www.youtube.com/embed/jEuKOasl0ws";
 
   const features = [
     {
@@ -176,11 +178,15 @@ console.log(result.translatedText);
                 className="relative w-full aspect-video bg-muted rounded-xl overflow-hidden group cursor-pointer border border-border shadow-soft hover:shadow-medium transition-all"
                 aria-label="Play AI4I Core overview video"
               >
+                <img
+                  src="https://img.youtube.com/vi/jEuKOasl0ws/hqdefault.jpg"
+                  alt="AI4I-Orchestrate video thumbnail"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-                  <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-glow">
-                    <svg className="text-primary-foreground ml-1" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/90 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-primary transition-all shadow-glow">
+                    <Play size={28} className="text-primary-foreground ml-1" />
                   </div>
                 </div>
               </button>
@@ -254,12 +260,22 @@ console.log(result.translatedText);
         </div>
       </div>
 
-      <VideoModal
-        isOpen={videoModal}
-        onClose={() => setVideoModal(false)}
-        videoSrc="/videos/core.mp4"
-        title="AI4I Core Overview"
-      />
+      <Dialog open={videoModal} onOpenChange={setVideoModal}>
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black" aria-describedby={undefined}>
+          <VisuallyHidden>
+            <DialogTitle>AI4I-Orchestrate Demo Video</DialogTitle>
+          </VisuallyHidden>
+          <div className="aspect-video w-full">
+            <iframe
+              src={`${youtubeVideoUrl}?autoplay=1`}
+              title="AI4I-Orchestrate Demo"
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </DocsLayout>
   );
 };
