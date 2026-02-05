@@ -18,7 +18,7 @@ const featureBlocks = [{
   bullets: ["Multi-model inference routing with fallback chains", "Policy-based model selection and governance", "Cost-aware routing with SLA enforcement", "Centralized observability and metering for governed runtime orchestration"],
   icon: <Globe className="text-primary-foreground" size={24} />,
   animation: <GlobeAnimation />,
-  videoUrl: "https://www.youtube.com/embed/5zLdk3-gvYU",
+  videoUrl: "https://www.youtube.com/embed/jEuKOasl0ws",
   githubUrl: "https://github.com/COSS-India/ai4i-core",
   discussUrl: "https://github.com/COSS-India/ai4i-core/discussions",
   blockLink: "/building-blocks#ai4i-core"

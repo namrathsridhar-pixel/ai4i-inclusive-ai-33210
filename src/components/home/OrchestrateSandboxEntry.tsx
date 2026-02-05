@@ -59,6 +59,8 @@ const OrchestrateSandboxEntry = () => {
               src={orchestrateSandboxPreview}
               alt="AI4I Orchestrate Sandbox - AI Accessibility Studio interface"
               className="w-full h-auto"
+              loading="eager"
+              decoding="async"
             />
           </div>
         </div>
