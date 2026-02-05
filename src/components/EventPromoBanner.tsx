@@ -147,12 +147,6 @@
  
                  {/* CTAs */}
                  <div className="flex items-center gap-3">
-                   <a 
-                     href="/contact" 
-                     className="text-sm text-white/60 hover:text-white transition-colors underline-offset-4 hover:underline"
-                   >
-                     Connect with AI4I
-                   </a>
                    <Button 
                      className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm rounded-full px-5 py-2 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all"
                      onClick={handleClose}
