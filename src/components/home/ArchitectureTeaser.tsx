@@ -4,6 +4,7 @@ import { Maximize2, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import aiLifecycleEcosystem from "@/assets/ai-lifecycle-ecosystem.png";
+import { PreloadedImage } from "@/components/ui/preloaded-image";
 
 const ArchitectureTeaser = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +21,12 @@ const ArchitectureTeaser = () => {
             className="relative rounded-2xl overflow-hidden shadow-large group cursor-pointer max-h-[400px]"
             onClick={() => setIsOpen(true)}
           >
-            <img
+            <PreloadedImage
               src={aiLifecycleEcosystem}
               alt="The Continuous AI Lifecycle for Language Ecosystems"
-              className="w-full h-full object-cover object-center"
-              loading="lazy"
+              className="object-cover object-center"
+              containerClassName="w-full h-full"
+              aspectRatio="16/9"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
             <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 px-4 text-center">

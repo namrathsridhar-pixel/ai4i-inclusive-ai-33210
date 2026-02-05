@@ -19,6 +19,7 @@ import { DocSection } from "@/components/docs/DocSection";
 
 import observeInfographic from "@/assets/observe-infographic.png";
 import observeArchitecture from "@/assets/observe-architecture.png";
+import { PreloadedImage } from "@/components/ui/preloaded-image";
 
 const ComponentObserve = () => {
   const [showDeepCapabilities, setShowDeepCapabilities] = useState(false);
@@ -248,10 +249,12 @@ const ComponentObserve = () => {
               transition={{ duration: 0.7 }}
               className="rounded-2xl overflow-hidden bg-gradient-to-br from-background to-accent/10 border border-border p-4"
             >
-              <img 
-                src={observeInfographic} 
-                alt="AI4I-Observe: Unified Telemetry & Governance Architecture" 
-                className="w-full h-auto rounded-xl"
+              <PreloadedImage
+                src={observeInfographic}
+                alt="AI4I-Observe: Unified Telemetry & Governance Architecture"
+                className="rounded-xl"
+                containerClassName="rounded-xl"
+                aspectRatio="16/9"
               />
               <p className="text-center text-sm text-muted-foreground mt-4 italic">
                 AI4I-Observe: Unified Telemetry & Governance Architecture
@@ -312,10 +315,12 @@ const ComponentObserve = () => {
                           Click to expand
                         </div>
                       </div>
-                      <img 
-                        src={observeArchitecture} 
-                        alt="AI4I-Observe Operational Architecture" 
-                        className="w-full h-auto rounded-lg"
+                      <PreloadedImage
+                        src={observeArchitecture}
+                        alt="AI4I-Observe Operational Architecture"
+                        className="rounded-lg"
+                        containerClassName="rounded-lg"
+                        aspectRatio="16/9"
                       />
                       <p className="text-center text-sm text-muted-foreground mt-4 italic">
                         AI4I-Observe Operational Architecture
