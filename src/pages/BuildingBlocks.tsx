@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { PreloadedImage } from "@/components/ui/preloaded-image";
 
 // Import new architecture images
 import orchestrateArchitectureNew from "@/assets/orchestrate-architecture-new.png";
@@ -319,13 +320,12 @@ const BuildingBlocks = () => {
                             Click to expand
                           </div>
                         </div>
-                        <img 
-                          src={orchestrateHowItWorks} 
-                          alt="How AI4I-Orchestrate Works" 
-                          className="w-full h-auto rounded-lg"
-                          loading="eager"
-                          decoding="async"
-                          style={{ imageRendering: 'crisp-edges' }}
+                        <PreloadedImage
+                          src={orchestrateHowItWorks}
+                          alt="How AI4I-Orchestrate Works"
+                          className="rounded-lg"
+                          containerClassName="rounded-lg"
+                          aspectRatio="16/9"
                         />
                       </CardContent>
                     </Card>
@@ -377,12 +377,12 @@ const BuildingBlocks = () => {
                           </div>
                         </div>
                         <div className="w-full overflow-hidden rounded-lg bg-card/50">
-                          <img 
-                            src={orchestrateArchitectureNew} 
-                            alt="AI4I-Orchestrate Architecture" 
-                            className="w-full h-auto object-contain rounded-lg"
-                            loading="eager"
-                            decoding="async"
+                          <PreloadedImage
+                            src={orchestrateArchitectureNew}
+                            alt="AI4I-Orchestrate Architecture"
+                            className="rounded-lg object-contain"
+                            containerClassName="rounded-lg"
+                            aspectRatio="16/9"
                           />
                         </div>
                       </CardContent>
@@ -559,12 +559,12 @@ const BuildingBlocks = () => {
                 <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I-Observe Ensures Quality, Reliability & Governance</h3>
                 <p className="text-muted-foreground mb-6">Complete visibility into AI system health and performance.</p>
                 <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-background to-accent/10 border border-border p-4">
-                  <img 
-                    src={observeInfographic} 
-                    alt="AI4I-Observe: Unified Telemetry & Governance Architecture" 
-                    className="w-full h-auto rounded-xl"
-                    loading="eager"
-                    decoding="async"
+                  <PreloadedImage
+                    src={observeInfographic}
+                    alt="AI4I-Observe: Unified Telemetry & Governance Architecture"
+                    className="rounded-xl"
+                    containerClassName="rounded-xl"
+                    aspectRatio="16/9"
                   />
                 </div>
               </motion.div>
@@ -603,12 +603,12 @@ const BuildingBlocks = () => {
                             Click to expand
                           </div>
                         </div>
-                        <img 
-                          src={observeArchitectureNew} 
-                          alt="AI4I-Observe System Architecture" 
-                          className="w-full h-auto rounded-lg"
-                          loading="eager"
-                          decoding="async"
+                        <PreloadedImage
+                          src={observeArchitectureNew}
+                          alt="AI4I-Observe System Architecture"
+                          className="rounded-lg"
+                          containerClassName="rounded-lg"
+                          aspectRatio="16/9"
                         />
                       </CardContent>
                     </Card>
@@ -786,12 +786,12 @@ const BuildingBlocks = () => {
                             Click to expand
                           </div>
                         </div>
-                        <img 
-                          src={contributeHowItWorks} 
-                          alt="How AI4I-Contribute Works" 
-                          className="w-full h-auto rounded-lg"
-                          loading="eager"
-                          decoding="async"
+                        <PreloadedImage
+                          src={contributeHowItWorks}
+                          alt="How AI4I-Contribute Works"
+                          className="rounded-lg"
+                          containerClassName="rounded-lg"
+                          aspectRatio="16/9"
                         />
                       </CardContent>
                     </Card>
@@ -843,12 +843,12 @@ const BuildingBlocks = () => {
                           </div>
                         </div>
                         <div className="w-full overflow-hidden rounded-lg bg-card/50">
-                          <img 
-                            src={contributeArchitectureNew} 
-                            alt="AI4I-Contribute Architecture" 
-                            className="w-full h-auto object-contain rounded-lg"
-                            loading="eager"
-                            decoding="async"
+                          <PreloadedImage
+                            src={contributeArchitectureNew}
+                            alt="AI4I-Contribute Architecture"
+                            className="rounded-lg object-contain"
+                            containerClassName="rounded-lg"
+                            aspectRatio="16/9"
                           />
                         </div>
                       </CardContent>

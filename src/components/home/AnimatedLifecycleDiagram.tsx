@@ -4,6 +4,7 @@ import { Maximize2, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import aiLifecycleImage from "@/assets/ai-lifecycle-ecosystem.png";
+import { PreloadedImage } from "@/components/ui/preloaded-image";
 
 const AnimatedLifecycleDiagram = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +21,12 @@ const AnimatedLifecycleDiagram = () => {
             className="relative rounded-xl overflow-hidden group cursor-pointer bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
             onClick={() => setIsOpen(true)}
           >
-            {/* Static image with increased contrast */}
-            <img
+            <PreloadedImage
               src={aiLifecycleImage}
               alt="The Continuous AI Lifecycle for Language Ecosystems"
-              className="w-full h-auto object-contain contrast-110 saturate-110"
-              loading="eager"
-              decoding="async"
+              className="contrast-110 saturate-110"
+              containerClassName="w-full"
+              aspectRatio="16/9"
             />
             
             {/* Hover overlay with shadow effect and expand button */}
