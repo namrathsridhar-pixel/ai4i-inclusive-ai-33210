@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, MessageSquare, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const ResourcesCommunity = () => {
   return (
@@ -46,35 +45,14 @@ const ResourcesCommunity = () => {
           >
             <MessageSquare size={18} /> Discuss
           </motion.a>
-        </div>
-
-        {/* CTA Cards */}
-        <div className="flex justify-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-card rounded-xl p-6 shadow-medium border border-border/50 max-w-md w-full"
+          <motion.a
+            href="/join-us"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                <Mail size={20} />
-              </div>
-              <h3 className="font-heading font-bold text-lg">Connect With Us</h3>
-            </div>
-            <p className="text-muted-foreground text-sm mb-4">
-              Be part of the AI4Inclusion movement. Reach out to collaborate, contribute, or explore how you can participate in shaping inclusive Language AI.
-            </p>
-            <Link to="/join-us">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm"
-              >
-                Join Us
-              </motion.button>
-            </Link>
-          </motion.div>
+            <Mail size={18} /> Join Us
+          </motion.a>
         </div>
       </div>
     </section>
