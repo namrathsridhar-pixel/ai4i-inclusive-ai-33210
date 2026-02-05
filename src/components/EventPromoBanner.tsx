@@ -65,14 +65,12 @@
        <DialogContent className="max-w-4xl p-0 border-0 overflow-hidden bg-transparent shadow-2xl">
          <div className="relative w-full">
            {/* Background Image */}
-           <div 
-             className="absolute inset-0 bg-cover bg-center"
-             style={{ backgroundImage: `url(${bannerImage})` }}
-           />
+            {/* Deep gradient background instead of image to avoid text overlap */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#1a3a5c]" />
            
            {/* Gradient Overlay for better text readability */}
-           <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/90 via-[#0a1628]/70 to-transparent" />
-           <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-[#0a1628]/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/10" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent" />
            
            {/* Content */}
            <div className="relative z-10 p-6 md:p-10 min-h-[400px] md:min-h-[480px] flex flex-col justify-between">
@@ -143,7 +141,7 @@
                >
                  {/* Location Info */}
                  <p className="text-xs md:text-sm text-white/50">
-                   New Delhi · 16–20 February 2026 · Booth: A12
+                    New Delhi · 16–20 February 2026 · Booth: TBA
                  </p>
  
                  {/* CTAs */}
