@@ -167,7 +167,7 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
            </div>
              
              {/* Right CTA Column - Center aligned with image */}
-             <div className="flex-1 flex items-center justify-center">
+             <div className="flex-1 flex items-end justify-end pr-8 md:pr-16 pb-6 md:pb-10">
                <motion.div
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
