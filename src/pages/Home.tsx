@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Globe, BarChart3, Users } from "lucide-react";
-import EventBanner from "@/components/home/EventBanner";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
 import MediaStrip from "@/components/home/MediaStrip";
@@ -46,8 +45,7 @@ const featureBlocks = [{
 
 const Home = () => {
   return <div className="min-h-screen relative">
-      {/* Event Announcement Banner */}
-      <EventBanner />
+      
 
       {/* Hero Section */}
       <LanguageNetworkHero />
