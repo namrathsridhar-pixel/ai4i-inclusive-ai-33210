@@ -141,19 +141,9 @@
                 className="flex flex-col sm:flex-row sm:items-center gap-4"
                >
                  {/* Location Info */}
-                 <p className="text-xs md:text-sm text-white/50">
+                 <p className="text-sm md:text-base lg:text-lg text-white/70">
                     New Delhi · 16–20 February 2026 · Booth: TBA
                  </p>
- 
-                 {/* CTAs */}
-                 <div className="flex items-center gap-3">
-                   <Button 
-                     className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm rounded-full px-5 py-2 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all"
-                     onClick={handleClose}
-                   >
-                     Visit the AI4I Booth
-                   </Button>
-                 </div>
                </motion.div>
              </div>
            </div>
