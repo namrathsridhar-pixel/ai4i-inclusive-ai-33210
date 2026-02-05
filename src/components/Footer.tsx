@@ -45,7 +45,7 @@ const Footer = () => {
               <span>LinkedIn</span>
             </a>
             <a
-              href="https://youtube.com"
+              href="https://youtube.com/@coss-y1w?si=YPgbEdt4zCWlwn76"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-[#FF0000] transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
