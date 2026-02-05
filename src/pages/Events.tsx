@@ -1,6 +1,8 @@
  import { motion } from "framer-motion";
  import { Calendar, MapPin, Clock } from "lucide-react";
  import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
  import bannerBg from "@/assets/india-ai-summit-bg.png";
  
 // Cache-busting version - keep in sync with EventPromoBanner
@@ -32,12 +34,15 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
  
  const CountdownUnit = ({ value, label }: { value: number; label: string }) => (
    <div className="flex flex-col items-center">
-     <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 min-w-[50px] text-center">
-       <span className="text-xl md:text-2xl font-bold text-white tabular-nums">
-         {value.toString().padStart(2, "0")}
-       </span>
+    <div className="relative">
+      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 md:px-5 md:py-3 min-w-[60px] md:min-w-[80px] text-center shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+        <span className="text-2xl md:text-4xl font-bold text-white tabular-nums">
+          {value.toString().padStart(2, "0")}
+        </span>
+      </div>
+      <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-primary/20 to-transparent pointer-events-none" />
      </div>
-     <span className="text-xs text-white/60 mt-1 uppercase tracking-wider font-medium">
+    <span className="text-xs md:text-sm text-white/60 mt-2 uppercase tracking-wider font-medium">
        {label}
      </span>
    </div>
@@ -86,54 +91,59 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
              {/* Background Image */}
              <div 
                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${bannerBgUrl})` }}
+              style={{ backgroundImage: `url(${bannerBgUrl})`, backgroundPosition: 'calc(100% + 20px) center' }}
              />
              
              {/* Gradient Overlay */}
-             <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/90 via-[#0a1628]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/90 via-[#0a1628]/50 to-transparent" />
              
              {/* Content */}
-             <div className="relative z-10 p-6 md:p-10 min-h-[350px] md:min-h-[400px] flex flex-col justify-between">
-               {/* Top Content */}
-               <div className="space-y-4 max-w-[60%]">
-                 <span className="inline-block text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-                   Featured Event
-                 </span>
-                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                   AI4Inclusion at India AI Impact Summit 2026
-                 </h2>
-                 <p className="text-sm md:text-base text-white/70 leading-relaxed">
-                   Building inclusive, India-first Language AI infrastructure to power governance, public services, and citizen-scale adoption.
-                 </p>
-               </div>
+            <div className="relative z-10 p-6 md:p-10 min-h-[400px] md:min-h-[480px] flex">
+              {/* Left Content Column */}
+              <div className="flex flex-col justify-between flex-1 max-w-[50%]">
+                {/* Top Content */}
+                <div className="space-y-4 md:space-y-6">
+                  <span className="inline-block text-xs md:text-sm font-semibold tracking-[0.2em] text-primary uppercase">
+                    Featured Event
+                  </span>
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight">
+                    AI4Inclusion at India AI Impact Summit 2026
+                  </h2>
+                  <p className="text-xs md:text-sm lg:text-base text-white/70 leading-relaxed">
+                    Building inclusive, India-first Language AI infrastructure to power governance, public services, and citizen-scale adoption.
+                  </p>
+                </div>
  
-               {/* Bottom Section */}
-               <div className="space-y-6 max-w-[60%]">
-                 {/* Countdown Timer */}
-                 <div className="flex items-center gap-2 md:gap-3">
-                   <CountdownUnit value={timeLeft.days} label="Days" />
-                   <span className="text-xl text-white/40 font-light mt-[-20px]">:</span>
-                   <CountdownUnit value={timeLeft.hours} label="Hours" />
-                   <span className="text-xl text-white/40 font-light mt-[-20px]">:</span>
-                   <CountdownUnit value={timeLeft.minutes} label="Minutes" />
-                 </div>
+                {/* Bottom Section */}
+                <div className="space-y-6 md:space-y-8">
+                  {/* Countdown Timer */}
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <CountdownUnit value={timeLeft.days} label="Days" />
+                    <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
+                    <CountdownUnit value={timeLeft.hours} label="Hours" />
+                    <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
+                    <CountdownUnit value={timeLeft.minutes} label="Minutes" />
+                  </div>
  
-                 {/* Event Details */}
-                 <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm md:text-base text-white/70">
-                   <div className="flex items-center gap-2">
-                     <MapPin size={16} className="text-primary" />
-                     <span>New Delhi</span>
-                   </div>
-                   <div className="flex items-center gap-2">
-                     <Calendar size={16} className="text-primary" />
-                     <span>16–20 February 2026</span>
-                   </div>
-                   <div className="flex items-center gap-2">
-                     <Clock size={16} className="text-primary" />
-                     <span>Booth: TBA</span>
+                  {/* Footer with Location */}
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <p className="text-xs md:text-sm text-white/70">
+                      New Delhi · 16–20 February 2026 · Booth: TBA
+                    </p>
                    </div>
                  </div>
                </div>
+              
+              {/* Right CTA Column - Center aligned with image */}
+              <div className="flex-1 flex items-end justify-center pb-6 md:pb-10">
+                <Link to="/join-us">
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-3 rounded-lg shadow-lg hover:shadow-primary/25 transition-all text-base"
+                  >
+                    Get in Touch
+                  </Button>
+                </Link>
+              </div>
              </div>
            </motion.div>
  
