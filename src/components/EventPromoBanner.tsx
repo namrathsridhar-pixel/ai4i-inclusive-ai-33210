@@ -87,20 +87,20 @@ import summitLogo from "@/assets/india-ai-summit-logo.png";
  
               {/* Summit Logo - Top Right */}
               <motion.div
-               initial={{ opacity: 0, scale: 0.8 }}
-               animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-               className="absolute top-1/2 right-4 md:right-8 lg:right-12 -translate-y-1/2 z-0"
+                className="absolute top-4 right-16 md:top-6 md:right-20"
               >
                 <img 
-                 src={`${summitLogo}?v=2`}
+                  src={summitLogo} 
                   alt="India AI Impact Summit 2026" 
-                 className="h-32 md:h-44 lg:h-56 w-auto object-contain opacity-90 drop-shadow-[0_0_40px_rgba(255,255,255,0.4)]"
+                  className="h-16 md:h-24 lg:h-28 w-auto object-contain rounded-lg shadow-lg"
                 />
               </motion.div>
 
              {/* Top Content */}
-             <div className="space-y-4 md:space-y-6 max-w-xl relative z-10">
+             <div className="space-y-4 md:space-y-6 max-w-xl">
                {/* Event Label */}
                <motion.span 
                  initial={{ opacity: 0, y: -10 }}
