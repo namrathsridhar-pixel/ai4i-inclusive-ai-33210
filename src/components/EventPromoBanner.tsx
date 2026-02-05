@@ -3,10 +3,11 @@
  import { motion, AnimatePresence } from "framer-motion";
  import { Dialog, DialogContent } from "@/components/ui/dialog";
  import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
  import bannerBg from "@/assets/india-ai-summit-bg.png";
  
 // Cache-busting version - increment when updating the background image
-const BANNER_VERSION = "v2";
+const BANNER_VERSION = "v3";
 const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
 
  const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
@@ -116,7 +117,7 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: 0.3 }}
-                 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
+                  className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight"
                >
                  AI4Inclusion at India AI Impact Summit 2026
                </motion.h2>
@@ -159,6 +160,15 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
                  <p className="text-sm md:text-base lg:text-lg text-white/70">
                     New Delhi · 16–20 February 2026 · Booth: TBA
                  </p>
+                  
+                  {/* CTA Button */}
+                  <Link to="/join-us" onClick={handleClose}>
+                    <Button 
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-primary/25 transition-all"
+                    >
+                      Get in Touch
+                    </Button>
+                  </Link>
                </motion.div>
              </div>
            </div>
