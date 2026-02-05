@@ -10,6 +10,7 @@ import SolarSystemVisualization from "@/components/home/SolarSystemVisualization
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
 import OrchestrateSandboxEntry from "@/components/home/OrchestrateSandboxEntry";
+ import EventPromoBanner from "@/components/EventPromoBanner";
 
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
@@ -45,7 +46,8 @@ const featureBlocks = [{
 
 const Home = () => {
   return <div className="min-h-screen relative">
-      
+       {/* Event Promo Banner Modal */}
+       <EventPromoBanner />
 
       {/* Hero Section */}
       <LanguageNetworkHero />
