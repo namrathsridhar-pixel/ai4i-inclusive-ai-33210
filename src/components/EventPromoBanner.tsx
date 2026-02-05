@@ -74,7 +74,7 @@
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/90 via-[#0a1628]/50 to-transparent" />
            
            {/* Content */}
-          <div className="relative z-10 p-6 md:p-10 min-h-[400px] md:min-h-[480px] flex flex-col justify-between max-w-[55%]">
+          <div className="relative z-10 p-6 md:p-10 min-h-[400px] md:min-h-[480px] flex flex-col justify-between">
              {/* Close Button */}
              <button
                onClick={handleClose}
@@ -85,7 +85,7 @@
              </button>
  
              {/* Top Content */}
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-4 md:space-y-6 max-w-[55%]">
                {/* Event Label */}
                <motion.span 
                  initial={{ opacity: 0, y: -10 }}
@@ -118,7 +118,7 @@
              </div>
  
              {/* Bottom Section */}
-             <div className="space-y-6 md:space-y-8">
+            <div className="space-y-6 md:space-y-8 max-w-[55%]">
                {/* Countdown Timer */}
                <motion.div 
                  initial={{ opacity: 0, scale: 0.95 }}
@@ -138,7 +138,7 @@
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: 0.6 }}
-                 className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+                className="flex flex-col sm:flex-row sm:items-center gap-4"
                >
                  {/* Location Info */}
                  <p className="text-xs md:text-sm text-white/50">
