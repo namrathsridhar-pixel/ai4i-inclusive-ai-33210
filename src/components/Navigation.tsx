@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Globe, BarChart3, Users } from "lucide-react";
+import { Menu, X, Globe, BarChart3, Users, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -21,6 +21,7 @@ const Navigation = () => {
   const navLinks = [
     // { name: "Who We Are", path: "/who-we-are" },
     { name: "Building Blocks", path: "/building-blocks" },
+    { name: "Events", path: "/events" },
     // { name: "Blogs", path: "/blogs" },
     { name: "Join Us", path: "/join-us" },
   ];
