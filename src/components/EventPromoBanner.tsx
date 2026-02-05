@@ -83,25 +83,27 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
            {/* Background Image */}
             <div 
                className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                style={{ backgroundImage: `url(${bannerBgUrl})`, backgroundPosition: 'right center' }}
+                 style={{ backgroundImage: `url(${bannerBgUrl})`, backgroundPosition: 'calc(100% + 20px) center' }}
             />
            
            {/* Gradient Overlay for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/90 via-[#0a1628]/50 to-transparent" />
            
            {/* Content */}
-          <div className="relative z-10 p-6 md:p-10 min-h-[400px] md:min-h-[480px] flex flex-col justify-between">
+          <div className="relative z-10 p-6 md:p-10 min-h-[400px] md:min-h-[480px] flex">
+             {/* Left Content Column */}
+             <div className="flex flex-col justify-between flex-1 max-w-[50%]">
              {/* Close Button */}
              <button
                onClick={handleClose}
-               className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10 group"
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10 group z-20"
                aria-label="Close banner"
              >
                <X className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
              </button>
  
              {/* Top Content */}
-            <div className="space-y-4 md:space-y-6 max-w-[55%]">
+             <div className="space-y-4 md:space-y-6">
                {/* Event Label */}
                <motion.span 
                  initial={{ opacity: 0, y: -10 }}
@@ -134,7 +136,7 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
              </div>
  
              {/* Bottom Section */}
-            <div className="space-y-6 md:space-y-8 max-w-[55%]">
+             <div className="space-y-6 md:space-y-8">
                {/* Countdown Timer */}
                <motion.div 
                  initial={{ opacity: 0, scale: 0.95 }}
@@ -160,15 +162,24 @@ const bannerBgUrl = `${bannerBg}?${BANNER_VERSION}`;
                   <p className="text-xs md:text-sm text-white/70">
                     New Delhi · 16–20 February 2026 · Booth: TBA
                  </p>
-                  
-                  {/* CTA Button */}
-                  <Link to="/join-us" onClick={handleClose}>
-                    <Button 
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-primary/25 transition-all"
-                    >
-                      Get in Touch
-                    </Button>
-                  </Link>
+               </motion.div>
+             </div>
+           </div>
+             
+             {/* Right CTA Column - Center aligned with image */}
+             <div className="flex-1 flex items-center justify-center">
+               <motion.div
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ delay: 0.7 }}
+               >
+                 <Link to="/join-us" onClick={handleClose}>
+                   <Button 
+                     className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-3 rounded-lg shadow-lg hover:shadow-primary/25 transition-all text-base"
+                   >
+                     Get in Touch
+                   </Button>
+                 </Link>
                </motion.div>
              </div>
            </div>
