@@ -4,6 +4,7 @@
  import { Dialog, DialogContent } from "@/components/ui/dialog";
  import { Button } from "@/components/ui/button";
  import bannerBg from "@/assets/india-ai-summit-bg.png";
+import summitLogo from "@/assets/india-ai-summit-logo.png";
  
  const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
  
@@ -84,6 +85,20 @@
                <X className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
              </button>
  
+              {/* Summit Logo - Top Right */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="absolute top-4 right-16 md:top-6 md:right-20"
+              >
+                <img 
+                  src={summitLogo} 
+                  alt="India AI Impact Summit 2026" 
+                  className="h-16 md:h-24 lg:h-28 w-auto object-contain rounded-lg shadow-lg"
+                />
+              </motion.div>
+
              {/* Top Content */}
              <div className="space-y-4 md:space-y-6 max-w-xl">
                {/* Event Label */}
