@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, MessageSquare, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ResourcesCommunity = () => {
   return (
@@ -45,14 +46,15 @@ const ResourcesCommunity = () => {
           >
             <MessageSquare size={18} /> Discuss
           </motion.a>
-          <motion.a
-            href="/join-us"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-          >
-            <Mail size={18} /> Join Us
-          </motion.a>
+          <Link to="/join-us">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors cursor-pointer"
+            >
+              <Mail size={18} /> Join Us
+            </motion.div>
+          </Link>
         </div>
       </div>
     </section>
