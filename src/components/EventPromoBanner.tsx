@@ -90,12 +90,12 @@ import summitLogo from "@/assets/india-ai-summit-logo.png";
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="absolute top-4 right-16 md:top-6 md:right-20"
+               className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2"
               >
                 <img 
                   src={summitLogo} 
                   alt="India AI Impact Summit 2026" 
-                  className="h-16 md:h-24 lg:h-28 w-auto object-contain rounded-lg shadow-lg"
+                 className="h-24 md:h-32 lg:h-40 w-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
                 />
               </motion.div>
 
