@@ -14,7 +14,7 @@ const JoinUs = () => {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              Join the AI4Inclusion Community
+              Connect with AI4Inclusion
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Let's collaborate and co-create the future of inclusive Language AI. Explore, connect, and grow with us. 
