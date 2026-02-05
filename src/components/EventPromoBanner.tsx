@@ -85,18 +85,22 @@ import summitLogo from "@/assets/india-ai-summit-logo.png";
                <X className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
              </button>
  
-              {/* Summit Logo - Top Right */}
+              {/* Summit Logo - Centered above cyclone graphic on right */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="absolute top-4 right-16 md:top-6 md:right-20"
+                className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-[65%] z-10"
               >
-                <img 
-                  src={summitLogo} 
-                  alt="India AI Impact Summit 2026" 
-                  className="h-16 md:h-24 lg:h-28 w-auto object-contain rounded-lg shadow-lg"
-                />
+                <div className="relative">
+                  {/* Soft glow effect behind the logo */}
+                  <div className="absolute inset-0 bg-primary/20 blur-xl rounded-2xl scale-110" />
+                  <img 
+                    src={summitLogo} 
+                    alt="India AI Impact Summit 2026" 
+                    className="relative h-20 md:h-28 lg:h-36 w-auto object-contain rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.3),0_0_60px_rgba(255,255,255,0.1)]"
+                  />
+                </div>
               </motion.div>
 
              {/* Top Content */}
