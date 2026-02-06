@@ -5,7 +5,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import summitHeader from "@/assets/india-ai-summit-header.png";
-import summitBg from "@/assets/india-ai-summit-bg.png";
 
 const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
 
@@ -88,33 +87,19 @@ const EventPromoBanner = () => {
 
           {/* Content */}
           <div className="relative z-10 p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8">
-            {/* Left Column - Logo, Cyclone, Countdown, CTA */}
-            <div className="flex flex-col items-center justify-between md:w-[45%] space-y-5 pt-4">
+            {/* Left Column - Logo, Countdown, CTA */}
+            <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
               {/* Summit Header Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="w-[85%]"
+                className="w-full"
               >
                 <img 
                   src={summitHeader} 
                   alt="India AI Impact Summit 2026" 
                   className="w-full h-auto rounded-lg"
-                />
-              </motion.div>
-
-              {/* Cyclone Graphic */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-                className="w-[120px] md:w-[150px]"
-              >
-                <img 
-                  src={summitBg} 
-                  alt="" 
-                  className="w-full h-auto opacity-80"
                 />
               </motion.div>
 
@@ -150,6 +135,16 @@ const EventPromoBanner = () => {
 
             {/* Right Column - Title and Text */}
             <div className="flex flex-col justify-center md:w-[55%] space-y-4 md:space-y-6">
+              {/* Event Label */}
+              <motion.span 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-block text-xs md:text-sm font-semibold tracking-[0.2em] text-primary uppercase"
+              >
+                Featured Event
+              </motion.span>
+
               {/* Main Headline */}
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}

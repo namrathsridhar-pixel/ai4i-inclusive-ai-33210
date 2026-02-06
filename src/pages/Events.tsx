@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import summitHeader from "@/assets/india-ai-summit-header.png";
-import summitBg from "@/assets/india-ai-summit-bg.png";
 
 const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
 
@@ -86,23 +85,14 @@ const Events = () => {
           >
             {/* Content */}
             <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row gap-8">
-              {/* Left Column - Logo, Cyclone, Countdown, CTA */}
-              <div className="flex flex-col items-center justify-between md:w-[45%] space-y-5 pt-4">
+              {/* Left Column - Logo, Countdown, CTA */}
+              <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
                 {/* Summit Header Image */}
-                <div className="w-[85%]">
+                <div className="w-full">
                   <img 
                     src={summitHeader} 
                     alt="India AI Impact Summit 2026" 
                     className="w-full h-auto rounded-lg"
-                  />
-                </div>
-
-                {/* Cyclone Graphic */}
-                <div className="w-[140px] md:w-[170px]">
-                  <img 
-                    src={summitBg} 
-                    alt="" 
-                    className="w-full h-auto opacity-80"
                   />
                 </div>
 
@@ -127,6 +117,11 @@ const Events = () => {
 
               {/* Right Column - Title and Text */}
               <div className="flex flex-col justify-center md:w-[55%] space-y-4 md:space-y-6">
+                {/* Event Label */}
+                <span className="inline-block text-xs md:text-sm font-semibold tracking-[0.2em] text-primary uppercase">
+                  Featured Event
+                </span>
+
                 {/* Main Headline */}
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight">
                   AI4Inclusion at India AI Impact Summit 2026
