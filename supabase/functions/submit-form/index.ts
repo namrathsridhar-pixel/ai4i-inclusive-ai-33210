@@ -41,7 +41,7 @@ Deno.serve(async (req) => {
 
     console.log('Submitting form to external API:', { name, email, organization });
 
-    const response = await fetch('https://15.206.109.217:8000/api/submit-form', {
+    const response = await fetch('http://15.206.109.217:8000/api/submit-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
