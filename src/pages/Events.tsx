@@ -87,8 +87,11 @@ const Events = () => {
             <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row gap-8">
               {/* Left Column - Logo, Countdown, CTA */}
               <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
-                {/* Summit Header Image */}
-                <div className="w-full">
+                {/* Join Us At + Summit Header Image */}
+                <div className="w-full space-y-3">
+                  <p className="text-sm md:text-base text-white/70 leading-relaxed text-center">
+                    Join us at
+                  </p>
                   <img 
                     src={summitHeader} 
                     alt="India AI Impact Summit 2026" 
