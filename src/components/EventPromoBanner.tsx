@@ -96,8 +96,8 @@ const EventPromoBanner = () => {
                 transition={{ delay: 0.2 }}
                 className="w-full space-y-3"
               >
-                <p className="text-sm md:text-base text-white/70 leading-relaxed text-center">
-                  Join us at
+                <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left">
+                  JOIN US AT
                 </p>
                 <img 
                   src={summitHeader} 
@@ -149,14 +149,14 @@ const EventPromoBanner = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6"
+                className="flex items-center gap-6 flex-nowrap"
               >
-                <p className="text-sm md:text-base text-white/60 font-medium">
+                <p className="text-sm md:text-base text-white/60 font-medium whitespace-nowrap">
                   New Delhi · 16–20 February 2026 · Booth: TBA
                 </p>
                 <Link to="/join-us" onClick={handleClose}>
                   <button 
-                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300"
+                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
                   >
                     Get in Touch
                   </button>
