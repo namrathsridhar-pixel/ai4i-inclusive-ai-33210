@@ -123,7 +123,7 @@ const Events = () => {
                 </p>
 
                 {/* Location Info + CTA Row */}
-                <div className="flex items-center gap-6 flex-nowrap">
+                <div className="flex items-center gap-4 flex-nowrap">
                   <p className="text-sm md:text-base text-white/60 font-medium whitespace-nowrap">
                     New Delhi · 16–20 February 2026 · Booth: TBA
                   </p>
