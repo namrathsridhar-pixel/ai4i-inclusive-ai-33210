@@ -14,7 +14,7 @@ const JoinUs = () => {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              Connect with AI4Inclusion
+              Connect with AI4Inclusion Team
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Let's collaborate and co-create the future of inclusive Language AI. Explore, connect, and grow with us. 
@@ -30,14 +30,16 @@ const JoinUs = () => {
             className="w-full rounded-xl overflow-hidden border border-border/30 bg-card/50"
           >
             {/* Hero Image */}
-            <img 
-              src={joinUsHeroImage}
-              alt="AI4Inclusion Community - Multilingual Language Technology"
-              className="w-full h-auto object-cover"
-              loading="eager"
-              decoding="async"
-              style={{ imageRendering: 'crisp-edges' }}
-            />
+            <div className="px-4 md:px-8 pt-6">
+              <img 
+                src={joinUsHeroImage}
+                alt="AI4Inclusion Community - Multilingual Language Technology"
+                className="w-full h-auto object-cover rounded-lg max-h-[300px] md:max-h-[400px]"
+                loading="eager"
+                decoding="async"
+                style={{ imageRendering: 'crisp-edges' }}
+              />
+            </div>
             
             {/* Form Container */}
             <div className="px-4 md:px-8 py-8 bg-background/80 backdrop-blur-sm">
