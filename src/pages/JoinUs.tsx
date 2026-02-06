@@ -19,10 +19,10 @@ import {
 } from "@/components/ui/form";
 
 const formSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  name: z.string().trim().max(100, "Name must be less than 100 characters").optional().or(z.literal("")),
   email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
-  organization: z.string().trim().max(200, "Organization must be less than 200 characters").optional().or(z.literal("")),
-  specific_question: z.string().trim().min(1, "Please enter your message or question").max(2000, "Message must be less than 2000 characters"),
+  organization: z.string().trim().max(200, "Organization / Institution Name must be less than 200 characters").optional().or(z.literal("")),
+  specific_question: z.string().trim().max(2000, "Message must be less than 2000 characters").optional().or(z.literal("")),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -150,13 +150,13 @@ const JoinUs = () => {
                   <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-foreground">
                     Get In Touch
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3">
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3 underline">
                     Thank you for your interest in AI4Inclusion — a Digital Public Good advancing inclusive language AI for the world.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3">
                     We empower nations, organizations, and communities to build and adopt AI software as digital public goods. Together, we can foster equitable, transparent, and citizen-driven AI language ecosystems that bridge linguistic divides.
                   </p>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base underline">
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                     Please share your details so our team can connect with you regarding partnerships, adoption, contributions, or volunteering opportunities.
                   </p>
                 </div>
@@ -168,7 +168,7 @@ const JoinUs = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-foreground font-medium">
-                            Name <span className="text-destructive">*</span>
+                            Name
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -209,11 +209,11 @@ const JoinUs = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-foreground font-medium">
-                            Organization
+                            Organization / Institution Name
                           </FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Enter your organization (optional)"
+                              placeholder="Enter your organization / institution name"
                               className="bg-background border-border"
                               {...field}
                             />
@@ -229,7 +229,7 @@ const JoinUs = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-foreground font-medium">
-                            Your Message / Question <span className="text-destructive">*</span>
+                            Is there anything specific you'd like to know or discuss about AI4Inclusion?
                           </FormLabel>
                           <FormControl>
                             <Textarea
