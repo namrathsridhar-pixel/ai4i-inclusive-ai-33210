@@ -19,10 +19,10 @@ import {
 } from "@/components/ui/form";
 
 const formSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  name: z.string().trim().max(100, "Name must be less than 100 characters").optional().or(z.literal("")),
   organization: z.string().trim().max(200, "Organization must be less than 200 characters").optional().or(z.literal("")),
-  specific_question: z.string().trim().min(1, "Please enter your message or question").max(2000, "Message must be less than 2000 characters"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  specific_question: z.string().trim().max(2000, "Message must be less than 2000 characters").optional().or(z.literal("")),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -36,8 +36,8 @@ const JoinUs = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
       organization: "",
+      email: "",
       specific_question: "",
     },
   });
@@ -92,12 +92,19 @@ const JoinUs = () => {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 bg-gradient-to-r from-[#c0c0c0] via-[#e8e8e8] to-[#a8b4c4] bg-clip-text text-transparent">
-              Connect with AI4Inclusion Team
+              Get In Touch
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Let's collaborate and co-create the future of inclusive Language AI. Explore, connect, and grow with us. 
-              Become a member today and join our exciting community working towards digital inclusion for all languages.
-            </p>
+            <div className="max-w-3xl mx-auto space-y-4">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                Thank you for your interest in AI4Inclusion — a Digital Public Good advancing inclusive language AI for the world.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                We empower nations, organizations, and communities to build and adopt AI software as digital public goods. Together, we can foster equitable, transparent, and citizen-driven AI language ecosystems that bridge linguistic and accessibility divides.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                Please share your details so our team can connect with you regarding partnerships, adoption, contributions, or volunteering opportunities.
+              </p>
+            </div>
           </motion.div>
 
           {/* Hero Image with Form */}
@@ -153,7 +160,7 @@ const JoinUs = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-foreground font-medium">
-                            Name <span className="text-destructive">*</span>
+                            Name
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -169,11 +176,31 @@ const JoinUs = () => {
 
                     <FormField
                       control={form.control}
+                      name="organization"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-foreground font-medium">
+                            Organization / Institution Name
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter your organization or institution name"
+                              className="bg-background border-border"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
                       name="email"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-foreground font-medium">
-                            Email <span className="text-destructive">*</span>
+                            Email Address <span className="text-destructive">*</span>
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -190,35 +217,15 @@ const JoinUs = () => {
 
                     <FormField
                       control={form.control}
-                      name="organization"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground font-medium">
-                            Organization
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Enter your organization (optional)"
-                              className="bg-background border-border"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
                       name="specific_question"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-foreground font-medium">
-                            Your Message / Question <span className="text-destructive">*</span>
+                            Is there anything specific you'd like to know or discuss about AI4Inclusion?
                           </FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Tell us how you'd like to collaborate or ask any questions about AI4Inclusion..."
+                              placeholder="Share your thoughts, questions, or how you'd like to collaborate..."
                               className="bg-background border-border min-h-[120px] resize-y"
                               {...field}
                             />
