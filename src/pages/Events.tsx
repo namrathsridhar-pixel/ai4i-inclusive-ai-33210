@@ -89,8 +89,8 @@ const Events = () => {
               <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
                 {/* Join Us At + Summit Header Image */}
                 <div className="w-full space-y-3">
-                  <p className="text-sm md:text-base text-white/70 leading-relaxed text-center">
-                    Join us at
+                  <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left">
+                    JOIN US AT
                   </p>
                   <img 
                     src={summitHeader} 
@@ -123,13 +123,13 @@ const Events = () => {
                 </p>
 
                 {/* Location Info + CTA Row */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
-                  <p className="text-sm md:text-base text-white/60 font-medium">
+                <div className="flex items-center gap-6 flex-nowrap">
+                  <p className="text-sm md:text-base text-white/60 font-medium whitespace-nowrap">
                     New Delhi · 16–20 February 2026 · Booth: TBA
                   </p>
                   <Link to="/join-us">
                     <button 
-                      className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300"
+                      className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
                     >
                       Get in Touch
                     </button>
