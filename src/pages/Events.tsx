@@ -89,7 +89,7 @@ const Events = () => {
               <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
                 {/* Join Us At + Summit Header Image */}
                 <div className="w-full space-y-3">
-                  <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left">
+                  <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left -mt-1">
                     JOIN US AT
                   </p>
                   <img 

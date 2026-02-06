@@ -96,7 +96,7 @@ const EventPromoBanner = () => {
                 transition={{ delay: 0.2 }}
                 className="w-full space-y-3"
               >
-                <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left">
+                <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left -mt-1">
                   JOIN US AT
                 </p>
                 <img 
