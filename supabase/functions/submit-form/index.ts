@@ -23,9 +23,9 @@ Deno.serve(async (req) => {
     const { name, email, organization, specific_question } = body;
 
     // Validate required fields
-    if (!email) {
+    if (!name || !email || !specific_question) {
       return new Response(
-        JSON.stringify({ error: 'Email is a required field' }),
+        JSON.stringify({ error: 'Name, email, and question are required fields' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -47,10 +47,10 @@ Deno.serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: name || '',
+        name,
         email,
         organization: organization || '',
-        specific_question: specific_question || '',
+        specific_question,
       }),
     });
 
