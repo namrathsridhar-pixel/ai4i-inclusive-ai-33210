@@ -113,7 +113,7 @@ const Events = () => {
               {/* Right Column - Title and Text */}
               <div className="flex flex-col justify-center md:w-[55%] space-y-4 md:space-y-6">
                 {/* Main Headline */}
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight">
+                <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight">
                   AI4Inclusion at India AI Impact Summit 2026
                 </h2>
 

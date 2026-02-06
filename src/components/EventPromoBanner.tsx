@@ -129,7 +129,7 @@ const EventPromoBanner = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight"
+                className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight"
               >
                 AI4Inclusion at India AI Impact Summit 2026
               </motion.h2>
