@@ -117,34 +117,10 @@ const EventPromoBanner = () => {
                 <CountdownUnit value={timeLeft.minutes} label="Mins" />
               </motion.div>
 
-              {/* CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                <Link to="/join-us" onClick={handleClose}>
-                  <Button 
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-3 rounded-lg shadow-lg hover:shadow-primary/25 transition-all text-base"
-                  >
-                    Get in Touch
-                  </Button>
-                </Link>
-              </motion.div>
             </div>
 
             {/* Right Column - Title and Text */}
             <div className="flex flex-col justify-center md:w-[55%] space-y-4 md:space-y-6">
-              {/* Event Label */}
-              <motion.span 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-block text-xs md:text-sm font-semibold tracking-[0.2em] text-primary uppercase"
-              >
-                Featured Event
-              </motion.span>
-
               {/* Main Headline */}
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
@@ -165,15 +141,24 @@ const EventPromoBanner = () => {
                 Building inclusive, India-first Language AI infrastructure to power governance, public services, and citizen-scale adoption.
               </motion.p>
 
-              {/* Location Info */}
-              <motion.p 
+              {/* Location Info + CTA Row */}
+              <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-xs md:text-sm text-white/50"
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6"
               >
-                New Delhi · 16–20 February 2026 · Booth: TBA
-              </motion.p>
+                <p className="text-sm md:text-base text-white/60 font-medium">
+                  New Delhi · 16–20 February 2026 · Booth: TBA
+                </p>
+                <Link to="/join-us" onClick={handleClose}>
+                  <button 
+                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300"
+                  >
+                    Get in Touch
+                  </button>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>
