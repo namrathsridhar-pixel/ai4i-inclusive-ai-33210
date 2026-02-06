@@ -13,7 +13,7 @@ const JoinUs = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 bg-gradient-to-r from-[#c0c0c0] via-[#e8e8e8] to-[#a8b4c4] bg-clip-text text-transparent">
               Connect with AI4Inclusion Team
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
