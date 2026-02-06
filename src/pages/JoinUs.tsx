@@ -30,7 +30,7 @@ const JoinUs = () => {
             className="w-full rounded-xl overflow-hidden border border-border/30 bg-card/50"
           >
             {/* Hero Image */}
-            <div className="px-4 md:px-8 pt-6">
+            <div className="px-2 md:px-3 pt-4">
               <img 
                 src={joinUsHeroImage}
                 alt="AI4Inclusion Community - Multilingual Language Technology"
@@ -42,7 +42,7 @@ const JoinUs = () => {
             </div>
             
             {/* Form Container */}
-            <div className="px-4 md:px-8 py-8 bg-background/80 backdrop-blur-sm">
+            <div className="px-2 md:px-3 py-6 bg-background/80 backdrop-blur-sm">
               <iframe
                 src="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform?embedded=true"
                 width="100%"
