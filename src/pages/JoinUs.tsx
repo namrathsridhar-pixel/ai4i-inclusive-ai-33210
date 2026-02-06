@@ -150,9 +150,14 @@ const JoinUs = () => {
                   <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-foreground">
                     Get In Touch
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3">
                     Thank you for your interest in AI4Inclusion — a Digital Public Good advancing inclusive language AI for the world.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3">
                     We empower nations, organizations, and communities to build and adopt AI software as digital public goods. Together, we can foster equitable, transparent, and citizen-driven AI language ecosystems that bridge linguistic divides.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base underline">
+                    Please share your details so our team can connect with you regarding partnerships, adoption, contributions, or volunteering opportunities.
                   </p>
                 </div>
                 <Form {...form}>
