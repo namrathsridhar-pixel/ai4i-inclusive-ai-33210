@@ -145,6 +145,16 @@ const JoinUs = () => {
                   </Button>
                 </motion.div>
               ) : (
+              <>
+                <div className="max-w-2xl mx-auto mb-8">
+                  <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-foreground">
+                    Get In Touch
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                    Thank you for your interest in AI4Inclusion — a Digital Public Good advancing inclusive language AI for the world.
+                    We empower nations, organizations, and communities to build and adopt AI software as digital public goods. Together, we can foster equitable, transparent, and citizen-driven AI language ecosystems that bridge linguistic divides.
+                  </p>
+                </div>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto">
                     <FormField
@@ -248,6 +258,7 @@ const JoinUs = () => {
                     </Button>
                   </form>
                 </Form>
+              </>
               )}
             </div>
           </motion.div>
