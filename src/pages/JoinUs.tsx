@@ -1,7 +1,85 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Send, Loader2, CheckCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import joinUsHeroImage from "@/assets/join-us-hero.png";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+const formSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  organization: z.string().trim().max(200, "Organization must be less than 200 characters").optional().or(z.literal("")),
+  specific_question: z.string().trim().min(1, "Please enter your message or question").max(2000, "Message must be less than 2000 characters"),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const JoinUs = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      organization: "",
+      specific_question: "",
+    },
+  });
+
+  const onSubmit = async (values: FormValues) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-form`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          },
+          body: JSON.stringify(values),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      setIsSubmitted(true);
+      toast({
+        title: "Form submitted successfully!",
+        description: "Thank you for reaching out. We'll get back to you soon.",
+      });
+    } catch (error: any) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Submission failed",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -22,7 +100,7 @@ const JoinUs = () => {
             </p>
           </motion.div>
 
-          {/* Hero Image with Embedded Form */}
+          {/* Hero Image with Form */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,32 +120,135 @@ const JoinUs = () => {
             </div>
             
             {/* Form Container */}
-            <div className="px-2 md:px-3 py-6 bg-background/80 backdrop-blur-sm">
-              <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform?embedded=true"
-                width="100%"
-                height="1200"
-                frameBorder="0"
-                marginHeight={0}
-                marginWidth={0}
-                title="AI4Inclusion Join Us Form"
-                className="w-full rounded-lg"
-              >
-                Loading form...
-              </iframe>
-              
-              <p className="text-sm text-muted-foreground text-center mt-6">
-                If the form doesn't load, you can{" "}
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLScgLYfErsLxkxrZ_iABcX5KKGTf8eDAOY0405u4uz_ww0TRtQ/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline font-medium"
+            <div className="px-4 md:px-8 lg:px-16 py-8 bg-background/80 backdrop-blur-sm">
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-16"
                 >
-                  open it in a new tab
-                </a>
-                .
-              </p>
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
+                  <h2 className="text-2xl font-heading font-bold mb-3 text-foreground">
+                    Thank You!
+                  </h2>
+                  <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                    Your message has been submitted successfully. Our team will get back to you soon.
+                  </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      form.reset();
+                    }}
+                  >
+                    Submit Another Response
+                  </Button>
+                </motion.div>
+              ) : (
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-foreground font-medium">
+                            Name <span className="text-destructive">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter your full name"
+                              className="bg-background border-border"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-foreground font-medium">
+                            Email <span className="text-destructive">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="Enter your email address"
+                              className="bg-background border-border"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="organization"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-foreground font-medium">
+                            Organization
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter your organization (optional)"
+                              className="bg-background border-border"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="specific_question"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-foreground font-medium">
+                            Your Message / Question <span className="text-destructive">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Tell us how you'd like to collaborate or ask any questions about AI4Inclusion..."
+                              className="bg-background border-border min-h-[120px] resize-y"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <Button
+                      type="submit"
+                      className="w-full button-glow"
+                      size="lg"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-5 w-5" />
+                          Submit
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </Form>
+              )}
             </div>
           </motion.div>
         </div>
