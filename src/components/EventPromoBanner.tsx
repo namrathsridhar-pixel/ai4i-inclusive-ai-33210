@@ -86,16 +86,19 @@ const EventPromoBanner = () => {
           </button>
 
           {/* Content */}
-          <div className="relative z-10 p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8">
+          <div className="relative z-10 p-8 md:p-10 flex flex-col md:flex-row gap-6 md:gap-8">
             {/* Left Column - Logo, Countdown, CTA */}
             <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
-              {/* Summit Header Image */}
+              {/* Join Us At + Summit Header Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="w-full"
+                className="w-full space-y-3"
               >
+                <p className="text-sm md:text-base text-white/70 leading-relaxed text-center">
+                  Join us at
+                </p>
                 <img 
                   src={summitHeader} 
                   alt="India AI Impact Summit 2026" 
