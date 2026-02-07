@@ -156,8 +156,8 @@ const JoinUs = () => {
                   <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-3">
                     We empower nations, organizations, and communities to build and adopt AI software as digital public goods. Together, we can foster equitable, transparent, and citizen-driven AI language ecosystems that bridge linguistic divides.
                   </p>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                    We're eager to connect with you if you're looking to collaborate, adopt, contribute, or volunteer with AI4I.
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base underline">
+                    We're eager to connect with you if you're looking for partnerships, adoption, contributions, or volunteering opportunities.
                   </p>
                 </div>
                 <Form {...form}>
