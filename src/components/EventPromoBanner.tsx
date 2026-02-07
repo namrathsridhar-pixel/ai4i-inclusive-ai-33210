@@ -79,7 +79,7 @@ const EventPromoBanner = () => {
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10 group z-20"
+            className="absolute top-2 right-2 p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10 group z-20"
             aria-label="Close banner"
           >
             <X className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
