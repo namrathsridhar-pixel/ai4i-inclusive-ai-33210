@@ -117,6 +117,15 @@ const Events = () => {
                   AI4Inclusion at India AI Impact Summit 2026
                 </h2>
 
+                {/* CTA Button - centered in text section */}
+                <Link to="/get-in-touch">
+                  <button 
+                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                  >
+                    Get in Touch
+                  </button>
+                </Link>
+
                 {/* Supporting Text */}
                 <p className="text-sm md:text-base text-white/70 leading-relaxed">
                   Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
@@ -127,17 +136,8 @@ const Events = () => {
                   New Delhi · 16–20 February 2026
                 </p>
                 <p className="text-sm md:text-base text-white/60 font-medium">
-                  People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
+                  Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
                 </p>
-
-                {/* CTA Button - aligned with title */}
-                <Link to="/get-in-touch">
-                  <button 
-                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
-                  >
-                    Get in Touch
-                  </button>
-                </Link>
               </div>
             </div>
           </motion.div>

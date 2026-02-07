@@ -133,6 +133,21 @@ const EventPromoBanner = () => {
                 AI4Inclusion at India AI Impact Summit 2026
               </motion.h2>
 
+              {/* CTA Button - centered in text section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+              >
+                <Link to="/get-in-touch" onClick={handleClose}>
+                  <button 
+                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                  >
+                    Get in Touch
+                  </button>
+                </Link>
+              </motion.div>
+
               {/* Supporting Text */}
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -153,23 +168,8 @@ const EventPromoBanner = () => {
                   New Delhi · 16–20 February 2026
                 </p>
                 <p className="text-xs md:text-sm text-white/60 font-medium mt-1">
-                  People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
+                  Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
                 </p>
-              </motion.div>
-
-              {/* CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55 }}
-              >
-                <Link to="/get-in-touch" onClick={handleClose}>
-                  <button 
-                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
-                  >
-                    Get in Touch
-                  </button>
-                </Link>
               </motion.div>
             </div>
           </div>
