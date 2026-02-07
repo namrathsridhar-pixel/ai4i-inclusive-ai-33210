@@ -99,22 +99,13 @@ const Events = () => {
                   />
                 </div>
 
-                {/* Countdown Timer + CTA in same row */}
-                <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap">
-                  <div className="flex items-center gap-3 md:gap-4">
-                    <CountdownUnit value={timeLeft.days} label="Days" />
-                    <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
-                    <CountdownUnit value={timeLeft.hours} label="Hours" />
-                    <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
-                    <CountdownUnit value={timeLeft.minutes} label="Minutes" />
-                  </div>
-                  <Link to="/get-in-touch">
-                    <button 
-                      className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
-                    >
-                      Get in Touch
-                    </button>
-                  </Link>
+                {/* Countdown Timer - centered under image */}
+                <div className="flex items-center justify-center gap-3 md:gap-4">
+                  <CountdownUnit value={timeLeft.days} label="Days" />
+                  <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
+                  <CountdownUnit value={timeLeft.hours} label="Hours" />
+                  <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
+                  <CountdownUnit value={timeLeft.minutes} label="Minutes" />
                 </div>
 
             </div>
@@ -140,6 +131,15 @@ const Events = () => {
                     Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
                   </p>
                 </div>
+
+                {/* CTA Button - centered below location */}
+                <Link to="/get-in-touch">
+                  <button 
+                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                  >
+                    Get in Touch
+                  </button>
+                </Link>
               </div>
             </div>
           </motion.div>
