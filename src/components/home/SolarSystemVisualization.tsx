@@ -196,11 +196,9 @@ const SolarSystemVisualization = () => {
             top: `calc(50% - ${radius}px)`,
             border: i === 0 ? '1px solid rgba(255,255,255,0.1)' : '1px dashed rgba(255,255,255,0.15)'
           }} initial={{
-            opacity: 0,
-            scale: 0.8
+            opacity: 0
           }} whileInView={{
-            opacity: 1,
-            scale: 1
+            opacity: 1
           }} viewport={{
             once: true
           }} transition={{

@@ -38,7 +38,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/events": "Events – AI4Inclusion",
   "/adopters": "Adopters – AI4Inclusion",
   "/get-involved": "Get Involved – AI4Inclusion",
-  "/join-us": "Get in Touch – AI4Inclusion",
+  "/get-in-touch": "Get in Touch – AI4Inclusion",
   "/contact": "Contact – AI4Inclusion",
   "/blogs": "Blogs – AI4Inclusion",
   "/privacy": "Privacy Policy – AI4Inclusion",
@@ -85,7 +85,7 @@ const AppContent = () => {
           <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
           <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
           <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
-          <Route path="/join-us" element={<PageTransition><JoinUs /></PageTransition>} />
+          <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
           <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
           <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />

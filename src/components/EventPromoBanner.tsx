@@ -159,7 +159,7 @@ const EventPromoBanner = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55 }}
               >
-                <Link to="/join-us" onClick={handleClose}>
+                <Link to="/get-in-touch" onClick={handleClose}>
                   <button 
                     className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
                   >

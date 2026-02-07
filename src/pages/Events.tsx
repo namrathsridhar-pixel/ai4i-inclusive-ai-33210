@@ -127,7 +127,7 @@ const Events = () => {
                   <p className="text-sm md:text-base text-white/60 font-medium whitespace-nowrap">
                     New Delhi · 16–20 February 2026 · Booth: TBA
                   </p>
-                  <Link to="/join-us">
+                  <Link to="/get-in-touch">
                     <button 
                       className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
                     >

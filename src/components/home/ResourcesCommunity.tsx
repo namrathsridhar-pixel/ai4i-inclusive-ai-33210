@@ -46,7 +46,7 @@ const ResourcesCommunity = () => {
           >
             <MessageSquare size={18} /> Discuss
           </motion.a>
-          <Link to="/join-us">
+          <Link to="/get-in-touch">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
