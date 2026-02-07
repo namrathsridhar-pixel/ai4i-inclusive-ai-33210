@@ -38,7 +38,7 @@ const Privacy = () => {
                   a. No personal information or personally identifiable information of the User nor sensitive personal information of the User is collected by us unless you choose to provide us with your information such as your name, email address, GitHub user credentials, or any other details you provide by:
                 </p>
                 <ul className="list-none pl-8 text-muted-foreground mb-4 space-y-2">
-                  <li>i. emailing us at <a href="mailto:info@coss.org.in" className="text-primary hover:underline">info@coss.org.in</a>,</li>
+                  <li>i. emailing us at <a href="mailto:info@ai4inclusion.org" className="text-primary hover:underline">info@ai4inclusion.org</a>,</li>
                   <li>ii. contacting us via the form on the Website,</li>
                   <li>iii. registering for our events, and/or</li>
                   <li>iv. engaging with the AI4I community through the use of your GitHub, Discord or Slack account.</li>
@@ -79,7 +79,7 @@ const Privacy = () => {
               <div>
                 <h2 className="text-2xl font-heading font-bold mb-4">7. ACCESS TO USER INFORMATION</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  a. If you want to change, alter or otherwise modify or update your information, at any time, please contact us at <a href="mailto:info@coss.org.in" className="text-primary hover:underline">info@coss.org.in</a>.
+                  a. If you want to change, alter or otherwise modify or update your information, at any time, please contact us at <a href="mailto:info@ai4inclusion.org" className="text-primary hover:underline">info@ai4inclusion.org</a>.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   b. Do note that COSS reserves the rights to save any non-personal, device information and usage information (if any) and you are not entitled to seek the deletion of the same.
@@ -131,7 +131,7 @@ const Privacy = () => {
               <div>
                 <h2 className="text-2xl font-heading font-bold mb-4">11. COMPLAINTS</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  We take our responsibility towards ensuring the privacy and security of your information very seriously. If you have any concerns or questions regarding this Privacy Policy, feel free to contact us at <a href="mailto:info@coss.org.in" className="text-primary hover:underline">info@coss.org.in</a>.
+                  We take our responsibility towards ensuring the privacy and security of your information very seriously. If you have any concerns or questions regarding this Privacy Policy, feel free to contact us at <a href="mailto:info@ai4inclusion.org" className="text-primary hover:underline">info@ai4inclusion.org</a>.
                 </p>
               </div>
             </div>
