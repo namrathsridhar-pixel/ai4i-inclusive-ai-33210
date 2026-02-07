@@ -20,7 +20,7 @@ const Terms = () => {
               <p className="text-muted-foreground">
                 This website{" "}
                 <a href="https://ai4inclusion.org/" className="text-primary hover:underline">https://ai4inclusion.org</a>{" "}
-                ("Website") has been developed and is being maintained by COSS ("COSS").
+                ("Website") has been developed and is being maintained by Center for Open Societal Systems ("COSS").
               </p>
 
               <p className="text-muted-foreground">This Website provides information related to AI4Inclusion (“AI4I”), an initiative enabling nations to build sovereign Language AI Digital Public Infrastructure. The Website invites users to explore how AI4I helps countries collect and curate citizen-sourced datasets, and deliver native language AI models through open, interoperable building blocks — unlocking true digital inclusion, where every citizen can access digital services and participate in their own spoken language (“Purpose”).</p>
@@ -93,8 +93,8 @@ const Terms = () => {
 
               <p className="text-muted-foreground">
                 <strong>b.</strong> You agree to abide by all licenses and copyright notices accompanying any Asset published on the Website. Any Asset (other than software code) you contribute to AI4I or the Website is licensed under the Creative Commons Attribution-ShareAlike 4.0 International - CC BY-SA License. You can share and adapt the licensed Assets under the terms of the same license, provided you cite the creator as COSS or another party if the creator is not COSS, include a link to the original publication on the Website with copyright notice, license notice and disclaimer notice, and indicate if changes were made. You may do so in any reasonable manner, but not in any way which suggests that COSS (or the creator as the case may be) endorses you or your Use. For any assistance with contributing to AI4I or the Website or understanding any license, please contact us at{" "}
-                <a href="mailto:info@coss.org.in" className="text-primary hover:underline">
-                  info@coss.org.in
+                <a href="mailto:info@ai4inclusion.org" className="text-primary hover:underline">
+                  info@ai4inclusion.org
                 </a>
               </p>
 
