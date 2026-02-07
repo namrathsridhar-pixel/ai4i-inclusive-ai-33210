@@ -111,20 +111,11 @@ const Events = () => {
             </div>
 
               {/* Right Column - Title and Text */}
-              <div className="flex flex-col justify-center md:w-[55%] space-y-4 md:space-y-6">
+              <div className="flex flex-col justify-center items-center md:w-[55%] space-y-4 md:space-y-6 text-center">
                 {/* Main Headline */}
                 <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight">
                   AI4Inclusion at India AI Impact Summit 2026
                 </h2>
-
-                {/* CTA Button - centered in text section */}
-                <Link to="/get-in-touch">
-                  <button 
-                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
-                  >
-                    Get in Touch
-                  </button>
-                </Link>
 
                 {/* Supporting Text */}
                 <p className="text-sm md:text-base text-white/70 leading-relaxed">
@@ -138,6 +129,15 @@ const Events = () => {
                 <p className="text-sm md:text-base text-white/60 font-medium">
                   Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
                 </p>
+
+                {/* CTA Button - center aligned */}
+                <Link to="/get-in-touch">
+                  <button 
+                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                  >
+                    Get in Touch
+                  </button>
+                </Link>
               </div>
             </div>
           </motion.div>

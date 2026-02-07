@@ -122,7 +122,7 @@ const EventPromoBanner = () => {
             </div>
 
             {/* Right Column - Title and Text (compact) */}
-            <div className="flex flex-col justify-center md:w-[40%] space-y-4">
+            <div className="flex flex-col justify-center items-center md:w-[40%] space-y-4 text-center">
               {/* Main Headline */}
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
@@ -132,21 +132,6 @@ const EventPromoBanner = () => {
               >
                 AI4Inclusion at India AI Impact Summit 2026
               </motion.h2>
-
-              {/* CTA Button - centered in text section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-              >
-                <Link to="/get-in-touch" onClick={handleClose}>
-                  <button 
-                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
-                  >
-                    Get in Touch
-                  </button>
-                </Link>
-              </motion.div>
 
               {/* Supporting Text */}
               <motion.p 
@@ -170,6 +155,21 @@ const EventPromoBanner = () => {
                 <p className="text-xs md:text-sm text-white/60 font-medium mt-1">
                   Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
                 </p>
+              </motion.div>
+
+              {/* CTA Button - center aligned */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 }}
+              >
+                <Link to="/get-in-touch" onClick={handleClose}>
+                  <button 
+                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                  >
+                    Get in Touch
+                  </button>
+                </Link>
               </motion.div>
             </div>
           </div>
