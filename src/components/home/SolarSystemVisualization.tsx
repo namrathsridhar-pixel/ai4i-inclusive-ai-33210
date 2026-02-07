@@ -159,11 +159,9 @@ const SolarSystemVisualization = () => {
 
       <div className="container mx-auto relative z-10">
         <motion.div initial={{
-        opacity: 0,
-        y: 20
+        opacity: 0
       }} whileInView={{
-        opacity: 1,
-        y: 0
+        opacity: 1
       }} viewport={{
         once: true
       }} className="text-center mb-12">

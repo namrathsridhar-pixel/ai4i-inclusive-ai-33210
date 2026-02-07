@@ -70,7 +70,7 @@ const Events = () => {
             AI4Inclusion Events
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Join us at major AI conferences and summits where we showcase India-first Language AI infrastructure.
+            Join us at leading AI summits as we present India-first Language AI infrastructure built for governance, scale, and inclusion.
           </p>
         </motion.div>
 
