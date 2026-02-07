@@ -27,14 +27,24 @@ function isRateLimited(email: string): boolean {
   return false;
 }
 
-async function sendConfirmationEmail(name: string, email: string): Promise<{ success: boolean; error?: string }> {
+function getSmtpTransporter() {
   const smtpHost = Deno.env.get('SMTP_HOST');
   const smtpPort = Deno.env.get('SMTP_PORT') || '587';
   const smtpUser = Deno.env.get('SMTP_USER');
   const smtpPass = Deno.env.get('SMTP_PASS');
+
+  if (!smtpHost || !smtpUser || !smtpPass) {
+    return null;
+  }
+
+  return { smtpHost, smtpPort, smtpUser, smtpPass };
+}
+
+async function sendConfirmationEmail(name: string, email: string): Promise<{ success: boolean; error?: string }> {
+  const smtp = getSmtpTransporter();
   const fromEmail = Deno.env.get('FROM_EMAIL');
 
-  if (!smtpHost || !smtpUser || !smtpPass || !fromEmail) {
+  if (!smtp || !fromEmail) {
     console.error('Email configuration missing. Required: SMTP_HOST, SMTP_USER, SMTP_PASS, FROM_EMAIL');
     return { success: false, error: 'Email configuration incomplete' };
   }
@@ -60,12 +70,12 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
     const nodemailer = (await import("npm:nodemailer@6.9.12")).default;
 
     const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: parseInt(smtpPort, 10),
-      secure: parseInt(smtpPort, 10) === 465,
+      host: smtp.smtpHost,
+      port: parseInt(smtp.smtpPort, 10),
+      secure: parseInt(smtp.smtpPort, 10) === 465,
       auth: {
-        user: smtpUser,
-        pass: smtpPass,
+        user: smtp.smtpUser,
+        pass: smtp.smtpPass,
       },
     });
 
@@ -80,6 +90,80 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
     return { success: true };
   } catch (error) {
     console.error(`Failed to send email to ${email}:`, error);
+    return { success: false, error: error.message };
+  }
+}
+
+async function sendAdminNotificationEmail(
+  name: string,
+  email: string,
+  organization: string,
+  message: string,
+  submittedAt: string
+): Promise<{ success: boolean; error?: string }> {
+  const smtp = getSmtpTransporter();
+  const fromEmail = Deno.env.get('FROM_EMAIL');
+  const adminEmail = 'info@ai4inclusion.org';
+
+  if (!smtp || !fromEmail) {
+    console.error('Email configuration missing for admin notification');
+    return { success: false, error: 'Email configuration incomplete' };
+  }
+
+  const htmlBody = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+      <h2 style="color: #1e40af; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">New Contact Form Submission</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+        <tr style="border-bottom: 1px solid #e5e7eb;">
+          <td style="padding: 10px 12px; font-weight: bold; color: #374151; width: 160px; vertical-align: top;">Name</td>
+          <td style="padding: 10px 12px; color: #111827;">${name || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
+          <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Email</td>
+          <td style="padding: 10px 12px; color: #111827;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e5e7eb;">
+          <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Organization</td>
+          <td style="padding: 10px 12px; color: #111827;">${organization || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
+          <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Message / Query</td>
+          <td style="padding: 10px 12px; color: #111827; white-space: pre-wrap;">${message || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Submitted At</td>
+          <td style="padding: 10px 12px; color: #6b7280; font-size: 13px;">${new Date(submittedAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST</td>
+        </tr>
+      </table>
+      <p style="margin-top: 24px; font-size: 12px; color: #9ca3af;">This is an automated notification from the AI4Inclusion website contact form.</p>
+    </div>
+  `;
+
+  try {
+    const nodemailer = (await import("npm:nodemailer@6.9.12")).default;
+
+    const transporter = nodemailer.createTransport({
+      host: smtp.smtpHost,
+      port: parseInt(smtp.smtpPort, 10),
+      secure: parseInt(smtp.smtpPort, 10) === 465,
+      auth: {
+        user: smtp.smtpUser,
+        pass: smtp.smtpPass,
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"AI4I Website" <${fromEmail}>`,
+      to: adminEmail,
+      replyTo: email,
+      subject: `New Contact Form: ${name || email}`,
+      html: htmlBody,
+    });
+
+    console.log(`Admin notification email sent successfully to ${adminEmail}`);
+    return { success: true };
+  } catch (error) {
+    console.error(`Failed to send admin notification email:`, error);
     return { success: false, error: error.message };
   }
 }
@@ -182,8 +266,21 @@ Deno.serve(async (req) => {
 
     console.log('Submission saved successfully, ID:', insertedRecord?.id);
 
-    // Send confirmation email (after successful DB save)
-    const emailResult = await sendConfirmationEmail(trimmedName, trimmedEmail);
+    // Send confirmation email to user and admin notification in parallel
+    const [emailResult, adminResult] = await Promise.all([
+      sendConfirmationEmail(trimmedName, trimmedEmail),
+      sendAdminNotificationEmail(
+        trimmedName,
+        trimmedEmail,
+        trimmedOrg,
+        trimmedMessage,
+        insertedRecord?.submitted_at || new Date().toISOString()
+      ),
+    ]);
+
+    if (!adminResult.success) {
+      console.error('Admin notification email failed:', adminResult.error);
+    }
 
     if (!emailResult.success) {
       console.error('Email sending failed but submission was saved:', emailResult.error);
