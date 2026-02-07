@@ -52,18 +52,80 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
   const displayName = name?.trim() || 'there';
 
   const htmlBody = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
-      <p>Hi ${displayName},</p>
-      <p>Thank you for showing interest in <strong>AI4Inclusion</strong>.</p>
-      <p>We've received your details and truly appreciate your interest in our mission to build India-first, inclusive language AI infrastructure that enables governance, public services, and citizen-scale impact.</p>
-      <p>Our team will review your submission and get in touch with you shortly regarding next steps or relevant updates based on your area of interest.</p>
-      <p>In the meantime, if you have any questions or would like to share additional information, feel free to reply to this email.</p>
-      <p>We look forward to connecting with you.</p>
-      <br/>
-      <p>Warm regards,<br/><strong>AI4I Team</strong><br/>
-      <a href="https://ai4inclusion.org/" style="color: #2563eb;">https://ai4inclusion.org/</a><br/>
-      <a href="mailto:info@ai4inclusion.org" style="color: #2563eb;">info@ai4inclusion.org</a></p>
-    </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #f4f6f9; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f6f9; padding: 32px 0;">
+        <tr>
+          <td align="center">
+            <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+              
+              <!-- Header with branding -->
+              <tr>
+                <td style="background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 100%); padding: 32px 40px; text-align: center;">
+                  <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px;">AI4Inclusion</h1>
+                  <p style="margin: 6px 0 0 0; font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 1.5px; text-transform: uppercase;">Inclusive Language AI for All</p>
+                </td>
+              </tr>
+
+              <!-- Subtle accent bar -->
+              <tr>
+                <td style="height: 3px; background: linear-gradient(90deg, #1e3a5f 0%, #e87722 50%, #138808 100%);"></td>
+              </tr>
+
+              <!-- Body content -->
+              <tr>
+                <td style="padding: 36px 40px 20px 40px;">
+                  <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a2e; line-height: 1.6;">Hi ${displayName},</p>
+
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">Thank you for showing interest in <strong style="color: #1e3a5f;">AI4Inclusion</strong>.</p>
+
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">We've received your details and truly appreciate your interest in our mission to build inclusive language AI infrastructure that enables governance, public services, and citizen-scale impact.</p>
+
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">Our team will get in touch with you shortly regarding your query or comment, along with relevant next steps based on your area of interest.</p>
+
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">In the meantime, if you have any questions or would like to share additional information, feel free to reply to this email.</p>
+
+                  <p style="margin: 0 0 24px 0; font-size: 15px; color: #333344; line-height: 1.7;">We look forward to connecting with you.</p>
+                </td>
+              </tr>
+
+              <!-- Divider -->
+              <tr>
+                <td style="padding: 0 40px;">
+                  <hr style="border: none; border-top: 1px solid #e8ecf1; margin: 0;" />
+                </td>
+              </tr>
+
+              <!-- Signature / Footer -->
+              <tr>
+                <td style="padding: 24px 40px 32px 40px;">
+                  <p style="margin: 0 0 4px 0; font-size: 15px; color: #333344;">Warm regards,</p>
+                  <p style="margin: 0 0 12px 0; font-size: 15px; font-weight: 600; color: #1e3a5f;">AI4I Team</p>
+                  <p style="margin: 0; font-size: 13px; line-height: 1.8;">
+                    <a href="https://ai4inclusion.org/" style="color: #1e3a5f; text-decoration: none;">ai4inclusion.org</a><br/>
+                    <a href="mailto:info@ai4inclusion.org" style="color: #1e3a5f; text-decoration: none;">info@ai4inclusion.org</a>
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Bottom footer -->
+              <tr>
+                <td style="background-color: #f8f9fb; padding: 16px 40px; text-align: center; border-top: 1px solid #e8ecf1;">
+                  <p style="margin: 0; font-size: 11px; color: #9ca3af; line-height: 1.6;">AI4Inclusion — A Digital Public Good Initiative</p>
+                </td>
+              </tr>
+
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>
   `;
 
   try {
@@ -82,7 +144,7 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
     await transporter.sendMail({
       from: `"AI4I Team" <${fromEmail}>`,
       to: email,
-      subject: "Thank you for reaching out to AI4Inclusion",
+      subject: "Thank you for reaching out to AI4Inclusion Team",
       html: htmlBody,
     });
 
