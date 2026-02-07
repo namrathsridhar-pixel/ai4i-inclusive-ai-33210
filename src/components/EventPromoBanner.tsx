@@ -106,18 +106,27 @@ const EventPromoBanner = () => {
                 />
               </motion.div>
 
-              {/* Countdown Timer */}
+              {/* Countdown Timer + CTA in same row */}
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center gap-2 md:gap-3"
+                className="flex items-center justify-center gap-3 md:gap-5 flex-wrap"
               >
-                <CountdownUnit value={timeLeft.days} label="Days" />
-                <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
-                <CountdownUnit value={timeLeft.hours} label="Hours" />
-                <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
-                <CountdownUnit value={timeLeft.minutes} label="Mins" />
+                <div className="flex items-center gap-2 md:gap-3">
+                  <CountdownUnit value={timeLeft.days} label="Days" />
+                  <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
+                  <CountdownUnit value={timeLeft.hours} label="Hours" />
+                  <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
+                  <CountdownUnit value={timeLeft.minutes} label="Mins" />
+                </div>
+                <Link to="/get-in-touch" onClick={handleClose}>
+                  <button 
+                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                  >
+                    Get in Touch
+                  </button>
+                </Link>
               </motion.div>
             </div>
 
@@ -143,33 +152,19 @@ const EventPromoBanner = () => {
                 Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
               </motion.p>
 
-              {/* Location Info */}
+              {/* Location Info - styled card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
+                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 space-y-1.5"
               >
-                <p className="text-xs md:text-sm text-white/60 font-medium">
-                  New Delhi · 16–20 February 2026
+                <p className="text-xs md:text-sm text-white/80 font-semibold tracking-wide">
+                  📍 New Delhi · 16–20 February 2026
                 </p>
-                <p className="text-xs md:text-sm text-white/60 font-medium mt-1">
+                <p className="text-[11px] md:text-xs text-white/60 font-medium">
                   Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
                 </p>
-              </motion.div>
-
-              {/* CTA Button - center aligned */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55 }}
-              >
-                <Link to="/get-in-touch" onClick={handleClose}>
-                  <button 
-                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
-                  >
-                    Get in Touch
-                  </button>
-                </Link>
               </motion.div>
             </div>
           </div>
