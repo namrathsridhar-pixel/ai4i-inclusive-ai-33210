@@ -140,18 +140,22 @@ const EventPromoBanner = () => {
                 transition={{ delay: 0.4 }}
                 className="text-sm text-white/70 leading-relaxed"
               >
-                Building inclusive, India-first Language AI infrastructure to power governance, public services, and citizen-scale adoption.
+                Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
               </motion.p>
 
               {/* Location Info */}
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-xs md:text-sm text-white/60 font-medium"
               >
-                New Delhi · 16–20 February 2026 · Booth: TBA
-              </motion.p>
+                <p className="text-xs md:text-sm text-white/60 font-medium">
+                  New Delhi · 16–20 February 2026
+                </p>
+                <p className="text-xs md:text-sm text-white/60 font-medium mt-1">
+                  People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
+                </p>
+              </motion.div>
 
               {/* CTA Button */}
               <motion.div

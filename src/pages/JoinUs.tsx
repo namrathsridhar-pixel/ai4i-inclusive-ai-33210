@@ -157,7 +157,7 @@ const JoinUs = () => {
                     We empower nations, organizations, and communities to build and adopt AI software as digital public goods. Together, we can foster equitable, transparent, and citizen-driven AI language ecosystems that bridge linguistic divides.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                    Please share your details so our team can connect with you regarding partnerships, adoption, contributions, or volunteering opportunities.
+                    We're eager to connect with you if you're looking to collaborate, adopt, contribute, or volunteer with AI4I.
                   </p>
                 </div>
                 <Form {...form}>
