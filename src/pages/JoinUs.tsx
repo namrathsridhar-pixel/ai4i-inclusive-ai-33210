@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -42,31 +43,30 @@ const JoinUs = () => {
     },
   });
 
-  const onSubmit = async (values: FormValues) => {
+    const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-form`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-          },
-          body: JSON.stringify(values),
-        }
-      );
+      const { data, error } = await supabase.functions.invoke('submit-form', {
+        body: values,
+      });
 
-      const data = await response.json();
+      if (error) {
+        throw new Error(error.message || "Failed to submit form");
+      }
 
-      if (!response.ok) {
+      if (data && !data.success) {
         throw new Error(data.error || "Failed to submit form");
       }
 
       setIsSubmitted(true);
+      
+      const successMessage = data?.email_sent
+        ? "Thank you for getting in touch. We've sent a confirmation email to your email address."
+        : "Your submission has been received. Our team will get back to you soon.";
+
       toast({
         title: "Form submitted successfully!",
-        description: "Thank you for reaching out. We'll get back to you soon.",
+        description: successMessage,
       });
     } catch (error: any) {
       console.error("Form submission error:", error);
