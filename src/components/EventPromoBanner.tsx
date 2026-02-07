@@ -86,9 +86,9 @@ const EventPromoBanner = () => {
           </button>
 
           {/* Content */}
-          <div className="relative z-10 p-8 md:p-10 flex flex-col md:flex-row gap-6 md:gap-8">
-            {/* Left Column - Logo, Countdown, CTA */}
-            <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
+          <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row gap-5 md:gap-6">
+            {/* Left Column - Logo & Image (dominant) */}
+            <div className="flex flex-col items-center justify-between md:w-[60%] space-y-5">
               {/* Join Us At + Summit Header Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -102,7 +102,7 @@ const EventPromoBanner = () => {
                 <img 
                   src={summitHeader} 
                   alt="India AI Impact Summit 2026" 
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-lg shadow-[0_0_30px_rgba(59,130,246,0.15)]"
                 />
               </motion.div>
 
@@ -119,17 +119,16 @@ const EventPromoBanner = () => {
                 <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
                 <CountdownUnit value={timeLeft.minutes} label="Mins" />
               </motion.div>
-
             </div>
 
-            {/* Right Column - Title and Text */}
-            <div className="flex flex-col justify-center md:w-[55%] space-y-4 md:space-y-6">
+            {/* Right Column - Title and Text (compact) */}
+            <div className="flex flex-col justify-center md:w-[40%] space-y-4">
               {/* Main Headline */}
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight"
+                className="text-base md:text-lg lg:text-xl font-bold text-white leading-tight"
               >
                 AI4Inclusion at India AI Impact Summit 2026
               </motion.h2>
@@ -139,24 +138,30 @@ const EventPromoBanner = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="text-sm md:text-base text-white/70 leading-relaxed"
+                className="text-sm text-white/70 leading-relaxed"
               >
                 Building inclusive, India-first Language AI infrastructure to power governance, public services, and citizen-scale adoption.
               </motion.p>
 
-              {/* Location Info + CTA Row */}
-              <motion.div 
+              {/* Location Info */}
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="flex items-center gap-4 flex-nowrap"
+                className="text-xs md:text-sm text-white/60 font-medium"
               >
-                <p className="text-sm md:text-base text-white/60 font-medium whitespace-nowrap">
-                  New Delhi · 16–20 February 2026 · Booth: TBA
-                </p>
+                New Delhi · 16–20 February 2026 · Booth: TBA
+              </motion.p>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 }}
+              >
                 <Link to="/join-us" onClick={handleClose}>
                   <button 
-                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2 rounded-lg border border-transparent hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
                   >
                     Get in Touch
                   </button>

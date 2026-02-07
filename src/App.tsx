@@ -28,11 +28,33 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const PAGE_TITLES: Record<string, string> = {
+  "/": "AI4Inclusion – Digital Public Good for Inclusive AI",
+  "/about": "About – AI4Inclusion",
+  "/building-blocks": "Building Blocks – AI4Inclusion",
+  "/components/core": "AI4I-Orchestrate – AI4Inclusion",
+  "/components/observe": "AI4I-Observe – AI4Inclusion",
+  "/components/contribute": "AI4I-Contribute – AI4Inclusion",
+  "/events": "Events – AI4Inclusion",
+  "/adopters": "Adopters – AI4Inclusion",
+  "/get-involved": "Get Involved – AI4Inclusion",
+  "/join-us": "Get in Touch – AI4Inclusion",
+  "/contact": "Contact – AI4Inclusion",
+  "/blogs": "Blogs – AI4Inclusion",
+  "/privacy": "Privacy Policy – AI4Inclusion",
+  "/terms": "Terms of Service – AI4Inclusion",
+  "/legal/privacy": "Privacy Policy – AI4Inclusion",
+  "/legal/terms": "Terms of Service – AI4Inclusion",
+};
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Update document title based on route
+    document.title = PAGE_TITLES[pathname] || "AI4Inclusion – Digital Public Good for Inclusive AI";
     
     // Track page view in GA4 for SPA route changes
     if (typeof window !== 'undefined' && (window as any).gtag) {
