@@ -51,62 +51,121 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
 
   const displayName = name?.trim() || 'there';
 
+  const plainText = `Hi ${displayName},
+
+Thank you for showing interest in AI4Inclusion.
+
+We've received your details and truly appreciate your interest in our mission to build inclusive language AI infrastructure that enables governance, public services, and citizen-scale impact.
+
+Our team will get in touch with you shortly regarding your query or comment, along with relevant next steps based on your area of interest.
+
+In the meantime, if you have any questions or would like to share additional information, feel free to reply to this email.
+
+We look forward to connecting with you.
+
+Warm regards,
+AI4I Team
+ai4inclusion.org
+info@ai4inclusion.org
+
+AI4Inclusion — A Digital Public Good Initiative`;
+
   const htmlBody = `
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="x-apple-disable-message-reformatting" />
+      <title>AI4Inclusion</title>
+      <!--[if mso]>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+      <![endif]-->
+      <style>
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; }
+      </style>
     </head>
-    <body style="margin: 0; padding: 0; background-color: #f4f6f9; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f6f9; padding: 32px 0;">
+    <body style="margin: 0; padding: 0; background-color: #f4f6f9; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; mso-line-height-rule: exactly;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f6f9; padding: 32px 0;">
         <tr>
-          <td align="center">
-            <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+          <td align="center" valign="top">
+            <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden;">
               
-              <!-- Header with branding -->
+              <!-- Header with branding (Outlook-compatible solid bg) -->
               <tr>
-                <td style="background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 100%); padding: 32px 40px; text-align: center;">
-                  <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px;">AI4Inclusion</h1>
-                  <p style="margin: 6px 0 0 0; font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 1.5px; text-transform: uppercase;">Inclusive Language AI for All</p>
+                <td align="center" style="background-color: #0f2440; padding: 32px 40px; text-align: center;">
+                  <!--[if mso]>
+                  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:90px;">
+                    <v:fill type="gradient" color="#0a1628" color2="#1e3a5f" angle="135" />
+                    <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true">
+                  <![endif]-->
+                  <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; font-family: 'Segoe UI', Arial, sans-serif;">AI4Inclusion</h1>
+                  <p style="margin: 6px 0 0 0; font-size: 12px; color: #8899bb; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Segoe UI', Arial, sans-serif;">Inclusive Language AI for All</p>
+                  <!--[if mso]>
+                    </v:textbox>
+                  </v:rect>
+                  <![endif]-->
                 </td>
               </tr>
 
-              <!-- Subtle accent bar -->
+              <!-- Accent bar (3-color using table cells for Outlook compatibility) -->
               <tr>
-                <td style="height: 3px; background: linear-gradient(90deg, #1e3a5f 0%, #e87722 50%, #138808 100%);"></td>
+                <td style="padding: 0; font-size: 0; line-height: 0;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td width="33%" style="height: 3px; background-color: #1e3a5f; font-size: 0; line-height: 0;">&nbsp;</td>
+                      <td width="34%" style="height: 3px; background-color: #e87722; font-size: 0; line-height: 0;">&nbsp;</td>
+                      <td width="33%" style="height: 3px; background-color: #138808; font-size: 0; line-height: 0;">&nbsp;</td>
+                    </tr>
+                  </table>
+                </td>
               </tr>
 
               <!-- Body content -->
               <tr>
                 <td style="padding: 36px 40px 20px 40px;">
-                  <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a2e; line-height: 1.6;">Hi ${displayName},</p>
+                  <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a2e; line-height: 24px; font-family: 'Segoe UI', Arial, sans-serif;">Hi ${displayName},</p>
 
-                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">Thank you for showing interest in <strong style="color: #1e3a5f;">AI4Inclusion</strong>.</p>
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">Thank you for showing interest in <strong style="color: #1e3a5f;">AI4Inclusion</strong>.</p>
 
-                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">We've received your details and truly appreciate your interest in our mission to build inclusive language AI infrastructure that enables governance, public services, and citizen-scale impact.</p>
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">We've received your details and truly appreciate your interest in our mission to build inclusive language AI infrastructure that enables governance, public services, and citizen-scale impact.</p>
 
-                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">Our team will get in touch with you shortly regarding your query or comment, along with relevant next steps based on your area of interest.</p>
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">Our team will get in touch with you shortly regarding your query or comment, along with relevant next steps based on your area of interest.</p>
 
-                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 1.7;">In the meantime, if you have any questions or would like to share additional information, feel free to reply to this email.</p>
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">In the meantime, if you have any questions or would like to share additional information, feel free to reply to this email.</p>
 
-                  <p style="margin: 0 0 24px 0; font-size: 15px; color: #333344; line-height: 1.7;">We look forward to connecting with you.</p>
+                  <p style="margin: 0 0 24px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">We look forward to connecting with you.</p>
                 </td>
               </tr>
 
               <!-- Divider -->
               <tr>
                 <td style="padding: 0 40px;">
-                  <hr style="border: none; border-top: 1px solid #e8ecf1; margin: 0;" />
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="border-top: 1px solid #e8ecf1; font-size: 0; line-height: 0; height: 1px;">&nbsp;</td>
+                    </tr>
+                  </table>
                 </td>
               </tr>
 
               <!-- Signature / Footer -->
               <tr>
                 <td style="padding: 24px 40px 32px 40px;">
-                  <p style="margin: 0 0 4px 0; font-size: 15px; color: #333344;">Warm regards,</p>
-                  <p style="margin: 0 0 12px 0; font-size: 15px; font-weight: 600; color: #1e3a5f;">AI4I Team</p>
-                  <p style="margin: 0; font-size: 13px; line-height: 1.8;">
+                  <p style="margin: 0 0 4px 0; font-size: 15px; color: #333344; font-family: 'Segoe UI', Arial, sans-serif;">Warm regards,</p>
+                  <p style="margin: 0 0 12px 0; font-size: 15px; font-weight: 600; color: #1e3a5f; font-family: 'Segoe UI', Arial, sans-serif;">AI4I Team</p>
+                  <p style="margin: 0; font-size: 13px; line-height: 24px; font-family: 'Segoe UI', Arial, sans-serif;">
                     <a href="https://ai4inclusion.org/" style="color: #1e3a5f; text-decoration: none;">ai4inclusion.org</a><br/>
                     <a href="mailto:info@ai4inclusion.org" style="color: #1e3a5f; text-decoration: none;">info@ai4inclusion.org</a>
                   </p>
@@ -116,7 +175,7 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
               <!-- Bottom footer -->
               <tr>
                 <td style="background-color: #f8f9fb; padding: 16px 40px; text-align: center; border-top: 1px solid #e8ecf1;">
-                  <p style="margin: 0; font-size: 11px; color: #9ca3af; line-height: 1.6;">AI4Inclusion — A Digital Public Good Initiative</p>
+                  <p style="margin: 0; font-size: 11px; color: #9ca3af; line-height: 18px; font-family: 'Segoe UI', Arial, sans-serif;">AI4Inclusion &#8212; A Digital Public Good Initiative</p>
                 </td>
               </tr>
 
@@ -145,7 +204,13 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
       from: `"AI4I Team" <${fromEmail}>`,
       to: email,
       subject: "Thank you for reaching out to AI4Inclusion Team",
+      text: plainText,
       html: htmlBody,
+      headers: {
+        'X-Mailer': 'AI4Inclusion Mailer',
+        'X-Priority': '3',
+        'Precedence': 'bulk',
+      },
     });
 
     console.log(`Confirmation email sent successfully to ${email}`);
