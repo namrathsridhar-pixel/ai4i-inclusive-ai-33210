@@ -85,10 +85,9 @@ const EventPromoBanner = () => {
             <X className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
           </button>
 
-          {/* Content */}
           <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row gap-5 md:gap-6">
             {/* Left Column - Logo & Image (dominant) */}
-            <div className="flex flex-col items-center justify-between md:w-[60%] space-y-5">
+            <div className="flex flex-col items-center md:w-[60%] space-y-5 md:justify-between">
               {/* Join Us At + Summit Header Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -96,7 +95,7 @@ const EventPromoBanner = () => {
                 transition={{ delay: 0.2 }}
                 className="w-full space-y-3"
               >
-                <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left -mt-1">
+                <p className="text-base md:text-lg lg:text-xl font-bold text-white/80 uppercase tracking-[0.15em] text-left -mt-1">
                   JOIN US AT
                 </p>
                 <img 
@@ -106,7 +105,7 @@ const EventPromoBanner = () => {
                 />
               </motion.div>
 
-              {/* Countdown Timer - centered under image */}
+              {/* Countdown Timer - pushed down to align with CTA */}
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -122,47 +121,51 @@ const EventPromoBanner = () => {
             </div>
 
             {/* Right Column - Title and Text (compact) */}
-            <div className="flex flex-col justify-center items-center md:w-[40%] space-y-4 text-center">
-              {/* Main Headline */}
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-base md:text-lg lg:text-xl font-bold text-white leading-tight"
-              >
-                AI4Inclusion at India AI Impact Summit 2026
-              </motion.h2>
+            <div className="flex flex-col md:w-[40%] space-y-4 text-center md:justify-between">
+              {/* Top content group */}
+              <div className="flex flex-col items-center space-y-4">
+                {/* Main Headline */}
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-base md:text-lg lg:text-xl font-bold text-white leading-tight"
+                >
+                  AI4Inclusion at India AI Impact Summit 2026
+                </motion.h2>
 
-              {/* Supporting Text */}
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-sm text-white/70 leading-relaxed"
-              >
-                Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
-              </motion.p>
+                {/* Supporting Text */}
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-sm text-white/70 leading-relaxed"
+                >
+                  Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
+                </motion.p>
 
-              {/* Location Info - styled card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 space-y-1.5"
-              >
-                <p className="text-xs md:text-sm text-white/80 font-semibold tracking-wide">
-                  📍 New Delhi · 16–20 February 2026
-                </p>
-                <p className="text-[11px] md:text-xs text-white/60 font-medium">
-                  Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
-                </p>
-              </motion.div>
+                {/* Location Info - styled card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 space-y-1.5"
+                >
+                  <p className="text-xs md:text-sm text-white/80 font-semibold tracking-wide">
+                    📍 New Delhi · 16–20 February 2026
+                  </p>
+                  <p className="text-[11px] md:text-xs text-white/60 font-medium">
+                    Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
+                  </p>
+                </motion.div>
+              </div>
 
-              {/* CTA Button - centered below location */}
+              {/* CTA Button - aligned with timer on left */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55 }}
+                className="flex justify-center"
               >
                 <Link to="/get-in-touch" onClick={handleClose}>
                   <button 

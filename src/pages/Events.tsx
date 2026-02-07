@@ -85,11 +85,11 @@ const Events = () => {
           >
             {/* Content */}
             <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row gap-8">
-              {/* Left Column - Logo, Countdown, CTA */}
-              <div className="flex flex-col items-center justify-between md:w-[45%] space-y-6">
+              {/* Left Column - Logo, Countdown */}
+              <div className="flex flex-col items-center md:w-[45%] space-y-6 md:justify-between">
                 {/* Join Us At + Summit Header Image */}
                 <div className="w-full space-y-3">
-                  <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/80 uppercase text-left -mt-1">
+                  <p className="text-lg md:text-xl lg:text-2xl font-bold text-white/80 uppercase tracking-[0.15em] text-left -mt-1">
                     JOIN US AT
                   </p>
                   <img 
@@ -99,7 +99,7 @@ const Events = () => {
                   />
                 </div>
 
-                {/* Countdown Timer - centered under image */}
+                {/* Countdown Timer - pushed down to align with CTA */}
                 <div className="flex items-center justify-center gap-3 md:gap-4">
                   <CountdownUnit value={timeLeft.days} label="Days" />
                   <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
@@ -111,35 +111,40 @@ const Events = () => {
             </div>
 
               {/* Right Column - Title and Text */}
-              <div className="flex flex-col justify-center items-center md:w-[55%] space-y-4 md:space-y-6 text-center">
-                {/* Main Headline */}
-                <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight">
-                  AI4Inclusion at India AI Impact Summit 2026
-                </h2>
+              <div className="flex flex-col md:w-[55%] space-y-4 md:space-y-6 text-center md:justify-between">
+                {/* Top content group */}
+                <div className="flex flex-col items-center space-y-4 md:space-y-6">
+                  {/* Main Headline */}
+                  <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight">
+                    AI4Inclusion at India AI Impact Summit 2026
+                  </h2>
 
-                {/* Supporting Text */}
-                <p className="text-sm md:text-base text-white/70 leading-relaxed">
-                  Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
-                </p>
+                  {/* Supporting Text */}
+                  <p className="text-sm md:text-base text-white/70 leading-relaxed">
+                    Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
+                  </p>
 
-                {/* Location Info - styled card */}
-                <div className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 space-y-1.5">
-                  <p className="text-sm md:text-base text-white/80 font-semibold tracking-wide">
-                    📍 New Delhi · 16–20 February 2026
-                  </p>
-                  <p className="text-xs md:text-sm text-white/60 font-medium">
-                    Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
-                  </p>
+                  {/* Location Info - styled card */}
+                  <div className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 space-y-1.5">
+                    <p className="text-sm md:text-base text-white/80 font-semibold tracking-wide">
+                      📍 New Delhi · 16–20 February 2026
+                    </p>
+                    <p className="text-xs md:text-sm text-white/60 font-medium">
+                      Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
+                    </p>
+                  </div>
                 </div>
 
-                {/* CTA Button - centered below location */}
-                <Link to="/get-in-touch">
-                  <button 
-                    className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
-                  >
-                    Get in Touch
-                  </button>
-                </Link>
+                {/* CTA Button - aligned with timer on left */}
+                <div className="flex justify-center">
+                  <Link to="/get-in-touch">
+                    <button 
+                      className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                    >
+                      Get in Touch
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>
