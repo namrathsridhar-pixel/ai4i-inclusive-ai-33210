@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const buildingBlocksMenu = [
-  { id: "ai4i-core", label: "AI4I-Orchestrate", icon: Globe },
+  { id: "ai4i-orchestrate", label: "AI4I-Orchestrate", icon: Globe },
   { id: "observe", label: "AI4I-Observe", icon: BarChart3 },
   { id: "contribute", label: "AI4I-Contribute", icon: Users },
 ];

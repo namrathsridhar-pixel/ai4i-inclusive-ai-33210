@@ -21,7 +21,7 @@ const featureBlocks = [{
   videoUrl: "https://www.youtube.com/embed/jEuKOasl0ws",
   githubUrl: "https://github.com/COSS-India/ai4i-core",
   discussUrl: "https://github.com/COSS-India/ai4i-core/discussions",
-  blockLink: "/building-blocks#ai4i-core"
+  blockLink: "/building-blocks#ai4i-orchestrate"
 }, {
   title: "AI4I-Observe",
   description: "A unified observability and feedback layer that monitors Language AI model performance in production. It captures telemetry, detects quality drift, and provides actionable insights.",
