@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { 
   Globe, BarChart3, Users, CheckCircle, Database, GitBranch, Shield, MessageCircle, 
   ArrowRight, Activity, Maximize2, Layers, Route, Gauge, Eye, RefreshCcw,
-  AlertTriangle, TrendingUp, Zap, Network, Share2, FileCheck, Users2, 
+  AlertTriangle, TrendingUp, Zap, Network, Share2, FileCheck, Users2, Phone, 
   Building2, Workflow, Sparkles, Target
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ import contributeArchitectureNew from "@/assets/contribute-architecture-new.png"
 import orchestrateHowItWorks from "@/assets/orchestrate-how-it-works.png";
 import observeInfographic from "@/assets/observe-infographic.png";
 import contributeHowItWorks from "@/assets/contribute-how-it-works.png";
+import voiceraOverview from "@/assets/voiceera-overview.png";
 
 // Preload images for immediate display
 const preloadImages = [
@@ -1042,24 +1043,62 @@ const BuildingBlocks = () => {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
-                    <Zap className="text-primary-foreground" size={24} />
+                    <Phone className="text-primary-foreground" size={24} />
                   </div>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">VoiceERA</h2>
                 </div>
-                <p className="text-lg md:text-xl text-primary/80 font-medium mb-2">India's Sovereign Voice Operating System</p>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
                   A production-grade, open-source Voice Operating System built for citizen-scale, real-time, multilingual voice services—designed to run on-premises with full data sovereignty.
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {["Sovereign", "On-Premises", "Open Source"].map((badge) => (
-                    <span key={badge} className="text-sm font-medium px-3 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">
-                      {badge}
-                    </span>
-                  ))}
-                </div>
               </motion.div>
 
-              {/* What VoiceERA Is / Is Not */}
+              {/* SECTION 1 — How AI4I-VoiceERA Enables Sovereign Voice AI at National Scale */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="mb-16"
+              >
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I-VoiceERA Enables Sovereign Voice AI at National Scale</h3>
+                <p className="text-muted-foreground mb-6">Real-time, multilingual voice infrastructure built for India's public and enterprise systems.</p>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
+                      <CardContent className="pt-6 relative">
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                            <Maximize2 size={14} />
+                            Click to expand
+                          </div>
+                        </div>
+                        <img
+                          src={voiceraOverview}
+                          alt="VoiceERA: India's Sovereign Voice Operating System"
+                          className="rounded-lg w-full h-auto"
+                          loading="eager"
+                        />
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>VoiceERA: India's Sovereign Voice Operating System</DialogTitle>
+                      <DialogDescription>Overview of VoiceERA architecture and capabilities</DialogDescription>
+                    </VisuallyHidden>
+                    <div className="p-4">
+                      <img 
+                        src={voiceraOverview} 
+                        alt="VoiceERA: India's Sovereign Voice Operating System" 
+                        className="w-full h-auto"
+                        loading="eager"
+                      />
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </motion.div>
+
+              {/* SECTION 2 — Why VoiceERA Matters */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1067,82 +1106,19 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What VoiceERA Is</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-card">
-                    <CardContent className="pt-6 space-y-3">
-                      <h4 className="font-heading font-semibold flex items-center gap-2 mb-4">
-                        <CheckCircle size={20} className="text-primary" /> What It Is
-                      </h4>
-                      {[
-                        "A Voice Operating System, not a chatbot",
-                        "A Voice-in-a-Box appliance with no mandatory cloud dependency",
-                        "Full-stack control over Telephony, STT, LLM, and TTS",
-                        "Indic-first engineering with native Indian language support",
-                        "A Digital Public Infrastructure governed as open source",
-                      ].map((item) => (
-                        <div key={item} className="flex items-start gap-2">
-                          <CheckCircle size={16} className="text-primary mt-1 flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">{item}</span>
-                        </div>
-                      ))}
-                    </CardContent>
-                  </Card>
-                  <Card className="border-destructive/20 bg-gradient-to-br from-destructive/5 to-card">
-                    <CardContent className="pt-6 space-y-3">
-                      <h4 className="font-heading font-semibold flex items-center gap-2 mb-4">
-                        <AlertTriangle size={20} className="text-destructive" /> What It Is Not
-                      </h4>
-                      {[
-                        "Not a SaaS platform",
-                        "Not cloud-only",
-                        "Not a black-box API",
-                        "Not a demo or prototype system",
-                      ].map((item) => (
-                        <div key={item} className="flex items-start gap-2">
-                          <AlertTriangle size={16} className="text-destructive mt-1 flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">{item}</span>
-                        </div>
-                      ))}
-                    </CardContent>
-                  </Card>
+                <div className="mb-8">
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why VoiceERA Matters</h3>
+                  <p className="text-muted-foreground">Sovereign voice infrastructure for citizen-scale, real-time AI systems.</p>
                 </div>
-              </motion.div>
-
-              {/* Why Existing Systems Fail */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
-              >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Why Existing Voice Systems Fail</h3>
                 <SaaSFeatureGrid cards={[
-                  { icon: <Shield size={24} />, title: "Sovereignty Violation", description: "Cloud-only voice platforms violate sovereignty and DPDP norms." },
-                  { icon: <TrendingUp size={24} />, title: "Runaway Costs", description: "Per-minute pricing causes unpredictable, escalating costs at scale." },
-                  { icon: <Globe size={24} />, title: "Poor Indic Support", description: "Inadequate handling of Indian accents, dialects, and code-switching." },
-                  { icon: <Gauge size={24} />, title: "High Latency", description: "Unpredictable voice latency degrades citizen experience." },
-                  { icon: <Eye size={24} />, title: "Zero Transparency", description: "No control or visibility into AI model behavior and decisions." },
+                  { icon: <Activity size={24} />, title: "National-Scale Reliability", description: "Built to support millions of concurrent voice interactions with predictable, sub-second performance across public and enterprise systems." },
+                  { icon: <Shield size={24} />, title: "Sovereign by Design", description: "Runs fully on-premises with no mandatory cloud dependency, ensuring compliance with India's data protection and security requirements." },
+                  { icon: <Zap size={24} />, title: "Indic-First Voice Access", description: "Native support for Indian languages, accents, and code-switching enables inclusive access beyond text-first interfaces." },
+                  { icon: <Layers size={24} />, title: "Foundational Infrastructure", description: "A core voice layer designed to power ecosystems and platforms—not just individual applications or chatbots." },
                 ]} />
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="mt-6"
-                >
-                  <Card className="bg-gradient-to-r from-primary/10 via-primary/5 to-accent/10 border-primary/20 shadow-lg">
-                    <CardContent className="py-6 text-center">
-                      <p className="text-lg font-heading font-bold text-foreground">
-                        What's missing is <span className="text-primary">voice infrastructure</span>, not another API.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
               </motion.div>
 
-              {/* Core Capabilities */}
+              {/* SECTION 3 — AI4I-VoiceERA: The Sovereign Voice Layer for Language AI */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1150,7 +1126,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Core Capabilities</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoiceERA: The Sovereign Voice Layer for Language AI</h3>
                 <div className="grid md:grid-cols-3 gap-6">
                   {[
                     {
@@ -1194,7 +1170,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* Performance */}
+              {/* SECTION 4 — What VoiceERA Enables */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1202,57 +1178,32 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Performance</h3>
-                <div className="grid sm:grid-cols-3 gap-6">
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What VoiceERA Enables</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
                   {[
-                    { value: "500–800 ms", label: "End-to-end Latency", desc: "Sub-second voice response" },
-                    { value: "Streaming", label: "Pipeline", desc: "ASR → LLM → TTS streaming" },
-                    { value: "P95/P99", label: "Stability", desc: "Optimized for tail-latency" },
-                  ].map((m, i) => (
-                    <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
-                      <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-card to-accent/5">
-                        <CardContent className="pt-8 pb-8">
-                          <p className="text-3xl font-heading font-bold text-primary mb-2">{m.value}</p>
-                          <p className="font-semibold text-sm mb-1">{m.label}</p>
-                          <p className="text-xs text-muted-foreground">{m.desc}</p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Use Cases */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
-              >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Use Cases</h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {[
-                    { icon: <Building2 size={24} />, sector: "Government", items: ["Emergency services (112)", "Welfare and grievance systems"] },
-                    { icon: <Database size={24} />, sector: "Enterprise", items: ["Voice banking", "BPO automation"] },
-                    { icon: <Shield size={24} />, sector: "Strategic", items: ["Defense & secure comms", "Startup enablement"] },
-                    { icon: <Target size={24} />, sector: "Education", items: ["Assessments", "Voice-based learning"] },
-                  ].map((uc, i) => (
-                    <motion.div key={uc.sector} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
-                      <Card className="h-full group hover:shadow-lg hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-card to-accent/5">
+                    { icon: <Users size={24} />, title: "Citizen-Scale Voice Services", description: "Enables millions of users to access AI systems through natural voice interfaces across public and enterprise services." },
+                    { icon: <Zap size={24} />, title: "Real-Time Multilingual Interaction", description: "Supports low-latency, conversational voice interactions across Indian languages and code-switched speech." },
+                    { icon: <Shield size={24} />, title: "Sovereign & Secure Deployment", description: "Allows voice AI systems to run fully on-premises, including in air-gapped and regulated environments." },
+                    { icon: <Layers size={24} />, title: "Voice as Digital Public Infrastructure", description: "Establishes voice as a foundational layer that other AI4I components and ecosystems can build upon." },
+                  ].map((card, index) => (
+                    <motion.div
+                      key={card.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                    >
+                      <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                         <CardContent className="pt-6">
-                          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                            {uc.icon}
+                          <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                              {card.icon}
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
+                              <p className="text-sm text-muted-foreground">{card.description}</p>
+                            </div>
                           </div>
-                          <h4 className="font-heading font-bold text-base mb-3">{uc.sector}</h4>
-                          <ul className="space-y-1.5">
-                            {uc.items.map((item) => (
-                              <li key={item} className="text-xs text-muted-foreground flex items-start gap-2">
-                                <CheckCircle size={12} className="text-primary mt-0.5 flex-shrink-0" />
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
                         </CardContent>
                       </Card>
                     </motion.div>
@@ -1260,46 +1211,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* Comparison */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
-              >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Cloud SaaS vs VoiceERA</h3>
-                <Card>
-                  <CardContent className="pt-6 overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b border-border">
-                          <th className="text-left py-3 px-4 font-heading font-semibold text-muted-foreground">Dimension</th>
-                          <th className="text-left py-3 px-4 font-heading font-semibold text-muted-foreground">Cloud SaaS</th>
-                          <th className="text-left py-3 px-4 font-heading font-semibold text-primary">VoiceERA</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {[
-                          { dim: "Deployment", saas: "Cloud-only", ve: "On-prem / hybrid / edge" },
-                          { dim: "Cost Model", saas: "OpEx per minute", ve: "CapEx one-time" },
-                          { dim: "Language Focus", saas: "English-first", ve: "Bharat-native" },
-                          { dim: "Transparency", saas: "Black-box", ve: "Fully transparent" },
-                          { dim: "Connectivity", saas: "Internet-dependent", ve: "Air-gapped capable" },
-                        ].map((row) => (
-                          <tr key={row.dim} className="border-b border-border/50 last:border-0">
-                            <td className="py-3 px-4 font-medium">{row.dim}</td>
-                            <td className="py-3 px-4 text-muted-foreground">{row.saas}</td>
-                            <td className="py-3 px-4 text-primary font-medium">{row.ve}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* VoiceERA in the Ecosystem */}
+              {/* SECTION 5 — VoiceERA in the Ecosystem */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1322,7 +1234,7 @@ const BuildingBlocks = () => {
                 />
               </motion.div>
 
-              {/* Video Placeholder */}
+              {/* SECTION 6 — Explore More About VoiceERA */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1330,7 +1242,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">See It In Action</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About VoiceERA</h3>
                 <Card className="w-full max-w-3xl mx-auto bg-muted border border-border shadow-soft flex items-center justify-center" style={{ aspectRatio: '16/9' }}>
                   <div className="text-center py-16">
                     <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -1358,13 +1270,13 @@ const BuildingBlocks = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button asChild size="lg" className="min-w-[160px]">
-                      <a href="https://github.com/COSS-India/voiceera" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                      <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                         Learn More
                         <ArrowRight size={16} />
                       </a>
                     </Button>
                     <Button asChild variant="outline" size="lg" className="min-w-[160px]">
-                      <a href="https://github.com/COSS-India/voiceera/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                      <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                         <MessageCircle size={16} />
                         Discuss
                       </a>
