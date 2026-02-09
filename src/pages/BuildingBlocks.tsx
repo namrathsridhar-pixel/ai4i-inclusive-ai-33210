@@ -21,6 +21,7 @@ import orchestrateHowItWorks from "@/assets/orchestrate-how-it-works.png";
 import observeInfographic from "@/assets/observe-infographic.png";
 import contributeHowItWorks from "@/assets/contribute-how-it-works.png";
 import voiceraOverview from "@/assets/voiceera-overview.png";
+import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 
 // Preload images for immediate display
 const preloadImages = [
@@ -1120,54 +1121,45 @@ const BuildingBlocks = () => {
 
               {/* SECTION 3 — AI4I-VoiceERA: The Sovereign Voice Layer for Language AI */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.7 }}
                 className="mb-16"
               >
                 <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoiceERA: The Sovereign Voice Layer for Language AI</h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                  {[
-                    {
-                      title: "Real-Time Voice", icon: <Activity size={24} />,
-                      items: ["Streaming STT & TTS (no buffering)", "Barge-in support", "Full-duplex audio"]
-                    },
-                    {
-                      title: "Intelligence", icon: <Network size={24} />,
-                      items: ["Multi-turn conversational reasoning", "Native code-switching (Hinglish, Tanglish)", "Retrieval-Augmented Generation (RAG)"]
-                    },
-                    {
-                      title: "Infrastructure", icon: <Layers size={24} />,
-                      items: ["SIP / PSTN / VoIP telephony", "Horizontally scalable", "Enterprise integrations (CRM, ERP, APIs)"]
-                    },
-                  ].map((cat, catIdx) => (
-                    <motion.div
-                      key={cat.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-                    >
-                      <Card className="h-full hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
-                        <CardContent className="pt-6">
-                          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 text-primary">
-                            {cat.icon}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
+                      <CardContent className="p-0 relative">
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                            <Maximize2 size={14} />
+                            Click to expand
                           </div>
-                          <h4 className="font-heading font-bold text-base mb-3">{cat.title}</h4>
-                          <ul className="space-y-2">
-                            {cat.items.map((item) => (
-                              <li key={item} className="text-sm text-muted-foreground flex items-start gap-2">
-                                <CheckCircle size={14} className="text-primary mt-0.5 flex-shrink-0" />
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
+                        </div>
+                        <div className="w-full overflow-hidden rounded-lg bg-card/50">
+                          <PreloadedImage
+                            src={voiceraSovereignInfra}
+                            alt="VoiceERA: India's Sovereign Voice Infrastructure"
+                            className="rounded-lg"
+                            containerClassName="rounded-lg"
+                            aspectRatio="16/9"
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>VoiceERA: India's Sovereign Voice Infrastructure</DialogTitle>
+                      <DialogDescription>Infrastructure diagram showing VoiceERA's sovereign architecture and performance</DialogDescription>
+                    </VisuallyHidden>
+                    <div className="p-4">
+                      <img src={voiceraSovereignInfra} alt="VoiceERA: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </motion.div>
 
               {/* SECTION 4 — What VoiceERA Enables */}
