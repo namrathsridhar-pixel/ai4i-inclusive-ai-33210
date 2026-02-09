@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
-  Phone, Shield, Zap, Server, Globe, ArrowRight, 
-  Play, Layers, Radio, Brain, Users, Mic,
+  Phone, Shield, Zap, ArrowRight, 
+  Play, Layers, Radio, Users, Mic,
   MessageCircle, Activity, Lock, Maximize2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -65,23 +65,6 @@ const ComponentVoiceERA = () => {
     },
   ];
 
-  const capabilities = {
-    realtime: [
-      { title: "Streaming STT & TTS", description: "No buffering—real-time speech processing" },
-      { title: "Barge-in Support", description: "Interrupt mid-sentence, just like a real conversation" },
-      { title: "Full-duplex Audio", description: "Simultaneous send and receive for natural interaction" },
-    ],
-    intelligence: [
-      { title: "Multi-turn Reasoning", description: "Conversational context maintained across turns" },
-      { title: "Native Code-switching", description: "Hinglish, Tanglish, and other mixed-language patterns" },
-      { title: "Retrieval-Augmented Generation", description: "Ground responses in domain-specific knowledge" },
-    ],
-    infrastructure: [
-      { title: "SIP / PSTN / VoIP", description: "Full telephony protocol support" },
-      { title: "Horizontally Scalable", description: "Scale from 10 to 10,000 concurrent calls" },
-      { title: "Enterprise Integrations", description: "CRM, ERP, and custom API connectors" },
-    ],
-  };
 
   return (
     <DocsLayout>
