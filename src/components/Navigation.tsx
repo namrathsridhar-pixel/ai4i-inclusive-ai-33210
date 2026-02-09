@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Globe, BarChart3, Users, Calendar } from "lucide-react";
+import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -8,6 +8,7 @@ const buildingBlocksMenu = [
   { id: "ai4i-orchestrate", label: "AI4I-Orchestrate", icon: Globe },
   { id: "observe", label: "AI4I-Observe", icon: BarChart3 },
   { id: "contribute", label: "AI4I-Contribute", icon: Users },
+  { id: "voiceera", label: "VoiceERA", icon: Phone },
 ];
 
 // Links that are coming soon and should not navigate

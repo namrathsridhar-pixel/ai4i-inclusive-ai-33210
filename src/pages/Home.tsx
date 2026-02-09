@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Globe, BarChart3, Users } from "lucide-react";
+import { Globe, BarChart3, Users, Phone } from "lucide-react";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
 import MediaStrip from "@/components/home/MediaStrip";
@@ -42,6 +42,16 @@ const featureBlocks = [{
   githubUrl: "https://github.com/COSS-India/ai4i-contribute",
   discussUrl: "https://github.com/COSS-India/ai4i-contribute/discussions",
   blockLink: "/building-blocks#contribute"
+}, {
+  title: "VoiceERA",
+  description: "India's sovereign Voice Operating System—a production-grade, open-source platform for citizen-scale, real-time, multilingual voice services with full on-premises data sovereignty.",
+  bullets: ["Real-time streaming STT, LLM, and TTS pipeline", "Indic-first with native code-switching support", "On-premises Voice-in-a-Box deployment", "SIP / PSTN / VoIP telephony integration"],
+  icon: <Phone className="text-primary-foreground" size={24} />,
+  animation: <WaveformAnimation />,
+  videoUrl: "",
+  githubUrl: "https://github.com/COSS-India/voiceera",
+  discussUrl: "https://github.com/COSS-India/voiceera/discussions",
+  blockLink: "/building-blocks#voiceera"
 }];
 
 const Home = () => {
