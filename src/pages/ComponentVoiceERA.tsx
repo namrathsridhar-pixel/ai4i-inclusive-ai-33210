@@ -14,6 +14,7 @@ import { SectionHeading } from "@/components/docs/SectionHeading";
 import { DocSection } from "@/components/docs/DocSection";
 import { PreloadedImage } from "@/components/ui/preloaded-image";
 import voiceraOverview from "@/assets/voiceera-overview.png";
+import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 
 const ComponentVoiceERA = () => {
   const [videoModal, setVideoModal] = useState(false);
@@ -203,38 +204,48 @@ const ComponentVoiceERA = () => {
             <SectionHeading id="capabilities" level={2}>
               AI4I-VoiceERA: The Sovereign Voice Layer for Language AI
             </SectionHeading>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { title: "Real-Time Voice", icon: <Radio size={24} />, items: capabilities.realtime },
-                { title: "Intelligence", icon: <Brain size={24} />, items: capabilities.intelligence },
-                { title: "Infrastructure", icon: <Server size={24} />, items: capabilities.infrastructure },
-              ].map((category, catIdx) => (
-                <motion.div
-                  key={category.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-                >
-                  <Card className="h-full hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
-                    <CardContent className="pt-6">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-3 text-primary">
-                        {category.icon}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
+                    <CardContent className="pt-6 relative">
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                          <Maximize2 size={14} />
+                          Click to expand
+                        </div>
                       </div>
-                      <h4 className="font-heading font-bold text-base mb-3">{category.title}</h4>
-                      <div className="space-y-4">
-                        {category.items.map((item) => (
-                          <div key={item.title}>
-                            <h5 className="text-sm font-semibold mb-1">{item.title}</h5>
-                            <p className="text-xs text-muted-foreground">{item.description}</p>
-                          </div>
-                        ))}
-                      </div>
+                      <PreloadedImage
+                        src={voiceraSovereignInfra}
+                        alt="VoiceERA: India's Sovereign Voice Infrastructure"
+                        className="rounded-lg"
+                        containerClassName="rounded-lg"
+                        aspectRatio="16/9"
+                      />
                     </CardContent>
                   </Card>
-                </motion.div>
-              ))}
-            </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                  <VisuallyHidden>
+                    <DialogTitle>VoiceERA: India's Sovereign Voice Infrastructure</DialogTitle>
+                    <DialogDescription>Infrastructure diagram showing VoiceERA's sovereign architecture and performance</DialogDescription>
+                  </VisuallyHidden>
+                  <div className="p-4">
+                    <img 
+                      src={voiceraSovereignInfra} 
+                      alt="VoiceERA: India's Sovereign Voice Infrastructure" 
+                      className="w-full h-auto"
+                      loading="eager"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </motion.div>
           </DocSection>
 
           {/* What VoiceERA Enables */}
