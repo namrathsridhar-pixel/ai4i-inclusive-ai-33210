@@ -33,12 +33,12 @@ preloadImages.forEach((src) => {
 
 const BuildingBlocks = () => {
   const location = useLocation();
-  const [activeSection, setActiveSection] = useState("ai4i-core");
+  const [activeSection, setActiveSection] = useState("ai4i-orchestrate");
   
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
-      if (id === 'ai4i-core' || id === 'observe' || id === 'contribute') {
+      if (id === 'ai4i-orchestrate' || id === 'observe' || id === 'contribute') {
         setActiveSection(id);
       }
     }
@@ -278,8 +278,8 @@ const BuildingBlocks = () => {
     <div className="min-h-screen flex flex-col">
       <div className="flex-1">
         {/* AI4I Orchestrate */}
-        {activeSection === "ai4i-core" && (
-          <section className="pt-32 pb-20 px-4" id="ai4i-core">
+        {activeSection === "ai4i-orchestrate" && (
+          <section className="pt-32 pb-20 px-4" id="ai4i-orchestrate">
             <div className="container mx-auto max-w-6xl">
               {/* Hero Header */}
               <motion.div

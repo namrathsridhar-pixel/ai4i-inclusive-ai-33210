@@ -292,7 +292,7 @@ const About = () => {
                 icon: Globe,
                 title: "AI4I-Orchestrate",
                 description: "Core orchestration layer for seamless integration of language AI services across platforms.",
-                link: "/building-blocks#ai4i-core",
+                link: "/building-blocks#ai4i-orchestrate",
                 color: "primary"
               },
               {
