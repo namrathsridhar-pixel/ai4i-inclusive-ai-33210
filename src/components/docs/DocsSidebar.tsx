@@ -17,7 +17,7 @@ const sections: SidebarSection[] = [
   {
     title: "Components",
     items: [
-      { title: "AI4I Core", href: "/components/core", icon: <Globe size={16} /> },
+      { title: "AI4I Orchestrate", href: "/components/orchestrate", icon: <Globe size={16} /> },
       { title: "Observe", href: "/components/observe", icon: <BarChart3 size={16} /> },
       { title: "Contribute", href: "/components/contribute", icon: <Users size={16} /> },
     ],
