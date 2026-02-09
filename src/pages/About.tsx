@@ -286,7 +286,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {[
               {
                 icon: Globe,
@@ -308,6 +308,13 @@ const About = () => {
                 description: "Community-powered data contribution platform for building inclusive datasets.",
                 link: "/building-blocks#contribute",
                 color: "primary"
+              },
+              {
+                icon: Globe,
+                title: "VoiceERA",
+                description: "India's sovereign Voice Operating System for citizen-scale, multilingual voice services.",
+                link: "/building-blocks#voiceera",
+                color: "secondary"
               }
             ].map((block, index) => (
               <motion.div

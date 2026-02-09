@@ -17,6 +17,7 @@ import BuildingBlocks from "./pages/BuildingBlocks";
 import ComponentCore from "./pages/ComponentCore";
 import ComponentObserve from "./pages/ComponentObserve";
 import ComponentContribute from "./pages/ComponentContribute";
+import ComponentVoiceERA from "./pages/ComponentVoiceERA";
 import Adopters from "./pages/Adopters";
 import GetInvolved from "./pages/GetInvolved";
 import JoinUs from "./pages/JoinUs";
@@ -35,6 +36,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/components/orchestrate": "AI4I-Orchestrate – AI4Inclusion",
   "/components/observe": "AI4I-Observe – AI4Inclusion",
   "/components/contribute": "AI4I-Contribute – AI4Inclusion",
+  "/components/voiceera": "VoiceERA – AI4Inclusion",
   "/events": "Events – AI4Inclusion",
   "/adopters": "Adopters – AI4Inclusion",
   "/get-involved": "Get Involved – AI4Inclusion",
@@ -83,6 +85,7 @@ const AppContent = () => {
           <Route path="/components/orchestrate" element={<PageTransition><ComponentCore /></PageTransition>} />
           <Route path="/components/observe" element={<PageTransition><ComponentObserve /></PageTransition>} />
           <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
+          <Route path="/components/voiceera" element={<PageTransition><ComponentVoiceERA /></PageTransition>} />
           <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
           <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
           <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
