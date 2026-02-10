@@ -19,6 +19,7 @@ import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
 const ComponentVoiceERA = () => {
   const [videoModal, setVideoModal] = useState(false);
+  const [interestFormOpen, setInterestFormOpen] = useState(false);
 
   const whyMattersCards = [
     {
@@ -286,18 +287,50 @@ const ComponentVoiceERA = () => {
             </motion.div>
           </DocSection>
 
-          {/* Interest Form */}
+          {/* Final CTA */}
           <DocSection>
-            <SectionHeading id="show-interest" level={2}>
-              Show Interest in VoicERA
-            </SectionHeading>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Register your interest and our team will reach out to explore how VoicERA can support your voice AI use case.
-            </p>
-            <VoiceraInterestForm />
+            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12 border border-primary/10">
+              <div className="text-center max-w-2xl mx-auto">
+                <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
+                  Ready to explore VoicERA?
+                </h3>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Learn how to implement sovereign voice infrastructure in your applications.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" className="min-w-[160px]" onClick={() => setInterestFormOpen(true)}>
+                    <Phone size={16} />
+                    Show Interest
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="min-w-[160px]">
+                    <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                      Learn More
+                      <ArrowRight size={16} />
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="min-w-[160px]">
+                    <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                      <MessageCircle size={16} />
+                      Discuss
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </DocSection>
 
-          {/* Final CTA */}
+          {/* VoicERA Interest Form Dialog */}
+          <Dialog open={interestFormOpen} onOpenChange={setInterestFormOpen}>
+            <DialogContent className="max-w-lg p-0 bg-background overflow-auto max-h-[90vh]">
+              <VisuallyHidden>
+                <DialogTitle>Show Interest in VoicERA</DialogTitle>
+                <DialogDescription>Register your interest in VoicERA</DialogDescription>
+              </VisuallyHidden>
+              <div className="p-1">
+                <VoiceraInterestForm />
+              </div>
+            </DialogContent>
+          </Dialog>
           <DocSection>
             <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12 border border-primary/10">
               <div className="text-center max-w-2xl mx-auto">

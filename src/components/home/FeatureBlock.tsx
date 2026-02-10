@@ -16,6 +16,7 @@ interface FeatureBlockProps {
   discussUrl?: string;
   reversed?: boolean;
   blockLink: string;
+  extraAction?: React.ReactNode;
 }
 
 const FeatureBlock = ({
@@ -29,6 +30,7 @@ const FeatureBlock = ({
   discussUrl,
   reversed,
   blockLink,
+  extraAction,
 }: FeatureBlockProps) => {
   const [videoOpen, setVideoOpen] = useState(false);
 
@@ -102,6 +104,7 @@ const FeatureBlock = ({
                 <MessageSquare size={14} /> Discuss
               </a>
             )}
+            {extraAction}
           </div>
 
           <Link to={blockLink} className="inline-flex items-center gap-2 mt-4 text-primary font-medium hover:gap-3 transition-all text-sm">
