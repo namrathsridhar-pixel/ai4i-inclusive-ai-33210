@@ -42,11 +42,11 @@ const Navigation = () => {
   return <nav className="fixed top-0 w-full bg-[#0a1628] backdrop-blur-md border-b border-white/10 z-50 shadow-large rounded-b-2xl">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2 group">
+          <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
             <img 
               src="/ai4i-logo.svg" 
               alt="AI4Inclusion Logo" 
-              className="group-hover:scale-110 transition-transform duration-300 rounded-sm object-contain"
+              className="rounded-sm object-contain"
               style={{ width: '50px', height: '50px' }}
               width={50}
               height={50}
