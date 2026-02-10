@@ -128,7 +128,7 @@ const ComponentVoiceERA = () => {
                         alt="VoicERA: India's Sovereign Voice Operating System"
                         className="rounded-lg"
                         containerClassName="rounded-lg"
-                        aspectRatio="16/9"
+                        aspectRatio="auto"
                       />
                     </CardContent>
                   </Card>
@@ -208,7 +208,7 @@ const ComponentVoiceERA = () => {
                         alt="VoicERA: India's Sovereign Voice Infrastructure"
                         className="rounded-lg"
                         containerClassName="rounded-lg"
-                        aspectRatio="16/9"
+                        aspectRatio="auto"
                       />
                     </CardContent>
                   </Card>
