@@ -299,7 +299,6 @@ const ComponentVoiceERA = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" className="min-w-[160px]" onClick={() => setInterestFormOpen(true)}>
-                    <Phone size={16} />
                     Show Interest
                   </Button>
                   <Button asChild size="lg" variant="outline" className="min-w-[160px]">
