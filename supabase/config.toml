@@ -2,3 +2,6 @@ project_id = "fhegpeffzyfclrvcprte"
 
 [functions.register-panel]
 verify_jwt = false
+
+[functions.voicera-interest]
+verify_jwt = false

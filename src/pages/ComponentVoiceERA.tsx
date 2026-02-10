@@ -15,6 +15,7 @@ import { DocSection } from "@/components/docs/DocSection";
 import { PreloadedImage } from "@/components/ui/preloaded-image";
 import voiceraOverview from "@/assets/voiceera-overview.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
+import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
 const ComponentVoiceERA = () => {
   const [videoModal, setVideoModal] = useState(false);
@@ -283,6 +284,17 @@ const ComponentVoiceERA = () => {
                 </div>
               </Card>
             </motion.div>
+          </DocSection>
+
+          {/* Interest Form */}
+          <DocSection>
+            <SectionHeading id="show-interest" level={2}>
+              Show Interest in VoicERA
+            </SectionHeading>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Register your interest and our team will reach out to explore how VoicERA can support your voice AI use case.
+            </p>
+            <VoiceraInterestForm />
           </DocSection>
 
           {/* Final CTA */}
