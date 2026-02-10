@@ -44,7 +44,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
             <img 
-              src="/ai4i-logo.svg" 
+              src="/ai4i-logo.png" 
               alt="AI4Inclusion Logo" 
               className="rounded-sm object-contain"
               style={{ width: '50px', height: '50px' }}
