@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import summitHeader from "@/assets/india-ai-summit-header.png";
 
-const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
+const TARGET_DATE = new Date("2026-02-20T23:59:59+05:30").getTime();
 
 interface TimeLeft {
   days: number;
@@ -127,10 +127,10 @@ const Events = () => {
                   {/* Location Info - styled card */}
                   <div className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 space-y-1.5">
                     <p className="text-sm md:text-base text-white/80 font-semibold tracking-wide">
-                      📅 February 16, 2026
+                      📍 New Delhi · 16–20 February 2026
                     </p>
                     <p className="text-xs md:text-sm text-white/60 font-medium">
-                      📍 Bharat Mandapam, New Delhi
+                      Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
                     </p>
                   </div>
                 </div>
