@@ -97,12 +97,15 @@ const ComponentVoiceERA = () => {
                 Component
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-tight">
               VoicERA
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6">
               A production-grade, open-source Voice Operating System built for citizen-scale, real-time, multilingual voice services—designed to run on-premises with full data sovereignty.
             </p>
+            <Button size="lg" onClick={() => setInterestFormOpen(true)}>
+              Show Interest
+            </Button>
           </motion.div>
         </div>
       </div>
