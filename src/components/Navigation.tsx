@@ -8,7 +8,7 @@ const buildingBlocksMenu = [
   { id: "ai4i-orchestrate", label: "AI4I-Orchestrate", icon: Globe },
   { id: "observe", label: "AI4I-Observe", icon: BarChart3 },
   { id: "contribute", label: "AI4I-Contribute", icon: Users },
-  { id: "voiceera", label: "VoiceERA", icon: Phone },
+  { id: "voiceera", label: "VoicERA", icon: Phone },
 ];
 
 // Links that are coming soon and should not navigate

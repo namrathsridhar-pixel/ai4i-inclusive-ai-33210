@@ -311,7 +311,7 @@ const About = () => {
               },
               {
                 icon: Globe,
-                title: "VoiceERA",
+                title: "VoicERA",
                 description: "India's sovereign Voice Operating System for citizen-scale, multilingual voice services.",
                 link: "/building-blocks#voiceera",
                 color: "secondary"
