@@ -74,8 +74,9 @@ https://ai4inclusion.org`;
 <tr><td align="center">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#fff;border-radius:12px;overflow:hidden;">
   <tr><td align="center" style="background-color:#0f2440;padding:32px 40px;">
-    <h1 style="margin:0;font-size:22px;font-weight:700;color:#fff;">AI4Inclusion</h1>
-    <p style="margin:6px 0 0;font-size:12px;color:#8899bb;letter-spacing:1.5px;text-transform:uppercase;">India AI Impact Summit 2026</p>
+    <h1 style="margin:0;font-size:20px;font-weight:700;color:#fff;line-height:28px;">A Billion Voices, One AI</h1>
+    <p style="margin:6px 0 0;font-size:13px;color:#8899bb;line-height:20px;">How Language Tech Transforms Nations</p>
+    <p style="margin:8px 0 0;font-size:11px;color:#667799;letter-spacing:1.5px;text-transform:uppercase;">India AI Impact Summit 2026</p>
   </td></tr>
   <tr><td style="padding:0;font-size:0;line-height:0;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
