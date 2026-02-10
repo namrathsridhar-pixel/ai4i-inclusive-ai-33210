@@ -9,19 +9,18 @@ import { CheckCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 
 const registrationSchema = z.object({
-  full_name: z.string().trim().min(1, "Full name is required").max(100, "Name must be under 100 characters"),
+  full_name: z.string().trim().max(100, "Name must be under 100 characters").optional().or(z.literal("")),
   email: z.string().trim().email("Please enter a valid email address").max(255),
-  organization: z.string().trim().min(1, "Organization is required").max(200, "Organization must be under 200 characters"),
-  role: z.string().trim().min(1, "Role / Designation is required").max(100),
-  interest_area: z.string().min(1, "Please select your primary interest area"),
-  opt_in_updates: z.boolean().default(false),
+  organization: z.string().trim().max(200, "Organization must be under 200 characters").optional().or(z.literal("")),
+  interest_area: z.string().optional().or(z.literal("")),
+  question: z.string().trim().max(1000, "Question must be under 1000 characters").optional().or(z.literal("")),
 });
 
-type RegistrationForm = z.infer<typeof registrationSchema>;
+type RegistrationFormData = z.infer<typeof registrationSchema>;
 
 const interestAreas = [
   "Language AI & Multilingual Systems",
@@ -42,14 +41,12 @@ const PanelRegistrationForm = () => {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors },
-  } = useForm<RegistrationForm>({
+  } = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
-    defaultValues: { opt_in_updates: false },
   });
 
-  const onSubmit = async (data: RegistrationForm) => {
+  const onSubmit = async (data: RegistrationFormData) => {
     setIsSubmitting(true);
     try {
       const { data: result, error } = await supabase.functions.invoke("register-panel", {
@@ -95,7 +92,7 @@ const PanelRegistrationForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       {/* Full Name */}
       <div className="space-y-1.5">
-        <Label htmlFor="full_name" className="text-white/80 text-sm font-medium">Full Name <span className="text-red-400">*</span></Label>
+        <Label htmlFor="full_name" className="text-white/80 text-sm font-medium">Full Name</Label>
         <Input
           id="full_name"
           {...register("full_name")}
@@ -120,7 +117,7 @@ const PanelRegistrationForm = () => {
 
       {/* Organization */}
       <div className="space-y-1.5">
-        <Label htmlFor="organization" className="text-white/80 text-sm font-medium">Organization / Institution <span className="text-red-400">*</span></Label>
+        <Label htmlFor="organization" className="text-white/80 text-sm font-medium">Organization / Institution</Label>
         <Input
           id="organization"
           {...register("organization")}
@@ -130,22 +127,10 @@ const PanelRegistrationForm = () => {
         {errors.organization && <p className="text-red-400 text-xs">{errors.organization.message}</p>}
       </div>
 
-      {/* Role */}
-      <div className="space-y-1.5">
-        <Label htmlFor="role" className="text-white/80 text-sm font-medium">Role / Designation <span className="text-red-400">*</span></Label>
-        <Input
-          id="role"
-          {...register("role")}
-          placeholder="e.g. Director, Researcher, Engineer"
-          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary/50 focus:ring-primary/20"
-        />
-        {errors.role && <p className="text-red-400 text-xs">{errors.role.message}</p>}
-      </div>
-
       {/* Interest Area */}
       <div className="space-y-1.5">
-        <Label className="text-white/80 text-sm font-medium">Primary Interest Area <span className="text-red-400">*</span></Label>
-        <Select onValueChange={(val) => setValue("interest_area", val, { shouldValidate: true })}>
+        <Label className="text-white/80 text-sm font-medium">Primary Interest Area</Label>
+        <Select onValueChange={(val) => setValue("interest_area", val)}>
           <SelectTrigger className="bg-white/5 border-white/15 text-white focus:ring-primary/20 [&>span]:text-white/60">
             <SelectValue placeholder="Select your area of interest" />
           </SelectTrigger>
@@ -157,20 +142,20 @@ const PanelRegistrationForm = () => {
             ))}
           </SelectContent>
         </Select>
-        {errors.interest_area && <p className="text-red-400 text-xs">{errors.interest_area.message}</p>}
       </div>
 
-      {/* Opt-in */}
-      <div className="flex items-start space-x-3 pt-1">
-        <Checkbox
-          id="opt_in_updates"
-          checked={watch("opt_in_updates")}
-          onCheckedChange={(checked) => setValue("opt_in_updates", !!checked)}
-          className="border-white/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary mt-0.5"
-        />
-        <Label htmlFor="opt_in_updates" className="text-white/60 text-sm leading-relaxed cursor-pointer">
-          Receive updates from AI4Inclusion about events and initiatives
+      {/* Question for Panel */}
+      <div className="space-y-1.5">
+        <Label htmlFor="question" className="text-white/80 text-sm font-medium">
+          Do you have a question or topic you would like the panel to address? <span className="text-white/40">(Optional)</span>
         </Label>
+        <Textarea
+          id="question"
+          {...register("question")}
+          placeholder="e.g., Challenges in scaling language AI, voice AI for public services, or inclusion of low-resource languages"
+          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary/50 focus:ring-primary/20 min-h-[80px] resize-none"
+        />
+        {errors.question && <p className="text-red-400 text-xs">{errors.question.message}</p>}
       </div>
 
       {/* Submit */}

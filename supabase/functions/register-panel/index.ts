@@ -110,17 +110,16 @@ https://ai4inclusion.org`;
   return { html, plainText };
 }
 
-function buildAdminEmail(data: Record<string, string | boolean>) {
+function buildAdminEmail(data: Record<string, string | boolean | undefined>) {
   const html = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px;color:#333;">
   <h2 style="color:#1e40af;border-bottom:2px solid #2563eb;padding-bottom:10px;">New Panel Discussion Registration</h2>
   <table style="width:100%;border-collapse:collapse;margin-top:16px;">
     ${[
-      ['Name', data.full_name],
+      ['Name', data.full_name || 'Not provided'],
       ['Email', data.email],
-      ['Organization', data.organization],
-      ['Role', data.role],
-      ['Interest Area', data.interest_area],
-      ['Opt-in Updates', data.opt_in_updates ? 'Yes' : 'No'],
+      ['Organization', data.organization || 'Not provided'],
+      ['Interest Area', data.interest_area || 'Not provided'],
+      ['Question for Panel', data.question || 'None'],
     ].map(([label, val], i) => `<tr style="border-bottom:1px solid #e5e7eb;${i % 2 ? 'background:#f9fafb;' : ''}"><td style="padding:10px 12px;font-weight:bold;color:#374151;width:160px;">${label}</td><td style="padding:10px 12px;color:#111827;">${val}</td></tr>`).join('')}
   </table>
   <p style="margin-top:24px;font-size:12px;color:#9ca3af;">Automated notification from the AI4Inclusion website.</p>
@@ -139,11 +138,11 @@ Deno.serve(async (req) => {
     }
 
     const body = await req.json();
-    const { full_name, email, organization, role, interest_area, opt_in_updates } = body;
+    const { full_name, email, organization, interest_area, question } = body;
 
-    // Validation
-    if (!full_name?.trim() || !email?.trim() || !organization?.trim() || !role?.trim() || !interest_area?.trim()) {
-      return new Response(JSON.stringify({ error: 'All required fields must be filled.' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    // Only email is mandatory
+    if (!email?.trim()) {
+      return new Response(JSON.stringify({ error: 'Email is required.' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
     const trimmedEmail = email.trim().toLowerCase();
@@ -151,7 +150,12 @@ Deno.serve(async (req) => {
       return new Response(JSON.stringify({ error: 'Please enter a valid email address.' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
-    if (full_name.trim().length > 100 || organization.trim().length > 200 || role.trim().length > 100) {
+    const trimmedName = (full_name || '').trim();
+    const trimmedOrg = (organization || '').trim();
+    const trimmedInterest = (interest_area || '').trim();
+    const trimmedQuestion = (question || '').trim();
+
+    if (trimmedName.length > 100 || trimmedOrg.length > 200 || trimmedQuestion.length > 1000) {
       return new Response(JSON.stringify({ error: 'Field length exceeds maximum allowed.' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
@@ -165,12 +169,13 @@ Deno.serve(async (req) => {
     const { error: dbError } = await supabase
       .from('panel_discussion_registrations')
       .insert({
-        full_name: full_name.trim(),
+        full_name: trimmedName || null,
         email: trimmedEmail,
-        organization: organization.trim(),
-        role: role.trim(),
-        interest_area: interest_area.trim(),
-        opt_in_updates: !!opt_in_updates,
+        organization: trimmedOrg || null,
+        role: null,
+        interest_area: trimmedInterest || null,
+        opt_in_updates: false,
+        question: trimmedQuestion || null,
       });
 
     if (dbError) {
@@ -187,12 +192,13 @@ Deno.serve(async (req) => {
 
     if (smtpHost && smtpUser && smtpPass && fromEmail) {
       const smtp = { smtpHost, smtpPort, smtpUser, smtpPass };
-      const confirmation = buildConfirmationEmail(full_name.trim());
-      const adminHtml = buildAdminEmail({ full_name: full_name.trim(), email: trimmedEmail, organization: organization.trim(), role: role.trim(), interest_area: interest_area.trim(), opt_in_updates });
+      const displayName = trimmedName || 'there';
+      const confirmation = buildConfirmationEmail(displayName);
+      const adminHtml = buildAdminEmail({ full_name: trimmedName, email: trimmedEmail, organization: trimmedOrg, interest_area: trimmedInterest, question: trimmedQuestion });
 
       await Promise.allSettled([
         sendEmail(smtp, fromEmail, trimmedEmail, '✅ Registration Confirmed – Panel Discussion | India AI Impact Summit 2026', confirmation.html, confirmation.plainText),
-        sendEmail(smtp, fromEmail, 'info@ai4inclusion.org', `New Panel Discussion Registration – ${full_name.trim()}`, adminHtml, '', trimmedEmail),
+        sendEmail(smtp, fromEmail, 'info@ai4inclusion.org', `New Panel Discussion Registration – ${trimmedName || trimmedEmail}`, adminHtml, '', trimmedEmail),
       ]);
     }
 

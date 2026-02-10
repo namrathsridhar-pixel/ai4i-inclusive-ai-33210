@@ -48,32 +48,35 @@ export type Database = {
         Row: {
           created_at: string
           email: string
-          full_name: string
+          full_name: string | null
           id: string
-          interest_area: string
+          interest_area: string | null
           opt_in_updates: boolean
-          organization: string
-          role: string
+          organization: string | null
+          question: string | null
+          role: string | null
         }
         Insert: {
           created_at?: string
           email: string
-          full_name: string
+          full_name?: string | null
           id?: string
-          interest_area: string
+          interest_area?: string | null
           opt_in_updates?: boolean
-          organization: string
-          role: string
+          organization?: string | null
+          question?: string | null
+          role?: string | null
         }
         Update: {
           created_at?: string
           email?: string
-          full_name?: string
+          full_name?: string | null
           id?: string
-          interest_area?: string
+          interest_area?: string | null
           opt_in_updates?: boolean
-          organization?: string
-          role?: string
+          organization?: string | null
+          question?: string | null
+          role?: string | null
         }
         Relationships: []
       }
