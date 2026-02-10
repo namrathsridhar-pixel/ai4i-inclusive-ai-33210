@@ -44,6 +44,39 @@ export type Database = {
         }
         Relationships: []
       }
+      panel_discussion_registrations: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          interest_area: string
+          opt_in_updates: boolean
+          organization: string
+          role: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          interest_area: string
+          opt_in_updates?: boolean
+          organization: string
+          role: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          interest_area?: string
+          opt_in_updates?: boolean
+          organization?: string
+          role?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

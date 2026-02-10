@@ -26,6 +26,7 @@ import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Registrations from "./pages/Registrations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/adopters": "Adopters – AI4Inclusion",
   "/get-involved": "Get Involved – AI4Inclusion",
   "/get-in-touch": "Get in Touch – AI4Inclusion",
+  "/registrations": "Registrations – AI4Inclusion",
   "/contact": "Contact – AI4Inclusion",
   "/blogs": "Blogs – AI4Inclusion",
   "/privacy": "Privacy Policy – AI4Inclusion",
@@ -91,6 +93,7 @@ const AppContent = () => {
           <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
           <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
           <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
+          <Route path="/registrations" element={<PageTransition><Registrations /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
           <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
           <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />

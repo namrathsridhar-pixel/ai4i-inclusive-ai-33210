@@ -23,6 +23,7 @@ const Navigation = () => {
     // { name: "Who We Are", path: "/who-we-are" },
     { name: "Building Blocks", path: "/building-blocks" },
     { name: "Events", path: "/events" },
+    { name: "Registrations", path: "/registrations" },
     // { name: "Blogs", path: "/blogs" },
     { name: "Get in Touch", path: "/get-in-touch" },
   ];
