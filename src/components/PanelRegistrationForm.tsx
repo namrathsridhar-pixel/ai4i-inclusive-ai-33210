@@ -170,6 +170,15 @@ const PanelRegistrationForm = () => {
           "Register"
         )}
       </Button>
+
+      {/* Data Collection Disclaimer */}
+      <div className="mt-4 p-3 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <p className="text-[11px] leading-relaxed text-white/40">
+          <span className="font-medium text-white/50">Why we collect this data:</span>{" "}
+          The information you provide is used solely to process your registration, send event-related communications, and improve the quality of our sessions. We do <span className="font-medium text-white/50">not</span> sell, rent, or share your personal data with third parties for marketing purposes. Your data is stored securely and handled in accordance with applicable data protection regulations. You may request deletion of your data at any time by contacting us at{" "}
+          <a href="mailto:info@ai4inclusion.org" className="text-primary/70 hover:text-primary underline transition-colors">info@ai4inclusion.org</a>.
+        </p>
+      </div>
     </form>
   );
 };
