@@ -98,25 +98,25 @@ const Registrations = () => {
 
       {/* Registration Dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="bg-gradient-to-br from-[#0a1628] via-[#0f2440] to-[#1a3a5c] border-white/10 text-white max-w-lg max-h-[90vh] overflow-y-auto sm:rounded-2xl">
+        <DialogContent className="bg-gradient-to-br from-[#f8fafc] via-[#eef2f7] to-[#e2e8f0] border-border/40 text-foreground max-w-lg max-h-[90vh] overflow-y-auto sm:rounded-2xl shadow-xl">
           <DialogTitle className="sr-only">Panel Discussion Registration</DialogTitle>
           
           {/* Header */}
           <div className="text-center mb-6 pt-2">
-            <h2 className="text-xl font-bold text-white mb-2">
+            <h2 className="text-xl font-bold text-foreground mb-2">
               Register for the Panel Discussion
             </h2>
-            <p className="text-sm text-white/50 leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               A Billion Voices, One AI: How Language Tech Transforms Nations
             </p>
-            <div className="flex items-center justify-center gap-3 mt-3 text-xs text-white/40">
+            <div className="flex items-center justify-center gap-3 mt-3 text-xs text-muted-foreground/70">
               <span>📅 Feb 19–20, 2026</span>
               <span>📍 Bharat Mandapam, New Delhi</span>
             </div>
           </div>
 
           {/* Accent bar */}
-          <div className="flex w-full h-[2px] mb-4">
+          <div className="flex w-full h-[2px] mb-4 rounded-full overflow-hidden">
             <div className="w-1/3 bg-[#1e3a5f]" />
             <div className="w-1/3 bg-[#e87722]" />
             <div className="w-1/3 bg-[#138808]" />

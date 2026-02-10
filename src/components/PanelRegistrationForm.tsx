@@ -35,6 +35,7 @@ const interestAreas = [
 const PanelRegistrationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [consentChecked, setConsentChecked] = useState(false);
   const { toast } = useToast();
 
   const {
@@ -75,13 +76,13 @@ const PanelRegistrationForm = () => {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-12 px-6"
       >
-        <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="w-8 h-8 text-green-400" />
+        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <CheckCircle className="w-8 h-8 text-green-500" />
         </div>
-        <h3 className="text-xl font-semibold text-white mb-3">
+        <h3 className="text-xl font-semibold text-foreground mb-3">
           Thank you for registering.
         </h3>
-        <p className="text-white/60 max-w-md mx-auto">
+        <p className="text-muted-foreground max-w-md mx-auto">
           A confirmation email has been sent to your email address with event details.
         </p>
       </motion.div>
@@ -92,51 +93,51 @@ const PanelRegistrationForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       {/* Full Name */}
       <div className="space-y-1.5">
-        <Label htmlFor="full_name" className="text-white/80 text-sm font-medium">Full Name</Label>
+        <Label htmlFor="full_name" className="text-foreground/80 text-sm font-medium">Full Name</Label>
         <Input
           id="full_name"
           {...register("full_name")}
           placeholder="Enter your full name"
-          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary/50 focus:ring-primary/20"
+          className="bg-background border-border text-foreground placeholder:text-muted-foreground/50 focus:border-primary/50 focus:ring-primary/20"
         />
-        {errors.full_name && <p className="text-red-400 text-xs">{errors.full_name.message}</p>}
+        {errors.full_name && <p className="text-destructive text-xs">{errors.full_name.message}</p>}
       </div>
 
       {/* Email */}
       <div className="space-y-1.5">
-        <Label htmlFor="email" className="text-white/80 text-sm font-medium">Email Address <span className="text-red-400">*</span></Label>
+        <Label htmlFor="email" className="text-foreground/80 text-sm font-medium">Email Address <span className="text-destructive">*</span></Label>
         <Input
           id="email"
           type="email"
           {...register("email")}
           placeholder="you@example.com"
-          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary/50 focus:ring-primary/20"
+          className="bg-background border-border text-foreground placeholder:text-muted-foreground/50 focus:border-primary/50 focus:ring-primary/20"
         />
-        {errors.email && <p className="text-red-400 text-xs">{errors.email.message}</p>}
+        {errors.email && <p className="text-destructive text-xs">{errors.email.message}</p>}
       </div>
 
       {/* Organization */}
       <div className="space-y-1.5">
-        <Label htmlFor="organization" className="text-white/80 text-sm font-medium">Organization / Institution</Label>
+        <Label htmlFor="organization" className="text-foreground/80 text-sm font-medium">Organization / Institution</Label>
         <Input
           id="organization"
           {...register("organization")}
           placeholder="Your organization name"
-          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary/50 focus:ring-primary/20"
+          className="bg-background border-border text-foreground placeholder:text-muted-foreground/50 focus:border-primary/50 focus:ring-primary/20"
         />
-        {errors.organization && <p className="text-red-400 text-xs">{errors.organization.message}</p>}
+        {errors.organization && <p className="text-destructive text-xs">{errors.organization.message}</p>}
       </div>
 
       {/* Interest Area */}
       <div className="space-y-1.5">
-        <Label className="text-white/80 text-sm font-medium">Primary Interest Area</Label>
+        <Label className="text-foreground/80 text-sm font-medium">Primary Interest Area</Label>
         <Select onValueChange={(val) => setValue("interest_area", val)}>
-          <SelectTrigger className="bg-white/5 border-white/15 text-white focus:ring-primary/20 [&>span]:text-white/60">
+          <SelectTrigger className="bg-background border-border text-foreground focus:ring-primary/20">
             <SelectValue placeholder="Select your area of interest" />
           </SelectTrigger>
-          <SelectContent className="bg-[#0f2440] border-white/15">
+          <SelectContent className="bg-background border-border">
             {interestAreas.map((area) => (
-              <SelectItem key={area} value={area} className="text-white/80 focus:bg-white/10 focus:text-white">
+              <SelectItem key={area} value={area} className="text-foreground/80 focus:bg-muted focus:text-foreground">
                 {area}
               </SelectItem>
             ))}
@@ -146,22 +147,36 @@ const PanelRegistrationForm = () => {
 
       {/* Question for Panel */}
       <div className="space-y-1.5">
-        <Label htmlFor="question" className="text-white/80 text-sm font-medium">
-          Do you have a question or topic you would like the panel to address? <span className="text-white/40">(Optional)</span>
+        <Label htmlFor="question" className="text-foreground/80 text-sm font-medium">
+          Do you have a question or topic you would like the panel to address? <span className="text-muted-foreground">(Optional)</span>
         </Label>
         <Textarea
           id="question"
           {...register("question")}
           placeholder="e.g., Challenges in scaling language AI, voice AI for public services, or inclusion of low-resource languages"
-          className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary/50 focus:ring-primary/20 min-h-[80px] resize-none"
+          className="bg-background border-border text-foreground placeholder:text-muted-foreground/50 focus:border-primary/50 focus:ring-primary/20 min-h-[80px] resize-none"
         />
-        {errors.question && <p className="text-red-400 text-xs">{errors.question.message}</p>}
+        {errors.question && <p className="text-destructive text-xs">{errors.question.message}</p>}
+      </div>
+
+      {/* PII Consent Checkbox */}
+      <div className="flex items-start gap-3 mt-2">
+        <input
+          type="checkbox"
+          id="pii-consent"
+          checked={consentChecked}
+          onChange={(e) => setConsentChecked(e.target.checked)}
+          className="mt-0.5 h-4 w-4 rounded border-border accent-primary cursor-pointer"
+        />
+        <label htmlFor="pii-consent" className="text-[12px] leading-relaxed text-foreground/60 cursor-pointer select-none">
+          The personally identifiable information (PII) provided in this form will be used solely for collaborative purposes. This information will remain confidential and will not be shared with any third party without prior consent.
+        </label>
       </div>
 
       {/* Submit */}
       <Button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !consentChecked}
         className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2.5 mt-2"
       >
         {isSubmitting ? (
@@ -170,15 +185,6 @@ const PanelRegistrationForm = () => {
           "Register"
         )}
       </Button>
-
-      {/* Data Collection Disclaimer */}
-      <div className="mt-4 p-3 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-        <p className="text-[11px] leading-relaxed text-white/40">
-          <span className="font-medium text-white/50">Why we collect this data:</span>{" "}
-          The information you provide is used solely to process your registration, send event-related communications, and improve the quality of our sessions. We do <span className="font-medium text-white/50">not</span> sell, rent, or share your personal data with third parties for marketing purposes. Your data is stored securely and handled in accordance with applicable data protection regulations. You may request deletion of your data at any time by contacting us at{" "}
-          <a href="mailto:info@ai4inclusion.org" className="text-primary/70 hover:text-primary underline transition-colors">info@ai4inclusion.org</a>.
-        </p>
-      </div>
     </form>
   );
 };
