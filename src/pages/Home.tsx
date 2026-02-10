@@ -122,7 +122,7 @@ const Home = () => {
                       onClick={() => setVoiceraFormOpen(true)}
                       className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
                     >
-                      <Phone size={14} /> Show Interest
+                      Show Interest
                     </button>
                   ) : undefined
                 }

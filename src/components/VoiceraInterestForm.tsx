@@ -137,7 +137,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className={compact ? "space-y-3" : "grid sm:grid-cols-2 gap-4"}>
               <div className="space-y-1.5">
-                <label className="text-sm font-medium text-foreground">Full Name <span className="text-muted-foreground text-xs">(optional)</span></label>
+                <label className="text-sm font-medium text-foreground">Full Name</label>
                 <Input
                   placeholder="Your full name"
                   value={fullName}
@@ -161,7 +161,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-foreground">Organization / Institution Name <span className="text-muted-foreground text-xs">(optional)</span></label>
+              <label className="text-sm font-medium text-foreground">Organization / Institution Name</label>
               <Input
                 placeholder="Your organization"
                 value={organizationName}
@@ -173,7 +173,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
 
             {!compact && (
               <div className="space-y-1.5">
-                <label className="text-sm font-medium text-foreground">Use Case / How do you plan to use Voice AI? <span className="text-muted-foreground text-xs">(optional)</span></label>
+                <label className="text-sm font-medium text-foreground">Use Case / How do you plan to use Voice AI?</label>
                 <Textarea
                   placeholder="Describe your voice AI use case or interest area..."
                   value={useCase}
