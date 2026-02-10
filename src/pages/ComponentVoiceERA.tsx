@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSearchParams } from "react-router-dom";
 import { 
   Phone, Shield, Zap, ArrowRight, 
   Play, Layers, Radio, Users, Mic,
@@ -18,8 +19,17 @@ import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.pn
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
 const ComponentVoiceERA = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [videoModal, setVideoModal] = useState(false);
   const [interestFormOpen, setInterestFormOpen] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("showInterest") === "true") {
+      setInterestFormOpen(true);
+      searchParams.delete("showInterest");
+      setSearchParams(searchParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   const whyMattersCards = [
     {
