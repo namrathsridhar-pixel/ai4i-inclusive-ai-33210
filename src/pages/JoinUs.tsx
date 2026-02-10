@@ -31,6 +31,7 @@ type FormValues = z.infer<typeof formSchema>;
 const JoinUs = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [consentChecked, setConsentChecked] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
@@ -243,11 +244,25 @@ const JoinUs = () => {
                       )}
                     />
 
+                    {/* PII Consent Checkbox */}
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="checkbox"
+                        id="pii-consent-joinus"
+                        checked={consentChecked}
+                        onChange={(e) => setConsentChecked(e.target.checked)}
+                        className="mt-0.5 h-4 w-4 rounded border-border accent-primary cursor-pointer"
+                      />
+                      <label htmlFor="pii-consent-joinus" className="text-[12px] leading-relaxed text-muted-foreground/70 cursor-pointer select-none">
+                        The personally identifiable information (PII) provided in this form will be used solely for collaborative purposes. This information will remain confidential and will not be shared with any third party without prior consent.
+                      </label>
+                    </div>
+
                     <Button
                       type="submit"
                       className="w-full button-glow"
                       size="lg"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting || !consentChecked}
                     >
                       {isSubmitting ? (
                         <>
@@ -261,15 +276,6 @@ const JoinUs = () => {
                         </>
                       )}
                     </Button>
-
-                    {/* Data Collection Disclaimer */}
-                    <div className="mt-4 p-3 rounded-lg bg-muted/30 border border-border/50">
-                      <p className="text-[11px] leading-relaxed text-muted-foreground/70">
-                        <span className="font-medium text-muted-foreground">Why we collect this data:</span>{" "}
-                        The information you provide is used solely to respond to your inquiry and facilitate potential collaboration. We do <span className="font-medium text-muted-foreground">not</span> sell, rent, or share your personal data with third parties for marketing purposes. Your data is stored securely and handled in accordance with applicable data protection regulations. You may request deletion of your data at any time by contacting us at{" "}
-                        <a href="mailto:info@ai4inclusion.org" className="text-primary hover:text-primary/80 underline transition-colors">info@ai4inclusion.org</a>.
-                      </p>
-                    </div>
                   </form>
                 </Form>
               </>
