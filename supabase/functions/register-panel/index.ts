@@ -54,9 +54,9 @@ Thank you for registering for the panel discussion
 "A Billion Voices, One AI: How Language Tech Transforms Nations"
 at the India AI Impact Summit 2026.
 
-Venue: Bharat Mandapam, New Delhi
-Dates: February 19–20, 2026
-Format: Moderated panel with audience Q&A
+Date & Time: February 16, 2026 | 11:30 AM
+Venue: Room 16, Bharat Mandapam, New Delhi
+Format: Panel Discussion
 
 We look forward to your participation in this discussion on inclusive,
 population-scale language and voice AI.
@@ -89,9 +89,9 @@ https://ai4inclusion.org`;
     <p style="margin:0 0 20px;font-size:16px;color:#1a1a2e;line-height:24px;">Hi ${name},</p>
     <p style="margin:0 0 18px;font-size:15px;color:#333;line-height:26px;">Thank you for registering for the panel discussion<br/><strong style="color:#1e3a5f;">"A Billion Voices, One AI: How Language Tech Transforms Nations"</strong><br/>at the <strong>India AI Impact Summit 2026</strong>.</p>
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px;">
-      <tr><td style="padding:6px 0;font-size:15px;color:#333;">📍 <strong>Venue:</strong> Bharat Mandapam, New Delhi</td></tr>
-      <tr><td style="padding:6px 0;font-size:15px;color:#333;">📅 <strong>Dates:</strong> February 19–20, 2026</td></tr>
-      <tr><td style="padding:6px 0;font-size:15px;color:#333;">🎤 <strong>Format:</strong> Moderated panel with audience Q&A</td></tr>
+      <tr><td style="padding:6px 0;font-size:15px;color:#333;">📅 <strong>Date & Time:</strong> February 16, 2026 | 11:30 AM</td></tr>
+      <tr><td style="padding:6px 0;font-size:15px;color:#333;">📍 <strong>Venue:</strong> Room 16, Bharat Mandapam, New Delhi</td></tr>
+      <tr><td style="padding:6px 0;font-size:15px;color:#333;">🎤 <strong>Format:</strong> Panel Discussion</td></tr>
     </table>
     <p style="margin:0 0 24px;font-size:15px;color:#333;line-height:26px;">We look forward to your participation in this discussion on inclusive, population-scale language and voice AI.</p>
   </td></tr>

@@ -67,11 +67,11 @@ const Registrations = () => {
                   Panel Discussion: A Billion Voices, One AI
                 </h2>
                 <p className="text-sm md:text-base text-white/60 leading-relaxed">
-                  How Language Tech Transforms Nations — Register for the moderated panel with audience Q&A at Bharat Mandapam, New Delhi.
+                  How Language Tech Transforms Nations — Panel Discussion at Room 16, Bharat Mandapam, New Delhi.
                 </p>
                 <div className="flex items-center gap-4 pt-1 text-xs text-white/40">
-                  <span>📅 Feb 19–20, 2026</span>
-                  <span>📍 New Delhi</span>
+                  <span>📅 Feb 16, 2026 · 11:30 AM</span>
+                  <span>📍 Room 16, Bharat Mandapam, New Delhi</span>
                 </div>
               </div>
 
@@ -110,8 +110,8 @@ const Registrations = () => {
               A Billion Voices, One AI: How Language Tech Transforms Nations
             </p>
             <div className="flex items-center justify-center gap-3 mt-3 text-xs text-muted-foreground/70">
-              <span>📅 Feb 19–20, 2026</span>
-              <span>📍 Bharat Mandapam, New Delhi</span>
+              <span>📅 Feb 16, 2026 · 11:30 AM</span>
+              <span>📍 Room 16, Bharat Mandapam, New Delhi</span>
             </div>
           </div>
 
