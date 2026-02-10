@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Globe, BarChart3, Users, Phone } from "lucide-react";
 import FeatureBlock from "@/components/home/FeatureBlock";
@@ -12,6 +13,8 @@ import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation 
 import OrchestrateSandboxEntry from "@/components/home/OrchestrateSandboxEntry";
 import EventPromoBanner from "@/components/EventPromoBanner";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
@@ -56,13 +59,26 @@ const featureBlocks = [{
 }];
 
 const Home = () => {
+  const [voiceraFormOpen, setVoiceraFormOpen] = useState(false);
+
   return <div className="min-h-screen relative">
        {/* Event Promo Banner Modal */}
        <EventPromoBanner />
 
+      {/* VoicERA Interest Dialog */}
+      <Dialog open={voiceraFormOpen} onOpenChange={setVoiceraFormOpen}>
+        <DialogContent className="max-w-lg p-0 bg-background overflow-auto max-h-[90vh]" aria-describedby={undefined}>
+          <VisuallyHidden>
+            <DialogTitle>Show Interest in VoicERA</DialogTitle>
+          </VisuallyHidden>
+          <div className="p-1">
+            <VoiceraInterestForm />
+          </div>
+        </DialogContent>
+      </Dialog>
+
       {/* Hero Section */}
       <LanguageNetworkHero />
-
 
       {/* Feature & Offerings Grid */}
       <section className="py-20 px-4" id="building-blocks">
@@ -96,7 +112,21 @@ const Home = () => {
 
           <div className="space-y-20 max-w-6xl mx-auto">
             {featureBlocks.map((block, i) => (
-              <FeatureBlock key={block.title} {...block} reversed={i % 2 === 1} />
+              <FeatureBlock
+                key={block.title}
+                {...block}
+                reversed={i % 2 === 1}
+                extraAction={
+                  block.title === "VoicERA" ? (
+                    <button
+                      onClick={() => setVoiceraFormOpen(true)}
+                      className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+                    >
+                      <Phone size={14} /> Show Interest
+                    </button>
+                  ) : undefined
+                }
+              />
             ))}
           </div>
         </div>
@@ -116,13 +146,6 @@ const Home = () => {
 
       {/* Trust & Governance Strip - Removed per user request */}
       {/* <TrustStrip /> */}
-
-      {/* VoicERA Interest Form */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-2xl">
-          <VoiceraInterestForm compact />
-        </div>
-      </section>
 
       {/* Resources & Community */}
       <ResourcesCommunity />
