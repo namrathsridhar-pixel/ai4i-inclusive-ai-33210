@@ -80,6 +80,36 @@ export type Database = {
         }
         Relationships: []
       }
+      voicera_interest_leads: {
+        Row: {
+          email: string
+          full_name: string | null
+          id: string
+          organization_name: string | null
+          source: string
+          submitted_at: string
+          use_case: string | null
+        }
+        Insert: {
+          email: string
+          full_name?: string | null
+          id?: string
+          organization_name?: string | null
+          source?: string
+          submitted_at?: string
+          use_case?: string | null
+        }
+        Update: {
+          email?: string
+          full_name?: string | null
+          id?: string
+          organization_name?: string | null
+          source?: string
+          submitted_at?: string
+          use_case?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

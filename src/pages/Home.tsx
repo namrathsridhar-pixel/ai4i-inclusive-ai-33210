@@ -10,7 +10,8 @@ import SolarSystemVisualization from "@/components/home/SolarSystemVisualization
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
 import OrchestrateSandboxEntry from "@/components/home/OrchestrateSandboxEntry";
- import EventPromoBanner from "@/components/EventPromoBanner";
+import EventPromoBanner from "@/components/EventPromoBanner";
+import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
 const featureBlocks = [{
   title: "AI4I-Orchestrate",
@@ -115,6 +116,13 @@ const Home = () => {
 
       {/* Trust & Governance Strip - Removed per user request */}
       {/* <TrustStrip /> */}
+
+      {/* VoicERA Interest Form */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-2xl">
+          <VoiceraInterestForm compact />
+        </div>
+      </section>
 
       {/* Resources & Community */}
       <ResourcesCommunity />
