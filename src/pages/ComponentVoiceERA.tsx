@@ -331,32 +331,6 @@ const ComponentVoiceERA = () => {
               </div>
             </DialogContent>
           </Dialog>
-          <DocSection>
-            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12 border border-primary/10">
-              <div className="text-center max-w-2xl mx-auto">
-                <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                  Ready to explore VoicERA?
-                </h3>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Learn how to implement sovereign voice infrastructure in your applications.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button asChild size="lg" className="min-w-[160px]">
-                    <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                      Learn More
-                      <ArrowRight size={16} />
-                    </a>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="min-w-[160px]">
-                    <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                      <MessageCircle size={16} />
-                      Discuss
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </DocSection>
         </div>
       </div>
     </DocsLayout>
