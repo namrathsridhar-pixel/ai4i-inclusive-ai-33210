@@ -261,6 +261,15 @@ const JoinUs = () => {
                         </>
                       )}
                     </Button>
+
+                    {/* Data Collection Disclaimer */}
+                    <div className="mt-4 p-3 rounded-lg bg-muted/30 border border-border/50">
+                      <p className="text-[11px] leading-relaxed text-muted-foreground/70">
+                        <span className="font-medium text-muted-foreground">Why we collect this data:</span>{" "}
+                        The information you provide is used solely to respond to your inquiry and facilitate potential collaboration. We do <span className="font-medium text-muted-foreground">not</span> sell, rent, or share your personal data with third parties for marketing purposes. Your data is stored securely and handled in accordance with applicable data protection regulations. You may request deletion of your data at any time by contacting us at{" "}
+                        <a href="mailto:info@ai4inclusion.org" className="text-primary hover:text-primary/80 underline transition-colors">info@ai4inclusion.org</a>.
+                      </p>
+                    </div>
                   </form>
                 </Form>
               </>
