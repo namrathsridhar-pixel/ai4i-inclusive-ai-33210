@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import LanguageParticles from "./components/LanguageParticles";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -100,6 +101,7 @@ const AppContent = () => {
         </Routes>
       </AnimatePresence>
       <Footer />
+      <ScrollToTopButton />
     </>
   );
 };
