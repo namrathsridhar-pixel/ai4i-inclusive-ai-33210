@@ -10,27 +10,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 
 const registrationSchema = z.object({
   full_name: z.string().trim().max(100, "Name must be under 100 characters").optional().or(z.literal("")),
   email: z.string().trim().email("Please enter a valid email address").max(255),
   organization: z.string().trim().max(200, "Organization must be under 200 characters").optional().or(z.literal("")),
-  interest_area: z.string().optional().or(z.literal("")),
+  
   question: z.string().trim().max(1000, "Question must be under 1000 characters").optional().or(z.literal("")),
 });
 
 type RegistrationFormData = z.infer<typeof registrationSchema>;
 
-const interestAreas = [
-  "Language AI & Multilingual Systems",
-  "Voice AI & Speech Technologies",
-  "AI for Public Services & Governance",
-  "Open AI Infrastructure",
-  "Research & Academia",
-  "Industry / Startups",
-  "Policy & Regulation",
-];
 
 const PanelRegistrationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,7 +32,6 @@ const PanelRegistrationForm = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
@@ -126,23 +116,6 @@ const PanelRegistrationForm = () => {
           className="bg-background border-border text-foreground placeholder:text-muted-foreground/50 focus:border-primary/50 focus:ring-primary/20"
         />
         {errors.organization && <p className="text-destructive text-xs">{errors.organization.message}</p>}
-      </div>
-
-      {/* Interest Area */}
-      <div className="space-y-1.5">
-        <Label className="text-foreground/80 text-sm font-medium">Primary Interest Area</Label>
-        <Select onValueChange={(val) => setValue("interest_area", val)}>
-          <SelectTrigger className="bg-background border-border text-foreground focus:ring-primary/20">
-            <SelectValue placeholder="Select your area of interest" />
-          </SelectTrigger>
-          <SelectContent className="bg-background border-border">
-            {interestAreas.map((area) => (
-              <SelectItem key={area} value={area} className="text-foreground/80 focus:bg-muted focus:text-foreground">
-                {area}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
       </div>
 
       {/* Question for Panel */}
