@@ -24,6 +24,7 @@ const Navigation = () => {
     { name: "Building Blocks", path: "/building-blocks" },
     { name: "Events", path: "/events" },
     { name: "Registrations", path: "/registrations" },
+    { name: "Engagements", path: "/engagements" },
     // { name: "Blogs", path: "/blogs" },
     { name: "Get in Touch", path: "/get-in-touch" },
   ];
