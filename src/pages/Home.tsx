@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSearchParams } from "react-router-dom";
 import { Globe, BarChart3, Users, Phone } from "lucide-react";
 import FeatureBlock from "@/components/home/FeatureBlock";
 import KeyCapabilities from "@/components/home/KeyCapabilities";
@@ -59,7 +60,16 @@ const featureBlocks = [{
 }];
 
 const Home = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [voiceraFormOpen, setVoiceraFormOpen] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("showInterest") === "true") {
+      setVoiceraFormOpen(true);
+      searchParams.delete("showInterest");
+      setSearchParams(searchParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   return <div className="min-h-screen relative">
        {/* Event Promo Banner Modal */}
