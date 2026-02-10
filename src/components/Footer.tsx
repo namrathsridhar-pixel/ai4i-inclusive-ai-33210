@@ -12,9 +12,8 @@ const Footer = () => {
               src="/ai4i-logo.png"
               alt="AI4I Logo"
               className="rounded-sm object-contain"
-              style={{ width: '50px', height: '50px' }}
-              width={50}
-              height={50}
+              style={{ width: 'auto', height: '40px' }}
+              height={40}
               loading="eager"
               decoding="async"
             />
