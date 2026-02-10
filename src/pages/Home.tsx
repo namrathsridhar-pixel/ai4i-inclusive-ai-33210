@@ -49,8 +49,8 @@ const featureBlocks = [{
   icon: <Phone className="text-primary-foreground" size={24} />,
   animation: <WaveformAnimation />,
   videoUrl: "",
-  githubUrl: "https://github.com/COSS-India/voiceera",
-  discussUrl: "https://github.com/COSS-India/voiceera/discussions",
+  githubUrl: "https://github.com/COSS-India/voicera_mono_repository",
+  discussUrl: "https://github.com/COSS-India/voicera_mono_repository/discussions",
   blockLink: "/building-blocks#voiceera"
 }];
 
