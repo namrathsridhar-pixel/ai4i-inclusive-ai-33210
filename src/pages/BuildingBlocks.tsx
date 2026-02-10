@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 import { useLocation } from "react-router-dom";
 import { 
   Globe, BarChart3, Users, CheckCircle, Database, GitBranch, Shield, MessageCircle, 
@@ -36,6 +37,7 @@ preloadImages.forEach((src) => {
 const BuildingBlocks = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("ai4i-orchestrate");
+  const [voiceraInterestOpen, setVoiceraInterestOpen] = useState(false);
   
   useEffect(() => {
     if (location.hash) {
@@ -1051,6 +1053,9 @@ const BuildingBlocks = () => {
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
                   A production-grade, open-source Voice Operating System built for citizen-scale, real-time, multilingual voice services—designed to run on-premises with full data sovereignty.
                 </p>
+                <Button size="lg" onClick={() => setVoiceraInterestOpen(true)}>
+                  Show Interest
+                </Button>
               </motion.div>
 
               {/* SECTION 1 — How AI4I-VoicERA Enables Sovereign Voice AI at National Scale */}
@@ -1280,6 +1285,19 @@ const BuildingBlocks = () => {
           </section>
         )}
       </div>
+
+      {/* VoicERA Interest Dialog */}
+      <Dialog open={voiceraInterestOpen} onOpenChange={setVoiceraInterestOpen}>
+        <DialogContent className="max-w-lg p-0 bg-background overflow-auto max-h-[90vh]">
+          <VisuallyHidden>
+            <DialogTitle>Show Interest in VoicERA</DialogTitle>
+            <DialogDescription>Register your interest in VoicERA</DialogDescription>
+          </VisuallyHidden>
+          <div className="p-1">
+            <VoiceraInterestForm />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
