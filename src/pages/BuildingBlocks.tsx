@@ -1030,7 +1030,7 @@ const BuildingBlocks = () => {
           </section>
         )}
 
-        {/* VoiceERA */}
+        {/* VoicERA */}
         {activeSection === "voiceera" && (
           <section className="pt-32 pb-20 px-4" id="voiceera">
             <div className="container mx-auto max-w-6xl">
@@ -1046,14 +1046,14 @@ const BuildingBlocks = () => {
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                     <Phone className="text-primary-foreground" size={24} />
                   </div>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">VoiceERA</h2>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">VoicERA</h2>
                 </div>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
                   A production-grade, open-source Voice Operating System built for citizen-scale, real-time, multilingual voice services—designed to run on-premises with full data sovereignty.
                 </p>
               </motion.div>
 
-              {/* SECTION 1 — How AI4I-VoiceERA Enables Sovereign Voice AI at National Scale */}
+              {/* SECTION 1 — How AI4I-VoicERA Enables Sovereign Voice AI at National Scale */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1061,7 +1061,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I-VoiceERA Enables Sovereign Voice AI at National Scale</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I-VoicERA Enables Sovereign Voice AI at National Scale</h3>
                 <p className="text-muted-foreground mb-6">Real-time, multilingual voice infrastructure built for India's public and enterprise systems.</p>
                 <Dialog>
                   <DialogTrigger asChild>
@@ -1075,7 +1075,7 @@ const BuildingBlocks = () => {
                         </div>
                         <img
                           src={voiceraOverview}
-                          alt="VoiceERA: India's Sovereign Voice Operating System"
+                          alt="VoicERA: India's Sovereign Voice Operating System"
                           className="rounded-lg w-full h-auto"
                           loading="eager"
                         />
@@ -1084,13 +1084,13 @@ const BuildingBlocks = () => {
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                     <VisuallyHidden>
-                      <DialogTitle>VoiceERA: India's Sovereign Voice Operating System</DialogTitle>
-                      <DialogDescription>Overview of VoiceERA architecture and capabilities</DialogDescription>
+                      <DialogTitle>VoicERA: India's Sovereign Voice Operating System</DialogTitle>
+                      <DialogDescription>Overview of VoicERA architecture and capabilities</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
                       <img 
                         src={voiceraOverview} 
-                        alt="VoiceERA: India's Sovereign Voice Operating System" 
+                        alt="VoicERA: India's Sovereign Voice Operating System" 
                         className="w-full h-auto"
                         loading="eager"
                       />
@@ -1099,7 +1099,7 @@ const BuildingBlocks = () => {
                 </Dialog>
               </motion.div>
 
-              {/* SECTION 2 — Why VoiceERA Matters */}
+              {/* SECTION 2 — Why VoicERA Matters */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1108,7 +1108,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why VoiceERA Matters</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why VoicERA Matters</h3>
                   <p className="text-muted-foreground">Sovereign voice infrastructure for citizen-scale, real-time AI systems.</p>
                 </div>
                 <SaaSFeatureGrid cards={[
@@ -1119,7 +1119,7 @@ const BuildingBlocks = () => {
                 ]} />
               </motion.div>
 
-              {/* SECTION 3 — AI4I-VoiceERA: The Sovereign Voice Layer for Language AI */}
+              {/* SECTION 3 — AI4I-VoicERA: The Sovereign Voice Layer for Language AI */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1127,7 +1127,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoiceERA: The Sovereign Voice Layer for Language AI</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoicERA: The Sovereign Voice Layer for Language AI</h3>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
@@ -1141,7 +1141,7 @@ const BuildingBlocks = () => {
                         <div className="w-full overflow-hidden rounded-lg bg-card/50">
                           <PreloadedImage
                             src={voiceraSovereignInfra}
-                            alt="VoiceERA: India's Sovereign Voice Infrastructure"
+                            alt="VoicERA: India's Sovereign Voice Infrastructure"
                             className="rounded-lg"
                             containerClassName="rounded-lg"
                             aspectRatio="16/9"
@@ -1152,17 +1152,17 @@ const BuildingBlocks = () => {
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                     <VisuallyHidden>
-                      <DialogTitle>VoiceERA: India's Sovereign Voice Infrastructure</DialogTitle>
-                      <DialogDescription>Infrastructure diagram showing VoiceERA's sovereign architecture and performance</DialogDescription>
+                      <DialogTitle>VoicERA: India's Sovereign Voice Infrastructure</DialogTitle>
+                      <DialogDescription>Infrastructure diagram showing VoicERA's sovereign architecture and performance</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
-                      <img src={voiceraSovereignInfra} alt="VoiceERA: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
+                      <img src={voiceraSovereignInfra} alt="VoicERA: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
                     </div>
                   </DialogContent>
                 </Dialog>
               </motion.div>
 
-              {/* SECTION 4 — What VoiceERA Enables */}
+              {/* SECTION 4 — What VoicERA Enables */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1170,7 +1170,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What VoiceERA Enables</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What VoicERA Enables</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
                   {[
                     { icon: <Users size={24} />, title: "Citizen-Scale Voice Services", description: "Enables millions of users to access AI systems through natural voice interfaces across public and enterprise services." },
@@ -1203,7 +1203,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* SECTION 5 — VoiceERA in the Ecosystem */}
+              {/* SECTION 5 — VoicERA in the Ecosystem */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1212,13 +1212,13 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">VoiceERA in the AI4Inclusion Ecosystem</h3>
-                  <p className="text-muted-foreground text-center max-w-2xl mx-auto">VoiceERA adds the voice layer to the AI4Inclusion infrastructure stack.</p>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">VoicERA in the AI4Inclusion Ecosystem</h3>
+                  <p className="text-muted-foreground text-center max-w-2xl mx-auto">VoicERA adds the voice layer to the AI4Inclusion infrastructure stack.</p>
                 </div>
                 <EcosystemFlow 
                   steps={[
                     { icon: <Users size={20} />, label: "Citizens", description: "Make voice calls" },
-                    { icon: <Zap size={20} />, label: "VoiceERA", description: "Real-time voice processing", highlight: true },
+                    { icon: <Zap size={20} />, label: "VoicERA", description: "Real-time voice processing", highlight: true },
                     { icon: <Layers size={20} />, label: "Orchestrate", description: "Routes to AI models" },
                     { icon: <Eye size={20} />, label: "Observe", description: "Monitors quality" },
                   ]} 
@@ -1226,7 +1226,7 @@ const BuildingBlocks = () => {
                 />
               </motion.div>
 
-              {/* SECTION 6 — Explore More About VoiceERA */}
+              {/* SECTION 6 — Explore More About VoicERA */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1234,7 +1234,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About VoiceERA</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About VoicERA</h3>
                 <Card className="w-full max-w-3xl mx-auto bg-muted border border-border shadow-soft flex items-center justify-center" style={{ aspectRatio: '16/9' }}>
                   <div className="text-center py-16">
                     <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -1255,7 +1255,7 @@ const BuildingBlocks = () => {
               >
                 <div className="text-center max-w-2xl mx-auto">
                   <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                    Ready to explore VoiceERA?
+                    Ready to explore VoicERA?
                   </h3>
                   <p className="text-lg text-muted-foreground mb-8">
                     Learn how to implement sovereign voice infrastructure in your applications.

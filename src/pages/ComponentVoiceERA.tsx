@@ -86,7 +86,7 @@ const ComponentVoiceERA = () => {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
-              VoiceERA
+              VoicERA
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
               A production-grade, open-source Voice Operating System built for citizen-scale, real-time, multilingual voice services—designed to run on-premises with full data sovereignty.
@@ -99,10 +99,10 @@ const ComponentVoiceERA = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="max-w-6xl mx-auto">
 
-          {/* How AI4I-VoiceERA Enables Sovereign Voice AI at National Scale */}
+          {/* How AI4I-VoicERA Enables Sovereign Voice AI at National Scale */}
           <DocSection>
             <SectionHeading id="overview" level={2}>
-              How AI4I-VoiceERA Enables Sovereign Voice AI at National Scale
+              How AI4I-VoicERA Enables Sovereign Voice AI at National Scale
             </SectionHeading>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Real-time, multilingual voice infrastructure built for India's public and enterprise systems.
@@ -125,7 +125,7 @@ const ComponentVoiceERA = () => {
                       </div>
                       <PreloadedImage
                         src={voiceraOverview}
-                        alt="VoiceERA: India's Sovereign Voice Operating System"
+                        alt="VoicERA: India's Sovereign Voice Operating System"
                         className="rounded-lg"
                         containerClassName="rounded-lg"
                         aspectRatio="16/9"
@@ -135,13 +135,13 @@ const ComponentVoiceERA = () => {
                 </DialogTrigger>
                 <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                   <VisuallyHidden>
-                    <DialogTitle>VoiceERA: India's Sovereign Voice Operating System</DialogTitle>
-                    <DialogDescription>Overview diagram of VoiceERA architecture and capabilities</DialogDescription>
+                    <DialogTitle>VoicERA: India's Sovereign Voice Operating System</DialogTitle>
+                    <DialogDescription>Overview diagram of VoicERA architecture and capabilities</DialogDescription>
                   </VisuallyHidden>
                   <div className="p-4">
                     <img 
                       src={voiceraOverview} 
-                      alt="VoiceERA: India's Sovereign Voice Operating System" 
+                      alt="VoicERA: India's Sovereign Voice Operating System" 
                       className="w-full h-auto"
                       loading="eager"
                     />
@@ -151,10 +151,10 @@ const ComponentVoiceERA = () => {
             </motion.div>
           </DocSection>
 
-          {/* Why VoiceERA Matters */}
+          {/* Why VoicERA Matters */}
           <DocSection>
             <SectionHeading id="why-voiceera-matters" level={2}>
-              Why VoiceERA Matters
+              Why VoicERA Matters
             </SectionHeading>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Sovereign voice infrastructure for citizen-scale, real-time AI systems.
@@ -182,10 +182,10 @@ const ComponentVoiceERA = () => {
             </div>
           </DocSection>
 
-          {/* AI4I-VoiceERA: The Sovereign Voice Layer for Language AI */}
+          {/* AI4I-VoicERA: The Sovereign Voice Layer for Language AI */}
           <DocSection>
             <SectionHeading id="capabilities" level={2}>
-              AI4I-VoiceERA: The Sovereign Voice Layer for Language AI
+              AI4I-VoicERA: The Sovereign Voice Layer for Language AI
             </SectionHeading>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -205,7 +205,7 @@ const ComponentVoiceERA = () => {
                       </div>
                       <PreloadedImage
                         src={voiceraSovereignInfra}
-                        alt="VoiceERA: India's Sovereign Voice Infrastructure"
+                        alt="VoicERA: India's Sovereign Voice Infrastructure"
                         className="rounded-lg"
                         containerClassName="rounded-lg"
                         aspectRatio="16/9"
@@ -215,13 +215,13 @@ const ComponentVoiceERA = () => {
                 </DialogTrigger>
                 <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                   <VisuallyHidden>
-                    <DialogTitle>VoiceERA: India's Sovereign Voice Infrastructure</DialogTitle>
-                    <DialogDescription>Infrastructure diagram showing VoiceERA's sovereign architecture and performance</DialogDescription>
+                    <DialogTitle>VoicERA: India's Sovereign Voice Infrastructure</DialogTitle>
+                    <DialogDescription>Infrastructure diagram showing VoicERA's sovereign architecture and performance</DialogDescription>
                   </VisuallyHidden>
                   <div className="p-4">
                     <img 
                       src={voiceraSovereignInfra} 
-                      alt="VoiceERA: India's Sovereign Voice Infrastructure" 
+                      alt="VoicERA: India's Sovereign Voice Infrastructure" 
                       className="w-full h-auto"
                       loading="eager"
                     />
@@ -231,10 +231,10 @@ const ComponentVoiceERA = () => {
             </motion.div>
           </DocSection>
 
-          {/* What VoiceERA Enables */}
+          {/* What VoicERA Enables */}
           <DocSection>
             <SectionHeading id="what-enables" level={2}>
-              What VoiceERA Enables
+              What VoicERA Enables
             </SectionHeading>
             <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
               {enablesCards.map((card, index) => (
@@ -263,10 +263,10 @@ const ComponentVoiceERA = () => {
             </div>
           </DocSection>
 
-          {/* Explore More About VoiceERA - Video */}
+          {/* Explore More About VoicERA - Video */}
           <DocSection>
             <SectionHeading id="demo" level={2}>
-              Explore More About VoiceERA
+              Explore More About VoicERA
             </SectionHeading>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -290,7 +290,7 @@ const ComponentVoiceERA = () => {
             <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12 border border-primary/10">
               <div className="text-center max-w-2xl mx-auto">
                 <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                  Ready to explore VoiceERA?
+                  Ready to explore VoicERA?
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">
                   Learn how to implement sovereign voice infrastructure in your applications.
