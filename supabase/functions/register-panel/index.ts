@@ -56,6 +56,7 @@ at the India AI Impact Summit 2026.
 
 Date & Time: February 16, 2026 | 11:30 AM
 Venue: Room 16, Bharat Mandapam, New Delhi
+Summit: 16–20 February 2026, Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
 Format: Panel Discussion
 
 We look forward to your participation in this discussion on inclusive,
@@ -91,6 +92,7 @@ https://ai4inclusion.org`;
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px;">
       <tr><td style="padding:6px 0;font-size:15px;color:#333;">📅 <strong>Date & Time:</strong> February 16, 2026 | 11:30 AM</td></tr>
       <tr><td style="padding:6px 0;font-size:15px;color:#333;">📍 <strong>Venue:</strong> Room 16, Bharat Mandapam, New Delhi</td></tr>
+      <tr><td style="padding:6px 0;font-size:15px;color:#333;">🏛️ <strong>Summit:</strong> 16–20 February 2026, People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam</td></tr>
       <tr><td style="padding:6px 0;font-size:15px;color:#333;">🎤 <strong>Format:</strong> Panel Discussion</td></tr>
     </table>
     <p style="margin:0 0 24px;font-size:15px;color:#333;line-height:26px;">We look forward to your participation in this discussion on inclusive, population-scale language and voice AI.</p>
