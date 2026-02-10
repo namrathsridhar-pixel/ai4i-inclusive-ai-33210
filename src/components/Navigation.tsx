@@ -44,10 +44,10 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2 group">
             <img 
-              src="/ai4i-logo.png" 
+              src="/ai4i-logo.svg" 
               alt="AI4Inclusion Logo" 
-              className="group-hover:scale-110 transition-transform duration-300 rounded-sm brightness-110 contrast-125 saturate-110"
-              style={{ width: '50px', height: '50px', imageRendering: 'crisp-edges' }}
+              className="group-hover:scale-110 transition-transform duration-300 rounded-sm object-contain"
+              style={{ width: '50px', height: '50px' }}
               width={50}
               height={50}
               loading="eager"

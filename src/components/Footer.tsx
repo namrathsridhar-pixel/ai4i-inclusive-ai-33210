@@ -9,9 +9,9 @@ const Footer = () => {
           {/* Left Section - Logo + Links */}
           <div className="flex items-center gap-4">
             <img
-              src="/ai4i-logo.png"
+              src="/ai4i-logo.svg"
               alt="AI4I Logo"
-              className="rounded-sm"
+              className="rounded-sm object-contain"
               style={{ width: '50px', height: '50px' }}
               width={50}
               height={50}
