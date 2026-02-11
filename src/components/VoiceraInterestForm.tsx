@@ -41,10 +41,6 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
       toast({ title: "Please accept the data consent to proceed", variant: "destructive" });
       return;
     }
-    if (!consentToContact) {
-      toast({ title: "Please agree to be contacted to proceed", variant: "destructive" });
-      return;
-    }
 
     setIsSubmitting(true);
     try {
@@ -191,6 +187,18 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
 
             <div className="flex items-start gap-2 pt-1">
               <Checkbox
+                id="voicera-contact-consent"
+                checked={consentToContact}
+                onCheckedChange={(checked) => setConsentToContact(checked === true)}
+                disabled={isSubmitting}
+              />
+              <label htmlFor="voicera-contact-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+                I agree to be contacted by the VoicERA team regarding this initiative.
+              </label>
+            </div>
+
+            <div className="flex items-start gap-2 pt-1">
+              <Checkbox
                 id="voicera-consent"
                 checked={consentChecked}
                 onCheckedChange={(checked) => setConsentChecked(checked === true)}
@@ -202,23 +210,11 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
               </label>
             </div>
 
-            <div className="flex items-start gap-2 pt-1">
-              <Checkbox
-                id="voicera-contact-consent"
-                checked={consentToContact}
-                onCheckedChange={(checked) => setConsentToContact(checked === true)}
-                disabled={isSubmitting}
-              />
-              <label htmlFor="voicera-contact-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-                I agree to be contacted by the VoicERA team regarding this initiative.
-              </label>
-            </div>
-
             <Button
               type="submit"
               size={compact ? "default" : "lg"}
               className="w-full"
-              disabled={isSubmitting || !consentChecked || !consentToContact || !email.trim()}
+              disabled={isSubmitting || !consentChecked || !email.trim()}
             >
               {isSubmitting ? (
                 <>
