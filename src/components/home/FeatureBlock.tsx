@@ -61,7 +61,7 @@ const FeatureBlock = ({
             <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-soft">
               {icon}
             </div>
-            <h3 className="font-heading font-bold text-2xl">{title}</h3>
+            <h3 className={`font-bold text-2xl ${title === "VoicERA" ? "font-gonzaga" : "font-heading"}`}>{title}</h3>
           </div>
 
           <p className="text-muted-foreground mb-4 leading-relaxed">{description}</p>

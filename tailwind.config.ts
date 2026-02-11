@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
         heading: ['DM Sans', 'sans-serif'],
+        gonzaga: ['Gonzaga', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",

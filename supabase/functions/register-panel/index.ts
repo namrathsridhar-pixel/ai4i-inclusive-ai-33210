@@ -56,8 +56,7 @@ at the India AI Impact Summit 2026.
 
 Date & Time: February 16, 2026 | 11:30 AM
 Venue: Room 16, Bharat Mandapam, New Delhi
-Summit: 16–20 February 2026, Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam
-Format: Panel Discussion
+Format: Moderated panel with audience Q&A
 
 We look forward to your participation in this discussion on inclusive,
 population-scale language and voice AI.
@@ -77,7 +76,7 @@ https://ai4inclusion.org`;
   <tr><td align="center" style="background-color:#0f2440;padding:32px 40px;">
     <h1 style="margin:0;font-size:20px;font-weight:700;color:#fff;line-height:28px;">A Billion Voices, One AI</h1>
     <p style="margin:6px 0 0;font-size:13px;color:#8899bb;line-height:20px;">How Language Tech Transforms Nations</p>
-    <p style="margin:8px 0 0;font-size:11px;color:#667799;letter-spacing:1.5px;text-transform:uppercase;">India AI Impact Summit 2026</p>
+    
   </td></tr>
   <tr><td style="padding:0;font-size:0;line-height:0;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
@@ -92,8 +91,7 @@ https://ai4inclusion.org`;
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px;">
       <tr><td style="padding:6px 0;font-size:15px;color:#333;">📅 <strong>Date & Time:</strong> February 16, 2026 | 11:30 AM</td></tr>
       <tr><td style="padding:6px 0;font-size:15px;color:#333;">📍 <strong>Venue:</strong> Room 16, Bharat Mandapam, New Delhi</td></tr>
-      <tr><td style="padding:6px 0;font-size:15px;color:#333;">🏛️ <strong>Summit:</strong> 16–20 February 2026, People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam</td></tr>
-      <tr><td style="padding:6px 0;font-size:15px;color:#333;">🎤 <strong>Format:</strong> Panel Discussion</td></tr>
+      <tr><td style="padding:6px 0;font-size:15px;color:#333;">🎤 <strong>Format:</strong> Moderated panel with audience Q&A</td></tr>
     </table>
     <p style="margin:0 0 24px;font-size:15px;color:#333;line-height:26px;">We look forward to your participation in this discussion on inclusive, population-scale language and voice AI.</p>
   </td></tr>
