@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Loader2, CheckCircle2 } from "lucide-react";
+import { Sparkles, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,6 +19,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
   const [organizationName, setOrganizationName] = useState("");
   const [useCase, setUseCase] = useState("");
   const [consentChecked, setConsentChecked] = useState(false);
+  const [consentToContact, setConsentToContact] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
@@ -38,6 +39,10 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
     }
     if (!consentChecked) {
       toast({ title: "Please accept the data consent to proceed", variant: "destructive" });
+      return;
+    }
+    if (!consentToContact) {
+      toast({ title: "Please agree to be contacted to proceed", variant: "destructive" });
       return;
     }
 
@@ -73,6 +78,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
       setOrganizationName("");
       setUseCase("");
       setConsentChecked(false);
+      setConsentToContact(false);
     } catch (error: any) {
       toast({
         title: "Submission failed",
@@ -122,17 +128,15 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
         <CardContent className={compact ? "pt-6 pb-6" : "pt-8 pb-8"}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-              <Phone className="text-primary" size={20} />
+              <Sparkles className="text-primary" size={20} />
             </div>
             <h3 className={`font-heading font-bold ${compact ? "text-lg" : "text-xl md:text-2xl"}`}>
-              Show Interest in VoicERA
+              Be Part of the Future of Voice AI
             </h3>
           </div>
-          {!compact && (
-            <p className="text-muted-foreground mb-6 text-sm">
-              Register your interest in India's Sovereign Voice Operating System. We'll connect with you to explore how VoicERA can support your voice AI use case.
-            </p>
-          )}
+          <p className="text-muted-foreground mb-6 text-sm">
+            Register your interest to explore upcoming advancements in intelligent voice technology.
+          </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className={compact ? "space-y-3" : "grid sm:grid-cols-2 gap-4"}>
@@ -198,11 +202,23 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
               </label>
             </div>
 
+            <div className="flex items-start gap-2 pt-1">
+              <Checkbox
+                id="voicera-contact-consent"
+                checked={consentToContact}
+                onCheckedChange={(checked) => setConsentToContact(checked === true)}
+                disabled={isSubmitting}
+              />
+              <label htmlFor="voicera-contact-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+                I agree to be contacted by the VoicERA team regarding this initiative.
+              </label>
+            </div>
+
             <Button
               type="submit"
               size={compact ? "default" : "lg"}
               className="w-full"
-              disabled={isSubmitting || !consentChecked || !email.trim()}
+              disabled={isSubmitting || !consentChecked || !consentToContact || !email.trim()}
             >
               {isSubmitting ? (
                 <>

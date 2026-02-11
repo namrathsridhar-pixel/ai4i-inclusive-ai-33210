@@ -46,11 +46,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
             <img 
-              src="/ai4i-logo.png" 
+              src="/ai4i-logo.svg" 
               alt="AI4Inclusion Logo" 
-              className="rounded-sm object-contain"
-              style={{ width: 'auto', height: '36px' }}
-              height={36}
+              className="object-contain"
+              style={{ width: 'auto', height: '40px' }}
+              height={40}
               loading="eager"
               decoding="sync"
             />

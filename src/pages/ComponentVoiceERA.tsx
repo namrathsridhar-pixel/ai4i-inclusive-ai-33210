@@ -13,7 +13,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { DocsLayout } from "@/components/docs/DocsLayout";
 import { SectionHeading } from "@/components/docs/SectionHeading";
 import { DocSection } from "@/components/docs/DocSection";
-import { PreloadedImage } from "@/components/ui/preloaded-image";
+
 import voiceraOverview from "@/assets/voiceera-overview.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
@@ -122,48 +122,41 @@ const ComponentVoiceERA = () => {
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Real-time, multilingual voice infrastructure built for India's public and enterprise systems.
             </p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
-                    <CardContent className="pt-6 relative">
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
-                          <Maximize2 size={14} />
-                          Click to expand
-                        </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
+                  <CardContent className="pt-6 relative">
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                        <Maximize2 size={14} />
+                        Click to expand
                       </div>
-                      <PreloadedImage
-                        src={voiceraOverview}
-                        alt="VoicERA: India's Sovereign Voice Operating System"
-                        className="rounded-lg"
-                        containerClassName="rounded-lg"
-                        aspectRatio="auto"
-                      />
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
-                  <VisuallyHidden>
-                    <DialogTitle>VoicERA: India's Sovereign Voice Operating System</DialogTitle>
-                    <DialogDescription>Overview diagram of VoicERA architecture and capabilities</DialogDescription>
-                  </VisuallyHidden>
-                  <div className="p-4">
-                    <img 
-                      src={voiceraOverview} 
-                      alt="VoicERA: India's Sovereign Voice Operating System" 
-                      className="w-full h-auto"
+                    </div>
+                    <img
+                      src={voiceraOverview}
+                      alt="VoicERA: India's Sovereign Voice Operating System"
+                      className="w-full h-auto rounded-lg"
                       loading="eager"
+                      decoding="sync"
                     />
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </motion.div>
+                  </CardContent>
+                </Card>
+              </DialogTrigger>
+              <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                <VisuallyHidden>
+                  <DialogTitle>VoicERA: India's Sovereign Voice Operating System</DialogTitle>
+                  <DialogDescription>Overview diagram of VoicERA architecture and capabilities</DialogDescription>
+                </VisuallyHidden>
+                <div className="p-4">
+                  <img 
+                    src={voiceraOverview} 
+                    alt="VoicERA: India's Sovereign Voice Operating System" 
+                    className="w-full h-auto"
+                    loading="eager"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </DocSection>
 
           {/* Why VoicERA Matters */}
@@ -202,48 +195,41 @@ const ComponentVoiceERA = () => {
             <SectionHeading id="capabilities" level={2}>
               AI4I-VoicERA: The Sovereign Voice Layer for Language AI
             </SectionHeading>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
-                    <CardContent className="pt-6 relative">
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
-                          <Maximize2 size={14} />
-                          Click to expand
-                        </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
+                  <CardContent className="pt-6 relative">
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                        <Maximize2 size={14} />
+                        Click to expand
                       </div>
-                      <PreloadedImage
-                        src={voiceraSovereignInfra}
-                        alt="VoicERA: India's Sovereign Voice Infrastructure"
-                        className="rounded-lg"
-                        containerClassName="rounded-lg"
-                        aspectRatio="auto"
-                      />
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
-                  <VisuallyHidden>
-                    <DialogTitle>VoicERA: India's Sovereign Voice Infrastructure</DialogTitle>
-                    <DialogDescription>Infrastructure diagram showing VoicERA's sovereign architecture and performance</DialogDescription>
-                  </VisuallyHidden>
-                  <div className="p-4">
-                    <img 
-                      src={voiceraSovereignInfra} 
-                      alt="VoicERA: India's Sovereign Voice Infrastructure" 
-                      className="w-full h-auto"
+                    </div>
+                    <img
+                      src={voiceraSovereignInfra}
+                      alt="VoicERA: India's Sovereign Voice Infrastructure"
+                      className="w-full h-auto rounded-lg"
                       loading="eager"
+                      decoding="sync"
                     />
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </motion.div>
+                  </CardContent>
+                </Card>
+              </DialogTrigger>
+              <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                <VisuallyHidden>
+                  <DialogTitle>VoicERA: India's Sovereign Voice Infrastructure</DialogTitle>
+                  <DialogDescription>Infrastructure diagram showing VoicERA's sovereign architecture and performance</DialogDescription>
+                </VisuallyHidden>
+                <div className="p-4">
+                  <img 
+                    src={voiceraSovereignInfra} 
+                    alt="VoicERA: India's Sovereign Voice Infrastructure" 
+                    className="w-full h-auto"
+                    loading="eager"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </DocSection>
 
           {/* What VoicERA Enables */}
