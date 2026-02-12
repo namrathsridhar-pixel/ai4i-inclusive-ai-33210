@@ -313,7 +313,7 @@ const About = () => {
                 icon: Globe,
                 title: "VoicERA",
                 description: "India's sovereign Voice Operating System for citizen-scale, multilingual voice services.",
-                link: "/building-blocks#voiceera",
+                link: "/building-blocks#voicera",
                 color: "secondary"
               }
             ].map((block, index) => (

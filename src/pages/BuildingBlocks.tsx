@@ -27,7 +27,8 @@ import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.pn
 // Preload images for immediate display
 const preloadImages = [
   orchestrateArchitectureNew, observeArchitectureNew, contributeArchitectureNew,
-  orchestrateHowItWorks, observeInfographic, contributeHowItWorks
+  orchestrateHowItWorks, observeInfographic, contributeHowItWorks,
+  voiceraOverview, voiceraSovereignInfra
 ];
 preloadImages.forEach((src) => {
   const img = new Image();
@@ -42,7 +43,7 @@ const BuildingBlocks = () => {
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
-      if (id === 'ai4i-orchestrate' || id === 'observe' || id === 'contribute' || id === 'voiceera') {
+      if (id === 'ai4i-orchestrate' || id === 'observe' || id === 'contribute' || id === 'voicera') {
         setActiveSection(id);
       }
     }
@@ -1033,8 +1034,8 @@ const BuildingBlocks = () => {
         )}
 
         {/* VoicERA */}
-        {activeSection === "voiceera" && (
-          <section className="pt-32 pb-20 px-4" id="voiceera">
+        {activeSection === "voicera" && (
+          <section className="pt-32 pb-20 px-4" id="voicera">
             <div className="container mx-auto max-w-6xl">
               {/* Hero Header */}
               <motion.div
