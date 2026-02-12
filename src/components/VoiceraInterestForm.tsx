@@ -131,7 +131,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
             </h3>
           </div>
           <p className="text-muted-foreground mb-6 text-sm">
-            Register your interest to explore upcoming advancements in intelligent voice technology.
+            Register your interest to explore upcoming advancements in intelligent Voice AI.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
