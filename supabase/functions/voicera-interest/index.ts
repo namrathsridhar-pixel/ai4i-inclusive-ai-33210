@@ -91,7 +91,7 @@ Email: info@ai4inclusion.org`;
                     <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true">
                   <![endif]-->
                   <h1 style="margin: 0; font-size: 24px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; font-family: 'Segoe UI', Arial, sans-serif;">VoicERA</h1>
-                  <p style="margin: 6px 0 0 0; font-size: 12px; color: #8899bb; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Segoe UI', Arial, sans-serif;">India's Sovereign Voice Operating System</p>
+                  <p style="margin: 6px 0 0 0; font-size: 12px; color: #8899bb; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Segoe UI', Arial, sans-serif;">Enabling Digital Inclusion in Every Spoken Language</p>
                   <!--[if mso]>
                     </v:textbox>
                   </v:rect>
