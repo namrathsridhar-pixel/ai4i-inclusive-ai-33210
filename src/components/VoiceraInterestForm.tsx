@@ -193,7 +193,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
                 disabled={isSubmitting}
               />
               <label htmlFor="voicera-contact-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-                I agree to be contacted by the VoicERA team regarding this initiative.
+                Would you like to stay updated on our upcoming events?
               </label>
             </div>
 
