@@ -58,12 +58,12 @@ const Engagements = () => {
               </div>
               <div className="flex-1 space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-semibold tracking-widest text-primary uppercase bg-primary/10 px-2.5 py-1 rounded-full">
-                    VoicERA
+                   <span className="text-[10px] font-semibold tracking-widest text-primary uppercase bg-primary/10 px-2.5 py-1 rounded-full font-gonzaga">
+                    AI4I-VoicERA
                   </span>
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-white leading-tight">
-                  Show Interest in VoicERA
+                  Show Interest in <span className="font-gonzaga">AI4I-VoicERA</span>
                 </h2>
                 <p className="text-sm md:text-base text-white/60 leading-relaxed">
                   India's sovereign Voice Operating System — register your interest in production-grade, multilingual voice infrastructure.
