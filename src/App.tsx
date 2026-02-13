@@ -28,6 +28,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Registrations from "./pages/Registrations";
 import Engagements from "./pages/Engagements";
+import TryVoicERA from "./pages/TryVoicERA";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/components/observe": "AI4I-Observe – AI4Inclusion",
   "/components/contribute": "AI4I-Contribute – AI4Inclusion",
   "/components/voiceera": "VoiceERA – AI4Inclusion",
+  "/try-voicera": "Try VoicERA – AI4Inclusion",
   "/events": "Events – AI4Inclusion",
   "/adopters": "Adopters – AI4Inclusion",
   "/engagements": "Engagements – AI4Inclusion",
@@ -91,6 +93,7 @@ const AppContent = () => {
           <Route path="/components/observe" element={<PageTransition><ComponentObserve /></PageTransition>} />
           <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
           <Route path="/components/voiceera" element={<PageTransition><ComponentVoiceERA /></PageTransition>} />
+          <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
           <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
           <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
           <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
