@@ -17,10 +17,12 @@ serve(async (req) => {
       throw new Error("LITWIZLABS_API_KEY is not configured");
     }
 
-    const LITWIZLABS_CALLER_ID = Deno.env.get("LITWIZLABS_CALLER_ID");
-    if (!LITWIZLABS_CALLER_ID) {
-      throw new Error("LITWIZLABS_CALLER_ID is not configured");
+    const LITWIZLABS_AGENT_ID = Deno.env.get("LITWIZLABS_AGENT_ID");
+    if (!LITWIZLABS_AGENT_ID) {
+      throw new Error("LITWIZLABS_AGENT_ID is not configured");
     }
+
+    const LITWIZLABS_CALLER_ID = Deno.env.get("LITWIZLABS_CALLER_ID");
 
     const { phone } = await req.json();
 
@@ -32,18 +34,33 @@ serve(async (req) => {
       );
     }
 
-    const fullPhone = `+91${phone}`;
+    const now = new Date();
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    const response = await fetch("https://api.litwizlabs.com/v1/calls", {
+    const body: Record<string, unknown> = {
+      agent_id: LITWIZLABS_AGENT_ID,
+      to_number: phone,
+      country_code: "91",
+      timezone: "Asia/Kolkata",
+      agent_args: {
+        time_now: now.toISOString(),
+        day_of_week: days[now.getDay()],
+      },
+    };
+
+    if (LITWIZLABS_CALLER_ID) {
+      body.out_did = LITWIZLABS_CALLER_ID;
+    }
+
+    console.log("Initiating call to:", phone);
+
+    const response = await fetch("https://v1.getraya.app/api/call", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${LITWIZLABS_API_KEY}`,
+        "X-API-Key": LITWIZLABS_API_KEY,
       },
-      body: JSON.stringify({
-        to: fullPhone,
-        from: LITWIZLABS_CALLER_ID,
-      }),
+      body: JSON.stringify(body),
     });
 
     const data = await response.json();
@@ -51,11 +68,12 @@ serve(async (req) => {
     if (!response.ok) {
       console.error("Litwizlabs API error:", response.status, JSON.stringify(data));
       return new Response(
-        JSON.stringify({ success: false, error: "Failed to initiate call. Please try again." }),
+        JSON.stringify({ success: false, error: data.message || "Failed to initiate call." }),
         { status: response.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
+    console.log("Call initiated successfully:", JSON.stringify(data));
     return new Response(
       JSON.stringify({ success: true, data }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
