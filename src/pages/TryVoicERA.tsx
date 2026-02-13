@@ -123,7 +123,6 @@ const TryVoicERA = () => {
               </>
             )}
           </div>
-        </div>
       </div>
     </div>
   );
