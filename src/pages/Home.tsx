@@ -53,7 +53,7 @@ const featureBlocks = [{
   bullets: ["Real-time streaming STT, LLM, and TTS pipeline", "Indic-first with native code-switching support", "On-premises Voice-in-a-Box deployment", "SIP / PSTN / VoIP telephony integration"],
   icon: <Phone className="text-primary-foreground" size={24} />,
   animation: <WaveformAnimation />,
-  videoUrl: "",
+  videoUrl: "https://www.youtube.com/embed/PFPzxniv1p8",
   githubUrl: "https://github.com/COSS-India/voicera_mono_repository",
   discussUrl: "https://github.com/COSS-India/voicera_mono_repository/discussions",
   blockLink: "/building-blocks#voicera"
