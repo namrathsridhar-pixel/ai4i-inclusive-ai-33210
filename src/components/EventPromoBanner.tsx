@@ -141,7 +141,7 @@ const EventPromoBanner = () => {
                   transition={{ delay: 0.4 }}
                   className="text-sm text-white/70 leading-relaxed"
                 >
-                  Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
+                  Building Inclusive, Policy-Governed Language AI as Digital Public Goods at Population Scale.
                 </motion.p>
 
                 {/* Location Info - styled card */}

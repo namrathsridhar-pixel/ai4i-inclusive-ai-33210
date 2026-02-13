@@ -69,10 +69,10 @@ const Registrations = () => {
                 <p className="text-sm md:text-base text-white/60 leading-relaxed">
                   How Language Tech Transforms Nations — Panel Discussion at Room 16, Bharat Mandapam, New Delhi.
                 </p>
-                <div className="flex items-center gap-4 pt-1 text-xs text-white/40">
-                  <span>📅 Feb 16, 2026 · 11:30 AM</span>
-                  <span>📍 Room 16, Bharat Mandapam, New Delhi</span>
-                </div>
+                <div className="flex items-center gap-4 pt-1 text-xs text-white/80">
+                   <span>📅 Feb 16, 2026 · 11:30 AM</span>
+                   <span>📍 Room 16, Bharat Mandapam, New Delhi</span>
+                 </div>
               </div>
 
               {/* Arrow */}
@@ -89,9 +89,6 @@ const Registrations = () => {
             transition={{ delay: 0.4 }}
             className="mt-12 text-center"
           >
-            <p className="text-white/50 text-sm">
-              More registrations coming soon...
-            </p>
           </motion.div>
         </div>
       </div>
@@ -109,7 +106,7 @@ const Registrations = () => {
             <p className="text-sm text-muted-foreground leading-relaxed">
               A Billion Voices, One AI: How Language Tech Transforms Nations
             </p>
-            <div className="flex items-center justify-center gap-3 mt-3 text-xs text-muted-foreground/70">
+            <div className="flex items-center justify-center gap-3 mt-3 text-xs text-foreground">
               <span>📅 Feb 16, 2026 · 11:30 AM</span>
               <span>📍 Room 16, Bharat Mandapam, New Delhi</span>
             </div>

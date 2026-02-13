@@ -77,9 +77,6 @@ const Engagements = () => {
             transition={{ delay: 0.4 }}
             className="mt-12 text-center"
           >
-            <p className="text-white/50 text-sm">
-              More engagement opportunities coming soon...
-            </p>
           </motion.div>
         </div>
       </div>

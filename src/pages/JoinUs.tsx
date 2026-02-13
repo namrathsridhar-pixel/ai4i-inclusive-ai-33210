@@ -254,7 +254,8 @@ const JoinUs = () => {
                         className="mt-0.5 h-4 w-4 rounded border-border accent-primary cursor-pointer"
                       />
                       <label htmlFor="pii-consent-joinus" className="text-[12px] leading-relaxed text-muted-foreground/70 cursor-pointer select-none">
-                        The personally identifiable information (PII) provided in this form will be used solely for collaborative purposes. This information will remain confidential and will not be shared with any third party without prior consent.
+                        The personally identifiable information (PII) provided in this form will be used solely for collaborative purposes. This information will remain confidential and will not be shared with any third party without prior consent. For data deletion requests, contact{" "}
+                        <a href="mailto:info@ai4inclusion.org" className="text-primary hover:underline">info@ai4inclusion.org</a>.
                       </label>
                     </div>
 
