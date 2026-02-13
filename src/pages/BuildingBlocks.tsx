@@ -25,12 +25,8 @@ import voiceraOverview from "@/assets/voiceera-overview.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
 
-// Preload images for immediate display
-const preloadImages = [
-  orchestrateArchitectureNew, observeArchitectureNew, contributeArchitectureNew,
-  orchestrateHowItWorks, observeInfographic, contributeHowItWorks,
-  voiceraOverview, voiceraSovereignInfra
-];
+// Preload only the first section's images eagerly; others load on-demand via PreloadedImage
+const preloadImages = [orchestrateHowItWorks, orchestrateArchitectureNew];
 preloadImages.forEach((src) => {
   const img = new Image();
   img.src = src;
