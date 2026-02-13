@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { 
   Globe, BarChart3, Users, CheckCircle, Database, GitBranch, Shield, MessageCircle, 
   ArrowRight, Activity, Maximize2, Layers, Route, Gauge, Eye, RefreshCcw,
@@ -1051,6 +1051,13 @@ const BuildingBlocks = () => {
                     <Phone className="text-primary-foreground" size={24} />
                   </div>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-gonzaga font-bold">VoicERA</h2>
+                  <Link
+                    to="/try-voicera"
+                    className="ml-2 inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-bold hover:bg-primary/90 hover:shadow-[0_0_16px_hsl(var(--primary)/0.5)] transition-all duration-300"
+                  >
+                    <Phone size={14} />
+                    Try VoicERA
+                  </Link>
                 </div>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
                   A production-grade, open Voice Operating System built for citizen-scale, real-time, multilingual voice services — designed for secure, on-premise and national infrastructure deployment.
