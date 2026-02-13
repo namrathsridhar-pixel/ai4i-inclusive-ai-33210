@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import summitHeader from "@/assets/india-ai-summit-header.png";
 
-const TARGET_DATE = new Date("2026-02-20T23:59:59+05:30").getTime();
+const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
 
 interface TimeLeft {
   days: number;
