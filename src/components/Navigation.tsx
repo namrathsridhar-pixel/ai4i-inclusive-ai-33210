@@ -45,13 +45,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
-            <div className="relative" style={{ clipPath: 'polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)' }}>
+            <div className="w-10 h-10 rounded-full overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex-shrink-0">
               <img 
                 src="/ai4i-logo.png" 
                 alt="AI4Inclusion Logo" 
-                className="object-contain"
-                style={{ width: 'auto', height: '40px' }}
-                width={120}
+                className="w-full h-full object-cover"
+                width={40}
                 height={40}
                 loading="eager"
                 decoding="sync"
@@ -60,11 +59,11 @@ const Navigation = () => {
             </div>
           </Link>
 
-          {/* Try VoicERA Button */}
+          {/* Talk to VoicERA Button */}
           <Link to="/try-voicera" className="hidden md:block ml-2">
             <Button variant="outline" size="sm" className="bg-transparent text-white font-bold border-white hover:border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
               <Phone size={14} className="mr-1.5" />
-              Try VoicERA
+              Talk to VoicERA
             </Button>
           </Link>
 
@@ -151,7 +150,7 @@ const Navigation = () => {
             <Link to="/try-voicera" onClick={() => setIsOpen(false)}>
               <Button variant="outline" className="w-full justify-start font-bold mb-2 bg-transparent text-white border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
                 <Phone size={14} className="mr-1.5" />
-                Try VoicERA
+                Talk to VoicERA
               </Button>
             </Link>
             {navLinks.map(link => {
