@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { 
-  Phone, Shield, Zap, ArrowRight, 
-  Play, Layers, Radio, Users, Mic,
+  Shield, Zap, ArrowRight, Mic2,
+  Layers, Users, Mic,
   MessageCircle, Activity, Lock, Maximize2,
   Network, Eye
 } from "lucide-react";
@@ -18,12 +18,12 @@ import { DocSection } from "@/components/docs/DocSection";
 import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
-import TryVoiceERAModal from "@/components/TryVoiceERAModal";
+
 
 const ComponentVoiceERA = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [interestFormOpen, setInterestFormOpen] = useState(false);
-  const [tryModalOpen, setTryModalOpen] = useState(false);
+  
 
   useEffect(() => {
     if (searchParams.get("showInterest") === "true") {
@@ -108,7 +108,7 @@ const ComponentVoiceERA = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-medium">
-                <Phone className="text-primary-foreground" size={24} />
+                <Mic2 className="text-primary-foreground" size={24} />
               </div>
               <span className="text-sm font-medium text-primary px-3 py-1 bg-primary/10 rounded-full">
                 Component
@@ -123,10 +123,6 @@ const ComponentVoiceERA = () => {
             <div className="flex gap-3">
               <Button size="lg" onClick={() => setInterestFormOpen(true)}>
                 Show Interest
-              </Button>
-              <Button size="lg" variant="outline" onClick={() => setTryModalOpen(true)}>
-                <Phone size={16} className="mr-2" />
-                Try VoiceERA
               </Button>
             </div>
           </motion.div>
@@ -327,10 +323,6 @@ const ComponentVoiceERA = () => {
                   <Button size="lg" className="min-w-[160px]" onClick={() => setInterestFormOpen(true)}>
                     Show Interest
                   </Button>
-                  <Button size="lg" variant="outline" className="min-w-[160px]" onClick={() => setTryModalOpen(true)}>
-                    <Phone size={16} className="mr-2" />
-                    Try VoiceERA
-                  </Button>
                   <Button asChild size="lg" variant="outline" className="min-w-[160px]">
                     <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                       Learn More
@@ -361,8 +353,6 @@ const ComponentVoiceERA = () => {
             </DialogContent>
           </Dialog>
 
-          {/* Try VoiceERA Modal */}
-          <TryVoiceERAModal open={tryModalOpen} onOpenChange={setTryModalOpen} />
         </div>
       </div>
     </DocsLayout>

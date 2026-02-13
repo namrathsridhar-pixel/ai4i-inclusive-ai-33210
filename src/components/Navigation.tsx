@@ -44,16 +44,19 @@ const Navigation = () => {
   return <nav className="fixed top-0 w-full bg-[#0a1628] backdrop-blur-md border-b border-white/10 z-50 shadow-large rounded-b-2xl">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
+          <Link to="/" onClick={handleHomeClick} className="flex items-center gap-3">
             <img 
               src="/ai4i-logo.svg" 
               alt="AI4Inclusion Logo" 
-              className="object-contain"
+              className="object-contain rounded-lg"
               style={{ width: 'auto', height: '40px' }}
               height={40}
               loading="eager"
               decoding="sync"
             />
+            <span className="hidden sm:inline text-white/80 text-sm font-medium tracking-wide">
+              Enabling Digital Inclusion in Every Spoken Language
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
