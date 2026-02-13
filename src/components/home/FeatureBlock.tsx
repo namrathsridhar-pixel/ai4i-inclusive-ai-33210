@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Github, MessageSquare } from "lucide-react";
+import { ArrowRight, Play, Github, MessageSquare, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -62,6 +62,15 @@ const FeatureBlock = ({
               {icon}
             </div>
             <h3 className={`font-bold text-2xl ${title === "VoicERA" ? "font-gonzaga" : "font-heading"}`}>{title}</h3>
+            {title === "VoicERA" && (
+              <Link
+                to="/try-voicera"
+                className="ml-2 inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-bold hover:bg-primary/90 hover:shadow-[0_0_16px_hsl(var(--primary)/0.5)] transition-all duration-300"
+              >
+                <Phone size={13} />
+                Try VoicERA
+              </Link>
+            )}
           </div>
 
           <p className="text-muted-foreground mb-4 leading-relaxed">{description}</p>
