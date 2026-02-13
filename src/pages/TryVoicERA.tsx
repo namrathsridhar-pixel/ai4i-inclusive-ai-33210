@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Phone, Loader2, CheckCircle, AlertTriangle, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 
 const TryVoicERA = () => {
   const navigate = useNavigate();
@@ -14,10 +15,27 @@ const TryVoicERA = () => {
     if (!isValid) return;
     setStatus("loading");
 
-    // Placeholder - API integration pending
-    setTimeout(() => {
-      setStatus("success");
-    }, 2000);
+    try {
+      const { data, error } = await supabase.functions.invoke("initiate-call", {
+        body: { phone: phoneNumber },
+      });
+
+      if (error) {
+        console.error("Edge function error:", error);
+        setStatus("error");
+        return;
+      }
+
+      if (data?.success) {
+        setStatus("success");
+      } else {
+        console.error("Call initiation failed:", data?.error);
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error("Network error:", err);
+      setStatus("error");
+    }
   };
 
   return (
