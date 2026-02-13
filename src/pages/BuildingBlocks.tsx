@@ -1194,6 +1194,7 @@ const BuildingBlocks = () => {
                     { icon: <Shield size={24} />, title: "Secure & Controlled Deployment", description: "Operates fully within regulated, on-premise, or air-gapped environments." },
                     { icon: <Network size={24} />, title: "Model Portability & Ecosystem Growth", description: "Allows adopters to switch AI providers without losing learnings — while benefiting from open-source improvements." },
                     { icon: <Layers size={24} />, title: "Voice as Digital Public Infrastructure", description: "Establishes voice as a core infrastructure layer that AI4I systems and national platforms can build upon." },
+                    { icon: <Eye size={24} />, title: "Interpretability & Data Transparency", description: "Ensures clear visibility into how raw data is processed, stored, and used within the voice stack — enabling institutions to understand model behavior, enforce guardrails, and maintain trust in AI-driven systems." },
                   ].map((card, index) => (
                     <motion.div
                       key={card.title}
