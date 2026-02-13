@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Phone, Loader2, CheckCircle, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DocsLayout } from "@/components/docs/DocsLayout";
 
 const TryVoicERA = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -21,9 +20,8 @@ const TryVoicERA = () => {
   };
 
   return (
-    <DocsLayout>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="max-w-[500px] mx-auto">
+    <div className="flex-1 flex items-center justify-center py-12 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[500px] w-full">
           <div className="border border-border rounded-2xl bg-card shadow-lg p-8">
             {/* Header */}
             <div className="mb-6">
@@ -127,7 +125,7 @@ const TryVoicERA = () => {
           </div>
         </div>
       </div>
-    </DocsLayout>
+    </div>
   );
 };
 
