@@ -235,9 +235,7 @@ const TryVoicERA = () => {
                 {/* Inline country + phone input */}
                 <div className="flex gap-3 mb-4">
                   <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-white/15 bg-white/5 text-sm text-white/70 font-medium shrink-0">
-                    <span>🇮🇳</span>
-                    <span>IN</span>
-                    <span className="text-white/40">+91</span>
+                    🇮🇳 India (+91)
                   </div>
                   <input
                     type="tel"
