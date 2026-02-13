@@ -1,4 +1,4 @@
- import { useState, useEffect } from "react";
+ import { useState, useEffect, useRef } from "react";
  import { cn } from "@/lib/utils";
  
  interface PreloadedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -17,27 +17,41 @@
    ...props
  }: PreloadedImageProps) => {
    const [loaded, setLoaded] = useState(false);
-   const [imageSrc, setImageSrc] = useState<string | null>(null);
+   const [inView, setInView] = useState(false);
+   const containerRef = useRef<HTMLDivElement>(null);
  
+   // Use IntersectionObserver to only load when near viewport
    useEffect(() => {
-     // Create an Image object to preload
+     const el = containerRef.current;
+     if (!el) return;
+     const observer = new IntersectionObserver(
+       ([entry]) => {
+         if (entry.isIntersecting) {
+           setInView(true);
+           observer.disconnect();
+         }
+       },
+       { rootMargin: "200px" } // Start loading 200px before visible
+     );
+     observer.observe(el);
+     return () => observer.disconnect();
+   }, []);
+
+   // Preload image once in view
+   useEffect(() => {
+     if (!inView) return;
      const img = new Image();
      img.src = src;
-     
-     // If already cached, show immediately
      if (img.complete) {
-       setImageSrc(src);
        setLoaded(true);
      } else {
-       img.onload = () => {
-         setImageSrc(src);
-         setLoaded(true);
-       };
+       img.onload = () => setLoaded(true);
      }
-   }, [src]);
+   }, [src, inView]);
  
    return (
      <div 
+       ref={containerRef}
        className={cn(
          "relative overflow-hidden bg-muted/30",
          containerClassName
@@ -50,17 +64,18 @@
        )}
        
        {/* Actual image */}
-       {imageSrc && (
+       {inView && (
          <img
-           src={imageSrc}
+           src={src}
            alt={alt}
            className={cn(
              "w-full h-full object-contain transition-opacity duration-300",
              loaded ? "opacity-100" : "opacity-0",
              className
            )}
-           loading="eager"
+           loading="lazy"
            decoding="async"
+           onLoad={() => setLoaded(true)}
            {...props}
          />
        )}
