@@ -6,13 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import summitHeader from "@/assets/india-ai-summit-header.png";
 
-const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
+const TARGET_DATE = new Date("2026-02-20T23:59:59+05:30").getTime();
 
 interface TimeLeft {
   days: number;
   hours: number;
   minutes: number;
-  seconds: number;
 }
 
 const calculateTimeLeft = (): TimeLeft => {
@@ -20,14 +19,13 @@ const calculateTimeLeft = (): TimeLeft => {
   const difference = TARGET_DATE - now;
 
   if (difference <= 0) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    return { days: 0, hours: 0, minutes: 0 };
   }
 
   return {
     days: Math.floor(difference / (1000 * 60 * 60 * 24)),
     hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
     minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-    seconds: Math.floor((difference % (1000 * 60)) / 1000),
   };
 };
 
@@ -65,7 +63,7 @@ const EventPromoBanner = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    }, 60000);
 
     return () => clearInterval(timer);
   }, []);
@@ -119,8 +117,6 @@ const EventPromoBanner = () => {
                 <CountdownUnit value={timeLeft.hours} label="Hours" />
                 <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
                 <CountdownUnit value={timeLeft.minutes} label="Mins" />
-                <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
-                <CountdownUnit value={timeLeft.seconds} label="Secs" />
               </motion.div>
             </div>
 

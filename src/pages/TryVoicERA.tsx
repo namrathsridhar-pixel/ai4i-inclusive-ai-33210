@@ -21,7 +21,7 @@ const TryVoicERA = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a1628 0%, #0f2847 40%, #1a3a5c 100%)" }}>
+    <div className="min-h-screen flex flex-col relative overflow-hidden bg-gradient-to-b from-[#0a1628] to-[#0f2847]">
       {/* Concentric circles background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         {[1, 2, 3, 4, 5, 6, 7].map((i) => (
