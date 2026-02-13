@@ -90,7 +90,7 @@ const ComponentVoiceERA = () => {
     {
       icon: <Layers size={24} />,
       title: "Voice as Digital Public Infrastructure",
-      description: "Establishes voice as a core infrastructure layer that AI4I systems and national platforms can build upon.",
+      description: "Establishes voice as a foundational infrastructure layer that public systems and national platforms can build upon.",
     },
     {
       icon: <Eye size={24} />,
