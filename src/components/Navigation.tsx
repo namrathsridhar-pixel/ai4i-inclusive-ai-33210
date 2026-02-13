@@ -58,7 +58,7 @@ const Navigation = () => {
 
           {/* Try VoicERA Button */}
           <Link to="/try-voicera" className="hidden md:block ml-6">
-            <Button variant="outline" size="sm" className="text-white font-bold border-white hover:border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
+            <Button variant="outline" size="sm" className="bg-transparent text-white font-bold border-white hover:border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
               <Phone size={14} className="mr-1.5" />
               Try VoicERA
             </Button>
@@ -145,7 +145,7 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && <div className="md:hidden pb-4 animate-fade-in">
             <Link to="/try-voicera" onClick={() => setIsOpen(false)}>
-              <Button variant="outline" className="w-full justify-start font-bold mb-2 text-white border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
+              <Button variant="outline" className="w-full justify-start font-bold mb-2 bg-transparent text-white border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
                 <Phone size={14} className="mr-1.5" />
                 Try VoicERA
               </Button>
