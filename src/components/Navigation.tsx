@@ -44,19 +44,24 @@ const Navigation = () => {
   return <nav className="fixed top-0 w-full bg-[#0a1628] backdrop-blur-md border-b border-white/10 z-50 shadow-large rounded-b-2xl">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" onClick={handleHomeClick} className="flex items-center gap-3">
+          <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
             <img 
               src="/ai4i-logo.svg" 
               alt="AI4Inclusion Logo" 
-              className="object-contain rounded-lg"
+              className="object-contain"
               style={{ width: 'auto', height: '40px' }}
               height={40}
               loading="eager"
               decoding="sync"
             />
-            <span className="hidden sm:inline text-white/80 text-sm font-medium tracking-wide">
-              Enabling Digital Inclusion in Every Spoken Language
-            </span>
+          </Link>
+
+          {/* Try VoicERA Button */}
+          <Link to="/try-voicera" className="hidden md:block ml-6">
+            <Button variant="outline" size="sm" className="text-white border-white/20 hover:bg-white/10 hover:text-white font-medium">
+              <Phone size={14} className="mr-1.5" />
+              Try VoicERA
+            </Button>
           </Link>
 
           {/* Desktop Navigation */}
@@ -139,6 +144,12 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && <div className="md:hidden pb-4 animate-fade-in">
+            <Link to="/try-voicera" onClick={() => setIsOpen(false)}>
+              <Button variant="outline" className="w-full justify-start font-medium mb-2 text-white border-white/20 hover:bg-white/10 hover:text-white">
+                <Phone size={14} className="mr-1.5" />
+                Try VoicERA
+              </Button>
+            </Link>
             {navLinks.map(link => {
               if (link.path === "/building-blocks") {
                 return (
