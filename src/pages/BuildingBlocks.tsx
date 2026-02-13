@@ -1089,6 +1089,8 @@ const BuildingBlocks = () => {
                           alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
                           className="rounded-lg w-full h-auto"
                           loading="eager"
+                          decoding="sync"
+                          fetchPriority="high"
                         />
                       </CardContent>
                     </Card>
@@ -1152,12 +1154,13 @@ const BuildingBlocks = () => {
                           </div>
                         </div>
                         <div className="w-full overflow-hidden rounded-lg bg-card/50">
-                          <PreloadedImage
+                          <img
                             src={voiceraSovereignInfra}
                             alt="VoicERA: India's Sovereign Voice Infrastructure"
-                            className="rounded-lg"
-                            containerClassName="rounded-lg"
-                            aspectRatio="16/9"
+                            className="rounded-lg w-full h-auto"
+                            loading="eager"
+                            decoding="sync"
+                            fetchPriority="high"
                           />
                         </div>
                       </CardContent>
