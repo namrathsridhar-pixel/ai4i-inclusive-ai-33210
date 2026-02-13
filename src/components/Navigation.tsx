@@ -45,7 +45,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex-shrink-0">
+            <div className="w-10 h-10 rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex-shrink-0">
               <img 
                 src="/ai4i-logo.png" 
                 alt="AI4Inclusion Logo" 
