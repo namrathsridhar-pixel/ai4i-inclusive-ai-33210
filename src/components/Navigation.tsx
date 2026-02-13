@@ -45,17 +45,19 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
-            <img 
-              src="/ai4i-logo.png" 
-              alt="AI4Inclusion Logo" 
-              className="object-contain"
-              style={{ width: 'auto', height: '40px' }}
-              width={120}
-              height={40}
-              loading="eager"
-              decoding="sync"
-              fetchPriority="high"
-            />
+            <div className="relative" style={{ clipPath: 'polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)' }}>
+              <img 
+                src="/ai4i-logo.png" 
+                alt="AI4Inclusion Logo" 
+                className="object-contain"
+                style={{ width: 'auto', height: '40px' }}
+                width={120}
+                height={40}
+                loading="eager"
+                decoding="sync"
+                fetchPriority="high"
+              />
+            </div>
           </Link>
 
           {/* Try VoicERA Button */}
