@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Phone, Loader2, CheckCircle, AlertTriangle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Phone, Loader2, CheckCircle, AlertTriangle, ArrowLeft } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const TryVoicERA = () => {
+  const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "rateLimit">("idle");
 
@@ -37,13 +38,20 @@ const TryVoicERA = () => {
       </div>
 
       {/* Top-left VoicERA branding */}
-      <div className="relative z-20 px-6 py-5">
+      <div className="relative z-20 px-6 py-5 flex items-center justify-between">
         <Link to="/" className="inline-flex items-center gap-2.5 group">
           <div className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center group-hover:bg-white/15 transition-colors">
             <Phone className="text-white/80" size={18} />
           </div>
           <span className="text-lg font-gonzaga font-bold text-white tracking-wide">VoicERA</span>
         </Link>
+        <button
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors"
+        >
+          <ArrowLeft size={16} />
+          Back
+        </button>
       </div>
 
       {/* Centered card */}
