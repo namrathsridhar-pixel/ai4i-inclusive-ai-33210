@@ -121,7 +121,7 @@ const Events = () => {
 
                   {/* Supporting Text */}
                   <p className="text-sm md:text-base text-white/70 leading-relaxed">
-                    Building inclusive Language AI infrastructure to power governance, public services, and citizen-scale adoption.
+                    Building Inclusive, Policy-Governed Language AI as Digital Public Goods at Population Scale.
                   </p>
 
                   {/* Location Info - styled card */}
@@ -156,9 +156,6 @@ const Events = () => {
             transition={{ delay: 0.4 }}
             className="mt-12 text-center"
           >
-            <p className="text-white/50 text-sm">
-              More events coming soon...
-            </p>
           </motion.div>
         </div>
       </div>

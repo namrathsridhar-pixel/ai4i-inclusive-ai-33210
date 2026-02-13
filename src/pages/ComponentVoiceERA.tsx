@@ -4,7 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { 
   Phone, Shield, Zap, ArrowRight, 
   Play, Layers, Radio, Users, Mic,
-  MessageCircle, Activity, Lock, Maximize2
+  MessageCircle, Activity, Lock, Maximize2,
+  Network, Eye
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,14 +15,15 @@ import { DocsLayout } from "@/components/docs/DocsLayout";
 import { SectionHeading } from "@/components/docs/SectionHeading";
 import { DocSection } from "@/components/docs/DocSection";
 
-import voiceraOverview from "@/assets/voiceera-overview.png";
+import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
+import TryVoiceERAModal from "@/components/TryVoiceERAModal";
 
 const ComponentVoiceERA = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [videoModal, setVideoModal] = useState(false);
   const [interestFormOpen, setInterestFormOpen] = useState(false);
+  const [tryModalOpen, setTryModalOpen] = useState(false);
 
   useEffect(() => {
     if (searchParams.get("showInterest") === "true") {
@@ -34,46 +36,61 @@ const ComponentVoiceERA = () => {
   const whyMattersCards = [
     {
       icon: <Activity size={24} />,
-      title: "National-Scale Reliability",
-      description: "Built to support millions of concurrent voice interactions with predictable, sub-second performance across public and enterprise systems.",
+      title: "Citizen-Scale Infrastructure",
+      description: "Built to power large public systems with predictable, sub-second voice performance across millions of concurrent interactions.",
     },
     {
       icon: <Shield size={24} />,
-      title: "Sovereign by Design",
-      description: "Runs fully on-premises with no mandatory cloud dependency, ensuring compliance with India's data protection and security requirements.",
+      title: "Deployment Without Dependency",
+      description: "Runs fully on-premises or within national cloud environments — with no mandatory third-party cloud reliance.",
     },
     {
-      icon: <Radio size={24} />,
-      title: "Indic-First Voice Access",
-      description: "Native support for Indian languages, accents, and code-switching enables inclusive access beyond text-first interfaces.",
+      icon: <Zap size={24} />,
+      title: "Indic-First & Inclusive",
+      description: "Native support for Indian languages, accents, and code-switching — expanding access beyond text-first systems.",
+    },
+    {
+      icon: <Network size={24} />,
+      title: "Open & Interoperable Architecture",
+      description: "Model-agnostic and pluggable stack enabling seamless switching between open-source and proprietary AI models.",
+    },
+    {
+      icon: <Eye size={24} />,
+      title: "Transparent & Policy-Aligned",
+      description: "Clear data handling processes, embedded guardrails, and interpretability — ensuring visibility into how models operate and use data.",
     },
     {
       icon: <Layers size={24} />,
-      title: "Foundational Infrastructure",
-      description: "A core voice layer designed to power ecosystems and platforms—not just individual applications or chatbots.",
+      title: "Foundational Voice Layer",
+      description: "Designed to power ecosystems and platforms — not just standalone applications or chatbots.",
     },
   ];
 
   const enablesCards = [
     {
       icon: <Users size={24} />,
-      title: "Citizen-Scale Voice Services",
-      description: "Enables millions of users to access AI systems through natural voice interfaces across public and enterprise services.",
+      title: "Large-Scale Voice Services",
+      description: "Enables millions of users to securely access AI systems through natural voice interfaces across public and enterprise services.",
     },
     {
       icon: <Mic size={24} />,
       title: "Real-Time Multilingual Interaction",
-      description: "Supports low-latency, conversational voice interactions across Indian languages and code-switched speech.",
+      description: "Low-latency conversational voice experiences across Indian languages and code-switched speech.",
     },
     {
       icon: <Lock size={24} />,
-      title: "Sovereign & Secure Deployment",
-      description: "Allows voice AI systems to run fully on-premises, including in air-gapped and regulated environments.",
+      title: "Secure & Controlled Deployment",
+      description: "Operates fully within regulated, on-premise, or air-gapped environments.",
+    },
+    {
+      icon: <Network size={24} />,
+      title: "Model Portability & Ecosystem Growth",
+      description: "Allows adopters to switch AI providers without losing learnings — while benefiting from open-source improvements.",
     },
     {
       icon: <Layers size={24} />,
       title: "Voice as Digital Public Infrastructure",
-      description: "Establishes voice as a foundational layer that other AI4I components and ecosystems can build upon.",
+      description: "Establishes voice as a core infrastructure layer that AI4I systems and national platforms can build upon.",
     },
   ];
 
@@ -101,11 +118,17 @@ const ComponentVoiceERA = () => {
               VoicERA
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6">
-              A production-grade, open-source Voice Operating System built for citizen-scale, real-time, multilingual voice services—designed to run on-premises with full data sovereignty.
+              A production-grade, open Voice Operating System built for citizen-scale, real-time, multilingual voice services — designed for secure, on-premise and national infrastructure deployment.
             </p>
-            <Button size="lg" onClick={() => setInterestFormOpen(true)}>
-              Show Interest
-            </Button>
+            <div className="flex gap-3">
+              <Button size="lg" onClick={() => setInterestFormOpen(true)}>
+                Show Interest
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => setTryModalOpen(true)}>
+                <Phone size={16} className="mr-2" />
+                Try VoiceERA
+              </Button>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -133,8 +156,8 @@ const ComponentVoiceERA = () => {
                       </div>
                     </div>
                     <img
-                      src={voiceraOverview}
-                      alt="VoicERA: India's Sovereign Voice Operating System"
+                      src={voiceraSovereignStack}
+                      alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
                       className="w-full h-auto rounded-lg"
                       loading="eager"
                       decoding="sync"
@@ -144,13 +167,13 @@ const ComponentVoiceERA = () => {
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                 <VisuallyHidden>
-                  <DialogTitle>VoicERA: India's Sovereign Voice Operating System</DialogTitle>
+                  <DialogTitle>VoicERA: Creating a Sovereign Stack for Open Voice AI</DialogTitle>
                   <DialogDescription>Overview diagram of VoicERA architecture and capabilities</DialogDescription>
                 </VisuallyHidden>
                 <div className="p-4">
                   <img 
-                    src={voiceraOverview} 
-                    alt="VoicERA: India's Sovereign Voice Operating System" 
+                    src={voiceraSovereignStack} 
+                    alt="VoicERA: Creating a Sovereign Stack for Open Voice AI" 
                     className="w-full h-auto"
                     loading="eager"
                   />
@@ -165,9 +188,9 @@ const ComponentVoiceERA = () => {
               Why VoicERA Matters
             </SectionHeading>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Sovereign voice infrastructure for citizen-scale, real-time AI systems.
+              Open, interoperable voice infrastructure for citizen-scale, real-time AI systems.
             </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {whyMattersCards.map((card, index) => (
                 <motion.div
                   key={card.title}
@@ -218,7 +241,7 @@ const ComponentVoiceERA = () => {
               <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                 <VisuallyHidden>
                   <DialogTitle>VoicERA: India's Sovereign Voice Infrastructure</DialogTitle>
-                  <DialogDescription>Infrastructure diagram showing VoicERA's sovereign architecture and performance</DialogDescription>
+                  <DialogDescription>Infrastructure diagram showing VoicERA's architecture and performance</DialogDescription>
                 </VisuallyHidden>
                 <div className="p-4">
                   <img 
@@ -274,15 +297,19 @@ const ComponentVoiceERA = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-border"
             >
-              <Card className="w-full aspect-video bg-muted rounded-xl overflow-hidden border border-border shadow-soft flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Play size={28} className="text-primary ml-1" />
-                  </div>
-                  <p className="text-muted-foreground text-sm">Video coming soon</p>
-                </div>
-              </Card>
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/PFPzxniv1p8"
+                title="VoicERA Overview"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="absolute inset-0"
+              />
             </motion.div>
           </DocSection>
 
@@ -294,11 +321,15 @@ const ComponentVoiceERA = () => {
                   Ready to explore VoicERA?
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Learn how to implement sovereign voice infrastructure in your applications.
+                  Learn how to implement voice infrastructure in your applications.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" className="min-w-[160px]" onClick={() => setInterestFormOpen(true)}>
                     Show Interest
+                  </Button>
+                  <Button size="lg" variant="outline" className="min-w-[160px]" onClick={() => setTryModalOpen(true)}>
+                    <Phone size={16} className="mr-2" />
+                    Try VoiceERA
                   </Button>
                   <Button asChild size="lg" variant="outline" className="min-w-[160px]">
                     <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
@@ -329,6 +360,9 @@ const ComponentVoiceERA = () => {
               </div>
             </DialogContent>
           </Dialog>
+
+          {/* Try VoiceERA Modal */}
+          <TryVoiceERAModal open={tryModalOpen} onOpenChange={setTryModalOpen} />
         </div>
       </div>
     </DocsLayout>

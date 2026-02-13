@@ -29,7 +29,7 @@ const translations = [
   { text: "Un futuro donde el idioma no sea una barrera", lang: "Spanish", dir: "ltr" },
   { text: "Un avenir où la langue n'est plus une barrière", lang: "French", dir: "ltr" },
   { text: "Eine Zukunft, in der Sprache keine Barriere ist", lang: "German", dir: "ltr" },
-  { text: "语言不再成为障碍的未来", lang: "Chinese", dir: "ltr" },
+  
   { text: "言語が障壁とならない未来", lang: "Japanese", dir: "ltr" },
   { text: "언어가 장벽이 되지 않는 미래", lang: "Korean", dir: "ltr" },
   { text: "مستقبل لا تكون فيه اللغة عائقًا", lang: "Arabic", dir: "rtl" },
