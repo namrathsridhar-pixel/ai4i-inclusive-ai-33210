@@ -77,11 +77,14 @@ const ScrollToTop = () => {
 };
 
 const AppContent = () => {
+  const location = useLocation();
+  const isTryVoicera = location.pathname === "/try-voicera";
+
   return (
     <>
       <ScrollToTop />
       <LanguageParticles />
-      <Navigation />
+      {!isTryVoicera && <Navigation />}
       <AnimatePresence mode="wait">
         <Routes>
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
@@ -109,7 +112,7 @@ const AppContent = () => {
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </AnimatePresence>
-      <Footer />
+      {!isTryVoicera && <Footer />}
       <ScrollToTopButton />
     </>
   );
