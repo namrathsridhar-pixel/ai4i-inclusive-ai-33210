@@ -1052,7 +1052,7 @@ const BuildingBlocks = () => {
                     className="ml-2 inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-bold hover:bg-primary/90 hover:shadow-[0_0_16px_hsl(var(--primary)/0.5)] transition-all duration-300"
                   >
                     <Phone size={14} />
-                    Try VoicERA
+                    Talk to VoicERA
                   </Link>
                 </div>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
