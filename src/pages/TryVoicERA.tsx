@@ -15,21 +15,22 @@ const TryVoicERA = () => {
     if (!isValid) return;
     setStatus("loading");
 
+    // Show success immediately for instant feedback — the API call continues in background
+    const callPromise = supabase.functions.invoke("initiate-call", {
+      body: { phone: phoneNumber },
+    });
+
+    // Show success after a very brief moment (gives the feel of "placing")
+    setTimeout(() => {
+      setStatus("success");
+    }, 600);
+
+    // Handle errors in background — if it fails, switch to error state
     try {
-      const { data, error } = await supabase.functions.invoke("initiate-call", {
-        body: { phone: phoneNumber },
-      });
+      const { data, error } = await callPromise;
 
-      if (error) {
-        console.error("Edge function error:", error);
-        setStatus("error");
-        return;
-      }
-
-      if (data?.success) {
-        setStatus("success");
-      } else {
-        console.error("Call initiation failed:", data?.error);
+      if (error || !data?.success) {
+        console.error("Call initiation failed:", error || data?.error);
         setStatus("error");
       }
     } catch (err) {

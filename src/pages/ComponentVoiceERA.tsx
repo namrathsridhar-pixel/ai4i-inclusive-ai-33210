@@ -157,6 +157,7 @@ const ComponentVoiceERA = () => {
                       className="w-full h-auto rounded-lg"
                       loading="eager"
                       decoding="sync"
+                      fetchPriority="high"
                     />
                   </CardContent>
                 </Card>
@@ -230,6 +231,7 @@ const ComponentVoiceERA = () => {
                       className="w-full h-auto rounded-lg"
                       loading="eager"
                       decoding="sync"
+                      fetchPriority="high"
                     />
                   </CardContent>
                 </Card>
