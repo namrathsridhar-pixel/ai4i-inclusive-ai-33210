@@ -258,26 +258,22 @@ const ComponentVoiceERA = () => {
             <SectionHeading id="what-enables" level={2}>
               What VoicERA Enables
             </SectionHeading>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {enablesCards.map((card, index) => (
                 <motion.div
                   key={card.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
                 >
-                  <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
-                    <CardContent className="pt-6">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          {card.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
-                          <p className="text-sm text-muted-foreground">{card.description}</p>
-                        </div>
+                  <Card className="h-full group bg-gradient-to-br from-card to-accent/5 border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <CardContent className="pt-6 pb-6">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        {card.icon}
                       </div>
+                      <h4 className="font-heading font-semibold text-lg mb-2">{card.title}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{card.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
