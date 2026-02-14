@@ -1047,7 +1047,7 @@ const BuildingBlocks = () => {
                   <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                     <Phone className="text-primary-foreground" size={24} />
                   </div>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-gonzaga font-bold">AI4I-VoicERA</h2>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">AI4I-<span className="font-gonzaga">VoicERA</span></h2>
                 </div>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
                   Where a policy-governed voice stack powers real-time conversations.
