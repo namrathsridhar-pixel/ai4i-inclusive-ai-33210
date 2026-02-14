@@ -41,7 +41,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/components/observe": "AI4I-Observe – AI4Inclusion",
   "/components/contribute": "AI4I-Contribute – AI4Inclusion",
   "/components/voiceera": "VoiceERA – AI4Inclusion",
-  "/try-voicera": "Talk to VoicERA – AI4Inclusion",
+  "/try-voicera": "Lets talk to VoiceAI – AI4Inclusion",
   "/events": "Events – AI4Inclusion",
   "/adopters": "Adopters – AI4Inclusion",
   "/engagements": "Engagements – AI4Inclusion",
