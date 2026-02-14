@@ -59,7 +59,7 @@ const Navigation = () => {
           </Link>
 
           {/* Talk to VoicERA Button */}
-          <Link to="/try-voicera" className="hidden md:block ml-2">
+          <Link to="/try-voicera" className="hidden lg:block ml-2">
             <Button variant="outline" size="sm" className="bg-transparent text-white font-bold border-white hover:border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
               <Phone size={14} className="mr-1.5" />
               Lets talk to VoiceAI
@@ -67,7 +67,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             {navLinks.map((link, index) => {
               const isLastItem = index === navLinks.length - 1;
               
@@ -75,7 +75,7 @@ const Navigation = () => {
                 return (
                   <div 
                     key={link.path}
-                    className={`relative ${!isLastItem ? "mr-6" : ""}`}
+                    className={`relative ${!isLastItem ? "mr-2 xl:mr-6" : ""}`}
                     onMouseEnter={() => setShowBuildingBlocksMenu(true)}
                     onMouseLeave={() => setShowBuildingBlocksMenu(false)}
                   >
@@ -111,7 +111,7 @@ const Navigation = () => {
               // Handle "Coming Soon" links
               if (comingSoonPaths.includes(link.path)) {
                 return (
-                  <div key={link.path} className={!isLastItem ? "mr-6" : ""}>
+                  <div key={link.path} className={!isLastItem ? "mr-2 xl:mr-6" : ""}>
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <Button variant="ghost" className="font-medium text-white hover:text-white hover:bg-white/10 cursor-default">
@@ -127,7 +127,7 @@ const Navigation = () => {
               }
               
               return (
-                <div key={link.path} className={!isLastItem ? "mr-6" : ""}>
+                <div key={link.path} className={!isLastItem ? "mr-2 xl:mr-6" : ""}>
                   <Link to={link.path} onClick={link.path === "/" ? handleHomeClick : undefined}>
                     <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
                       {link.name}
@@ -139,13 +139,13 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && <div className="md:hidden pb-4 animate-fade-in">
+        {isOpen && <div className="lg:hidden pb-4 animate-fade-in">
             <Link to="/try-voicera" onClick={() => setIsOpen(false)}>
               <Button variant="outline" className="w-full justify-start font-bold mb-2 bg-transparent text-white border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
                 <Phone size={14} className="mr-1.5" />
