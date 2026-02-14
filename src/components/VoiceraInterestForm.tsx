@@ -192,7 +192,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
                 checked={consentToContact}
                 onChange={(e) => setConsentToContact(e.target.checked)}
                 disabled={isSubmitting}
-                className="mt-0.5 h-4 w-4 rounded border-border accent-primary cursor-pointer"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-border accent-primary cursor-pointer"
               />
               <label htmlFor="voicera-contact-consent" className="text-[12px] leading-relaxed text-muted-foreground/70 cursor-pointer select-none">
                 Would you like to stay updated on our upcoming events?
@@ -206,7 +206,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
                 checked={consentChecked}
                 onChange={(e) => setConsentChecked(e.target.checked)}
                 disabled={isSubmitting}
-                className="mt-0.5 h-4 w-4 rounded border-border accent-primary cursor-pointer"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-border accent-primary cursor-pointer"
               />
               <label htmlFor="voicera-consent" className="text-[12px] leading-relaxed text-muted-foreground/70 cursor-pointer select-none">
                 The personally identifiable information (PII) provided in this form will be used solely for collaborative purposes. This information will remain confidential and will not be shared with any third party without prior consent. For data deletion requests, contact{" "}
