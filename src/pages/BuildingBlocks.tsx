@@ -24,6 +24,7 @@ import contributeHowItWorks from "@/assets/contribute-how-it-works.png";
 import voiceraOverview from "@/assets/voiceera-overview.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
+import voiceraEcosystemPillars from "@/assets/voicera-ecosystem-pillars.png";
 
 // Preload only the first section's images eagerly; others load on-demand via PreloadedImage
 const preloadImages = [orchestrateHowItWorks, orchestrateArchitectureNew];
@@ -1151,7 +1152,7 @@ const BuildingBlocks = () => {
                         </div>
                         <div className="w-full overflow-hidden rounded-lg bg-card/50">
                           <img
-                            src={voiceraSovereignInfra}
+                            src={voiceraEcosystemPillars}
                             alt="VoicERA: India's Sovereign Voice Infrastructure"
                             className="rounded-lg w-full h-auto"
                             loading="eager"
@@ -1168,7 +1169,7 @@ const BuildingBlocks = () => {
                       <DialogDescription>Infrastructure diagram showing VoicERA's sovereign architecture and performance</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
-                      <img src={voiceraSovereignInfra} alt="VoicERA: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
+                      <img src={voiceraEcosystemPillars} alt="VoicERA: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
                     </div>
                   </DialogContent>
                 </Dialog>
@@ -1277,7 +1278,7 @@ const BuildingBlocks = () => {
                     Ready to explore AI4I-VoicERA?
                   </h3>
                   <p className="text-lg text-muted-foreground mb-8">
-                    Learn how to implement sovereign voice infrastructure in your applications.
+                    Learn how to implement sovereign voice AI in your applications.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button asChild size="lg" className="min-w-[160px]">
