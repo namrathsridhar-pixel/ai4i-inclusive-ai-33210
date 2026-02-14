@@ -25,6 +25,7 @@ import voiceraOverview from "@/assets/voiceera-overview.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
 import voiceraEcosystemPillars from "@/assets/voicera-ecosystem-pillars.png";
+import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
 // Preload only the first section's images eagerly; others load on-demand via PreloadedImage
 const preloadImages = [orchestrateHowItWorks, orchestrateArchitectureNew];
@@ -36,6 +37,7 @@ preloadImages.forEach((src) => {
 const BuildingBlocks = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("ai4i-orchestrate");
+  const [voiceraInterestOpen, setVoiceraInterestOpen] = useState(false);
   
   
   useEffect(() => {
@@ -1274,20 +1276,31 @@ const BuildingBlocks = () => {
                     Learn how to implement sovereign voice AI in your applications.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button size="lg" className="min-w-[160px]" onClick={() => {
-                      window.location.href = "/components/voicera?showInterest=true";
-                    }}>
-                      Show Interest
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="min-w-[160px]">
+                    <Button asChild size="lg" className="min-w-[160px]">
                       <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                         Learn More
                         <ArrowRight size={16} />
                       </a>
                     </Button>
+                    <Button size="lg" variant="outline" className="min-w-[160px] bg-white text-foreground border-border hover:bg-muted" onClick={() => setVoiceraInterestOpen(true)}>
+                      Show Interest
+                    </Button>
                   </div>
                 </div>
               </motion.div>
+
+              {/* VoicERA Interest Form Dialog */}
+              <Dialog open={voiceraInterestOpen} onOpenChange={setVoiceraInterestOpen}>
+                <DialogContent className="max-w-lg p-0 bg-background overflow-auto max-h-[90vh]">
+                  <VisuallyHidden>
+                    <DialogTitle>Show Interest in VoicERA</DialogTitle>
+                    <DialogDescription>Register your interest in VoicERA</DialogDescription>
+                  </VisuallyHidden>
+                  <div className="p-1">
+                    <VoiceraInterestForm />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </section>
         )}
