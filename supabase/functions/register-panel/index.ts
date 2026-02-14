@@ -38,7 +38,7 @@ async function sendEmail(
     auth: { user: smtp.smtpUser, pass: smtp.smtpPass },
   });
   await transporter.sendMail({
-    from: `"AI4Inclusion (AI4I)" <${fromEmail}>`,
+    from: `"AI4Inclusion Team" <${fromEmail}>`,
     to,
     replyTo,
     subject,

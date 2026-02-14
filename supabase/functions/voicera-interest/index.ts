@@ -241,7 +241,7 @@ async function sendAdminNotificationEmail(
     });
 
     await transporter.sendMail({
-      from: `"AI4I Website" <${fromEmail}>`,
+      from: `"AI4Inclusion Team" <${fromEmail}>`,
       to: adminEmail,
       replyTo: email,
       subject: `VoicERA Interest: ${name || email}`,

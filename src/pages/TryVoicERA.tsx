@@ -180,7 +180,7 @@ const TryVoicERA = () => {
           </div>
 
           {/* Main card */}
-          <div className="rounded-2xl border border-white/10 bg-[#0a1628]/80 backdrop-blur-md shadow-2xl pt-10 pb-8 px-8">
+          <div className="rounded-2xl border border-white/10 bg-[#0a1628]/80 backdrop-blur-md shadow-2xl pt-10 pb-8 px-4 sm:px-8">
             {status === "success" ? (
               <div className="text-center py-4">
                 <div className="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -233,7 +233,7 @@ const TryVoicERA = () => {
                 </div>
 
                 {/* Inline country + phone input */}
-                <div className="flex gap-3 mb-4">
+                <div className="flex flex-col sm:flex-row gap-3 mb-4">
                   <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-white/15 bg-white/5 text-sm text-white/70 font-medium shrink-0">
                     India (+91)
                   </div>
@@ -247,7 +247,7 @@ const TryVoicERA = () => {
                     }}
                     maxLength={10}
                     disabled={status === "loading"}
-                    className="flex-1 rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-base text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/25 disabled:opacity-50 tracking-wide transition-all"
+                    className="flex-1 min-w-0 rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-base text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/25 disabled:opacity-50 tracking-wide transition-all"
                   />
                 </div>
 
