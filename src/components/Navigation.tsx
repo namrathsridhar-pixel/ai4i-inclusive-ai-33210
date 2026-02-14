@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import ai4iLogo from "@/assets/ai4i-logo.png";
 
 const buildingBlocksMenu = [
   { id: "ai4i-orchestrate", label: "AI4I-Orchestrate", icon: Globe },
@@ -47,13 +48,12 @@ const Navigation = () => {
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
             <div className="h-[42px] flex-shrink-0">
               <img 
-                src="/ai4i-logo.png" 
+                src={ai4iLogo} 
                 alt="AI4Inclusion Logo" 
                 className="h-full w-auto object-contain"
                 loading="eager"
                 decoding="sync"
                 fetchPriority="high"
-                style={{ contentVisibility: 'auto' }}
               />
             </div>
           </Link>
