@@ -12,11 +12,6 @@ interface MediaItem {
 
 const mediaItems: MediaItem[] = [
   {
-    title: "AI4I Request Lifecycle",
-    thumbnail: "https://img.youtube.com/vi/NE_NID6OyzI/hqdefault.jpg",
-    videoUrl: "https://www.youtube.com/embed/NE_NID6OyzI",
-  },
-  {
     title: "AI4I-Orchestrate",
     thumbnail: "https://img.youtube.com/vi/jEuKOasl0ws/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/jEuKOasl0ws",
@@ -70,6 +65,23 @@ const MediaStrip = () => {
     <>
       <section className="py-16 px-4 bg-muted">
         <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+              Watch AI4I in Action
+              <motion.span
+                className="block h-0.5 bg-gradient-to-r from-primary to-secondary mt-3 mx-auto"
+                initial={{ width: 0 }}
+                whileInView={{ width: "180px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              />
+            </h2>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {mediaItems.map((item, i) => (
