@@ -1,9 +1,30 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
-};
+const allowedOrigins = [
+  'https://ai4inclusion.org',
+  'https://www.ai4inclusion.org',
+  'https://ai4i-inclusive-ai-33210.lovable.app',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  return {
+    'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+    'Vary': 'Origin',
+  };
+}
+
+function maskEmail(email: string): string {
+  const [local, domain] = email.split('@');
+  return (local.length > 2 ? local.substring(0, 2) + '***' : '***') + '@' + domain;
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
 
 // Simple in-memory rate limiting (per isolate instance)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -45,7 +66,7 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
   const fromEmail = Deno.env.get('FROM_EMAIL');
 
   if (!smtp || !fromEmail) {
-    console.error('Email configuration missing. Required: SMTP_HOST, SMTP_USER, SMTP_PASS, FROM_EMAIL');
+    console.error('Email configuration missing');
     return { success: false, error: 'Email configuration incomplete' };
   }
 
@@ -102,7 +123,7 @@ AI4Inclusion — A Digital Public Good Initiative`;
           <td align="center" valign="top">
             <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden;">
               
-              <!-- Header with branding (Outlook-compatible solid bg) -->
+              <!-- Header with branding -->
               <tr>
                 <td align="center" style="background-color: #0f2440; padding: 32px 40px; text-align: center;">
                   <!--[if mso]>
@@ -119,7 +140,7 @@ AI4Inclusion — A Digital Public Good Initiative`;
                 </td>
               </tr>
 
-              <!-- Accent bar (3-color using table cells for Outlook compatibility) -->
+              <!-- Accent bar -->
               <tr>
                 <td style="padding: 0; font-size: 0; line-height: 0;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -135,7 +156,7 @@ AI4Inclusion — A Digital Public Good Initiative`;
               <!-- Body content -->
               <tr>
                 <td style="padding: 36px 40px 20px 40px;">
-                  <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a2e; line-height: 24px; font-family: 'Segoe UI', Arial, sans-serif;">Hi ${displayName},</p>
+                  <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a2e; line-height: 24px; font-family: 'Segoe UI', Arial, sans-serif;">Hi ${escapeHtml(displayName)},</p>
 
                   <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">Thank you for showing interest in <strong style="color: #1e3a5f;">AI4Inclusion</strong>.</p>
 
@@ -160,7 +181,7 @@ AI4Inclusion — A Digital Public Good Initiative`;
                 </td>
               </tr>
 
-              <!-- Signature / Footer -->
+              <!-- Signature -->
               <tr>
                 <td style="padding: 24px 40px 32px 40px;">
                   <p style="margin: 0 0 4px 0; font-size: 15px; color: #333344; font-family: 'Segoe UI', Arial, sans-serif;">Warm regards,</p>
@@ -213,10 +234,10 @@ AI4Inclusion — A Digital Public Good Initiative`;
       },
     });
 
-    console.log(`Confirmation email sent successfully to ${email}`);
+    console.log('Confirmation email sent successfully');
     return { success: true };
   } catch (error) {
-    console.error(`Failed to send email to ${email}:`, error);
+    console.error('Failed to send confirmation email:', error);
     return { success: false, error: error.message };
   }
 }
@@ -243,19 +264,19 @@ async function sendAdminNotificationEmail(
       <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
         <tr style="border-bottom: 1px solid #e5e7eb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; width: 160px; vertical-align: top;">Name</td>
-          <td style="padding: 10px 12px; color: #111827;">${name || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+          <td style="padding: 10px 12px; color: #111827;">${escapeHtml(name || 'Not provided')}</td>
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Email</td>
-          <td style="padding: 10px 12px; color: #111827;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
+          <td style="padding: 10px 12px; color: #111827;"><a href="mailto:${escapeHtml(email)}" style="color: #2563eb;">${escapeHtml(email)}</a></td>
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Organization</td>
-          <td style="padding: 10px 12px; color: #111827;">${organization || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+          <td style="padding: 10px 12px; color: #111827;">${escapeHtml(organization || 'Not provided')}</td>
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Message / Query</td>
-          <td style="padding: 10px 12px; color: #111827; white-space: pre-wrap;">${message || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+          <td style="padding: 10px 12px; color: #111827; white-space: pre-wrap;">${escapeHtml(message || 'Not provided')}</td>
         </tr>
         <tr>
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Submitted At</td>
@@ -283,20 +304,21 @@ async function sendAdminNotificationEmail(
       from: `"AI4Inclusion Team" <${fromEmail}>`,
       to: adminEmail,
       replyTo: email,
-      subject: `New Contact Form: ${name || email}`,
+      subject: `New Contact Form: ${escapeHtml(name || 'Anonymous')}`,
       html: htmlBody,
     });
 
-    console.log(`Admin notification email sent successfully to ${adminEmail}`);
+    console.log('Admin notification email sent successfully');
     return { success: true };
   } catch (error) {
-    console.error(`Failed to send admin notification email:`, error);
+    console.error('Failed to send admin notification email:', error);
     return { success: false, error: error.message };
   }
 }
 
 Deno.serve(async (req) => {
-  // Handle CORS preflight requests
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
@@ -312,7 +334,6 @@ Deno.serve(async (req) => {
     const body = await req.json();
     const { name, email, organization, specific_question } = body;
 
-    // Validate required fields
     if (!email || typeof email !== 'string') {
       return new Response(
         JSON.stringify({ error: 'Email is required' }),
@@ -320,7 +341,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const trimmedEmail = email.trim().toLowerCase();
     if (!emailRegex.test(trimmedEmail)) {
@@ -330,7 +350,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Validate field lengths
     const trimmedName = (name || '').trim();
     const trimmedOrg = (organization || '').trim();
     const trimmedMessage = (specific_question || '').trim();
@@ -354,22 +373,19 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Rate limiting
     if (isRateLimited(trimmedEmail)) {
-      console.warn(`Rate limit exceeded for email: ${trimmedEmail}`);
+      console.warn(`Rate limit exceeded for: ${maskEmail(trimmedEmail)}`);
       return new Response(
         JSON.stringify({ error: 'Too many submissions. Please try again later.' }),
         { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // Initialize Supabase client with service role for DB access
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Save to database
-    console.log('Saving submission to database:', { name: trimmedName, email: trimmedEmail, organization: trimmedOrg });
+    console.log('Saving submission to database:', { email: maskEmail(trimmedEmail), hasName: !!trimmedName, hasOrg: !!trimmedOrg });
 
     const { data: insertedRecord, error: dbError } = await supabase
       .from('get_in_touch_requests')
@@ -393,7 +409,6 @@ Deno.serve(async (req) => {
 
     console.log('Submission saved successfully, ID:', insertedRecord?.id);
 
-    // Send confirmation email to user and admin notification in parallel
     const [emailResult, adminResult] = await Promise.all([
       sendConfirmationEmail(trimmedName, trimmedEmail),
       sendAdminNotificationEmail(
@@ -411,7 +426,6 @@ Deno.serve(async (req) => {
 
     if (!emailResult.success) {
       console.error('Email sending failed but submission was saved:', emailResult.error);
-      // Return success even if email fails — submission is saved
       return new Response(
         JSON.stringify({
           success: true,
@@ -422,7 +436,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log('Full submission flow completed successfully for:', trimmedEmail);
+    console.log('Full submission flow completed successfully');
 
     return new Response(
       JSON.stringify({

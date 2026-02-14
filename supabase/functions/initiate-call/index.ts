@@ -1,12 +1,30 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+const allowedOrigins = [
+  'https://ai4inclusion.org',
+  'https://www.ai4inclusion.org',
+  'https://ai4i-inclusive-ai-33210.lovable.app',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  return {
+    'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+    'Vary': 'Origin',
+  };
+}
+
+function maskPhone(phone: string): string {
+  if (phone.length < 4) return '***';
+  return '***' + phone.slice(-4);
+}
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -52,7 +70,7 @@ serve(async (req) => {
       body.out_did = LITWIZLABS_CALLER_ID;
     }
 
-    console.log("Initiating call to:", phone);
+    console.log("Initiating call to:", maskPhone(phone));
 
     const response = await fetch("https://v1.getraya.app/api/call", {
       method: "POST",
@@ -73,7 +91,7 @@ serve(async (req) => {
       );
     }
 
-    console.log("Call initiated successfully:", JSON.stringify(data));
+    console.log("Call initiated successfully");
     return new Response(
       JSON.stringify({ success: true, data }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
