@@ -157,13 +157,15 @@ const ComponentVoiceERA = () => {
                         Click to expand
                       </div>
                     </div>
-                    <img
-                      src={voiceraSovereignStack}
-                      alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
-                      className="w-full h-auto rounded-lg"
-                      loading="eager"
-                      decoding="async"
-                    />
+                    <div style={{ aspectRatio: "16/9" }} className="w-full overflow-hidden rounded-lg bg-muted/20">
+                      <img
+                        src={voiceraSovereignStack}
+                        alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
+                        className="w-full h-full object-contain rounded-lg"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </div>
                   </CardContent>
                 </Card>
               </DialogTrigger>
@@ -218,7 +220,7 @@ const ComponentVoiceERA = () => {
           {/* AI4I-VoicERA: The Sovereign Voice Layer for Language AI */}
           <DocSection>
             <SectionHeading id="capabilities" level={2}>
-              AI4I-VoicERA in the AI4Inclusion Ecosystem
+              AI4I-VoicERA: The Sovereign Voice Layer for Language AI
             </SectionHeading>
             <Dialog>
               <DialogTrigger asChild>
@@ -230,14 +232,16 @@ const ComponentVoiceERA = () => {
                         Click to expand
                       </div>
                     </div>
-                    <img
-                      src={voiceraSovereignVoiceLayer}
-                      alt="VoicERA: India's Sovereign Voice Infrastructure"
-                      className="w-full h-auto rounded-lg"
-                      loading="eager"
-                      decoding="sync"
-                      fetchPriority="high"
-                    />
+                    <div style={{ aspectRatio: "16/9" }} className="w-full overflow-hidden rounded-lg bg-muted/20">
+                      <img
+                        src={voiceraSovereignVoiceLayer}
+                        alt="VoicERA: India's Sovereign Voice Infrastructure"
+                        className="w-full h-full object-contain rounded-lg"
+                        loading="eager"
+                        decoding="sync"
+                        fetchPriority="high"
+                      />
+                    </div>
                   </CardContent>
                 </Card>
               </DialogTrigger>
