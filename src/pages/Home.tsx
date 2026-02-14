@@ -55,7 +55,6 @@ const featureBlocks = [{
   animation: <WaveformAnimation />,
   videoUrl: "https://www.youtube.com/embed/PFPzxniv1p8",
   githubUrl: "https://github.com/COSS-India/voicera_mono_repository",
-  discussUrl: "https://github.com/COSS-India/voicera_mono_repository/discussions",
   blockLink: "/building-blocks#voicera"
 }];
 

@@ -1274,16 +1274,15 @@ const BuildingBlocks = () => {
                     Learn how to implement sovereign voice AI in your applications.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button asChild size="lg" className="min-w-[160px]">
+                    <Button size="lg" className="min-w-[160px]" onClick={() => {
+                      window.location.href = "/components/voicera?showInterest=true";
+                    }}>
+                      Show Interest
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="min-w-[160px]">
                       <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                         Learn More
                         <ArrowRight size={16} />
-                      </a>
-                    </Button>
-                    <Button asChild variant="outline" size="lg" className="min-w-[160px]">
-                      <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                        <MessageCircle size={16} />
-                        Discuss
                       </a>
                     </Button>
                   </div>

@@ -336,12 +336,6 @@ const ComponentVoiceERA = () => {
                       <ArrowRight size={16} />
                     </a>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="min-w-[160px]">
-                    <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                      <MessageCircle size={16} />
-                      Discuss
-                    </a>
-                  </Button>
                 </div>
               </div>
             </div>
