@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import ai4iLogo from "@/assets/ai4i-logo.png";
+// Use public path to match preload in index.html for instant rendering
+const ai4iLogo = "/ai4i-logo.png";
 
 const buildingBlocksMenu = [
   { id: "ai4i-orchestrate", label: "AI4I-Orchestrate", icon: Globe },
@@ -53,7 +54,6 @@ const Navigation = () => {
                 className="h-full w-auto object-contain"
                 loading="eager"
                 decoding="sync"
-                fetchPriority="high"
               />
             </div>
           </Link>

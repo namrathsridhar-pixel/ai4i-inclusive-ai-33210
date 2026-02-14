@@ -14,7 +14,7 @@ const Footer = () => {
               className="object-contain"
               style={{ width: 'auto', height: '40px' }}
               height={40}
-              loading="eager"
+              loading="lazy"
               decoding="async"
             />
             
