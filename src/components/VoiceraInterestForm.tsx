@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import { useToast } from "@/hooks/use-toast";
 
 interface VoiceraInterestFormProps {
@@ -185,26 +185,30 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
               </div>
             )}
 
-            <div className="flex items-start gap-2 pt-1">
-              <Checkbox
+            <div className="flex items-start gap-3 pt-1">
+              <input
+                type="checkbox"
                 id="voicera-contact-consent"
                 checked={consentToContact}
-                onCheckedChange={(checked) => setConsentToContact(checked === true)}
+                onChange={(e) => setConsentToContact(e.target.checked)}
                 disabled={isSubmitting}
+                className="mt-0.5 h-4 w-4 rounded border-border accent-primary cursor-pointer"
               />
-              <label htmlFor="voicera-contact-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+              <label htmlFor="voicera-contact-consent" className="text-[12px] leading-relaxed text-muted-foreground/70 cursor-pointer select-none">
                 Would you like to stay updated on our upcoming events?
               </label>
             </div>
 
-            <div className="flex items-start gap-2 pt-1">
-              <Checkbox
+            <div className="flex items-start gap-3 pt-1">
+              <input
+                type="checkbox"
                 id="voicera-consent"
                 checked={consentChecked}
-                onCheckedChange={(checked) => setConsentChecked(checked === true)}
+                onChange={(e) => setConsentChecked(e.target.checked)}
                 disabled={isSubmitting}
+                className="mt-0.5 h-4 w-4 rounded border-border accent-primary cursor-pointer"
               />
-              <label htmlFor="voicera-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+              <label htmlFor="voicera-consent" className="text-[12px] leading-relaxed text-muted-foreground/70 cursor-pointer select-none">
                 The personally identifiable information (PII) provided in this form will be used solely for collaborative purposes. This information will remain confidential and will not be shared with any third party without prior consent. For data deletion requests, contact{" "}
                 <a href="mailto:info@ai4inclusion.org" className="text-primary hover:underline">info@ai4inclusion.org</a>.
               </label>
