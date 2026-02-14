@@ -327,14 +327,14 @@ const ComponentVoiceERA = () => {
                   Learn how to implement sovereign voice AI in your applications.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="min-w-[160px]" onClick={() => setInterestFormOpen(true)}>
-                    Show Interest
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="min-w-[160px]">
+                  <Button asChild size="lg" className="min-w-[160px]">
                     <a href="https://github.com/COSS-India/voicera_mono_repository" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                       Learn More
                       <ArrowRight size={16} />
                     </a>
+                  </Button>
+                  <Button size="lg" variant="outline" className="min-w-[160px] bg-white text-foreground border-border hover:bg-muted" onClick={() => setInterestFormOpen(true)}>
+                    Show Interest
                   </Button>
                 </div>
               </div>
