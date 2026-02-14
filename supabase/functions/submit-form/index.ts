@@ -201,7 +201,7 @@ AI4Inclusion — A Digital Public Good Initiative`;
     });
 
     await transporter.sendMail({
-      from: `"AI4I Team" <${fromEmail}>`,
+      from: `"AI4Inclusion Team" <${fromEmail}>`,
       to: email,
       subject: "Thank you for reaching out to AI4Inclusion Team",
       text: plainText,
@@ -280,7 +280,7 @@ async function sendAdminNotificationEmail(
     });
 
     await transporter.sendMail({
-      from: `"AI4I Website" <${fromEmail}>`,
+      from: `"AI4Inclusion Team" <${fromEmail}>`,
       to: adminEmail,
       replyTo: email,
       subject: `New Contact Form: ${name || email}`,
