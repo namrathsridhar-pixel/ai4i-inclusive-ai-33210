@@ -436,10 +436,10 @@ const BuildingBlocks = () => {
                       <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                         <CardContent className="pt-6">
                           <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            <div className="w-10 h-10 shrink-0 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                               {card.icon}
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1 min-w-0">
                               <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
                               <p className="text-sm text-muted-foreground">{card.description}</p>
                             </div>
@@ -654,10 +654,10 @@ const BuildingBlocks = () => {
                       <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                         <CardContent className="pt-6">
                           <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            <div className="w-10 h-10 shrink-0 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                               {card.icon}
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1 min-w-0">
                               <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
                               <p className="text-sm text-muted-foreground">{card.description}</p>
                             </div>
@@ -902,10 +902,10 @@ const BuildingBlocks = () => {
                       <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                         <CardContent className="pt-6">
                           <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            <div className="w-10 h-10 shrink-0 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                               {card.icon}
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1 min-w-0">
                               <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
                               <p className="text-sm text-muted-foreground">{card.description}</p>
                             </div>
@@ -1203,10 +1203,10 @@ const BuildingBlocks = () => {
                       <Card className="h-full group hover:shadow-medium hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                         <CardContent className="pt-6">
                           <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            <div className="w-10 h-10 shrink-0 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                               {card.icon}
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1 min-w-0">
                               <h4 className="font-heading font-semibold mb-1">{card.title}</h4>
                               <p className="text-sm text-muted-foreground">{card.description}</p>
                             </div>
