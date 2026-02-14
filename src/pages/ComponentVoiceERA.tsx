@@ -16,7 +16,7 @@ import { SectionHeading } from "@/components/docs/SectionHeading";
 import { DocSection } from "@/components/docs/DocSection";
 
 import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
-import voiceraSovereignVoiceLayer from "@/assets/voicera-sovereign-voice-layer.png";
+import voiceraSovereignVoiceLayer from "@/assets/voicera-ecosystem-pillars.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
@@ -320,7 +320,7 @@ const ComponentVoiceERA = () => {
                   Ready to explore AI4I-VoicERA?
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Learn how to implement voice infrastructure in your applications.
+                  Learn how to implement sovereign voice AI in your applications.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" className="min-w-[160px]" onClick={() => setInterestFormOpen(true)}>
