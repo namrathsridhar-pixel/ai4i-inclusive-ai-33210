@@ -57,20 +57,11 @@ const FeatureBlock = ({
 
         {/* Content Side */}
         <div className="w-full lg:w-1/2">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-soft">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-soft">
               {icon}
             </div>
             <h3 className="font-bold text-2xl font-heading">{title === "AI4I-VoicERA" ? <>AI4I-<span className="font-gonzaga">VoicERA</span></> : title}</h3>
-            {title === "AI4I-VoicERA" && (
-              <Link
-                to="/try-voicera"
-                className="ml-2 inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-bold hover:bg-primary/90 hover:shadow-[0_0_16px_hsl(var(--primary)/0.5)] transition-all duration-300"
-              >
-                <Phone size={13} />
-                Lets talk to VoiceAI
-              </Link>
-            )}
           </div>
 
           <p className="text-muted-foreground mb-4 leading-relaxed">{description}</p>
