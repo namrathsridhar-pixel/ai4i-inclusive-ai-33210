@@ -84,7 +84,7 @@ async function sendConfirmationEmail(name: string, email: string): Promise<{ suc
 
 Thank you for showing interest in AI4Inclusion.
 
-We've received your details and truly appreciate your interest in our mission to build inclusive language AI infrastructure that enables governance, public services, and citizen-scale impact.
+We've received your details and truly appreciate your interest in our mission to build Inclusive, Policy-Governed Language AI as Digital Public Good at Population Scale.
 
 Our team will get in touch with you shortly regarding your query or comment, along with relevant next steps based on your area of interest.
 
@@ -168,7 +168,7 @@ AI4Inclusion — A Digital Public Good Initiative`;
 
                   <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">Thank you for showing interest in <strong style="color: #1e3a5f;">AI4Inclusion</strong>.</p>
 
-                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">We've received your details and truly appreciate your interest in our mission to build inclusive language AI infrastructure that enables governance, public services, and citizen-scale impact.</p>
+                  <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">We've received your details and truly appreciate your interest in our mission to build Inclusive, Policy-Governed Language AI as Digital Public Good at Population Scale.</p>
 
                   <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px; font-family: 'Segoe UI', Arial, sans-serif;">Our team will get in touch with you shortly regarding your query or comment, along with relevant next steps based on your area of interest.</p>
 
