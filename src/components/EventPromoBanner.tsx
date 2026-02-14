@@ -141,7 +141,7 @@ const EventPromoBanner = () => {
                   transition={{ delay: 0.4 }}
                   className="text-sm text-white/70 leading-relaxed"
                 >
-                  Building Inclusive, Policy-Governed Language AI as Digital Public Goods at Population Scale.
+                  Building Inclusive, Policy-Governed Language AI as Digital Public Good at Population Scale.
                 </motion.p>
 
                 {/* Location Info - styled card */}

@@ -68,7 +68,7 @@ const FeatureBlock = ({
                 className="ml-2 inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-bold hover:bg-primary/90 hover:shadow-[0_0_16px_hsl(var(--primary)/0.5)] transition-all duration-300"
               >
                 <Phone size={13} />
-                Talk to VoicERA
+                Lets talk to VoiceAI
               </Link>
             )}
           </div>

@@ -125,7 +125,7 @@ const GetInvolved = () => {
               <div>
                 <h3 className="text-xl font-heading font-bold mb-3">Recognition</h3>
                 <p className="text-muted-foreground">
-                  Gain visibility in the global open-source community and be recognized for your contributions to digital public goods.
+                  Gain visibility in the global open-source community and be recognized for your contributions to digital public good.
                 </p>
               </div>
             </div>

@@ -16,6 +16,7 @@ import { SectionHeading } from "@/components/docs/SectionHeading";
 import { DocSection } from "@/components/docs/DocSection";
 
 import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
+import voiceraSovereignVoiceLayer from "@/assets/voicera-sovereign-voice-layer.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
@@ -42,12 +43,12 @@ const ComponentVoiceERA = () => {
     {
       icon: <Shield size={24} />,
       title: "Deployment Without Dependency",
-      description: "Runs fully on-premises or within national cloud environments — with no mandatory third-party cloud reliance.",
+      description: "Runs fully on-premises or within national cloud environments with no mandatory third-party cloud reliance.",
     },
     {
       icon: <Zap size={24} />,
       title: "Indic-First & Inclusive",
-      description: "Native support for Indian languages, accents, and code-switching — expanding access beyond text-first systems.",
+      description: "Native support for Indian languages, accents, and code-switching, expanding access beyond text-first systems.",
     },
     {
       icon: <Network size={24} />,
@@ -57,12 +58,12 @@ const ComponentVoiceERA = () => {
     {
       icon: <Eye size={24} />,
       title: "Transparent & Policy-Aligned",
-      description: "Clear data handling processes, embedded guardrails, and interpretability — ensuring visibility into how models operate and use data.",
+      description: "Clear data handling processes, embedded guardrails, and interpretability, ensuring visibility into how models operate and use data.",
     },
     {
       icon: <Layers size={24} />,
       title: "Foundational Voice Layer",
-      description: "Designed to power ecosystems and platforms — not just standalone applications or chatbots.",
+      description: "Designed to power ecosystems and platforms, not just standalone applications or chatbots.",
     },
   ];
 
@@ -85,7 +86,7 @@ const ComponentVoiceERA = () => {
     {
       icon: <Network size={24} />,
       title: "Model Portability & Ecosystem Growth",
-      description: "Allows adopters to switch AI providers without losing learnings — while benefiting from open-source improvements.",
+      description: "Allows adopters to switch AI providers without losing learnings while benefiting from open-source improvements.",
     },
     {
       icon: <Layers size={24} />,
@@ -95,7 +96,7 @@ const ComponentVoiceERA = () => {
     {
       icon: <Eye size={24} />,
       title: "Interpretability & Data Transparency",
-      description: "Ensures clear visibility into how raw data is processed, stored, and used within the voice stack — enabling institutions to understand model behavior, enforce guardrails, and maintain trust in AI-driven systems.",
+      description: "Ensures clear visibility into how raw data is processed, stored, and used within the voice stack, enabling institutions to understand model behavior, enforce guardrails, and maintain trust in AI-driven systems.",
     },
   ];
 
@@ -120,10 +121,10 @@ const ComponentVoiceERA = () => {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-tight">
-              VoicERA
+              AI4I-VoicERA
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6">
-              A production-grade, open Voice Operating System built for citizen-scale, real-time, multilingual voice services — designed for secure, on-premise and national infrastructure deployment.
+              Where a policy-governed voice stack powers real-time conversations.
             </p>
             <div className="flex gap-3">
               <Button size="lg" onClick={() => setInterestFormOpen(true)}>
@@ -144,7 +145,7 @@ const ComponentVoiceERA = () => {
               How AI4I-VoicERA Enables Sovereign Voice AI at National Scale
             </SectionHeading>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Real-time, multilingual voice infrastructure built for India's public and enterprise systems.
+              Real-time, multilingual voice systems built for India's public and enterprise platforms.
             </p>
             <Dialog>
               <DialogTrigger asChild>
@@ -161,8 +162,7 @@ const ComponentVoiceERA = () => {
                       alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
                       className="w-full h-auto rounded-lg"
                       loading="eager"
-                      decoding="sync"
-                      fetchPriority="high"
+                      decoding="async"
                     />
                   </CardContent>
                 </Card>
@@ -187,10 +187,10 @@ const ComponentVoiceERA = () => {
           {/* Why VoicERA Matters */}
           <DocSection>
             <SectionHeading id="why-voiceera-matters" level={2}>
-              Why VoicERA Matters
+              Why AI4I-VoicERA Matters
             </SectionHeading>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Open, interoperable voice infrastructure for citizen-scale, real-time AI systems.
+              Citizen-scale, real-time voice AI designed for secure and scalable public systems.
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {whyMattersCards.map((card, index) => (
@@ -218,7 +218,7 @@ const ComponentVoiceERA = () => {
           {/* AI4I-VoicERA: The Sovereign Voice Layer for Language AI */}
           <DocSection>
             <SectionHeading id="capabilities" level={2}>
-              AI4I-VoicERA: The Sovereign Voice Layer for Language AI
+              AI4I-VoicERA in the AI4Inclusion Ecosystem
             </SectionHeading>
             <Dialog>
               <DialogTrigger asChild>
@@ -231,7 +231,7 @@ const ComponentVoiceERA = () => {
                       </div>
                     </div>
                     <img
-                      src={voiceraSovereignInfra}
+                      src={voiceraSovereignVoiceLayer}
                       alt="VoicERA: India's Sovereign Voice Infrastructure"
                       className="w-full h-auto rounded-lg"
                       loading="eager"
@@ -247,8 +247,8 @@ const ComponentVoiceERA = () => {
                   <DialogDescription>Infrastructure diagram showing VoicERA's architecture and performance</DialogDescription>
                 </VisuallyHidden>
                 <div className="p-4">
-                  <img 
-                    src={voiceraSovereignInfra} 
+                    <img 
+                      src={voiceraSovereignVoiceLayer}
                     alt="VoicERA: India's Sovereign Voice Infrastructure" 
                     className="w-full h-auto"
                     loading="eager"
@@ -261,7 +261,7 @@ const ComponentVoiceERA = () => {
           {/* What VoicERA Enables */}
           <DocSection>
             <SectionHeading id="what-enables" level={2}>
-              What VoicERA Enables
+              What AI4I-VoicERA Enables
             </SectionHeading>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {enablesCards.map((card, index) => (
@@ -289,7 +289,7 @@ const ComponentVoiceERA = () => {
           {/* Explore More About VoicERA - Video */}
           <DocSection>
             <SectionHeading id="demo" level={2}>
-              Explore More About VoicERA
+              Explore More About AI4I-VoicERA
             </SectionHeading>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -317,7 +317,7 @@ const ComponentVoiceERA = () => {
             <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12 border border-primary/10">
               <div className="text-center max-w-2xl mx-auto">
                 <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                  Ready to explore VoicERA?
+                  Ready to explore AI4I-VoicERA?
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">
                   Learn how to implement voice infrastructure in your applications.

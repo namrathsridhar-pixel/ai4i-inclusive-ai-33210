@@ -51,7 +51,7 @@ const BuildingBlocks = () => {
     {
       icon: <Layers size={24} />,
       title: "Unified AI Control Layer",
-      description: "One governed runtime for all Language AI models — speech, translation, LLMs, OCR — eliminating fragmentation."
+      description: "One governed runtime for all Language AI models, including speech, translation, LLMs, and OCR, eliminating fragmentation."
     },
     {
       icon: <Shield size={24} />,
@@ -85,7 +85,7 @@ const BuildingBlocks = () => {
     {
       icon: <TrendingUp size={24} />,
       title: "Model Degradation Detection",
-      description: "Models drift over time—continual evaluation prevents quality decay before users notice."
+      description: "Models drift over time. Continual evaluation prevents quality decay before users notice."
     },
     {
       icon: <AlertTriangle size={24} />,
@@ -109,7 +109,7 @@ const BuildingBlocks = () => {
     {
       icon: <Database size={24} />,
       title: "Data Foundation Gap",
-      description: "Most global languages lack sufficient training data—limiting AI accuracy and coverage."
+      description: "Most global languages lack sufficient training data, limiting AI accuracy and coverage."
     },
     {
       icon: <Users2 size={24} />,
@@ -143,7 +143,7 @@ const BuildingBlocks = () => {
     {
       icon: <CheckCircle size={24} />,
       title: "Automated model quality evaluation",
-      description: "Across NMT, ASR, TTS, NER, LLMs — with BLEU, WER, semantic accuracy."
+      description: "Across NMT, ASR, TTS, NER, LLMs with BLEU, WER, semantic accuracy."
     },
     {
       icon: <MessageCircle size={24} />,
@@ -353,7 +353,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why Orchestrate Matters</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why AI4I-Orchestrate Matters</h3>
                   <p className="text-muted-foreground">Reliable runtime foundation for national-scale Language AI.</p>
                 </div>
                 <SaaSFeatureGrid cards={orchestrateMattersCards} />
@@ -415,10 +415,10 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Orchestrate Enables</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What AI4I-Orchestrate Enables</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {[
-                    { icon: <Layers size={24} />, title: "Unified APIs", description: "One consistent API for all Language AI services—speech, translation, LLMs, OCR—simplifying integration across applications." },
+                    { icon: <Layers size={24} />, title: "Unified APIs", description: "One consistent API for all Language AI services, including speech, translation, LLMs, and OCR, simplifying integration across applications." },
                     { icon: <Route size={24} />, title: "Smart Model Routing", description: "Intelligently routes requests to the best model based on language, domain, cost, and performance requirements." },
                     { icon: <Shield size={24} />, title: "Governance & Policy Control", description: "Enforces rules on data access, usage quotas, compliance, and national policies across the entire ecosystem." },
                     { icon: <Gauge size={24} />, title: "Metering & Quotas", description: "Tracks usage, enforces rate limits, and provides cost visibility for sustainable AI operations." },
@@ -459,7 +459,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Orchestrate in the AI4Inclusion Ecosystem</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I-Orchestrate in the AI4Inclusion Ecosystem</h3>
                   <p className="text-muted-foreground text-center max-w-2xl mx-auto">See how Orchestrate connects with other building blocks to form a complete Language AI infrastructure.</p>
                 </div>
                 <EcosystemFlow 
@@ -580,7 +580,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why Observe Matters</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why AI4I-Observe Matters</h3>
                   <p className="text-muted-foreground">Intelligence and governance layer for reliable AI operations.</p>
                 </div>
                 <SaaSFeatureGrid cards={observeMattersCards} />
@@ -640,7 +640,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Observe Enables</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What AI4I-Observe Enables</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
                   {observeCapabilityCards.map((card, index) => (
                     <motion.div
@@ -677,7 +677,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Observe in the AI4Inclusion Ecosystem</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I-Observe in the AI4Inclusion Ecosystem</h3>
                   <p className="text-muted-foreground text-center max-w-2xl mx-auto">Observe acts as the intelligence layer, strengthening the entire ecosystem.</p>
                 </div>
                 <EcosystemFlow 
@@ -694,7 +694,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">See It In Action</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About AI4I-Observe</h3>
                 <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-border" style={{ aspectRatio: '16/9' }}>
                   <iframe
                     width="100%"
@@ -819,7 +819,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why Contribute Matters</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why AI4I-Contribute Matters</h3>
                   <p className="text-muted-foreground">Building inclusive datasets as a participatory public good.</p>
                 </div>
                 <SaaSFeatureGrid cards={contributeMattersCards} />
@@ -881,7 +881,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What Contribute Enables</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What AI4I-Contribute Enables</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {[
                     { icon: <Users size={24} />, title: "Community Voice Collection", description: "Citizens record speech or read curated sentences to build diverse language datasets." },
@@ -924,7 +924,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Visualize What Contribute Powers</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Visualize What AI4I-Contribute Powers</h3>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {[
                     { icon: <BarChart3 size={32} />, title: "Better ASR (Speech-to-Text) Models", description: "Shows improved recognition accuracy across dialects." },
@@ -962,7 +962,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Contribute in the AI4Inclusion Ecosystem</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I-Contribute in the AI4Inclusion Ecosystem</h3>
                   <p className="text-muted-foreground text-center max-w-2xl mx-auto">Contribute acts as the data backbone fueling continuous improvement of Language AI.</p>
                 </div>
                 <EcosystemFlow 
@@ -979,7 +979,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About Contribute</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About AI4I-Contribute</h3>
                 <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-border" style={{ aspectRatio: '16/9' }}>
                   <iframe
                     width="100%"
@@ -1046,17 +1046,17 @@ const BuildingBlocks = () => {
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                     <Phone className="text-primary-foreground" size={24} />
                   </div>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-gonzaga font-bold">VoicERA</h2>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-gonzaga font-bold">AI4I-VoicERA</h2>
                   <Link
                     to="/try-voicera"
                     className="ml-2 inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-bold hover:bg-primary/90 hover:shadow-[0_0_16px_hsl(var(--primary)/0.5)] transition-all duration-300"
                   >
                     <Phone size={14} />
-                    Talk to VoicERA
+                    Lets talk to VoiceAI
                   </Link>
                 </div>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
-                  A production-grade, open Voice Operating System built for citizen-scale, real-time, multilingual voice services — designed for secure, on-premise and national infrastructure deployment.
+                  Where a policy-governed voice stack powers real-time conversations.
                 </p>
               </motion.div>
 
@@ -1069,7 +1069,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I-VoicERA Enables Sovereign Voice AI at National Scale</h3>
-                <p className="text-muted-foreground mb-6">Real-time, multilingual voice infrastructure built for India's public and enterprise systems.</p>
+                <p className="text-muted-foreground mb-6">Real-time, multilingual voice systems built for India's public and enterprise platforms.</p>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
@@ -1117,16 +1117,16 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why VoicERA Matters</h3>
-                  <p className="text-muted-foreground">Sovereign voice infrastructure for citizen-scale, real-time AI systems.</p>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why AI4I-VoicERA Matters</h3>
+                  <p className="text-muted-foreground">Citizen-scale, real-time voice AI designed for secure and scalable public systems.</p>
                 </div>
                 <SaaSFeatureGrid cards={[
                   { icon: <Activity size={24} />, title: "Citizen-Scale Infrastructure", description: "Built to power large public systems with predictable, sub-second voice performance across millions of concurrent interactions." },
-                  { icon: <Shield size={24} />, title: "Deployment Without Dependency", description: "Runs fully on-premises or within national cloud environments — with no mandatory third-party cloud reliance." },
-                  { icon: <Zap size={24} />, title: "Indic-First & Inclusive", description: "Native support for Indian languages, accents, and code-switching — expanding access beyond text-first systems." },
+                  { icon: <Shield size={24} />, title: "Deployment Without Dependency", description: "Runs fully on-premises or within national cloud environments with no mandatory third-party cloud reliance." },
+                  { icon: <Zap size={24} />, title: "Indic-First & Inclusive", description: "Native support for Indian languages, accents, and code-switching, expanding access beyond text-first systems." },
                   { icon: <Network size={24} />, title: "Open & Interoperable Architecture", description: "Model-agnostic and pluggable stack enabling seamless switching between open-source and proprietary AI models." },
-                  { icon: <Eye size={24} />, title: "Transparent & Policy-Aligned", description: "Clear data handling processes, embedded guardrails, and interpretability — ensuring visibility into how models operate and use data." },
-                  { icon: <Layers size={24} />, title: "Foundational Voice Layer", description: "Designed to power ecosystems and platforms — not just standalone applications or chatbots." },
+                  { icon: <Eye size={24} />, title: "Transparent & Policy-Aligned", description: "Clear data handling processes, embedded guardrails, and interpretability, ensuring visibility into how models operate and use data." },
+                  { icon: <Layers size={24} />, title: "Foundational Voice Layer", description: "Designed to power ecosystems and platforms, not just standalone applications or chatbots." },
                 ]} />
               </motion.div>
 
@@ -1138,7 +1138,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoicERA: The Sovereign Voice Layer for Language AI</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoicERA in the AI4Inclusion Ecosystem</h3>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
@@ -1182,15 +1182,15 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What VoicERA Enables</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What AI4I-VoicERA Enables</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
                   {[
                     { icon: <Users size={24} />, title: "Large-Scale Voice Services", description: "Enables millions of users to securely access AI systems through natural voice interfaces across public and enterprise services." },
                     { icon: <Zap size={24} />, title: "Real-Time Multilingual Interaction", description: "Low-latency conversational voice experiences across Indian languages and code-switched speech." },
                     { icon: <Shield size={24} />, title: "Secure & Controlled Deployment", description: "Operates fully within regulated, on-premise, or air-gapped environments." },
-                    { icon: <Network size={24} />, title: "Model Portability & Ecosystem Growth", description: "Allows adopters to switch AI providers without losing learnings — while benefiting from open-source improvements." },
+                    { icon: <Network size={24} />, title: "Model Portability & Ecosystem Growth", description: "Allows adopters to switch AI providers without losing learnings while benefiting from open-source improvements." },
                     { icon: <Layers size={24} />, title: "Voice as Digital Public Infrastructure", description: "Establishes voice as a foundational infrastructure layer that public systems and national platforms can build upon." },
-                    { icon: <Eye size={24} />, title: "Interpretability & Data Transparency", description: "Ensures clear visibility into how raw data is processed, stored, and used within the voice stack — enabling institutions to understand model behavior, enforce guardrails, and maintain trust in AI-driven systems." },
+                    { icon: <Eye size={24} />, title: "Interpretability & Data Transparency", description: "Ensures clear visibility into how raw data is processed, stored, and used within the voice stack, enabling institutions to understand model behavior, enforce guardrails, and maintain trust in AI-driven systems." },
                   ].map((card, index) => (
                     <motion.div
                       key={card.title}
@@ -1226,7 +1226,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">VoicERA: The Voice Layer within AI4Inclusion</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I-VoicERA in the AI4Inclusion Ecosystem</h3>
                   <p className="text-muted-foreground text-center max-w-2xl mx-auto">VoicERA adds the voice layer to the AI4Inclusion infrastructure stack.</p>
                 </div>
                 <EcosystemFlow 
@@ -1248,7 +1248,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About VoicERA</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About AI4I-VoicERA</h3>
                 <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-border" style={{ aspectRatio: '16/9' }}>
                   <iframe
                     width="100%"
@@ -1274,7 +1274,7 @@ const BuildingBlocks = () => {
               >
                 <div className="text-center max-w-2xl mx-auto">
                   <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                    Ready to explore VoicERA?
+                    Ready to explore AI4I-VoicERA?
                   </h3>
                   <p className="text-lg text-muted-foreground mb-8">
                     Learn how to implement sovereign voice infrastructure in your applications.

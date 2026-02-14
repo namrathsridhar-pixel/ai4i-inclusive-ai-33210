@@ -26,6 +26,36 @@ const mediaItems: MediaItem[] = [
     thumbnail: "https://img.youtube.com/vi/i7Tv5sLzic8/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
   },
+  {
+    title: "AI4I-Agentic Orchestration",
+    thumbnail: "https://img.youtube.com/vi/SO_niJdR5jo/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/SO_niJdR5jo",
+  },
+  {
+    title: "AI4I-Smart Model Routing",
+    thumbnail: "https://img.youtube.com/vi/V0yHBLzyyCI/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/V0yHBLzyyCI",
+  },
+  {
+    title: "AI4I-Runtime Orchestration",
+    thumbnail: "https://img.youtube.com/vi/R8Vssp0ciIQ/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/R8Vssp0ciIQ",
+  },
+  {
+    title: "AI4I-Model Versioning & Shadow Evaluation",
+    thumbnail: "https://img.youtube.com/vi/KXAJSwym6AE/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/KXAJSwym6AE",
+  },
+  {
+    title: "AI4I-Domain-Aware PII Guardrails",
+    thumbnail: "https://img.youtube.com/vi/taTLuFZ2v8k/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/taTLuFZ2v8k",
+  },
+  {
+    title: "AI4I-Service Unbundling",
+    thumbnail: "https://img.youtube.com/vi/v5BguKfhDqA/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/v5BguKfhDqA",
+  },
 ];
 
 const MediaStrip = () => {
@@ -42,25 +72,25 @@ const MediaStrip = () => {
             className="text-center mb-10"
           >
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Watch Our Story
+              Watch AI4I in Action
               <motion.span
                 className="block h-0.5 bg-gradient-to-r from-primary to-secondary mt-3 mx-auto"
                 initial={{ width: 0 }}
-                whileInView={{ width: "140px" }}
+                whileInView={{ width: "180px" }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               />
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {mediaItems.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -4, scale: 1.02 }}
                 onClick={() => setActiveVideo(item.videoUrl)}
                 className="bg-card rounded-xl overflow-hidden shadow-medium hover:shadow-large transition-all cursor-pointer group"
@@ -70,14 +100,14 @@ const MediaStrip = () => {
                     src={item.thumbnail} 
                     alt={item.title}
                     className="w-full h-full object-cover"
-                    loading="eager"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <motion.div
                       whileHover={{ scale: 1.1 }}
-                      className="w-16 h-16 bg-primary/90 rounded-full flex items-center justify-center shadow-large group-hover:bg-primary transition-colors"
+                      className="w-14 h-14 bg-primary/90 rounded-full flex items-center justify-center shadow-large group-hover:bg-primary transition-colors"
                     >
-                      <Play size={24} className="text-primary-foreground ml-1" />
+                      <Play size={22} className="text-primary-foreground ml-1" />
                     </motion.div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />

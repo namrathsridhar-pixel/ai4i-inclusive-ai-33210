@@ -156,13 +156,13 @@ const TryVoicERA = () => {
           </div>
           <span className="text-lg font-gonzaga font-bold text-white tracking-wide">VoicERA</span>
         </Link>
-        <button
-          onClick={() => navigate(-1)}
+        <Link
+          to="/"
           className="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors"
         >
           <ArrowLeft size={16} />
           Back
-        </button>
+        </Link>
       </div>
 
       {/* Centered card */}
@@ -225,7 +225,7 @@ const TryVoicERA = () => {
                 {/* Header */}
                 <div className="text-center mb-8">
                   <h1 className="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
-                    Talk to VoicERA
+                    Lets talk to VoiceAI
                   </h1>
                   <p className="text-sm md:text-base text-white/45 leading-relaxed max-w-sm mx-auto">
                     It's quick, free, and a simple way to experience how a Voicebot listens, understands, and responds in real time using AI.

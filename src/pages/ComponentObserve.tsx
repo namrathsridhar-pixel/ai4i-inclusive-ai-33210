@@ -184,7 +184,7 @@ const ComponentObserve = () => {
                 <CardContent className="pt-6">
                   <h3 className="text-lg font-heading font-semibold mb-3 flex items-center gap-2">
                     <TrendingUp size={20} className="text-primary" />
-                    Why Observe Matters
+                    Why AI4I-Observe Matters
                   </h3>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex items-start gap-2">
@@ -265,7 +265,7 @@ const ComponentObserve = () => {
           {/* SECTION 3 — Interactive Capability Grid */}
           <DocSection>
             <SectionHeading id="capabilities" level={2}>
-              What Observe Enables
+              What AI4I-Observe Enables
             </SectionHeading>
             <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
               {capabilityCards.map((card, index) => (
@@ -387,7 +387,7 @@ const ComponentObserve = () => {
           {/* SECTION: Why Observe Matters */}
           <DocSection>
             <SectionHeading id="why-observe-matters" level={2}>
-              Why Observe Matters
+              Why AI4I-Observe Matters
             </SectionHeading>
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -396,11 +396,11 @@ const ComponentObserve = () => {
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
-                  <span className="text-muted-foreground">Multilingual AI is complex — each language and dialect behaves differently.</span>
+                  <span className="text-muted-foreground">Multilingual AI is complex. Each language and dialect behaves differently.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
-                  <span className="text-muted-foreground">Models degrade over time — continual evaluation is required.</span>
+                  <span className="text-muted-foreground">Models degrade over time. Continual evaluation is required.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
@@ -421,7 +421,7 @@ const ComponentObserve = () => {
           {/* SECTION: Observe in the AI4Inclusion Ecosystem */}
           <DocSection>
             <SectionHeading id="observe-ecosystem" level={2}>
-              Observe in the AI4Inclusion Ecosystem
+              AI4I-Observe in the AI4Inclusion Ecosystem
             </SectionHeading>
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -544,7 +544,7 @@ const metrics = await observer.getMetrics({
           {/* SECTION 6 — Video Demo */}
           <DocSection>
             <SectionHeading id="demo" level={2}>
-              See It In Action
+              Explore More About AI4I-Observe
             </SectionHeading>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

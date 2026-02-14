@@ -121,7 +121,7 @@ const Events = () => {
 
                   {/* Supporting Text */}
                   <p className="text-sm md:text-base text-white/70 leading-relaxed">
-                    Building Inclusive, Policy-Governed Language AI as Digital Public Goods at Population Scale.
+                    Building Inclusive, Policy-Governed Language AI as Digital Public Good at Population Scale.
                   </p>
 
                   {/* Location Info - styled card */}
