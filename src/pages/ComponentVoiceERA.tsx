@@ -121,7 +121,7 @@ const ComponentVoiceERA = () => {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-tight">
-              AI4I-VoicERA
+              AI4I-<span className="font-gonzaga">VoicERA</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6">
               Where a policy-governed voice stack powers real-time conversations.
