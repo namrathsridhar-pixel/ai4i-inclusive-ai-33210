@@ -97,7 +97,7 @@ const KeyCapabilities = () => {
         </motion.div>
 
         <TooltipProvider>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
             {capabilities.map((cap, i) => (
               <Tooltip key={cap.title}>
                 <TooltipTrigger asChild>
@@ -107,11 +107,11 @@ const KeyCapabilities = () => {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
                     whileHover={{ scale: 1.05, y: -4 }}
-                    className="bg-card rounded-lg p-4 shadow-soft border border-border/50 cursor-pointer transition-all hover:shadow-medium hover:border-primary/30"
+                    className="bg-card rounded-lg p-3 sm:p-4 shadow-soft border border-border/50 cursor-pointer transition-all hover:shadow-medium hover:border-primary/30"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="text-primary">{cap.icon}</div>
-                      <span className="text-sm font-medium leading-tight">{cap.title}</span>
+                    <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 text-center sm:text-left">
+                      <div className="text-primary shrink-0">{cap.icon}</div>
+                      <span className="text-xs sm:text-sm font-medium leading-tight">{cap.title}</span>
                     </div>
                   </motion.div>
                 </TooltipTrigger>
