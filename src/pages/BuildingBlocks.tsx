@@ -1139,7 +1139,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoicERA in the AI4Inclusion Ecosystem</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoicERA: The Sovereign Voice Layer for Language AI</h3>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
@@ -1227,7 +1227,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I-VoicERA in the AI4Inclusion Ecosystem</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I-VoicERA: The Sovereign Voice Layer for Language AI</h3>
                   <p className="text-muted-foreground text-center max-w-2xl mx-auto">VoicERA adds the voice layer to the AI4Inclusion infrastructure stack.</p>
                 </div>
                 <EcosystemFlow 
