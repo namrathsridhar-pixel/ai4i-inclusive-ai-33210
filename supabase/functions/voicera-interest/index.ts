@@ -1,9 +1,30 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
-};
+const allowedOrigins = [
+  'https://ai4inclusion.org',
+  'https://www.ai4inclusion.org',
+  'https://ai4i-inclusive-ai-33210.lovable.app',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  return {
+    'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+    'Vary': 'Origin',
+  };
+}
+
+function maskEmail(email: string): string {
+  const [local, domain] = email.split('@');
+  return (local.length > 2 ? local.substring(0, 2) + '***' : '***') + '@' + domain;
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -81,8 +102,6 @@ Email: info@ai4inclusion.org`;
         <tr>
           <td align="center" valign="top">
             <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden;">
-
-              <!-- Header -->
               <tr>
                 <td align="center" style="background-color: #0f2440; padding: 32px 40px; text-align: center;">
                   <!--[if mso]>
@@ -98,8 +117,6 @@ Email: info@ai4inclusion.org`;
                   <![endif]-->
                 </td>
               </tr>
-
-              <!-- Accent bar -->
               <tr>
                 <td style="padding: 0; font-size: 0; line-height: 0;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -111,23 +128,15 @@ Email: info@ai4inclusion.org`;
                   </table>
                 </td>
               </tr>
-
-              <!-- Body -->
               <tr>
                 <td style="padding: 36px 40px 20px 40px;">
-                  <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a2e; line-height: 24px;">Hi ${displayName},</p>
-
+                  <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a2e; line-height: 24px;">Hi ${escapeHtml(displayName)},</p>
                   <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px;">Thank you for showing interest in <strong style="color: #1e3a5f;">VoicERA</strong>, a Voice AI initiative under the <strong style="color: #1e3a5f;">AI4Inclusion (AI4I)</strong> ecosystem.</p>
-
                   <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px;">VoicERA focuses on enabling inclusive, intelligent, and real-world voice experiences across sectors such as education, public services, enterprises, and accessibility-driven solutions.</p>
-
                   <p style="margin: 0 0 18px 0; font-size: 15px; color: #333344; line-height: 26px;">We've successfully received your details. Our team will review your interest and the context you've shared to understand how VoicERA can best align with your voice AI use case. If there's a relevant next step — such as a product walkthrough, demo, or discussion — someone from our team will reach out.</p>
-
                   <p style="margin: 0 0 24px 0; font-size: 15px; color: #333344; line-height: 26px;">If you'd like to share additional details or have any questions, feel free to reply to this email.</p>
                 </td>
               </tr>
-
-              <!-- Divider -->
               <tr>
                 <td style="padding: 0 40px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -135,8 +144,6 @@ Email: info@ai4inclusion.org`;
                   </table>
                 </td>
               </tr>
-
-              <!-- Signature -->
               <tr>
                 <td style="padding: 24px 40px 32px 40px;">
                   <p style="margin: 0 0 4px 0; font-size: 15px; color: #333344;">Warm regards,</p>
@@ -148,14 +155,11 @@ Email: info@ai4inclusion.org`;
                   </p>
                 </td>
               </tr>
-
-              <!-- Footer -->
               <tr>
                 <td style="background-color: #f8f9fb; padding: 16px 40px; text-align: center; border-top: 1px solid #e8ecf1;">
                   <p style="margin: 0; font-size: 11px; color: #9ca3af; line-height: 18px;">AI4Inclusion &#8212; A Digital Public Good Initiative</p>
                 </td>
               </tr>
-
             </table>
           </td>
         </tr>
@@ -186,10 +190,10 @@ Email: info@ai4inclusion.org`;
       },
     });
 
-    console.log(`VoicERA confirmation email sent to ${email}`);
+    console.log('VoicERA confirmation email sent successfully');
     return { success: true };
   } catch (error) {
-    console.error(`Failed to send VoicERA email to ${email}:`, error);
+    console.error('Failed to send VoicERA confirmation email:', error);
     return { success: false, error: error.message };
   }
 }
@@ -208,19 +212,19 @@ async function sendAdminNotificationEmail(
       <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
         <tr style="border-bottom: 1px solid #e5e7eb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; width: 160px; vertical-align: top;">Name</td>
-          <td style="padding: 10px 12px; color: #111827;">${name || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+          <td style="padding: 10px 12px; color: #111827;">${escapeHtml(name || 'Not provided')}</td>
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Email</td>
-          <td style="padding: 10px 12px; color: #111827;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
+          <td style="padding: 10px 12px; color: #111827;"><a href="mailto:${escapeHtml(email)}" style="color: #2563eb;">${escapeHtml(email)}</a></td>
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Organization</td>
-          <td style="padding: 10px 12px; color: #111827;">${organization || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+          <td style="padding: 10px 12px; color: #111827;">${escapeHtml(organization || 'Not provided')}</td>
         </tr>
         <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Use Case</td>
-          <td style="padding: 10px 12px; color: #111827; white-space: pre-wrap;">${useCase || '<em style="color: #9ca3af;">Not provided</em>'}</td>
+          <td style="padding: 10px 12px; color: #111827; white-space: pre-wrap;">${escapeHtml(useCase || 'Not provided')}</td>
         </tr>
         <tr>
           <td style="padding: 10px 12px; font-weight: bold; color: #374151; vertical-align: top;">Submitted At</td>
@@ -244,19 +248,21 @@ async function sendAdminNotificationEmail(
       from: `"AI4Inclusion Team" <${fromEmail}>`,
       to: adminEmail,
       replyTo: email,
-      subject: `VoicERA Interest: ${name || email}`,
+      subject: `VoicERA Interest: ${escapeHtml(name || 'Anonymous')}`,
       html: htmlBody,
     });
 
-    console.log(`VoicERA admin notification sent to ${adminEmail}`);
+    console.log('VoicERA admin notification sent successfully');
     return { success: true };
   } catch (error) {
-    console.error(`Failed to send VoicERA admin notification:`, error);
+    console.error('Failed to send VoicERA admin notification:', error);
     return { success: false, error: error.message };
   }
 }
 
 Deno.serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
@@ -336,7 +342,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Send emails in parallel
     const [emailResult, adminResult] = await Promise.all([
       sendConfirmationEmail(trimmedName, trimmedEmail),
       sendAdminNotificationEmail(trimmedName, trimmedEmail, trimmedOrg, trimmedUseCase, insertedRecord?.submitted_at || new Date().toISOString()),

@@ -1,9 +1,25 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
-};
+const allowedOrigins = [
+  'https://ai4inclusion.org',
+  'https://www.ai4inclusion.org',
+  'https://ai4i-inclusive-ai-33210.lovable.app',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  return {
+    'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+    'Vary': 'Origin',
+  };
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -48,6 +64,7 @@ async function sendEmail(
 }
 
 function buildConfirmationEmail(name: string) {
+  const safeName = escapeHtml(name);
   const plainText = `Hi ${name},
 
 Thank you for registering for the panel discussion
@@ -86,7 +103,7 @@ https://ai4inclusion.org`;
     </tr></table>
   </td></tr>
   <tr><td style="padding:36px 40px 20px;">
-    <p style="margin:0 0 20px;font-size:16px;color:#1a1a2e;line-height:24px;">Hi ${name},</p>
+    <p style="margin:0 0 20px;font-size:16px;color:#1a1a2e;line-height:24px;">Hi ${safeName},</p>
     <p style="margin:0 0 18px;font-size:15px;color:#333;line-height:26px;">Thank you for registering for the panel discussion<br/><strong style="color:#1e3a5f;">"A Billion Voices, One AI: How Language Tech Transforms Nations"</strong><br/>at the <strong>India AI Impact Summit 2026</strong>.</p>
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px;">
       <tr><td style="padding:6px 0;font-size:15px;color:#333;">📅 <strong>Date & Time:</strong> February 16, 2026 | 11:30 AM</td></tr>
@@ -116,11 +133,11 @@ function buildAdminEmail(data: Record<string, string | boolean | undefined>) {
   <h2 style="color:#1e40af;border-bottom:2px solid #2563eb;padding-bottom:10px;">New Panel Discussion Registration</h2>
   <table style="width:100%;border-collapse:collapse;margin-top:16px;">
     ${[
-      ['Name', data.full_name || 'Not provided'],
-      ['Email', data.email],
-      ['Organization', data.organization || 'Not provided'],
-      ['Interest Area', data.interest_area || 'Not provided'],
-      ['Question for Panel', data.question || 'None'],
+      ['Name', escapeHtml(String(data.full_name || 'Not provided'))],
+      ['Email', escapeHtml(String(data.email))],
+      ['Organization', escapeHtml(String(data.organization || 'Not provided'))],
+      ['Interest Area', escapeHtml(String(data.interest_area || 'Not provided'))],
+      ['Question for Panel', escapeHtml(String(data.question || 'None'))],
     ].map(([label, val], i) => `<tr style="border-bottom:1px solid #e5e7eb;${i % 2 ? 'background:#f9fafb;' : ''}"><td style="padding:10px 12px;font-weight:bold;color:#374151;width:160px;">${label}</td><td style="padding:10px 12px;color:#111827;">${val}</td></tr>`).join('')}
   </table>
   <p style="margin-top:24px;font-size:12px;color:#9ca3af;">Automated notification from the AI4Inclusion website.</p>
@@ -129,6 +146,8 @@ function buildAdminEmail(data: Record<string, string | boolean | undefined>) {
 }
 
 Deno.serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
@@ -141,7 +160,6 @@ Deno.serve(async (req) => {
     const body = await req.json();
     const { full_name, email, organization, interest_area, question } = body;
 
-    // Only email is mandatory
     if (!email?.trim()) {
       return new Response(JSON.stringify({ error: 'Email is required.' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
@@ -164,7 +182,6 @@ Deno.serve(async (req) => {
       return new Response(JSON.stringify({ error: 'Too many submissions. Please try again later.' }), { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
-    // DB insert
     const supabase = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);
 
     const { error: dbError } = await supabase
@@ -184,7 +201,6 @@ Deno.serve(async (req) => {
       return new Response(JSON.stringify({ error: 'Failed to save registration. Please try again.' }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
-    // Send emails
     const smtpHost = Deno.env.get('SMTP_HOST');
     const smtpUser = Deno.env.get('SMTP_USER');
     const smtpPass = Deno.env.get('SMTP_PASS');
@@ -199,7 +215,7 @@ Deno.serve(async (req) => {
 
       await Promise.allSettled([
         sendEmail(smtp, fromEmail, trimmedEmail, '✅ Registration Confirmed – Panel Discussion | India AI Impact Summit 2026', confirmation.html, confirmation.plainText),
-        sendEmail(smtp, fromEmail, 'info@ai4inclusion.org', `New Panel Discussion Registration – ${trimmedName || trimmedEmail}`, adminHtml, '', trimmedEmail),
+        sendEmail(smtp, fromEmail, 'info@ai4inclusion.org', `New Panel Discussion Registration – ${escapeHtml(trimmedName || 'Anonymous')}`, adminHtml, '', trimmedEmail),
       ]);
     }
 
