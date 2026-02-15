@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { Globe, BarChart3, Users, Phone } from "lucide-react";
 import FeatureBlock from "@/components/home/FeatureBlock";
-import KeyCapabilities from "@/components/home/KeyCapabilities";
-import MediaStrip from "@/components/home/MediaStrip";
-import QuickStart from "@/components/home/QuickStart";
-import TrustStrip from "@/components/home/TrustStrip";
-import ResourcesCommunity from "@/components/home/ResourcesCommunity";
-import SolarSystemVisualization from "@/components/home/SolarSystemVisualization";
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 import { WaveformAnimation, ChartAnimation, MicrophoneAnimation, GlobeAnimation } from "@/components/home/AnimatedVisuals";
-import OrchestrateSandboxEntry from "@/components/home/OrchestrateSandboxEntry";
-import EventPromoBanner from "@/components/EventPromoBanner";
-import VoiceraInterestForm from "@/components/VoiceraInterestForm";
+
+// Lazy-load below-the-fold sections to reduce initial main-thread work
+const KeyCapabilities = lazy(() => import("@/components/home/KeyCapabilities"));
+const MediaStrip = lazy(() => import("@/components/home/MediaStrip"));
+const QuickStart = lazy(() => import("@/components/home/QuickStart"));
+const ResourcesCommunity = lazy(() => import("@/components/home/ResourcesCommunity"));
+const SolarSystemVisualization = lazy(() => import("@/components/home/SolarSystemVisualization"));
+const EventPromoBanner = lazy(() => import("@/components/EventPromoBanner"));
+const VoiceraInterestForm = lazy(() => import("@/components/VoiceraInterestForm"));
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
@@ -72,7 +72,7 @@ const Home = () => {
 
   return <div className="min-h-screen relative">
        {/* Event Promo Banner Modal */}
-       <EventPromoBanner />
+       <Suspense fallback={null}><EventPromoBanner /></Suspense>
 
       {/* VoicERA Interest Dialog */}
       <Dialog open={voiceraFormOpen} onOpenChange={setVoiceraFormOpen}>
@@ -81,7 +81,7 @@ const Home = () => {
             <DialogTitle>Show Interest in VoicERA</DialogTitle>
           </VisuallyHidden>
           <div className="p-1">
-            <VoiceraInterestForm />
+            <Suspense fallback={null}><VoiceraInterestForm /></Suspense>
           </div>
         </DialogContent>
       </Dialog>
@@ -141,23 +141,22 @@ const Home = () => {
         </div>
       </section>
 
-      {/* What AI4Inclusion Enables - Solar System Visualization */}
-      <SolarSystemVisualization />
+      <Suspense fallback={null}>
+        {/* What AI4Inclusion Enables - Solar System Visualization */}
+        <SolarSystemVisualization />
 
-      {/* Key Capabilities Mind-Map */}
-      <KeyCapabilities />
+        {/* Key Capabilities Mind-Map */}
+        <KeyCapabilities />
 
-      {/* Media Strip */}
-      <MediaStrip />
+        {/* Media Strip */}
+        <MediaStrip />
 
-      {/* Quick Start / Adoption Paths */}
-      <QuickStart />
+        {/* Quick Start / Adoption Paths */}
+        <QuickStart />
 
-      {/* Trust & Governance Strip - Removed per user request */}
-      {/* <TrustStrip /> */}
-
-      {/* Resources & Community */}
-      <ResourcesCommunity />
+        {/* Resources & Community */}
+        <ResourcesCommunity />
+      </Suspense>
     </div>;
 };
 export default Home;
