@@ -15,10 +15,6 @@ const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const BuildingBlocks = lazy(() => import("./pages/BuildingBlocks"));
-const ComponentCore = lazy(() => import("./pages/ComponentCore"));
-const ComponentObserve = lazy(() => import("./pages/ComponentObserve"));
-const ComponentContribute = lazy(() => import("./pages/ComponentContribute"));
-const ComponentVoiceERA = lazy(() => import("./pages/ComponentVoiceERA"));
 const Adopters = lazy(() => import("./pages/Adopters"));
 const GetInvolved = lazy(() => import("./pages/GetInvolved"));
 const JoinUs = lazy(() => import("./pages/JoinUs"));
@@ -37,10 +33,6 @@ const PAGE_TITLES: Record<string, string> = {
   "/": "AI4Inclusion – Digital Public Good for Inclusive AI",
   "/about": "About – AI4Inclusion",
   "/building-blocks": "Building Blocks – AI4Inclusion",
-  "/components/orchestrate": "AI4I-Orchestrate – AI4Inclusion",
-  "/components/observe": "AI4I-Observe – AI4Inclusion",
-  "/components/contribute": "AI4I-Contribute – AI4Inclusion",
-  "/components/voiceera": "VoiceERA – AI4Inclusion",
   "/try-voicera": "Lets talk to VoiceAI – AI4Inclusion",
   "/events": "Events – AI4Inclusion",
   "/adopters": "Adopters – AI4Inclusion",
@@ -52,8 +44,6 @@ const PAGE_TITLES: Record<string, string> = {
   "/blogs": "Blogs – AI4Inclusion",
   "/privacy": "Privacy Policy – AI4Inclusion",
   "/terms": "Terms of Service – AI4Inclusion",
-  "/legal/privacy": "Privacy Policy – AI4Inclusion",
-  "/legal/terms": "Terms of Service – AI4Inclusion",
 };
 
 const ScrollToTop = () => {
@@ -90,10 +80,6 @@ const AppContent = () => {
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
         <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
         <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
-        <Route path="/components/orchestrate" element={<PageTransition><ComponentCore /></PageTransition>} />
-        <Route path="/components/observe" element={<PageTransition><ComponentObserve /></PageTransition>} />
-        <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
-        <Route path="/components/voiceera" element={<PageTransition><ComponentVoiceERA /></PageTransition>} />
         <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
         <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
         <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
@@ -104,8 +90,6 @@ const AppContent = () => {
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
         <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
-        <Route path="/legal/privacy" element={<PageTransition><Privacy /></PageTransition>} />
-        <Route path="/legal/terms" element={<PageTransition><Terms /></PageTransition>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
