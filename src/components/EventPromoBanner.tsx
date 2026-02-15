@@ -105,6 +105,8 @@ const EventPromoBanner = () => {
                 <img 
                   src={summitHeader} 
                   alt="India AI Impact Summit 2026" 
+                  width={775}
+                  height={286}
                   className="w-full h-auto rounded-lg shadow-[0_0_30px_rgba(59,130,246,0.15)]"
                 />
               </motion.div>
