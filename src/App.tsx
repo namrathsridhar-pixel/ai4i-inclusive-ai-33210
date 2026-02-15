@@ -5,10 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
+const Navigation = lazy(() => import("./components/Navigation"));
+const Footer = lazy(() => import("./components/Footer"));
 const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
-import ScrollToTopButton from "./components/ScrollToTopButton";
+const ScrollToTopButton = lazy(() => import("./components/ScrollToTopButton"));
 import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
 
