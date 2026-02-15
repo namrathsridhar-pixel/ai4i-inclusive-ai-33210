@@ -19,6 +19,7 @@ import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
 import voiceraSovereignVoiceLayer from "@/assets/voicera-ecosystem-pillars.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
+import { PreloadedImage } from "@/components/ui/preloaded-image";
 
 
 const ComponentVoiceERA = () => {
@@ -157,15 +158,13 @@ const ComponentVoiceERA = () => {
                         Click to expand
                       </div>
                     </div>
-                    <div style={{ aspectRatio: "16/9" }} className="w-full overflow-hidden rounded-lg bg-muted/20">
-                      <img
-                        src={voiceraSovereignStack}
-                        alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
-                        className="w-full h-full object-contain rounded-lg"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </div>
+                    <PreloadedImage
+                      src={voiceraSovereignStack}
+                      alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
+                      containerClassName="w-full rounded-lg"
+                      className="rounded-lg"
+                      aspectRatio="16/9"
+                    />
                   </CardContent>
                 </Card>
               </DialogTrigger>
@@ -232,16 +231,13 @@ const ComponentVoiceERA = () => {
                         Click to expand
                       </div>
                     </div>
-                    <div style={{ aspectRatio: "16/9" }} className="w-full overflow-hidden rounded-lg bg-muted/20">
-                      <img
-                        src={voiceraSovereignVoiceLayer}
-                        alt="VoicERA: India's Sovereign Voice Infrastructure"
-                        className="w-full h-full object-contain rounded-lg"
-                        loading="eager"
-                        decoding="sync"
-                        fetchPriority="high"
-                      />
-                    </div>
+                    <PreloadedImage
+                      src={voiceraSovereignVoiceLayer}
+                      alt="VoicERA: India's Sovereign Voice Infrastructure"
+                      containerClassName="w-full rounded-lg"
+                      className="rounded-lg"
+                      aspectRatio="16/9"
+                    />
                   </CardContent>
                 </Card>
               </DialogTrigger>
@@ -333,8 +329,10 @@ const ComponentVoiceERA = () => {
                       <ArrowRight size={16} />
                     </a>
                   </Button>
-                  <Button size="lg" variant="outline" className="min-w-[160px] bg-white text-foreground border-border hover:bg-muted" onClick={() => setInterestFormOpen(true)}>
-                    Show Interest
+                  <Button asChild size="lg" variant="outline" className="min-w-[160px] bg-white text-foreground border-border hover:bg-muted">
+                    <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                      Discuss
+                    </a>
                   </Button>
                 </div>
               </div>
