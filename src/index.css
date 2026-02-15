@@ -234,6 +234,18 @@ All colors MUST be HSL.
   }
 
   /* Scroll reveal animation */
+  /* Hero fade-up animation (replaces framer-motion in hero) */
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @keyframes scroll-reveal {
     from {
       opacity: 0;

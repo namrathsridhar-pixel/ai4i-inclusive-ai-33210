@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 
 const translations = [
@@ -29,7 +28,6 @@ const translations = [
   { text: "Un futuro donde el idioma no sea una barrera", lang: "Spanish", dir: "ltr" },
   { text: "Un avenir où la langue n'est plus une barrière", lang: "French", dir: "ltr" },
   { text: "Eine Zukunft, in der Sprache keine Barriere ist", lang: "German", dir: "ltr" },
-  
   { text: "言語が障壁とならない未来", lang: "Japanese", dir: "ltr" },
   { text: "언어가 장벽이 되지 않는 미래", lang: "Korean", dir: "ltr" },
   { text: "مستقبل لا تكون فيه اللغة عائقًا", lang: "Arabic", dir: "rtl" },
@@ -37,33 +35,35 @@ const translations = [
   { text: "Um futuro onde a língua não seja uma barreira", lang: "Portuguese", dir: "ltr" },
 ];
 
-const DISPLAY_DURATION = 3500; // 3.5 seconds
-const CROSSFADE_DURATION = 0.6; // 0.6 seconds
+const DISPLAY_DURATION = 3500;
+const CROSSFADE_DURATION = 600; // ms for CSS transition
 
 const CyclingSubheading = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [visible, setVisible] = useState(true);
 
-  // Check for reduced motion preference
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
+    const handleChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  // Cycle through translations
+  // Cycle with CSS crossfade
   useEffect(() => {
     if (prefersReducedMotion || isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % translations.length);
+      // Fade out
+      setVisible(false);
+      // After fade-out, swap text and fade in
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % translations.length);
+        setVisible(true);
+      }, CROSSFADE_DURATION);
     }, DISPLAY_DURATION);
 
     return () => clearInterval(interval);
@@ -80,7 +80,6 @@ const CyclingSubheading = () => {
     }
   }, [handlePauseToggle]);
 
-  // If reduced motion is preferred, show English only
   if (prefersReducedMotion) {
     return (
       <div className="text-center">
@@ -104,41 +103,35 @@ const CyclingSubheading = () => {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      {/* Accessible live region with fixed height to prevent layout shift */}
       <div
         aria-live="polite"
         aria-atomic="true"
         className="flex flex-col items-center justify-center"
       >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: CROSSFADE_DURATION, ease: "easeInOut" }}
-            className="flex flex-col items-center"
-          >
-            <div className="h-[4rem] md:h-[5rem] xl:h-[6rem] flex items-center justify-center w-full">
-              <span
-                dir={current.dir}
-                className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)] text-center"
-                style={{
-                  fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-                }}
-              >
-                {current.text}
-              </span>
-            </div>
-            {/* Language label */}
-            <span className="text-sm md:text-base text-blue-300/70 mt-2 font-medium tracking-wide">
-              {current.lang}
+        <div
+          className="flex flex-col items-center"
+          style={{
+            opacity: visible ? 1 : 0,
+            transition: `opacity ${CROSSFADE_DURATION}ms ease-in-out`,
+          }}
+        >
+          <div className="h-[4rem] md:h-[5rem] xl:h-[6rem] flex items-center justify-center w-full">
+            <span
+              dir={current.dir}
+              className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium drop-shadow-[0_0_20px_rgba(147,197,253,0.3)] text-center"
+              style={{
+                fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+              }}
+            >
+              {current.text}
             </span>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+          <span className="text-sm md:text-base text-blue-300/70 mt-2 font-medium tracking-wide">
+            {current.lang}
+          </span>
+        </div>
       </div>
 
-      {/* Pause/Play control */}
       <button
         onClick={handlePauseToggle}
         onKeyDown={handleKeyDown}
@@ -153,7 +146,6 @@ const CyclingSubheading = () => {
         )}
       </button>
 
-      {/* Noscript fallback */}
       <noscript>
         <span className="text-3xl md:text-4xl xl:text-5xl text-blue-200/90 block font-medium">
           A Future Where Language Is No Barrier
