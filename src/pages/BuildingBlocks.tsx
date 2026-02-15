@@ -1097,13 +1097,12 @@ const BuildingBlocks = () => {
                             Click to expand
                           </div>
                         </div>
-                        <img
+                        <PreloadedImage
                           src={voiceraSovereignStack}
                           alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
-                          className="rounded-lg w-full h-auto"
-                          loading="eager"
-                          decoding="sync"
-                          fetchPriority="high"
+                          className="rounded-lg"
+                          containerClassName="rounded-lg"
+                          aspectRatio="16/9"
                         />
                       </CardContent>
                     </Card>
@@ -1166,16 +1165,13 @@ const BuildingBlocks = () => {
                             Click to expand
                           </div>
                         </div>
-                        <div className="w-full overflow-hidden rounded-lg bg-card/50">
-                          <img
-                            src={voiceraEcosystemPillars}
-                            alt="VoicERA: India's Sovereign Voice Infrastructure"
-                            className="rounded-lg w-full h-auto"
-                            loading="eager"
-                            decoding="sync"
-                            fetchPriority="high"
-                          />
-                        </div>
+                        <PreloadedImage
+                          src={voiceraEcosystemPillars}
+                          alt="VoicERA: India's Sovereign Voice Infrastructure"
+                          className="rounded-lg"
+                          containerClassName="rounded-lg"
+                          aspectRatio="16/9"
+                        />
                       </CardContent>
                     </Card>
                   </DialogTrigger>
