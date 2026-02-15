@@ -41,14 +41,11 @@ const featureBlocks = [{
   animation: <WaveformAnimation />,
   videoUrl: "https://www.youtube.com/embed/PFPzxniv1p8",
   githubUrl: "https://github.com/COSS-India/voicera_mono_repository",
+  discussUrl: "https://github.com/COSS-India/voicera_mono_repository/discussions",
   blockLink: "/building-blocks#voicera"
 }];
 
-interface BuildingBlocksSectionProps {
-  onShowInterest: () => void;
-}
-
-const BuildingBlocksSection = ({ onShowInterest }: BuildingBlocksSectionProps) => {
+const BuildingBlocksSection = () => {
   return (
     <section className="py-20 px-4" id="building-blocks">
       <div className="container mx-auto">
@@ -79,16 +76,6 @@ const BuildingBlocksSection = ({ onShowInterest }: BuildingBlocksSectionProps) =
               key={block.title}
               {...block}
               reversed={i % 2 === 1}
-              extraAction={
-                block.title === "AI4I-VoicERA" ? (
-                  <button
-                    onClick={onShowInterest}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    Show Interest
-                  </button>
-                ) : undefined
-              }
             />
           ))}
         </div>

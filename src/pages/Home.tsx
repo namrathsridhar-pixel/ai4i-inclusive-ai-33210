@@ -48,7 +48,7 @@ const Home = () => {
 
       {/* Feature & Offerings Grid — lazy-loaded so framer-motion defers */}
       <Suspense fallback={null}>
-        <BuildingBlocksSection onShowInterest={() => setVoiceraFormOpen(true)} />
+        <BuildingBlocksSection />
       </Suspense>
 
       <Suspense fallback={null}>
