@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import summitHeader from "@/assets/india-ai-summit-header.png";
 
-const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
+const START_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
+const END_DATE = new Date("2026-02-20T23:59:59+05:30").getTime();
+
+type EventStatus = "upcoming" | "live" | "concluded";
 
 interface TimeLeft {
   days: number;
@@ -12,14 +15,16 @@ interface TimeLeft {
   minutes: number;
 }
 
+const getEventStatus = (): EventStatus => {
+  const now = Date.now();
+  if (now < START_DATE) return "upcoming";
+  if (now <= END_DATE) return "live";
+  return "concluded";
+};
+
 const calculateTimeLeft = (): TimeLeft => {
-  const now = new Date().getTime();
-  const difference = TARGET_DATE - now;
-
-  if (difference <= 0) {
-    return { days: 0, hours: 0, minutes: 0 };
-  }
-
+  const difference = START_DATE - Date.now();
+  if (difference <= 0) return { days: 0, hours: 0, minutes: 0 };
   return {
     days: Math.floor(difference / (1000 * 60 * 60 * 24)),
     hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -45,12 +50,13 @@ const CountdownUnit = ({ value, label }: { value: number; label: string }) => (
 
 const Events = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  const [status, setStatus] = useState<EventStatus>(getEventStatus());
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
+      setStatus(getEventStatus());
     }, 60000);
-
     return () => clearInterval(timer);
   }, []);
 
@@ -101,14 +107,32 @@ const Events = () => {
                   />
                 </div>
 
-                {/* Countdown Timer - pushed down to align with CTA */}
-                <div className="flex items-center justify-center gap-3 md:gap-4">
-                  <CountdownUnit value={timeLeft.days} label="Days" />
-                  <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
-                  <CountdownUnit value={timeLeft.hours} label="Hours" />
-                  <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
-                  <CountdownUnit value={timeLeft.minutes} label="Minutes" />
-                </div>
+                {/* Countdown or Live/Concluded Badge */}
+                {status === "concluded" ? (
+                  <div className="flex items-center justify-center">
+                    <div className="flex items-center gap-2.5 bg-white/5 border border-white/20 backdrop-blur-sm rounded-full px-6 py-3">
+                      <span className="text-sm md:text-base font-semibold text-white/70 tracking-wide uppercase">Event Concluded</span>
+                    </div>
+                  </div>
+                ) : status === "live" ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="flex items-center gap-2.5 bg-red-500/15 border border-red-500/30 backdrop-blur-sm rounded-full px-6 py-3">
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
+                      </span>
+                      <span className="text-sm md:text-base font-semibold text-white tracking-wide uppercase">Happening Now</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center gap-3 md:gap-4">
+                    <CountdownUnit value={timeLeft.days} label="Days" />
+                    <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
+                    <CountdownUnit value={timeLeft.hours} label="Hours" />
+                    <span className="text-2xl md:text-3xl text-white/40 font-light mt-[-20px]">:</span>
+                    <CountdownUnit value={timeLeft.minutes} label="Minutes" />
+                  </div>
+                )}
 
             </div>
 
