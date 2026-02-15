@@ -55,16 +55,31 @@ const LanguageNetworkHero = () => {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    let animStarted = false;
+    const startAnimation = () => {
+      if (animStarted) return;
+      animStarted = true;
+      initAndAnimate();
+    };
+
+    // Defer heavy canvas work to avoid blocking main thread / FID
+    const idleId = typeof requestIdleCallback !== "undefined"
+      ? requestIdleCallback(startAnimation, { timeout: 1500 })
+      : (setTimeout(startAnimation, 200) as unknown as number);
+
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth * window.devicePixelRatio;
       canvas.height = canvas.offsetHeight * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     };
+
+    function initAndAnimate() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Initialize nodes
-    const nodeCount = 35;
+    // Initialize nodes — reduced count for lighter main-thread cost
+    const nodeCount = 25;
     nodesRef.current = [];
     for (let i = 0; i < nodeCount; i++) {
       const node: Node = {
@@ -189,7 +204,11 @@ const LanguageNetworkHero = () => {
     };
     updateConnections();
     animate();
+    } // end initAndAnimate
+
     return () => {
+      if (typeof requestIdleCallback !== "undefined") cancelIdleCallback(idleId);
+      else clearTimeout(idleId);
       window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationRef.current);
     };
