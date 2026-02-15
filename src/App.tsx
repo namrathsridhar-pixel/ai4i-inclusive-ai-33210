@@ -7,7 +7,7 @@ import { useEffect, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import LanguageParticles from "./components/LanguageParticles";
+const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
