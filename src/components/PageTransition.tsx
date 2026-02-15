@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface PageTransitionProps {
@@ -18,4 +18,5 @@ const PageTransition = ({ children }: PageTransitionProps) => {
   );
 };
 
+export { AnimatePresence };
 export default PageTransition;

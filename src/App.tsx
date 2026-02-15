@@ -4,13 +4,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
-import { AnimatePresence } from "framer-motion";
 const Navigation = lazy(() => import("./components/Navigation"));
 const Footer = lazy(() => import("./components/Footer"));
 const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
 const ScrollToTopButton = lazy(() => import("./components/ScrollToTopButton"));
-import PageTransition from "./components/PageTransition";
-import Home from "./pages/Home";
+const PageTransition = lazy(() => import("./components/PageTransition"));
+const Home = lazy(() => import("./pages/Home"));
 
 // Lazy-load non-Home pages to reduce initial JS bundle
 const About = lazy(() => import("./pages/About"));
@@ -87,32 +86,30 @@ const AppContent = () => {
       <LanguageParticles />
       {!isTryVoicera && <Navigation />}
       <Suspense fallback={null}>
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-            <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
-            <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
-            <Route path="/components/orchestrate" element={<PageTransition><ComponentCore /></PageTransition>} />
-            <Route path="/components/observe" element={<PageTransition><ComponentObserve /></PageTransition>} />
-            <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
-            <Route path="/components/voiceera" element={<PageTransition><ComponentVoiceERA /></PageTransition>} />
-            <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
-            <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
-            <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
-            <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
-            <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
-            <Route path="/registrations" element={<PageTransition><Registrations /></PageTransition>} />
-            <Route path="/engagements" element={<PageTransition><Engagements /></PageTransition>} />
-            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-            <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
-            <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
-            <Route path="/legal/privacy" element={<PageTransition><Privacy /></PageTransition>} />
-            <Route path="/legal/terms" element={<PageTransition><Terms /></PageTransition>} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
-          </Routes>
-        </AnimatePresence>
+        <Routes>
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+          <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
+          <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
+          <Route path="/components/orchestrate" element={<PageTransition><ComponentCore /></PageTransition>} />
+          <Route path="/components/observe" element={<PageTransition><ComponentObserve /></PageTransition>} />
+          <Route path="/components/contribute" element={<PageTransition><ComponentContribute /></PageTransition>} />
+          <Route path="/components/voiceera" element={<PageTransition><ComponentVoiceERA /></PageTransition>} />
+          <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
+          <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
+          <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
+          <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
+          <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
+          <Route path="/registrations" element={<PageTransition><Registrations /></PageTransition>} />
+          <Route path="/engagements" element={<PageTransition><Engagements /></PageTransition>} />
+          <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+          <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+          <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+          <Route path="/legal/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+          <Route path="/legal/terms" element={<PageTransition><Terms /></PageTransition>} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+        </Routes>
       </Suspense>
       {!isTryVoicera && <Footer />}
       <ScrollToTopButton />
