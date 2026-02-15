@@ -4,7 +4,7 @@ import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 // Use public path to match preload in index.html for instant rendering
-const ai4iLogo = "/ai4i-logo.png";
+const ai4iLogo = "/ai4i-logo.webp";
 
 const buildingBlocksMenu = [
   { id: "ai4i-orchestrate", label: "AI4I-Orchestrate", icon: Globe },
@@ -51,6 +51,8 @@ const Navigation = () => {
               <img 
                 src={ai4iLogo} 
                 alt="AI4Inclusion Logo" 
+                width={65}
+                height={42}
                 className="h-full w-auto object-contain"
                 loading="eager"
                 decoding="sync"
