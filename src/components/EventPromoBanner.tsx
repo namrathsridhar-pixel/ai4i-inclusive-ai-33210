@@ -52,13 +52,16 @@ const EventPromoBanner = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
   useEffect(() => {
-    // Preload the header image before showing the modal
-    const img = new Image();
-    img.onload = () => {
-      setImageLoaded(true);
-      setIsOpen(true);
-    };
-    img.src = summitHeader;
+    // Delay modal display so main page content renders first (improves Speed Index)
+    const delayTimer = setTimeout(() => {
+      const img = new Image();
+      img.onload = () => {
+        setImageLoaded(true);
+        setIsOpen(true);
+      };
+      img.src = summitHeader;
+    }, 2000);
+    return () => clearTimeout(delayTimer);
   }, []);
 
   useEffect(() => {
