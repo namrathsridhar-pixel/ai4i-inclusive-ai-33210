@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import summitHeader from "@/assets/india-ai-summit-header.png";
+import summitHeader from "@/assets/india-ai-summit-header.webp";
 
 const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
 
