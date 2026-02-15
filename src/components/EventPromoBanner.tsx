@@ -7,7 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import summitHeader from "@/assets/india-ai-summit-header.webp";
 
-const TARGET_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
+const START_DATE = new Date("2026-02-16T00:00:00+05:30").getTime();
+const END_DATE = new Date("2026-02-20T23:59:59+05:30").getTime();
+
+type EventStatus = "upcoming" | "live" | "concluded";
 
 interface TimeLeft {
   days: number;
@@ -15,14 +18,16 @@ interface TimeLeft {
   minutes: number;
 }
 
+const getEventStatus = (): EventStatus => {
+  const now = Date.now();
+  if (now < START_DATE) return "upcoming";
+  if (now <= END_DATE) return "live";
+  return "concluded";
+};
+
 const calculateTimeLeft = (): TimeLeft => {
-  const now = new Date().getTime();
-  const difference = TARGET_DATE - now;
-
-  if (difference <= 0) {
-    return { days: 0, hours: 0, minutes: 0 };
-  }
-
+  const difference = START_DATE - Date.now();
+  if (difference <= 0) return { days: 0, hours: 0, minutes: 0 };
   return {
     days: Math.floor(difference / (1000 * 60 * 60 * 24)),
     hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -50,6 +55,7 @@ const EventPromoBanner = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  const [status, setStatus] = useState<EventStatus>(getEventStatus());
 
   useEffect(() => {
     // Delay modal display so main page content renders first (improves Speed Index)
@@ -67,14 +73,17 @@ const EventPromoBanner = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
+      setStatus(getEventStatus());
     }, 60000);
-
     return () => clearInterval(timer);
   }, []);
 
   const handleClose = () => {
     setIsOpen(false);
   };
+
+  // Don't show banner if event is concluded
+  if (status === "concluded") return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
@@ -114,19 +123,36 @@ const EventPromoBanner = () => {
                 />
               </motion.div>
 
-              {/* Countdown Timer - pushed down to align with CTA */}
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="flex items-center justify-center gap-2 md:gap-3"
-              >
-                <CountdownUnit value={timeLeft.days} label="Days" />
-                <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
-                <CountdownUnit value={timeLeft.hours} label="Hours" />
-                <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
-                <CountdownUnit value={timeLeft.minutes} label="Mins" />
-              </motion.div>
+              {/* Countdown or Live Badge */}
+              {status === "live" ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center justify-center gap-3"
+                >
+                  <div className="flex items-center gap-2.5 bg-red-500/15 border border-red-500/30 backdrop-blur-sm rounded-full px-5 py-2.5">
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
+                    </span>
+                    <span className="text-sm md:text-base font-semibold text-white tracking-wide uppercase">Happening Now</span>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center justify-center gap-2 md:gap-3"
+                >
+                  <CountdownUnit value={timeLeft.days} label="Days" />
+                  <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
+                  <CountdownUnit value={timeLeft.hours} label="Hours" />
+                  <span className="text-xl md:text-2xl text-white/40 font-light mt-[-16px]">:</span>
+                  <CountdownUnit value={timeLeft.minutes} label="Mins" />
+                </motion.div>
+              )}
             </div>
 
             {/* Right Column - Title and Text (compact) */}
