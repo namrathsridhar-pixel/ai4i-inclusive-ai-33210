@@ -563,15 +563,36 @@ const BuildingBlocks = () => {
               >
                 <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I-Observe Ensures Quality, Reliability & Governance</h3>
                 <p className="text-muted-foreground mb-6">Complete visibility into AI system health and performance.</p>
-                <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-background to-accent/10 border border-border p-4">
-                  <PreloadedImage
-                    src={observeInfographic}
-                    alt="AI4I-Observe: Unified Telemetry & Governance Architecture"
-                    className="rounded-xl"
-                    containerClassName="rounded-xl"
-                    aspectRatio="16/9"
-                  />
-                </div>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card">
+                      <CardContent className="pt-6 relative">
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border">
+                            <Maximize2 size={14} />
+                            Click to expand
+                          </div>
+                        </div>
+                        <PreloadedImage
+                          src={observeInfographic}
+                          alt="AI4I-Observe: Unified Telemetry & Governance Architecture"
+                          className="rounded-xl"
+                          containerClassName="rounded-xl"
+                          aspectRatio="16/9"
+                        />
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
+                    <VisuallyHidden>
+                      <DialogTitle>How AI4I-Observe Ensures Quality, Reliability & Governance</DialogTitle>
+                      <DialogDescription>Visual diagram showing the observe telemetry architecture</DialogDescription>
+                    </VisuallyHidden>
+                    <div className="p-4">
+                      <img src={observeInfographic} alt="AI4I-Observe: Unified Telemetry & Governance Architecture" className="w-full h-auto" loading="eager" />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </motion.div>
 
               {/* SECTION 2 — Why Observe Matters - SaaS Feature Grid */}

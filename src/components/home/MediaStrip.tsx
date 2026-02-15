@@ -12,7 +12,7 @@ interface MediaItem {
 
 const mediaItems: MediaItem[] = [
   {
-    title: "AI4I-Orchestrate",
+    title: "AI4I-Orchestrate Portal",
     thumbnail: "https://img.youtube.com/vi/jEuKOasl0ws/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/jEuKOasl0ws",
   },
