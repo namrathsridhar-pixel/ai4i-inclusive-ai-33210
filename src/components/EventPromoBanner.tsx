@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import summitHeader from "@/assets/india-ai-summit-header.png";
@@ -75,6 +76,9 @@ const EventPromoBanner = () => {
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="max-w-4xl p-0 border-0 overflow-hidden bg-transparent shadow-2xl">
+        <VisuallyHidden>
+          <DialogTitle>AI4Inclusion at India AI Impact Summit 2026</DialogTitle>
+        </VisuallyHidden>
         <div className="relative w-full bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#1a3a5c] rounded-xl overflow-hidden">
           {/* Close Button */}
           <button
