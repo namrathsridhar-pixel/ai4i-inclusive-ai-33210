@@ -1300,7 +1300,8 @@ const BuildingBlocks = () => {
                       </a>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="min-w-[160px] bg-white text-foreground border-border hover:bg-muted">
-                      <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer">
+                      <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                        <MessageCircle size={16} />
                         Discuss
                       </a>
                     </Button>
