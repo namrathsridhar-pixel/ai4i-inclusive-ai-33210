@@ -9,7 +9,7 @@ const Footer = lazy(() => import("./components/Footer"));
 const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
 const ScrollToTopButton = lazy(() => import("./components/ScrollToTopButton"));
 const PageTransition = lazy(() => import("./components/PageTransition"));
-const Home = lazy(() => import("./pages/Home"));
+import Home from "./pages/Home";
 
 // Lazy-load non-Home pages to reduce initial JS bundle
 const About = lazy(() => import("./pages/About"));
