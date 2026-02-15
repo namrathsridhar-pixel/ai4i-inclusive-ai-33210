@@ -1303,8 +1303,10 @@ const BuildingBlocks = () => {
                         <ArrowRight size={16} />
                       </a>
                     </Button>
-                    <Button size="lg" variant="outline" className="min-w-[160px] bg-white text-foreground border-border hover:bg-muted" onClick={() => setVoiceraInterestOpen(true)}>
-                      Show Interest
+                    <Button asChild size="lg" variant="outline" className="min-w-[160px] bg-white text-foreground border-border hover:bg-muted">
+                      <a href="https://github.com/COSS-India/voicera_mono_repository/discussions" target="_blank" rel="noopener noreferrer">
+                        Discuss
+                      </a>
                     </Button>
                   </div>
                 </div>
