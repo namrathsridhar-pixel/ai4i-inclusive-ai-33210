@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface PageTransitionProps {
@@ -7,16 +6,10 @@ interface PageTransitionProps {
 
 const PageTransition = ({ children }: PageTransitionProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.15, ease: 'easeOut' }}
-    >
+    <div className="animate-[fade-in_0.15s_ease-out]">
       {children}
-    </motion.div>
+    </div>
   );
 };
 
-export { AnimatePresence };
 export default PageTransition;
