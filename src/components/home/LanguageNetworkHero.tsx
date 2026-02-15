@@ -228,20 +228,20 @@ const LanguageNetworkHero = () => {
       {/* Content — CSS fade-in-up instead of framer-motion */}
       <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl group">
         <h1
-          className="font-heading font-bold text-white leading-tight animate-[hero-fade-up_0.8s_ease-out_0.2s_both]"
+          className="font-heading font-bold text-white leading-tight animate-[hero-fade-up_0.8s_ease-out_forwards]"
         >
           <span className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">AI4Inclusion</span>
           <CyclingSubheading />
         </h1>
 
         <p
-          className="text-lg md:text-xl text-gray-300/90 mt-8 leading-relaxed max-w-3xl mx-auto animate-[hero-fade-up_0.8s_ease-out_0.4s_both]"
+          className="text-lg md:text-xl text-gray-300/90 mt-8 leading-relaxed max-w-3xl mx-auto animate-[hero-fade-up_0.8s_ease-out_0.2s_forwards]"
         >
           AI4Inclusion empowers nations to build their own Language AI DPI from citizen-sourced datasets to public-serving orchestration. It enables true digital inclusion in every spoken language.
         </p>
 
         <div
-          className="mt-10 flex flex-wrap justify-center gap-4 animate-[hero-fade-up_0.8s_ease-out_0.6s_both]"
+          className="mt-10 flex flex-wrap justify-center gap-4 animate-[hero-fade-up_0.8s_ease-out_0.4s_forwards]"
         >
           <button onClick={() => scrollToSection("building-blocks")} className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium flex items-center gap-2 hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:scale-105">
             Explore Building Blocks <ArrowDown size={18} />
