@@ -115,20 +115,18 @@ const TryVoicERA = () => {
     if (!isValid) return;
     setStatus("loading");
 
-    const callPromise = supabase.functions.invoke("initiate-call", {
-      body: { phone: phoneNumber },
-    });
-
-    setTimeout(() => {
-      setStatus("success");
-    }, 600);
-
     try {
-      const { data, error } = await callPromise;
+      const { data, error } = await supabase.functions.invoke("initiate-call", {
+        body: { phone: phoneNumber },
+      });
+
       if (error || !data?.success) {
         console.error("Call initiation failed:", error || data?.error);
         setStatus("error");
+        return;
       }
+
+      setStatus("success");
     } catch (err) {
       console.error("Network error:", err);
       setStatus("error");
