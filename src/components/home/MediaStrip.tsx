@@ -18,8 +18,8 @@ const mediaItems: MediaItem[] = [
   },
   {
     title: "AI4I-Observe",
-    thumbnail: "https://img.youtube.com/vi/i7Tv5sLzic8/hqdefault.jpg",
-    videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
+    thumbnail: "https://img.youtube.com/vi/Z3zw6uYm7No/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/Z3zw6uYm7No",
   },
   {
     title: "AI4I-Contribute",

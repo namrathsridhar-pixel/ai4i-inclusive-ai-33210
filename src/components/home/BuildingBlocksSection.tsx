@@ -19,7 +19,7 @@ const featureBlocks = [{
   bullets: ["Real-time telemetry and event streaming", "Quality drift detection and alerting", "Performance dashboards and analytics", "Structured feedback signals feeding evaluation and improvement pipelines"],
   icon: <BarChart3 className="text-primary-foreground" size={24} />,
   animation: <ChartAnimation />,
-  videoUrl: "https://www.youtube.com/embed/i7Tv5sLzic8",
+  videoUrl: "https://www.youtube.com/embed/Z3zw6uYm7No",
   githubUrl: "https://github.com/COSS-India/observe",
   discussUrl: "https://github.com/COSS-India/observe/discussions",
   blockLink: "/building-blocks#observe"
