@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import Navigation from "./components/Navigation";
 import PageTransition from "./components/PageTransition";
 const Footer = lazy(() => import("./components/Footer"));
@@ -69,6 +69,12 @@ const ScrollToTop = () => {
 const AppContent = () => {
   const location = useLocation();
   const isTryVoicera = location.pathname === "/try-voicera";
+  const [showEnhancements, setShowEnhancements] = useState(false);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setShowEnhancements(true), 1500);
+    return () => window.clearTimeout(id);
+  }, []);
 
   return (
     <>
@@ -92,11 +98,13 @@ const AppContent = () => {
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
-      <Suspense fallback={null}>
-        <LanguageParticles />
-        {!isTryVoicera && <Footer />}
-        <ScrollToTopButton />
-      </Suspense>
+      {showEnhancements && (
+        <Suspense fallback={null}>
+          <LanguageParticles />
+          {!isTryVoicera && <Footer />}
+          <ScrollToTopButton />
+        </Suspense>
+      )}
     </>
   );
 };
