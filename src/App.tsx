@@ -11,6 +11,7 @@ import { preloadAllRoutes } from "./lib/route-preloader";
 const Footer = lazy(() => import("./components/Footer"));
 const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
 const ScrollToTopButton = lazy(() => import("./components/ScrollToTopButton"));
+const AI4IAssistant = lazy(() => import("./components/AI4IAssistant"));
 import Home from "./pages/Home";
 
 // Lazy-load non-Home pages to reduce initial JS bundle
@@ -117,6 +118,7 @@ const AppContent = () => {
           <LanguageParticles />
           {!isTryVoicera && <Footer />}
           <ScrollToTopButton />
+          <AI4IAssistant />
         </Suspense>
       )}
     </>
