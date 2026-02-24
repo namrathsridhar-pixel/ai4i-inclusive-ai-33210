@@ -17,6 +17,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [voiceraFormOpen, setVoiceraFormOpen] = useState(false);
+  const [showDeferredSections, setShowDeferredSections] = useState(false);
 
   useEffect(() => {
     if (searchParams.get("showInterest") === "true") {
@@ -26,10 +27,26 @@ const Home = () => {
     }
   }, [searchParams, setSearchParams]);
 
+  useEffect(() => {
+    const showSections = () => setShowDeferredSections(true);
+
+    if (typeof requestIdleCallback !== "undefined") {
+      const idleId = requestIdleCallback(showSections, { timeout: 2000 });
+      return () => cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(showSections, 1200);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="min-h-screen relative">
       {/* Event Promo Banner Modal */}
-      <Suspense fallback={null}><EventPromoBanner /></Suspense>
+      {showDeferredSections && (
+        <Suspense fallback={null}>
+          <EventPromoBanner />
+        </Suspense>
+      )}
 
       {/* VoicERA Interest Dialog */}
       <Dialog open={voiceraFormOpen} onOpenChange={setVoiceraFormOpen}>
@@ -46,18 +63,22 @@ const Home = () => {
       {/* Hero Section */}
       <LanguageNetworkHero />
 
-      {/* Feature & Offerings Grid — lazy-loaded so framer-motion defers */}
-      <Suspense fallback={null}>
-        <BuildingBlocksSection />
-      </Suspense>
+      {showDeferredSections && (
+        <>
+          {/* Feature & Offerings Grid — lazy-loaded so framer-motion defers */}
+          <Suspense fallback={null}>
+            <BuildingBlocksSection />
+          </Suspense>
 
-      <Suspense fallback={null}>
-        <SolarSystemVisualization />
-        <KeyCapabilities />
-        <MediaStrip />
-        <QuickStart />
-        <ResourcesCommunity />
-      </Suspense>
+          <Suspense fallback={null}>
+            <SolarSystemVisualization />
+            <KeyCapabilities />
+            <MediaStrip />
+            <QuickStart />
+            <ResourcesCommunity />
+          </Suspense>
+        </>
+      )}
     </div>
   );
 };
