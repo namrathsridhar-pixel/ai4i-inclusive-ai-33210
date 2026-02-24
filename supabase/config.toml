@@ -8,3 +8,9 @@ verify_jwt = false
 
 [functions.initiate-call]
 verify_jwt = false
+
+[functions.ai4i-chat]
+verify_jwt = false
+
+[functions.ai4i-inquiry]
+verify_jwt = false

@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai4i_website_inquiries: {
+        Row: {
+          category: string
+          country: string
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          organization: string
+          source: string
+          status: string
+        }
+        Insert: {
+          category: string
+          country: string
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          organization: string
+          source?: string
+          status?: string
+        }
+        Update: {
+          category?: string
+          country?: string
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          organization?: string
+          source?: string
+          status?: string
+        }
+        Relationships: []
+      }
       get_in_touch_requests: {
         Row: {
           email: string
