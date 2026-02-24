@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { preloadRoute } from "@/lib/route-preloader";
 // Use public path to match preload in index.html for instant rendering
 const ai4iLogo = "/ai4i-logo.webp";
 
@@ -61,7 +62,7 @@ const Navigation = () => {
           </Link>
 
           {/* Talk to VoicERA Button */}
-          <Link to="/try-voicera" className="hidden lg:block ml-2">
+          <Link to="/try-voicera" className="hidden lg:block ml-2" onMouseEnter={() => preloadRoute("/try-voicera")}>
             <Button variant="outline" size="sm" className="bg-transparent text-white font-bold border-white hover:border-white hover:bg-white/10 hover:text-white hover:shadow-[0_0_16px_rgba(255,255,255,0.45)] transition-all duration-300">
               <Phone size={14} className="mr-1.5" />
               Lets talk to VoiceAI
@@ -78,7 +79,7 @@ const Navigation = () => {
                   <div 
                     key={link.path}
                     className={`relative ${!isLastItem ? "mr-2 xl:mr-6" : ""}`}
-                    onMouseEnter={() => setShowBuildingBlocksMenu(true)}
+                    onMouseEnter={() => { setShowBuildingBlocksMenu(true); preloadRoute("/building-blocks"); }}
                     onMouseLeave={() => setShowBuildingBlocksMenu(false)}
                   >
                     <Link to={link.path}>
@@ -129,7 +130,7 @@ const Navigation = () => {
               }
               
               return (
-                <div key={link.path} className={!isLastItem ? "mr-2 xl:mr-6" : ""}>
+                <div key={link.path} className={!isLastItem ? "mr-2 xl:mr-6" : ""} onMouseEnter={() => preloadRoute(link.path)}>
                   <Link to={link.path} onClick={link.path === "/" ? handleHomeClick : undefined}>
                     <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
                       {link.name}
