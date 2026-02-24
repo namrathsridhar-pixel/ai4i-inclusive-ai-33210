@@ -7,6 +7,41 @@
     <link rel="apple-touch-icon" href="/ai4i-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Resource hints for external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- Preload critical assets -->
+    <link rel="preload" as="image" href="/ai4i-logo.webp" fetchpriority="high" type="image/webp" />
+
+    <!-- Inline critical CSS for instant skeleton rendering -->
+    <style>
+      /* Critical above-the-fold styles — renders before any JS or external CSS */
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a1628;color:#fff;overflow-x:hidden}
+      
+      /* Preload nav bar */
+      #preload-nav{position:fixed;top:0;left:0;width:100%;height:64px;background:#0a1628;border-bottom:1px solid rgba(255,255,255,0.1);z-index:9999;display:flex;align-items:center;padding:0 16px}
+      #preload-nav img{height:42px;width:auto;object-fit:contain}
+
+      /* Hero skeleton */
+      #preload-skeleton{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px;background:linear-gradient(to bottom,#0a0f1a,#0d1525,#0a1628)}
+      .skel-line{background:rgba(255,255,255,0.06);border-radius:8px;animation:skel-shimmer 1.8s ease-in-out infinite}
+      .skel-title{width:min(480px,70%);height:52px;margin-bottom:16px}
+      .skel-subtitle{width:min(380px,55%);height:28px;margin-bottom:32px}
+      .skel-desc{width:min(600px,85%);height:18px;margin-bottom:10px}
+      .skel-desc2{width:min(520px,75%);height:18px;margin-bottom:36px}
+      .skel-btns{display:flex;gap:16px}
+      .skel-btn{width:180px;height:48px;border-radius:8px}
+
+      @keyframes skel-shimmer{
+        0%,100%{opacity:0.4}
+        50%{opacity:0.8}
+      }
+    </style>
+
     <!-- Google Analytics 4 - deferred to improve FCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -20,10 +55,7 @@
         document.head.appendChild(s);
       });
     </script>
-    
-    <!-- Preload critical assets (only public/ paths work with Vite) -->
-    <link rel="preload" as="image" href="/ai4i-logo.webp" fetchpriority="high" type="image/webp" />
-    
+
     <title>AI4Inclusion - Digital Public Good for Inclusive AI</title>
     <meta name="description" content="AI4Inclusion is an open Digital Public Good enabling inclusive language AI for translation, speech recognition, and accessibility." />
     <meta name="author" content="AI4Inclusion" />
@@ -39,21 +71,36 @@
   </head>
 
   <body>
-    <!-- Instant logo placeholder visible before React loads -->
-    <div id="preload-nav" style="position:fixed;top:0;left:0;width:100%;height:64px;background:#0a1628;border-bottom:1px solid rgba(255,255,255,0.1);z-index:9999;display:flex;align-items:center;padding:0 16px;">
-      <div style="height:42px;flex-shrink:0;">
-        <img src="/ai4i-logo.webp" alt="AI4Inclusion" width="65" height="42" style="height:100%;width:auto;object-fit:contain;" fetchpriority="high" />
+    <!-- Instant logo + nav placeholder -->
+    <div id="preload-nav">
+      <div>
+        <img src="/ai4i-logo.webp" alt="AI4Inclusion" width="65" height="42" fetchpriority="high" />
       </div>
     </div>
+
+    <!-- Hero skeleton: visible instantly, removed once React mounts -->
+    <div id="preload-skeleton">
+      <div class="skel-line skel-title"></div>
+      <div class="skel-line skel-subtitle"></div>
+      <div class="skel-line skel-desc"></div>
+      <div class="skel-line skel-desc2"></div>
+      <div class="skel-btns">
+        <div class="skel-line skel-btn"></div>
+        <div class="skel-line skel-btn"></div>
+      </div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      // Remove preload nav once React renders
-      const observer = new MutationObserver(() => {
-        const nav = document.querySelector('#root nav');
+      // Remove preload elements once React renders
+      var observer = new MutationObserver(function() {
+        var nav = document.querySelector('#root nav');
         if (nav) {
-          const preload = document.getElementById('preload-nav');
-          if (preload) preload.remove();
+          var p = document.getElementById('preload-nav');
+          var s = document.getElementById('preload-skeleton');
+          if (p) p.remove();
+          if (s) s.remove();
           observer.disconnect();
         }
       });
