@@ -27,13 +27,6 @@ const Engagements = lazy(() => import("./pages/Engagements"));
 const TryVoicERA = lazy(() => import("./pages/TryVoicERA"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const PageLoader = () => (
-  <div className="min-h-screen flex flex-col items-center justify-center bg-background gap-4">
-    <div className="w-10 h-10 border-[3px] border-muted border-t-primary rounded-full animate-spin" />
-    <p className="text-sm text-muted-foreground">Loading...</p>
-  </div>
-);
-
 const queryClient = new QueryClient();
 
 const PAGE_TITLES: Record<string, string> = {
@@ -87,26 +80,24 @@ const AppContent = () => {
     <>
       <ScrollToTop />
       <Navigation />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-          <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
-          <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
-          <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
-          <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
-          <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
-          <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
-          <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
-          <Route path="/registrations" element={<PageTransition><Registrations /></PageTransition>} />
-          <Route path="/engagements" element={<PageTransition><Engagements /></PageTransition>} />
-          <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-          <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
-          <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
+        <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
+        <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
+        <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
+        <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
+        <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
+        <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
+        <Route path="/registrations" element={<PageTransition><Registrations /></PageTransition>} />
+        <Route path="/engagements" element={<PageTransition><Engagements /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+        <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+      </Routes>
       {showEnhancements && (
         <Suspense fallback={null}>
           <LanguageParticles />
