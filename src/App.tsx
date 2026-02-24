@@ -4,11 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
-const Navigation = lazy(() => import("./components/Navigation"));
+import Navigation from "./components/Navigation";
+import PageTransition from "./components/PageTransition";
 const Footer = lazy(() => import("./components/Footer"));
 const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
 const ScrollToTopButton = lazy(() => import("./components/ScrollToTopButton"));
-const PageTransition = lazy(() => import("./components/PageTransition"));
 import Home from "./pages/Home";
 
 // Lazy-load non-Home pages to reduce initial JS bundle
@@ -71,10 +71,9 @@ const AppContent = () => {
   const isTryVoicera = location.pathname === "/try-voicera";
 
   return (
-    <Suspense fallback={null}>
+    <>
       <ScrollToTop />
-      <LanguageParticles />
-      {!isTryVoicera && <Navigation />}
+      <Navigation />
       <Routes>
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
@@ -93,9 +92,12 @@ const AppContent = () => {
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
-      {!isTryVoicera && <Footer />}
-      <ScrollToTopButton />
-    </Suspense>
+      <Suspense fallback={null}>
+        <LanguageParticles />
+        {!isTryVoicera && <Footer />}
+        <ScrollToTopButton />
+      </Suspense>
+    </>
   );
 };
 
