@@ -1,15 +1,55 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageSquare, X, Send, ArrowRight, Loader2 } from "lucide-react";
+import { MessageSquare, X, Send, Loader2, ChevronRight, User, Bot, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import ReactMarkdown from "react-markdown";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
-type Msg = { role: "user" | "assistant"; content: string };
+type Role = "user" | "assistant";
+interface Msg { role: Role; content: string }
+
+interface InquiryFormData {
+  name: string;
+  organization: string;
+  email: string;
+  country: string;
+  category: string;
+  message: string;
+}
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai4i-chat`;
 const INQUIRY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai4i-inquiry`;
+
+const EXPLORATION_CARDS = [
+  {
+    title: "Explore AI4I",
+    description: "Understand the purpose and vision of AI4I.",
+    prompt: "What is AI4I? Explain its purpose, vision, and the role it plays in enabling language AI as digital public goods.",
+  },
+  {
+    title: "Understand the Ecosystem",
+    description: "Learn how the AI4I ecosystem is structured.",
+    prompt: "Explain how the AI4I ecosystem works, the role of the building blocks, and how they support the AI infrastructure.",
+  },
+  {
+    title: "Learn about VoicERA",
+    description: "Discover how AI4I enables real-time multilingual voice AI.",
+    prompt: "Tell me about AI4I-VoicERA. What is it, what does it enable, and what is its role in the ecosystem?",
+  },
+  {
+    title: "See how Components Connect",
+    description: "Understand how AI4I building blocks work together.",
+    prompt: "Explain how VoicERA, Orchestrate, Observe, and Contribute interact and collectively support the AI4I ecosystem.",
+  },
+];
+
+const SUGGESTED_QUESTIONS = [
+  "What is AI4I?",
+  "What are the AI4I building blocks?",
+  "Tell me about VoicERA",
+  "How does the AI4I ecosystem work?",
+  "What role does Orchestrate play?",
+];
 
 const CATEGORIES = [
   "Partnership",
@@ -19,371 +59,415 @@ const CATEGORIES = [
   "General Inquiry",
 ];
 
-const InquiryForm = ({ onSubmit, isSubmitting }: { onSubmit: (data: any) => void; isSubmitting: boolean }) => {
-  const [form, setForm] = useState({
-    name: "",
-    organization: "",
-    email: "",
-    country: "",
-    category: "",
-    message: "",
+const WELCOME_MESSAGE = "Hello. I am the AI4I Assistant.\nI can help you explore AI4I and its ecosystem.";
+
+async function streamChatRequest({
+  messages,
+  onDelta,
+  onDone,
+  signal,
+}: {
+  messages: Msg[];
+  onDelta: (t: string) => void;
+  onDone: () => void;
+  signal?: AbortSignal;
+}) {
+  const resp = await fetch(CHAT_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+    },
+    body: JSON.stringify({ messages }),
+    signal,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.organization || !form.email || !form.country || !form.category || !form.message) return;
-    onSubmit(form);
-  };
+  if (!resp.ok || !resp.body) {
+    if (resp.status === 429) throw new Error("Rate limit exceeded. Please try again shortly.");
+    if (resp.status === 402) throw new Error("Service temporarily unavailable.");
+    throw new Error("Failed to connect to AI service.");
+  }
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-3 p-3 bg-[#0d1d35] rounded-lg border border-white/10">
-      <p className="text-xs text-white/60 mb-2">Please provide your details and our team will connect with you.</p>
-      <Input
-        placeholder="Full Name *"
-        value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-        required
-        className="bg-white/5 border-white/10 text-white placeholder:text-white/30 text-sm h-9"
-      />
-      <Input
-        placeholder="Organization *"
-        value={form.organization}
-        onChange={(e) => setForm({ ...form, organization: e.target.value })}
-        required
-        className="bg-white/5 border-white/10 text-white placeholder:text-white/30 text-sm h-9"
-      />
-      <Input
-        type="email"
-        placeholder="Work Email *"
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-        required
-        className="bg-white/5 border-white/10 text-white placeholder:text-white/30 text-sm h-9"
-      />
-      <Input
-        placeholder="Country *"
-        value={form.country}
-        onChange={(e) => setForm({ ...form, country: e.target.value })}
-        required
-        className="bg-white/5 border-white/10 text-white placeholder:text-white/30 text-sm h-9"
-      />
-      <select
-        value={form.category}
-        onChange={(e) => setForm({ ...form, category: e.target.value })}
-        required
-        className="w-full h-9 rounded-md border border-white/10 bg-white/5 px-3 text-sm text-white appearance-none"
-      >
-        <option value="" disabled className="bg-[#0a1628] text-white/50">
-          Inquiry Category *
-        </option>
-        {CATEGORIES.map((c) => (
-          <option key={c} value={c} className="bg-[#0a1628] text-white">
-            {c}
-          </option>
-        ))}
-      </select>
-      <Textarea
-        placeholder="Your message *"
-        value={form.message}
-        onChange={(e) => setForm({ ...form, message: e.target.value })}
-        required
-        rows={3}
-        className="bg-white/5 border-white/10 text-white placeholder:text-white/30 text-sm min-h-[60px]"
-      />
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm h-9"
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="w-3 h-3 mr-1 animate-spin" /> Submitting...
-          </>
-        ) : (
-          <>
-            Submit Inquiry <ArrowRight className="w-3 h-3 ml-1" />
-          </>
-        )}
-      </Button>
-    </form>
-  );
-};
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder();
+  let buf = "";
+  let streamDone = false;
 
-const AI4IAssistant = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hello. I'm the AI4I Assistant. I can help you explore our ecosystem and building blocks." },
-  ]);
-  const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [showInquiryForm, setShowInquiryForm] = useState(false);
-  const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  while (!streamDone) {
+    const { done: rd, value } = await reader.read();
+    if (rd) break;
+    buf += decoder.decode(value, { stream: true });
+
+    let idx: number;
+    while ((idx = buf.indexOf("\n")) !== -1) {
+      let line = buf.slice(0, idx);
+      buf = buf.slice(idx + 1);
+      if (line.endsWith("\r")) line = line.slice(0, -1);
+      if (!line.startsWith("data: ")) continue;
+      const json = line.slice(6).trim();
+      if (json === "[DONE]") { streamDone = true; break; }
+      try {
+        const parsed = JSON.parse(json);
+        const c = parsed.choices?.[0]?.delta?.content as string | undefined;
+        if (c) onDelta(c);
+      } catch {
+        buf = line + "\n" + buf;
+        break;
+      }
+    }
+  }
+
+  if (buf.trim()) {
+    for (let raw of buf.split("\n")) {
+      if (!raw) continue;
+      if (raw.endsWith("\r")) raw = raw.slice(0, -1);
+      if (!raw.startsWith("data: ")) continue;
+      const json = raw.slice(6).trim();
+      if (json === "[DONE]") continue;
+      try {
+        const parsed = JSON.parse(json);
+        const c = parsed.choices?.[0]?.delta?.content as string | undefined;
+        if (c) onDelta(c);
+      } catch { /* ignore */ }
+    }
+  }
+  onDone();
+}
+
+function getFollowUps(content: string): string[] {
+  const lower = content.toLowerCase();
+  const suggestions: string[] = [];
+
+  if (lower.includes("ai4i") && !lower.includes("orchestrate") && !lower.includes("voicera")) {
+    suggestions.push("What are the AI4I building blocks?", "How does the ecosystem work?");
+  }
+  if (lower.includes("orchestrate")) {
+    suggestions.push("How does Observe work?", "Tell me about Contribute");
+  }
+  if (lower.includes("voicera") || lower.includes("voice")) {
+    suggestions.push("What role does Orchestrate play?", "How do the components connect?");
+  }
+  if (lower.includes("observe")) {
+    suggestions.push("Tell me about Contribute", "What is VoicERA?");
+  }
+  if (lower.includes("contribute")) {
+    suggestions.push("Tell me about Observe", "What is VoicERA?");
+  }
+  if (lower.includes("ecosystem")) {
+    suggestions.push("Tell me about VoicERA", "What role does Orchestrate play?");
+  }
+  if (suggestions.length === 0) {
+    suggestions.push("Tell me about VoicERA", "What are the AI4I building blocks?");
+  }
+  return [...new Set(suggestions)].slice(0, 3);
+}
+
+function InquiryFormInline({ onSubmitted }: { onSubmitted: () => void }) {
+  const [form, setForm] = useState<InquiryFormData>({
+    name: "", organization: "", email: "", country: "", category: "General Inquiry", message: "",
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const { toast } = useToast();
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, showInquiryForm]);
+  const handle = (k: keyof InquiryFormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm(f => ({ ...f, [k]: e.target.value }));
 
-  useEffect(() => {
-    if (isOpen) inputRef.current?.focus();
-  }, [isOpen]);
-
-  const streamChat = useCallback(async (userMessages: Msg[]) => {
-    setIsLoading(true);
-    let assistantSoFar = "";
-    let inquiryNeeded = false;
-
+  const submit = async () => {
+    setError("");
+    const { name, organization, email, country, message } = form;
+    if (!name.trim() || !organization.trim() || !email.trim() || !country.trim() || !message.trim()) {
+      setError("All fields are required."); return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError("Please enter a valid email address."); return;
+    }
+    setSubmitting(true);
     try {
-      const resp = await fetch(CHAT_URL, {
+      const res = await fetch(INQUIRY_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: userMessages }),
+        body: JSON.stringify({ name: name.trim(), organization: organization.trim(), email: email.trim(), country: country.trim(), category: form.category, message: message.trim() }),
       });
-
-      if (!resp.ok) {
-        const errData = await resp.json().catch(() => ({}));
-        throw new Error(errData.error || `Request failed (${resp.status})`);
-      }
-
-      if (!resp.body) throw new Error("No response stream");
-
-      const reader = resp.body.getReader();
-      const decoder = new TextDecoder();
-      let textBuffer = "";
-      let streamDone = false;
-
-      while (!streamDone) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        textBuffer += decoder.decode(value, { stream: true });
-
-        let newlineIndex: number;
-        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
-          let line = textBuffer.slice(0, newlineIndex);
-          textBuffer = textBuffer.slice(newlineIndex + 1);
-          if (line.endsWith("\r")) line = line.slice(0, -1);
-          if (line.startsWith(":") || line.trim() === "") continue;
-          if (!line.startsWith("data: ")) continue;
-
-          const jsonStr = line.slice(6).trim();
-          if (jsonStr === "[DONE]") { streamDone = true; break; }
-
-          try {
-            const parsed = JSON.parse(jsonStr);
-            const content = parsed.choices?.[0]?.delta?.content as string | undefined;
-            if (content) {
-              assistantSoFar += content;
-              // Check if the AI signals inquiry needed
-              if (assistantSoFar.trim() === "INQUIRY_NEEDED" || assistantSoFar.includes("INQUIRY_NEEDED")) {
-                inquiryNeeded = true;
-                streamDone = true;
-                break;
-              }
-              setMessages((prev) => {
-                const last = prev[prev.length - 1];
-                if (last?.role === "assistant" && prev.length > 1 && last.content !== messages[0].content) {
-                  return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: assistantSoFar } : m));
-                }
-                return [...prev, { role: "assistant", content: assistantSoFar }];
-              });
-            }
-          } catch {
-            textBuffer = line + "\n" + textBuffer;
-            break;
-          }
-        }
-      }
-
-      if (inquiryNeeded) {
-        const inquiryMsg = "I do not have that information available on the website. Let me connect you with the AI4I team.";
-        setMessages((prev) => {
-          const last = prev[prev.length - 1];
-          if (last?.role === "assistant" && last.content.includes("INQUIRY")) {
-            return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: inquiryMsg } : m));
-          }
-          return [...prev, { role: "assistant", content: inquiryMsg }];
-        });
-        setShowInquiryForm(true);
-      }
-    } catch (e) {
-      console.error("Chat error:", e);
-      toast({
-        title: "Error",
-        description: e instanceof Error ? e.message : "Failed to get response",
-        variant: "destructive",
-      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Submission failed.");
+      toast({ title: "Inquiry submitted", description: "The AI4I team will respond to your inquiry." });
+      onSubmitted();
+    } catch (err: any) {
+      setError(err.message || "Something went wrong.");
     } finally {
-      setIsLoading(false);
+      setSubmitting(false);
     }
-  }, [messages, toast]);
+  };
 
-  const handleSend = async () => {
-    const trimmed = input.trim();
-    if (!trimmed || isLoading) return;
+  const inputClass = "w-full px-3 py-2 text-sm rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary";
 
-    setShowInquiryForm(false);
-    const userMsg: Msg = { role: "user", content: trimmed };
-    setMessages((prev) => [...prev, userMsg]);
+  return (
+    <div className="space-y-3 p-3 rounded-lg border border-border bg-muted/30">
+      <p className="text-xs font-medium text-muted-foreground">Submit your inquiry</p>
+      <input className={inputClass} placeholder="Full Name *" value={form.name} onChange={handle("name")} />
+      <input className={inputClass} placeholder="Organization *" value={form.organization} onChange={handle("organization")} />
+      <input className={inputClass} placeholder="Work Email *" type="email" value={form.email} onChange={handle("email")} />
+      <input className={inputClass} placeholder="Country *" value={form.country} onChange={handle("country")} />
+      <select className={inputClass} value={form.category} onChange={handle("category")}>
+        {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+      </select>
+      <textarea className={`${inputClass} min-h-[60px] resize-none`} placeholder="Your message *" value={form.message} onChange={handle("message")} rows={3} />
+      {error && <p className="text-xs text-destructive flex items-center gap-1"><AlertCircle className="w-3 h-3" />{error}</p>}
+      <Button size="sm" onClick={submit} disabled={submitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+        {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : "Submit Inquiry"}
+      </Button>
+    </div>
+  );
+}
+
+const AI4IAssistant = () => {
+  const [open, setOpen] = useState(false);
+  const [messages, setMessages] = useState<Msg[]>([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showInquiry, setShowInquiry] = useState(false);
+  const [followUps, setFollowUps] = useState<string[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const scrollToBottom = useCallback(() => {
+    setTimeout(() => {
+      if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }, 50);
+  }, []);
+
+  useEffect(() => { if (open) { scrollToBottom(); inputRef.current?.focus(); } }, [open, scrollToBottom]);
+
+  const sendMessage = useCallback(async (text: string) => {
+    if (!text.trim() || loading) return;
+    setShowInquiry(false);
+    setFollowUps([]);
+    const userMsg: Msg = { role: "user", content: text.trim() };
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
     setInput("");
+    setLoading(true);
+    scrollToBottom();
 
-    const allMsgs = [...messages.filter((m) => m !== messages[0]), userMsg];
-    await streamChat(allMsgs);
-  };
+    let assistantContent = "";
+    const controller = new AbortController();
 
-  const handleInquirySubmit = async (data: any) => {
-    setIsSubmittingInquiry(true);
+    const upsert = (chunk: string) => {
+      assistantContent += chunk;
+      setMessages(prev => {
+        const last = prev[prev.length - 1];
+        if (last?.role === "assistant") {
+          return prev.map((m, i) => i === prev.length - 1 ? { ...m, content: assistantContent } : m);
+        }
+        return [...prev, { role: "assistant", content: assistantContent }];
+      });
+      scrollToBottom();
+    };
+
     try {
-      const resp = await fetch(INQUIRY_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      await streamChatRequest({
+        messages: newMessages,
+        onDelta: (chunk) => {
+          if ((assistantContent + chunk).includes("INQUIRY_NEEDED")) {
+            assistantContent = "I do not have that information available on the website. If you would like, you can submit your inquiry and the AI4I team will respond.";
+            setMessages(prev => {
+              const last = prev[prev.length - 1];
+              if (last?.role === "assistant") {
+                return prev.map((m, i) => i === prev.length - 1 ? { ...m, content: assistantContent } : m);
+              }
+              return [...prev, { role: "assistant", content: assistantContent }];
+            });
+            setShowInquiry(true);
+            return;
+          }
+          upsert(chunk);
         },
-        body: JSON.stringify(data),
+        onDone: () => {
+          setLoading(false);
+          if (!assistantContent.includes("INQUIRY_NEEDED")) {
+            setFollowUps(getFollowUps(assistantContent));
+          }
+          scrollToBottom();
+        },
+        signal: controller.signal,
       });
-
-      if (!resp.ok) {
-        const errData = await resp.json().catch(() => ({}));
-        throw new Error(errData.error || "Submission failed");
+    } catch (err: any) {
+      if (err.name !== "AbortError") {
+        upsert("\n\nI encountered an error. Please try again.");
       }
-
-      setShowInquiryForm(false);
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Thank you. Your inquiry has been submitted. The AI4I team will review and respond to your inquiry.",
-        },
-      ]);
-    } catch (e) {
-      toast({
-        title: "Submission Error",
-        description: e instanceof Error ? e.message : "Failed to submit inquiry",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmittingInquiry(false);
+      setLoading(false);
     }
-  };
+  }, [messages, loading, scrollToBottom]);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
+  const hasConversation = messages.length > 0;
 
   return (
     <>
-      {/* Floating Button */}
-      {!isOpen && (
+      {!open && (
         <button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center"
+          onClick={() => setOpen(true)}
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-primary-foreground shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105"
           aria-label="Open AI4I Assistant"
         >
-          <MessageSquare size={22} />
+          <MessageSquare className="w-5 h-5" />
+          <span className="text-sm font-medium hidden sm:inline">AI4I Assistant</span>
         </button>
       )}
 
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="fixed bottom-6 left-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-6rem)] flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-[#0a1628]">
+      {open && (
+        <div className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-[420px] h-[100dvh] sm:h-[600px] sm:max-h-[80vh] flex flex-col rounded-none sm:rounded-2xl border border-border bg-background shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#0a1628] to-[#1a3a5c] border-b border-white/10">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                <MessageSquare size={14} className="text-primary" />
+          <div className="flex items-center justify-between px-5 py-4 border-b border-border bg-primary text-primary-foreground">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                <Bot className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-white leading-none">AI4I Assistant</h3>
-                <p className="text-[10px] text-white/50 mt-0.5">AI4Inclusion Knowledge Base</p>
+                <h3 className="text-sm font-semibold">AI4I Assistant</h3>
+                <p className="text-[11px] opacity-80">Knowledge guide for AI4I ecosystem</p>
               </div>
             </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="w-7 h-7 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
-              aria-label="Close assistant"
-            >
-              <X size={14} className="text-white/60" />
+            <button onClick={() => setOpen(false)} className="p-1.5 rounded-full hover:bg-primary-foreground/20 transition-colors" aria-label="Close">
+              <X className="w-4 h-4" />
             </button>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-3 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10">
-            {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div
-                  className={`max-w-[85%] px-3 py-2 rounded-xl text-sm leading-relaxed ${
-                    msg.role === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-sm"
-                      : "bg-white/5 text-white/90 border border-white/5 rounded-bl-sm"
-                  }`}
-                >
-                  {msg.role === "assistant" ? (
-                    <div
-                      className="prose prose-sm prose-invert max-w-none [&_p]:my-1 [&_ul]:my-1 [&_li]:my-0.5 [&_h1]:text-base [&_h2]:text-sm [&_h3]:text-sm [&_strong]:text-white [&_a]:text-primary"
-                      dangerouslySetInnerHTML={{
-                        __html: msg.content
-                          .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                          .replace(/\*(.*?)\*/g, "<em>$1</em>")
-                          .replace(/^### (.*$)/gm, "<h3>$1</h3>")
-                          .replace(/^## (.*$)/gm, "<h2>$1</h2>")
-                          .replace(/^# (.*$)/gm, "<h1>$1</h1>")
-                          .replace(/^- (.*$)/gm, "<li>$1</li>")
-                          .replace(/(<li>.*<\/li>)/s, "<ul>$1</ul>")
-                          .replace(/\n/g, "<br/>"),
-                      }}
-                    />
-                  ) : (
-                    msg.content
-                  )}
-                </div>
+          <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+            {/* Welcome */}
+            <div className="flex gap-2.5">
+              <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Bot className="w-3.5 h-3.5 text-primary" />
               </div>
-            ))}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white/5 border border-white/5 rounded-xl rounded-bl-sm px-3 py-2">
-                  <div className="flex gap-1">
-                    <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+              <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                <p className="text-sm text-foreground whitespace-pre-line">{WELCOME_MESSAGE}</p>
+              </div>
+            </div>
+
+            {!hasConversation && (
+              <div className="space-y-3 pt-1">
+                <p className="text-xs font-medium text-muted-foreground px-1">Explore AI4I</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {EXPLORATION_CARDS.map((card) => (
+                    <button
+                      key={card.title}
+                      onClick={() => sendMessage(card.prompt)}
+                      className="text-left p-3 rounded-xl border border-border bg-card hover:bg-accent hover:border-primary/30 transition-all duration-200 group"
+                    >
+                      <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{card.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{card.description}</p>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="pt-2">
+                  <p className="text-xs font-medium text-muted-foreground px-1 mb-2">Suggested questions</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {SUGGESTED_QUESTIONS.map((q) => (
+                      <button
+                        key={q}
+                        onClick={() => sendMessage(q)}
+                        className="text-xs px-3 py-1.5 rounded-full border border-border bg-card hover:bg-accent hover:border-primary/30 text-foreground transition-all duration-200"
+                      >
+                        {q}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
             )}
-            {showInquiryForm && (
-              <InquiryForm onSubmit={handleInquirySubmit} isSubmitting={isSubmittingInquiry} />
+
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : ""}`}>
+                {msg.role === "assistant" && (
+                  <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Bot className="w-3.5 h-3.5 text-primary" />
+                  </div>
+                )}
+                <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm ${
+                  msg.role === "user"
+                    ? "bg-primary text-primary-foreground rounded-tr-sm"
+                    : "bg-muted text-foreground rounded-tl-sm"
+                }`}>
+                  {msg.role === "assistant" ? (
+                    <div className="prose prose-sm max-w-none text-foreground [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:mt-1 [&_ol]:mt-1 [&_li]:mb-0.5 [&_strong]:text-foreground [&_h1]:text-base [&_h2]:text-sm [&_h3]:text-sm [&_a]:text-primary">
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    </div>
+                  ) : (
+                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                  )}
+                </div>
+                {msg.role === "user" && (
+                  <div className="w-7 h-7 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <User className="w-3.5 h-3.5 text-secondary" />
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {loading && messages[messages.length - 1]?.role === "user" && (
+              <div className="flex gap-2.5">
+                <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-3.5 h-3.5 text-primary" />
+                </div>
+                <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3">
+                  <div className="flex gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-bounce [animation-delay:0ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-bounce [animation-delay:150ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-bounce [animation-delay:300ms]" />
+                  </div>
+                </div>
+              </div>
             )}
-            <div ref={messagesEndRef} />
+
+            {showInquiry && (
+              <InquiryFormInline onSubmitted={() => { setShowInquiry(false); scrollToBottom(); }} />
+            )}
+
+            {!loading && followUps.length > 0 && !showInquiry && (
+              <div className="flex flex-wrap gap-1.5 pl-9">
+                {followUps.map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => sendMessage(q)}
+                    className="text-xs px-3 py-1.5 rounded-full border border-border bg-card hover:bg-accent hover:border-primary/30 text-foreground transition-all duration-200 flex items-center gap-1"
+                  >
+                    {q}
+                    <ChevronRight className="w-3 h-3 text-muted-foreground" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Input */}
-          <div className="px-3 py-2 border-t border-white/10 bg-[#0a1628]">
-            <div className="flex items-center gap-2">
+          <div className="px-4 py-3 border-t border-border bg-background">
+            <form
+              onSubmit={(e) => { e.preventDefault(); sendMessage(input); }}
+              className="flex items-center gap-2"
+            >
               <Input
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Ask about AI4Inclusion..."
-                disabled={isLoading}
-                className="flex-1 bg-white/5 border-white/10 text-white placeholder:text-white/30 text-sm h-9 focus-visible:ring-primary/30"
+                placeholder="Ask about AI4I..."
+                disabled={loading}
+                className="flex-1 rounded-full border-border bg-muted/50 text-sm h-10"
               />
               <Button
-                onClick={handleSend}
-                disabled={!input.trim() || isLoading}
+                type="submit"
                 size="icon"
-                className="w-9 h-9 bg-primary hover:bg-primary/90 shrink-0"
+                disabled={loading || !input.trim()}
+                className="rounded-full w-10 h-10 bg-primary text-primary-foreground hover:bg-primary/90 flex-shrink-0"
               >
-                <Send size={14} />
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
               </Button>
-            </div>
+            </form>
+            <p className="text-[10px] text-muted-foreground text-center mt-2">AI4I Assistant answers using website content only.</p>
           </div>
         </div>
       )}
