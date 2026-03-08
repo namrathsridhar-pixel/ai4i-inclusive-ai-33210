@@ -65,33 +65,11 @@ const Home = () => {
 
       {showDeferredSections && (
         <Suspense fallback={null}>
-          {/* Impact Narrative — bold statement + animated counters */}
-          <ImpactNarrative />
-
-          {/* How It Works Pipeline */}
-          <SectionDivider variant="wave" from="hsl(0 0% 100%)" to="hsl(210 40% 98%)" />
-          <HowItWorksPipeline />
-
-          {/* Building Blocks */}
-          <SectionDivider variant="wave" from="hsl(210 40% 98%)" to="hsl(0 0% 100%)" flip />
           <BuildingBlocksSection />
-
-          {/* Solar System Visualization */}
-          <SectionDivider variant="angle" from="hsl(0 0% 100%)" to="#0a1628" />
           <SolarSystemVisualization />
-          <SectionDivider variant="angle" from="#0a1628" to="hsl(210 40% 98%)" />
-
-          {/* Key Capabilities */}
           <KeyCapabilities />
-
-          {/* Media Strip */}
           <MediaStrip />
-
-          {/* Quick Start */}
-          <SectionDivider variant="wave" from="hsl(210 40% 96%)" to="hsl(0 0% 100%)" flip />
           <QuickStart />
-
-          {/* Resources & Community */}
           <ResourcesCommunity />
         </Suspense>
       )}
