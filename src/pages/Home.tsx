@@ -3,15 +3,12 @@ import { useSearchParams } from "react-router-dom";
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 
 // Lazy-load below-the-fold sections
-const ImpactNarrative = lazy(() => import("@/components/home/ImpactNarrative"));
-const HowItWorksPipeline = lazy(() => import("@/components/home/HowItWorksPipeline"));
 const BuildingBlocksSection = lazy(() => import("@/components/home/BuildingBlocksSection"));
 const KeyCapabilities = lazy(() => import("@/components/home/KeyCapabilities"));
 const MediaStrip = lazy(() => import("@/components/home/MediaStrip"));
 const QuickStart = lazy(() => import("@/components/home/QuickStart"));
 const ResourcesCommunity = lazy(() => import("@/components/home/ResourcesCommunity"));
 const SolarSystemVisualization = lazy(() => import("@/components/home/SolarSystemVisualization"));
-const SectionDivider = lazy(() => import("@/components/home/SectionDivider"));
 const EventPromoBanner = lazy(() => import("@/components/EventPromoBanner"));
 const VoiceraInterestForm = lazy(() => import("@/components/VoiceraInterestForm"));
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
