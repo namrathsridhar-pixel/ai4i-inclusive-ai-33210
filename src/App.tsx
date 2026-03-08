@@ -119,7 +119,7 @@ const AppContent = () => {
           <LanguageParticles />
           {!isTryVoicera && <Footer />}
           <ScrollToTopButton />
-          
+          <AI4IAssistant />
         </Suspense>
       )}
     </>
