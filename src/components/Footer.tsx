@@ -41,6 +41,9 @@ const Footer = () => {
                 decoding="async"
               />
             </Link>
+            <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">
+              AI for Inclusion
+            </p>
 
             {/* Social icons */}
             <div className="flex items-center gap-3">
