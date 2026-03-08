@@ -42,7 +42,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">
-              Open-source, modular Language AI infrastructure — empowering nations to build inclusive digital services for every spoken language.
+              AI for Inclusion
             </p>
             <p className="text-white/40 text-xs mb-4">
               An initiative of the Center for Open Societal Systems (COSS)
