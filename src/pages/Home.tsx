@@ -2,13 +2,16 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 
-// Lazy-load below-the-fold sections (including FeatureBlock + AnimatedVisuals which pull in framer-motion)
+// Lazy-load below-the-fold sections
+const ImpactNarrative = lazy(() => import("@/components/home/ImpactNarrative"));
+const HowItWorksPipeline = lazy(() => import("@/components/home/HowItWorksPipeline"));
 const BuildingBlocksSection = lazy(() => import("@/components/home/BuildingBlocksSection"));
 const KeyCapabilities = lazy(() => import("@/components/home/KeyCapabilities"));
 const MediaStrip = lazy(() => import("@/components/home/MediaStrip"));
 const QuickStart = lazy(() => import("@/components/home/QuickStart"));
 const ResourcesCommunity = lazy(() => import("@/components/home/ResourcesCommunity"));
 const SolarSystemVisualization = lazy(() => import("@/components/home/SolarSystemVisualization"));
+const SectionDivider = lazy(() => import("@/components/home/SectionDivider"));
 const EventPromoBanner = lazy(() => import("@/components/EventPromoBanner"));
 const VoiceraInterestForm = lazy(() => import("@/components/VoiceraInterestForm"));
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -64,20 +67,36 @@ const Home = () => {
       <LanguageNetworkHero />
 
       {showDeferredSections && (
-        <>
-          {/* Feature & Offerings Grid — lazy-loaded so framer-motion defers */}
-          <Suspense fallback={null}>
-            <BuildingBlocksSection />
-          </Suspense>
+        <Suspense fallback={null}>
+          {/* Impact Narrative — bold statement + animated counters */}
+          <ImpactNarrative />
 
-          <Suspense fallback={null}>
-            <SolarSystemVisualization />
-            <KeyCapabilities />
-            <MediaStrip />
-            <QuickStart />
-            <ResourcesCommunity />
-          </Suspense>
-        </>
+          {/* How It Works Pipeline */}
+          <SectionDivider variant="wave" from="hsl(0 0% 100%)" to="hsl(210 40% 98%)" />
+          <HowItWorksPipeline />
+
+          {/* Building Blocks */}
+          <SectionDivider variant="wave" from="hsl(210 40% 98%)" to="hsl(0 0% 100%)" flip />
+          <BuildingBlocksSection />
+
+          {/* Solar System Visualization */}
+          <SectionDivider variant="angle" from="hsl(0 0% 100%)" to="#0a1628" />
+          <SolarSystemVisualization />
+          <SectionDivider variant="angle" from="#0a1628" to="hsl(210 40% 98%)" />
+
+          {/* Key Capabilities */}
+          <KeyCapabilities />
+
+          {/* Media Strip */}
+          <MediaStrip />
+
+          {/* Quick Start */}
+          <SectionDivider variant="wave" from="hsl(210 40% 96%)" to="hsl(0 0% 100%)" flip />
+          <QuickStart />
+
+          {/* Resources & Community */}
+          <ResourcesCommunity />
+        </Suspense>
       )}
     </div>
   );
