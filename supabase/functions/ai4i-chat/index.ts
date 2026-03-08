@@ -137,6 +137,8 @@ AI4Inclusion is an initiative of the Center for Open Societal Systems (COSS).
 `;
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
