@@ -41,8 +41,8 @@ const Footer = () => {
                 decoding="async"
               />
             </Link>
-            <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">
-              AI for Inclusion
+            <p className="text-white/40 text-xs mb-6">
+              An initiative of the Center for Open Societal Systems (COSS)
             </p>
 
             {/* Social icons */}
