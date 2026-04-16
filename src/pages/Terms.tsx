@@ -1,19 +1,17 @@
 import { motion } from "framer-motion";
+
 const Terms = () => {
-  return <div className="min-h-screen">
+  return (
+    <div className="min-h-screen">
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-4xl">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.6
-        }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-8">
-              Terms of Use
+              AI4INCLUSION Terms of Use
             </h1>
             
             <div className="prose prose-lg max-w-none space-y-6">
@@ -23,10 +21,8 @@ const Terms = () => {
                 ("Website") has been developed and is being maintained by Center for Open Societal Systems ("COSS").
               </p>
 
-              <p className="text-muted-foreground">This Website provides information related to AI4Inclusion (“AI4I”), an initiative enabling nations to build sovereign Language AI Digital Public Infrastructure. The Website invites users to explore how AI4I helps countries collect and curate citizen-sourced datasets, and deliver native language AI models through open, interoperable building blocks — unlocking true digital inclusion, where every citizen can access digital services and participate in their own spoken language (“Purpose”).</p>
-
               <p className="text-muted-foreground">
-                COSS is a not-for-profit company registered under the Indian Companies Act, 2013, having its office at No. 85, 7th Cross, Koramangala 4th Block, Bangalore 560034, Karnataka, India.
+                This Website provides information related to AI4Inclusion ("AI4I"), an initiative enabling nations to build sovereign Language AI Digital Public Infrastructure. The Website invites users to explore how AI4I helps countries collect and curate citizen-sourced datasets, and deliver native language AI models through open, interoperable building blocks — unlocking true digital inclusion, where every citizen can access digital services and participate in their own spoken language ("Purpose").
               </p>
 
               <p className="text-muted-foreground">
@@ -37,25 +33,7 @@ const Terms = () => {
                 Set out below are the Terms of Use of this Website:
               </p>
 
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">1. DEFINITIONS</h2>
-              
-              <p className="text-muted-foreground">
-                <strong>a. "Asset"</strong> means and refers to a piece of content or software code. A piece of content can be expressed as text, documents, presentations, scripts, graphics, photos, sounds, music, videos, audiovisual combinations, RLO (reusable learning object) or other such mediums of expression and other materials you may view on, access through, or contribute to the Website, and includes all postings on the Website by Users.
-              </p>
-
-              <p className="text-muted-foreground">
-                <strong>b. "Intellectual Property"</strong> shall singly or collectively mean to include, as the case may be, all patents, copyrights, trademarks, trade names, service marks, service names, designs and any other proprietary information or other similar right arising or enforceable under Indian law.
-              </p>
-
-              <p className="text-muted-foreground">
-                <strong>c. "User"</strong> means and refers to all users of the Website who access the Website and Use the Assets on the Website in accordance with these Terms.
-              </p>
-
-              <p className="text-muted-foreground">
-                <strong>d. "Use" or "Using"</strong> means and refers to learning, finding, viewing, using, contributing to, modifying, replicating, downloading, and sharing Assets with other Users, through the Website.
-              </p>
-
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">2. ACCESS AND USE</h2>
+              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">1. ACCESS AND USE</h2>
               
               <p className="text-muted-foreground">
                 <strong>a.</strong> As a User, you represent and warrant that you are of legal age and are legally competent to form a binding contract (or if not, you've received your parent's or guardian's permission to Use the Website and they have agreed to these Terms on your behalf).
@@ -73,7 +51,7 @@ const Terms = () => {
                 <strong>d.</strong> It is possible that your access and Use of Assets on the Website may be disrupted due to technical or operational difficulties and with no prior notice of downtime. COSS makes no guarantee as to the continuous uptime and availability of the Website or the quality of Assets on the Website.
               </p>
 
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">3. OBLIGATIONS OF USERS</h2>
+              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">2. OBLIGATIONS OF USERS</h2>
               
               <p className="text-muted-foreground">
                 <strong>a.</strong> You access the Website only to Use the Assets.
@@ -85,7 +63,20 @@ const Terms = () => {
                 <strong>c.</strong> You will follow these Terms and all the policies of the Website.
               </p>
 
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">4. INTELLECTUAL PROPERTY RIGHTS</h2>
+              <h3 className="text-xl font-heading font-semibold mt-8 mb-3">Acceptable Use</h3>
+              <p className="text-muted-foreground">
+                This website is intended for informational purposes only. By accessing or using this website, you agree not to:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                <li>reproduce, distribute, or commercially exploit any content without prior written permission from AI4Inclusion;</li>
+                <li>use the website for any unlawful purpose or in a manner that could damage, disable, or impair its functioning;</li>
+                <li>submit false, misleading, or unsolicited information through any contact or subscription form on this website.</li>
+              </ul>
+              <p className="text-muted-foreground mt-4">
+                All content on this website, including text, graphics, and data, is the intellectual property of AI4Inclusion and is protected under applicable copyright laws.
+              </p>
+
+              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">3. INTELLECTUAL PROPERTY RIGHTS</h2>
               
               <p className="text-muted-foreground">
                 <strong>a.</strong> The Website contains copyrighted material, trademarks and other Intellectual Property owned by COSS. Unless specifically permitted, you agree not to copy, modify, publish, transmit, distribute, perform, display, or sell any such Intellectual Property. Access to or Use of the Website does not confer upon anyone any license to COSS's Intellectual Property rights.
@@ -121,37 +112,34 @@ const Terms = () => {
                 </p>
               </div>
 
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">5. PRIVACY POLICY</h2>
+              <h3 className="text-xl font-heading font-semibold mt-8 mb-3">Creative Commons</h3>
+              <p className="text-muted-foreground">
+                Other than code, all works put out on this website are governed by a Creative Commons Attribution-ShareAlike 4.0 International License, unless expressly indicated otherwise.
+              </p>
+              <p className="text-muted-foreground">
+                This means that you are free to copy and redistribute our material, and adapt or transform it, even for commercial purposes, as long as you:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                <li>Attribute our work, and</li>
+                <li>Distribute your adapted work under the same license, without placing additional restrictions.</li>
+              </ul>
+
+              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">4. PRIVACY POLICY</h2>
               <p className="text-muted-foreground">
                 By Using the Website and/or by providing your information, if applicable, you consent to the collection and use of the information you disclose on the Website in accordance with our Privacy Policy. We take the privacy of our Users very seriously. Please refer to our Privacy Policy for complete details.
               </p>
 
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">6. LIMITED LIABILITY</h2>
+              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">5. LIMITED LIABILITY</h2>
               <p className="text-muted-foreground">
                 We do not guarantee the accuracy, veracity, correctness, validity, usability, or currency of any Assets made available on or linked through the Website. We shall not be held responsible for any offensive or unlawful Asset posted, transmitted, sent or communicated through the Website.
               </p>
 
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">7. DISCLAIMER</h2>
+              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">6. DISCLAIMER</h2>
               <p className="text-muted-foreground">
                 COSS PROVIDES THE WEBSITE ON AN "AS IS" BASIS AND GRANTS NO WARRANTIES OF ANY KIND WITH RESPECT TO THE WEBSITE. COSS SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT. ACCESS AND USE OF THE WEBSITE (INCLUDING ANY ASSET OR INFORMATION AVAILABLE ON/THROUGH THE WEBSITE) IS ENTIRELY AT YOUR OWN RISK.
               </p>
 
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">8. INDEMNITY</h2>
-              <p className="text-muted-foreground">
-                You hereby agree to keep and hold COSS, its affiliates, directors, officers, employees, partners, and agents, fully indemnified and harmless from and against all claims, proceedings, penalties, damages, losses, actions, costs and expenses arising out of or in relation to your Use of the Website, your breach of these Terms, or violation of any law, rules or regulations in relation to your Use of the Website.
-              </p>
-
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">9. TERMINATION</h2>
-              <p className="text-muted-foreground">
-                Any violation or breach of the Terms may lead to automatic suspension or termination of your access to the Website, for any reason whatsoever, including while investigating complaints or alleged violation of these Terms, or for use or attempt to use the Website for any purpose other than those permitted under these Terms.
-              </p>
-
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">10. ELECTRONIC AGREEMENT</h2>
-              <p className="text-muted-foreground">
-                This document is a written agreement and an electronic record and valid and enforceable electronic agreement / contract under Information Technology Act, 2000 (as applicable in the Republic of India) and rules there under as applicable and the amended provisions pertaining to electronic records in various statutes under applicable Indian laws. This electronic record is generated by a computer system and does not require any physical or digital signatures. Your usage of the Website shall be your deemed acceptance of these Terms and all the modifications and updates thereto.
-              </p>
-
-              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">11. GOVERNING LAW AND DISPUTE RESOLUTION</h2>
+              <h2 className="text-2xl font-heading font-bold mt-12 mb-4">7. GOVERNING LAW AND DISPUTE RESOLUTION</h2>
               <p className="text-muted-foreground">
                 These Terms shall be governed by the laws of India and any disputes or proceedings arising hereunder shall be subject to the jurisdiction of the courts in Bangalore.
               </p>
@@ -159,7 +147,8 @@ const Terms = () => {
           </motion.div>
         </div>
       </section>
-
-    </div>;
+    </div>
+  );
 };
+
 export default Terms;
