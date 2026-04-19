@@ -11,6 +11,7 @@ import { preloadAllRoutes } from "./lib/route-preloader";
 const Footer = lazy(() => import("./components/Footer"));
 const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
 const ScrollToTopButton = lazy(() => import("./components/ScrollToTopButton"));
+const CookieConsentBanner = lazy(() => import("./components/CookieConsentBanner"));
 // const AI4IAssistant = lazy(() => import("./components/AI4IAssistant"));
 
 import Home from "./pages/Home";
