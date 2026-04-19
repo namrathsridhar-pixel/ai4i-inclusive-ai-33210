@@ -120,6 +120,7 @@ const AppContent = () => {
           <LanguageParticles />
           {!isTryVoicera && <Footer />}
           <ScrollToTopButton />
+          <CookieConsentBanner />
           {/* <AI4IAssistant /> */}
         </Suspense>
       )}
