@@ -10,12 +10,9 @@ const Terms = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-2">
-              AI4Inclusion
-            </h1>
-            <h2 className="text-2xl md:text-3xl font-heading font-semibold mb-4">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
               Terms of Use
-            </h2>
+            </h1>
             <p className="text-muted-foreground mb-8">Last updated: April 2026</p>
 
             <div className="prose prose-lg max-w-none space-y-6">
