@@ -34,21 +34,86 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
-const PAGE_TITLES: Record<string, string> = {
-  "/": "AI4Inclusion – Digital Public Good for Inclusive AI",
-  "/about": "About – AI4Inclusion",
-  "/building-blocks": "Building Blocks – AI4Inclusion",
-  "/try-voicera": "Lets talk to VoiceAI – AI4Inclusion",
-  "/events": "Events – AI4Inclusion",
-  "/adopters": "Adopters – AI4Inclusion",
-  "/engagements": "Engagements – AI4Inclusion",
-  "/get-involved": "Get Involved – AI4Inclusion",
-  "/get-in-touch": "Get in Touch – AI4Inclusion",
-  "/registrations": "Registrations – AI4Inclusion",
-  "/contact": "Contact – AI4Inclusion",
-  "/blogs": "Blogs – AI4Inclusion",
-  "/privacy": "Privacy Policy – AI4Inclusion",
-  "/terms": "Terms of Service – AI4Inclusion",
+const SITE_URL = "https://ai4inclusion.org";
+const DEFAULT_DESCRIPTION =
+  "AI4Inclusion is an open Digital Public Good enabling inclusive language AI for translation, speech recognition, and accessibility.";
+
+const PAGE_META: Record<string, { title: string; description: string }> = {
+  "/": {
+    title: "AI4Inclusion – Digital Public Good for Inclusive AI",
+    description: DEFAULT_DESCRIPTION,
+  },
+  "/about": {
+    title: "About – AI4Inclusion",
+    description: "Learn about AI4Inclusion's mission, the COSS team at IIIT-Bangalore, and our work building sovereign Language AI as a Digital Public Good.",
+  },
+  "/building-blocks": {
+    title: "Building Blocks – AI4Inclusion",
+    description: "Explore AI4I building blocks like AI4I-Orchestrate that power sovereign voice AI and inclusive language systems for the public.",
+  },
+  "/try-voicera": {
+    title: "Lets talk to VoiceAI – AI4Inclusion",
+    description: "Try the AI4Inclusion sovereign voice AI sandbox and experience inclusive multilingual conversational AI in action.",
+  },
+  "/events": {
+    title: "Events – AI4Inclusion",
+    description: "Upcoming and past AI4Inclusion events, workshops, and convenings on inclusive language AI and Digital Public Goods.",
+  },
+  "/adopters": {
+    title: "Adopters – AI4Inclusion",
+    description: "Governments, institutions, and organizations adopting AI4Inclusion to build sovereign, inclusive language AI for public systems.",
+  },
+  "/engagements": {
+    title: "Engagements – AI4Inclusion",
+    description: "Discover AI4Inclusion's active country engagements and partnerships deploying sovereign Language AI as a Digital Public Good.",
+  },
+  "/get-involved": {
+    title: "Get Involved – AI4Inclusion",
+    description: "Partner, contribute, or collaborate with AI4Inclusion to advance inclusive Language AI as a global Digital Public Good.",
+  },
+  "/get-in-touch": {
+    title: "Get in Touch – AI4Inclusion",
+    description: "Reach the AI4Inclusion team to discuss collaboration on sovereign voice AI and inclusive language Digital Public Goods.",
+  },
+  "/registrations": {
+    title: "Registrations – AI4Inclusion",
+    description: "Register for AI4Inclusion events, panels, and convenings on inclusive language AI for public systems.",
+  },
+  "/contact": {
+    title: "Contact – AI4Inclusion",
+    description: "Contact AI4Inclusion at info@ai4inclusion.org for collaboration, adoption, or questions about our Digital Public Good.",
+  },
+  "/blogs": {
+    title: "Blogs – AI4Inclusion",
+    description: "Insights, stories, and updates from the AI4Inclusion community on inclusive language AI and Digital Public Goods.",
+  },
+  "/privacy": {
+    title: "Privacy Policy – AI4Inclusion",
+    description: "Read the AI4Inclusion privacy policy covering data handling, cookies, and analytics on ai4inclusion.org.",
+  },
+  "/terms": {
+    title: "Terms of Use – AI4Inclusion",
+    description: "Terms of Use for ai4inclusion.org, including content licensing under CC BY-SA 4.0 and MIT, and acceptable use.",
+  },
+};
+
+const setMeta = (selector: string, attr: "content" | "href", value: string) => {
+  let el = document.head.querySelector<HTMLMetaElement | HTMLLinkElement>(selector);
+  if (!el) {
+    if (selector.startsWith("link")) {
+      el = document.createElement("link");
+      const relMatch = selector.match(/rel="([^"]+)"/);
+      if (relMatch) (el as HTMLLinkElement).rel = relMatch[1];
+    } else {
+      el = document.createElement("meta");
+      const nameMatch = selector.match(/name="([^"]+)"/);
+      const propMatch = selector.match(/property="([^"]+)"/);
+      if (nameMatch) (el as HTMLMetaElement).name = nameMatch[1];
+      if (propMatch) (el as HTMLMetaElement).setAttribute("property", propMatch[1]);
+    }
+    document.head.appendChild(el);
+  }
+  el.setAttribute(attr, value);
 };
 
 const ScrollToTop = () => {
@@ -57,9 +122,19 @@ const ScrollToTop = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Update document title based on route
-    document.title = PAGE_TITLES[pathname] || "AI4Inclusion – Digital Public Good for Inclusive AI";
-    
+    const meta = PAGE_META[pathname] || {
+      title: "AI4Inclusion – Digital Public Good for Inclusive AI",
+      description: DEFAULT_DESCRIPTION,
+    };
+    const url = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
+
+    document.title = meta.title;
+    setMeta('meta[name="description"]', "content", meta.description);
+    setMeta('link[rel="canonical"]', "href", url);
+    setMeta('meta[property="og:title"]', "content", meta.title);
+    setMeta('meta[property="og:description"]', "content", meta.description);
+    setMeta('meta[property="og:url"]', "content", url);
+
     // Track page view in GA4 for SPA route changes
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('config', 'G-X0CZVDK1KV', {
