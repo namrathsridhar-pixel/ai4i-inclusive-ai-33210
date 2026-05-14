@@ -90,12 +90,32 @@ serve(async (req) => {
       body: JSON.stringify(body),
     });
 
-    const data = await response.json();
+    const rawText = await response.text();
+    let data: any = null;
+    try {
+      data = rawText ? JSON.parse(rawText) : null;
+    } catch (_e) {
+      console.error(
+        "Litwizlabs upstream returned non-JSON. status=",
+        response.status,
+        "content-type=",
+        response.headers.get("content-type"),
+        "body(first 300)=",
+        rawText.slice(0, 300),
+      );
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: `Upstream call provider returned a non-JSON response (HTTP ${response.status}). Please verify the LITWIZLABS endpoint, API key, and agent ID.`,
+        }),
+        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
 
     if (!response.ok) {
       console.error("Litwizlabs API error:", response.status, JSON.stringify(data));
       return new Response(
-        JSON.stringify({ success: false, error: data.message || "Failed to initiate call." }),
+        JSON.stringify({ success: false, error: (data && (data.message || data.error)) || `Failed to initiate call (HTTP ${response.status}).` }),
         { status: response.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
