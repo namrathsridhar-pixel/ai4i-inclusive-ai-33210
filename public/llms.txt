@@ -1,0 +1,23 @@
+# AI4Inclusion
+
+> AI4Inclusion (AI4I) is an open Digital Public Good enabling nations to build sovereign Language AI for translation, speech recognition, voice agents, and accessibility. Maintained by the Center for Open Societal Systems (COSS) at IIIT-Bangalore.
+
+## Pages
+
+- [Home](/): Overview of AI4Inclusion as a Digital Public Good for inclusive language AI.
+- [About](/about): Mission, vision, and the COSS team behind AI4Inclusion.
+- [Building Blocks](/building-blocks): AI4I building blocks (AI4I-Orchestrate and related components) for sovereign voice AI and public systems.
+- [Try VoicERA](/try-voicera): Interactive sandbox to talk to the AI4I sovereign voice AI agent.
+- [Adopters](/adopters): Governments, institutions, and partners adopting AI4Inclusion.
+- [Engagements](/engagements): Active engagements and country deployments.
+- [Events](/events): Upcoming and past AI4Inclusion events.
+- [Get Involved](/get-involved): Ways to contribute and partner.
+- [Get in Touch](/get-in-touch): Contact pathways for collaboration.
+- [Registrations](/registrations): Event and panel registrations.
+- [Blogs](/blogs): Insights and updates from the AI4Inclusion community.
+- [Contact](/contact): Reach the AI4Inclusion team.
+
+## Optional
+
+- [Privacy Policy](/privacy)
+- [Terms of Use](/terms)
