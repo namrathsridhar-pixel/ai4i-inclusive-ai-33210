@@ -1,0 +1,57 @@
+# Netlify configuration for ai4inclusion.org
+#
+# Build pipeline:
+#   1. `npm run build`        → vite builds the SPA into dist/
+#   2. postbuild hook         → scripts/prerender.ts crawls dist/ via puppeteer
+#                                and writes dist/<route>/index.html for every public route
+#   3. Netlify publishes dist/
+#
+# Serving order (Netlify processes static files BEFORE redirects):
+#   - GET /              → dist/index.html              (prerendered home)
+#   - GET /about         → dist/about/index.html        (prerendered)
+#   - GET /building-blocks/   → dist/building-blocks/index.html (prerendered)
+#   - GET /assets/foo.js → dist/assets/foo.js
+#   - GET /anything-else → dist/index.html via the SPA fallback below
+#
+# The SPA fallback is the LAST rule and only fires when no file matches,
+# so prerendered per-route HTML is always served first.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Let puppeteer download a matching Chromium during `npm install`.
+  PUPPETEER_SKIP_DOWNLOAD = "false"
+
+# Long-cache fingerprinted assets.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML responses should always revalidate so users see fresh content after redeploys.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Standard hardening.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# SPA fallback — LAST. Netlify only applies this when no static file matches.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
