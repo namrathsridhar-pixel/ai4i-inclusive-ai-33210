@@ -151,6 +151,17 @@ const AppContent = () => {
   const isTryVoicera = location.pathname === "/try-voicera";
   const [showEnhancements, setShowEnhancements] = useState(false);
 
+  // Subdomain routing: voicera.ai4inclusion.org → /building-blocks#voicera
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const host = window.location.hostname;
+    if (host.startsWith("voicera.") && location.pathname === "/") {
+      window.history.replaceState(null, "", "/building-blocks#voicera");
+      window.location.reload();
+    }
+  }, [location.pathname]);
+
+
   useEffect(() => {
     const id = window.setTimeout(() => setShowEnhancements(true), 1500);
     return () => window.clearTimeout(id);
