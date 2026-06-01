@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense } from "react";
 import Navigation from "./components/Navigation";
 import PageTransition from "./components/PageTransition";
@@ -148,8 +148,19 @@ const ScrollToTop = () => {
 
 const AppContent = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isTryVoicera = location.pathname === "/try-voicera";
   const [showEnhancements, setShowEnhancements] = useState(false);
+
+  // Subdomain routing: voicera.* → /building-blocks#voicera
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hostname.startsWith("voicera.") && location.pathname === "/") {
+      navigate("/building-blocks#voicera", { replace: true });
+    }
+  }, [location.pathname, navigate]);
+
+
 
   useEffect(() => {
     const id = window.setTimeout(() => setShowEnhancements(true), 1500);
