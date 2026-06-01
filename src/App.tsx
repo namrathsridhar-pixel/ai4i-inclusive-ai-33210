@@ -148,18 +148,18 @@ const ScrollToTop = () => {
 
 const AppContent = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isTryVoicera = location.pathname === "/try-voicera";
   const [showEnhancements, setShowEnhancements] = useState(false);
 
-  // Subdomain routing: voicera.ai4inclusion.org → /building-blocks#voicera
+  // Subdomain routing: voicera.* → /building-blocks#voicera
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const host = window.location.hostname;
-    if (host.startsWith("voicera.") && location.pathname === "/") {
-      window.history.replaceState(null, "", "/building-blocks#voicera");
-      window.location.reload();
+    if (window.location.hostname.startsWith("voicera.") && location.pathname === "/") {
+      navigate("/building-blocks#voicera", { replace: true });
     }
-  }, [location.pathname]);
+  }, [location.pathname, navigate]);
+
 
 
   useEffect(() => {
