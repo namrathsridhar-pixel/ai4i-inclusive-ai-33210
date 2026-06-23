@@ -63,7 +63,7 @@ const Registrations = () => {
                 <h2 className="text-xl md:text-2xl font-bold text-white/70 leading-tight">
                   Panel Discussion: A Billion Voices, One AI
                 </h2>
-                <p className="text-sm md:text-base text-white/40 leading-relaxed">
+                <p className="text-sm md:text-base text-white/75 leading-relaxed">
                   How Language Tech Transforms Nations — Panel Discussion at Room 16, Bharat Mandapam, New Delhi.
                 </p>
                 <div className="flex items-center gap-4 pt-1 text-xs text-white/50">
