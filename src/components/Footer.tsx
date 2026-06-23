@@ -41,7 +41,7 @@ const Footer = () => {
                 decoding="async"
               />
             </Link>
-            <p className="text-white/40 text-xs mb-6">
+            <p className="text-white/70 text-xs mb-6">
               An initiative of the Center for Open Societal Systems (COSS)
             </p>
 
@@ -87,7 +87,7 @@ const Footer = () => {
           {/* Nav columns */}
           {Object.entries(footerNav).map(([heading, links]) => (
             <div key={heading}>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-white/70 mb-4">
                 {heading}
               </h3>
               <ul className="space-y-3">
@@ -128,7 +128,7 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-5">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/40">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/70">
             <p>&copy; {currentYear} AI4Inclusion. All rights reserved.</p>
             <div className="flex items-center gap-4">
               <Link to="/terms" className="hover:text-white/70 transition-colors">
