@@ -2,50 +2,32 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, BarChart3, Globe, Phone, Users } from "lucide-react";
 
-type DeploymentStatus = "deployed" | "ready";
-
-interface BlockStatus {
-  name: string;
-  icon: typeof Globe;
-  status: DeploymentStatus;
-  statusLabel: string;
-  note: string;
-}
-
-const blocks: BlockStatus[] = [
+const blocks = [
   {
     name: "AI4I-Orchestrate",
     icon: Globe,
-    status: "deployed",
-    statusLabel: "Deployed",
-    note: "Running as AI Switch",
+    note: "Governed access between institutional applications and the models they consume.",
   },
   {
     name: "AI4I-Observe",
     icon: BarChart3,
-    status: "ready",
-    statusLabel: "Ready to deploy",
-    note: "Open source, deployable today",
+    note: "Observability and feedback for systems already serving people.",
   },
   {
     name: "AI4I-Contribute",
     icon: Users,
-    status: "ready",
-    statusLabel: "Ready to deploy",
-    note: "Open source, deployable today",
+    note: "Participatory data creation with the communities being served.",
   },
   {
     name: "AI4I-VoicERA",
     icon: Phone,
-    status: "ready",
-    statusLabel: "Ready to deploy",
-    note: "Open source, deployable today",
+    note: "Sovereign voice interfaces for low-bandwidth, low-literacy access.",
   },
 ];
 
 /**
- * Homepage deployment snapshot — shows the deployment status of every building
- * block so no single block is singled out, and links to the full Deployments page.
+ * Homepage deployment section — presents all four blocks with equal weight and
+ * points to the Deployments page for the AI Switch story. No status hierarchy.
  */
 const DeploymentSpotlight = () => {
   return (
@@ -73,16 +55,15 @@ const DeploymentSpotlight = () => {
             </Link>
           </div>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            Every building block is open source and deployable. Where an institution takes one into
-            production, it becomes real infrastructure with its own name and operating model — as
-            AI4I-Orchestrate has, deployed as AI Switch for governed AI access.
+            Every building block is open source and built to be run by institutions as their own
+            infrastructure. When one is taken into production it takes on a name and an operating
+            model of its own — AI4I-Orchestrate runs as AI Switch for governed AI access.
           </p>
         </motion.div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {blocks.map((block, i) => {
             const Icon = block.icon;
-            const isDeployed = block.status === "deployed";
             return (
               <motion.div
                 key={block.name}
@@ -90,17 +71,9 @@ const DeploymentSpotlight = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
-                className={`rounded-2xl border p-5 transition-shadow hover:shadow-lg ${
-                  isDeployed
-                    ? "border-brand-blue/30 bg-brand-mist"
-                    : "border-border bg-card"
-                }`}
+                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-lg"
               >
-                <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                    isDeployed ? "bg-brand-blue text-white" : "border-2 border-brand-blue/40 text-brand-blue"
-                  }`}
-                >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-mist text-brand-blue transition-colors group-hover:bg-brand-blue group-hover:text-white">
                   <Icon size={18} strokeWidth={2} />
                 </div>
                 <h3 className="mt-4 font-heading text-sm font-bold text-brand-ink">
@@ -112,21 +85,7 @@ const DeploymentSpotlight = () => {
                     block.name
                   )}
                 </h3>
-                <div className="mt-3 flex items-center gap-2">
-                  <span
-                    className={`h-1.5 w-1.5 rounded-full ${
-                      isDeployed ? "bg-brand-blue" : "bg-muted-foreground/50"
-                    }`}
-                  />
-                  <span
-                    className={`font-heading text-[11px] font-bold uppercase tracking-wider ${
-                      isDeployed ? "text-brand-blue" : "text-muted-foreground"
-                    }`}
-                  >
-                    {block.statusLabel}
-                  </span>
-                </div>
-                <p className="mt-1.5 text-xs text-muted-foreground">{block.note}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{block.note}</p>
               </motion.div>
             );
           })}
