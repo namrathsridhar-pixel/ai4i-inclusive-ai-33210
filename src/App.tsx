@@ -60,7 +60,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   "/adoption": {
     title: "Adoption – AI4Inclusion",
-    description: "How institutions adopt AI4Inclusion building blocks — including AI4I-Orchestrate, adopted and run as AI Switch for governed AI access.",
+    description: "How adopters take AI4Inclusion building blocks into production on their own infrastructure — including AI4I-Orchestrate, run as AI Switch for governed AI access.",
   },
   "/engagements": {
     title: "Engagements – AI4Inclusion",

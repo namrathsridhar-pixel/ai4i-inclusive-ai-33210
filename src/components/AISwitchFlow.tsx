@@ -110,6 +110,9 @@ const AISwitchFlow = () => {
             <p className="mt-1 text-xs leading-relaxed text-white/70">
               Governed control plane — identity, entitlement, routing, metering
             </p>
+            <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.12em] text-brand-cyan">
+              Adopter infrastructure
+            </p>
           </div>
         </motion.div>
 
