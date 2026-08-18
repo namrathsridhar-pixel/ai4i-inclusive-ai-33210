@@ -1,98 +1,89 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BarChart3, Globe, Phone, Users } from "lucide-react";
-
-const blocks = [
-  {
-    name: "AI4I-Orchestrate",
-    icon: Globe,
-    note: "Governed access between institutional applications and the models they consume.",
-  },
-  {
-    name: "AI4I-Observe",
-    icon: BarChart3,
-    note: "Observability and feedback for systems already serving people.",
-  },
-  {
-    name: "AI4I-Contribute",
-    icon: Users,
-    note: "Participatory data creation with the communities being served.",
-  },
-  {
-    name: "AI4I-VoicERA",
-    icon: Phone,
-    note: "Sovereign voice interfaces for low-bandwidth, low-literacy access.",
-  },
-];
+import { ArrowRight, Network, Zap } from "lucide-react";
 
 /**
- * Homepage deployment section — presents all four blocks with equal weight and
- * points to the Deployments page for the AI Switch story. No status hierarchy.
+ * Homepage adoption band — one focused story (AI4I-Orchestrate adopted and run
+ * as AI Switch) rather than a repeat of the building block cards above it.
  */
-const DeploymentSpotlight = () => {
+const AdoptionSpotlight = () => {
   return (
-    <section className="bg-background px-4 py-20" id="deployments-snapshot">
+    <section className="bg-background px-4 py-20" id="adoption">
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="overflow-hidden rounded-3xl border border-border bg-brand-mist"
         >
-          <p className="font-heading text-xs font-bold tracking-[0.2em] text-brand-cyan">
-            IN PRODUCTION
-          </p>
-          <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <h2 className="max-w-2xl font-heading text-3xl font-bold leading-tight text-brand-ink md:text-4xl">
-              From building blocks to deployed infrastructure
-            </h2>
-            <Link
-              to="/deployments"
-              className="group inline-flex items-center gap-2 self-start rounded-full border border-brand-blue/30 px-4 py-2 font-heading text-sm font-bold text-brand-blue transition-colors hover:bg-brand-blue hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 md:self-auto"
-            >
-              See deployments
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </div>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            Every building block is open source and built to be run by institutions as their own
-            infrastructure. When one is taken into production it takes on a name and an operating
-            model of its own — AI4I-Orchestrate runs as AI Switch for governed AI access.
-          </p>
-        </motion.div>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {blocks.map((block, i) => {
-            const Icon = block.icon;
-            return (
-              <motion.div
-                key={block.name}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
-                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-lg"
+          <div className="grid items-center gap-10 p-8 md:grid-cols-[1.1fr_1fr] md:p-12">
+            <div>
+              <p className="font-heading text-xs font-bold tracking-[0.2em] text-brand-cyan">
+                ADOPTION
+              </p>
+              <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-brand-ink md:text-4xl">
+                From building block to running infrastructure
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+                A building block matters when an institution takes it into production and runs it as
+                their own. AI4I-Orchestrate has been adopted and deployed as AI Switch — a governed
+                layer between institutional applications and the AI models they consume.
+              </p>
+              <Link
+                to="/adoption"
+                className="group mt-7 inline-flex items-center gap-2 rounded-full bg-brand-blue px-5 py-2.5 font-heading text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-mist text-brand-blue transition-colors group-hover:bg-brand-blue group-hover:text-white">
-                  <Icon size={18} strokeWidth={2} />
+                See how it is adopted
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+
+            {/* Lineage: building block -> adopted deployment */}
+            <div className="flex items-center gap-3 sm:gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="flex-1 rounded-2xl border border-brand-blue/25 bg-card p-5 text-center"
+              >
+                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-blue/40 text-brand-blue">
+                  <Network size={20} strokeWidth={2} />
                 </div>
-                <h3 className="mt-4 font-heading text-sm font-bold text-brand-ink">
-                  {block.name === "AI4I-VoicERA" ? (
-                    <>
-                      AI4I-<span className="font-gonzaga">VoicERA</span>
-                    </>
-                  ) : (
-                    block.name
-                  )}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{block.note}</p>
+                <p className="mt-3 font-heading text-sm font-bold text-brand-ink">AI4I-Orchestrate</p>
+                <p className="mt-1 text-xs text-muted-foreground">Open source building block</p>
               </motion.div>
-            );
-          })}
-        </div>
+
+              <div className="relative h-px w-8 shrink-0 sm:w-12">
+                <div className="absolute inset-0 border-t border-dashed border-brand-blue/40" />
+                <motion.span
+                  aria-hidden="true"
+                  className="absolute -top-[3px] h-1.5 w-1.5 rounded-full bg-brand-cyan"
+                  animate={{ left: ["0%", "100%"], opacity: [0, 1, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
+                className="flex-1 rounded-2xl bg-brand-navy p-5 text-center text-white"
+              >
+                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-brand-cyan/15 text-brand-cyan">
+                  <Zap size={20} strokeWidth={2} />
+                </div>
+                <p className="mt-3 font-heading text-sm font-bold">AI Switch</p>
+                <p className="mt-1 text-xs text-white/70">Adopted and in production</p>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-export default DeploymentSpotlight;
+export default AdoptionSpotlight;
