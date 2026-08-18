@@ -2,10 +2,8 @@ import { motion } from "framer-motion";
 import { Building2, Zap } from "lucide-react";
 
 const models = [
-  "General-purpose LLMs",
-  "Multilingual LLMs",
-  "Domain-tuned LLMs",
-  "Open-weight LLMs",
+  "Sovereign Models",
+  "Open-Weight Models",
 ];
 
 const AdoptionLineage = () => {
