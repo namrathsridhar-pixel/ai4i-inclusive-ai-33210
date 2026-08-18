@@ -179,7 +179,8 @@ const OrchestrateLineage = () => {
         Orchestrate has since been adopted and rebranded as AI Switch, powering governed AI access
         for one of AI4I's real-world deployments.
       </p>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 };
 
