@@ -5,6 +5,7 @@ const routeImports: Record<string, () => Promise<unknown>> = {
   "/building-blocks": () => import("@/pages/BuildingBlocks"),
   "/try-voicera": () => import("@/pages/TryVoicERA"),
   "/adopters": () => import("@/pages/Adopters"),
+  "/deployments": () => import("@/pages/Deployments"),
   "/get-involved": () => import("@/pages/GetInvolved"),
   "/get-in-touch": () => import("@/pages/JoinUs"),
   "/events": () => import("@/pages/Events"),
