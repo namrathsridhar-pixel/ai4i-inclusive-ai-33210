@@ -48,9 +48,9 @@ const Adoption = () => {
               Adoption
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A building block proves itself when someone runs it for real. AI4I-Orchestrate is in
-              production today — deployed and operated by an adopter on their own infrastructure,
-              where it runs as AI Switch for the institutions onboarded onto it.
+              AI4I-Orchestrate is in production. It is deployed and operated by an adopting
+              organisation on its own infrastructure, where it runs as AI Switch and serves the
+              institutions onboarded onto it.
             </p>
           </motion.div>
         </div>

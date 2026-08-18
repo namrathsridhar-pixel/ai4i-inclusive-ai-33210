@@ -57,7 +57,7 @@ const OrchestrateLineage = () => {
           marginBottom: "12px",
         }}
       >
-        THE STORY
+        DEPLOYMENT
       </div>
 
       {/* Heading */}
@@ -71,7 +71,7 @@ const OrchestrateLineage = () => {
           marginBottom: "20px",
         }}
       >
-        From building block to running infrastructure
+        From building block to deployed infrastructure
       </h3>
 
       {/* Lineage visual */}
@@ -175,9 +175,9 @@ const OrchestrateLineage = () => {
         }}
       >
         AI4I Orchestrate is the language AI orchestration engine at the heart of AI4Inclusion's
-        Core — the layer that governs how AI models are discovered, accessed, and consumed. It is in
-        production today, deployed by an adopter on their own infrastructure and operated there as
-        AI Switch for the institutions onboarded onto it.
+        Core — the layer that governs how AI models are discovered, accessed, and consumed. It is
+        deployed by an adopting organisation on its own infrastructure and operated there as AI
+        Switch for the institutions onboarded onto it.
       </p>
       </motion.div>
     </section>
