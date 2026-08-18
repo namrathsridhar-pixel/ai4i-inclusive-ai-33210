@@ -78,8 +78,8 @@ const Adoption = () => {
               Adoption
             </h1>
             <p className="mt-6 max-w-[640px] text-[17px] leading-[1.7] text-muted-foreground">
-              AI4I-Orchestrate is in production. Deployed and operated by an adopting organisation on
-              its own infrastructure, it runs there as AI Switch — serving every institution
+              <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is in production. Deployed and operated by an adopting organisation on
+              its own infrastructure, it runs there as <span className="font-bold text-brand-blue">AI Switch</span> — serving every institution
               onboarded onto it.
             </p>
           </motion.div>
@@ -152,13 +152,13 @@ const Adoption = () => {
 
       {/* Section 4 — Ecosystem */}
       <section className="bg-brand-mist px-4 py-20" id="ecosystem">
-        <div className="container mx-auto max-w-3xl text-center">
+        <div className="container mx-auto max-w-4xl">
           <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
             Collaborating for an inclusive digital future
           </motion.h2>
           <motion.p
             {...fadeUp}
-            className="mx-auto mt-5 max-w-[640px] text-[17px] leading-[1.7] text-muted-foreground"
+            className="mt-5 max-w-[640px] text-[17px] leading-[1.7] text-muted-foreground"
           >
             AI4Inclusion brings together governments, research institutions, and technology
             organisations working toward a common goal: ensuring AI serves everyone, regardless of
@@ -183,7 +183,7 @@ const Adoption = () => {
             })}
           </motion.div>
 
-          <motion.div {...fadeUp} className="mt-10">
+          <motion.div {...fadeUp} className="mt-10 text-center">
             <Link
               to="/get-in-touch"
               className="group inline-flex items-center gap-2 rounded-full bg-brand-blue px-6 py-3 font-heading text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
