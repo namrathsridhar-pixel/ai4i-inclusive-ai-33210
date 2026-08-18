@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Building2, Cpu, Shuffle } from "lucide-react";
 
 const consumers = ["Citizen services", "Health", "Education", "Agriculture"];
-const models = ["Language models", "Speech models", "Vision models", "Domain models"];
+const models = ["General-purpose LLMs", "Multilingual LLMs", "Domain-tuned LLMs", "Open-weight LLMs"];
 
 /**
  * Animated architecture visual for AI Switch:
