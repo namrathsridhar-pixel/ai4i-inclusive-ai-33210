@@ -66,7 +66,7 @@ const BuildingBlocksSection = () => {
             />
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
-            Modular, open-source components that work together to power the complete Language AI lifecycle. AI4Inclusion's building blocks are already powering real deployments — including AI4I Orchestrate, in production as AI Switch for governed AI access.
+            Modular, open-source components that work together to power the complete Language AI lifecycle. AI4I Orchestrate is already deployed in production, operated as AI Switch for governed AI access.
           </p>
         </motion.div>
 
