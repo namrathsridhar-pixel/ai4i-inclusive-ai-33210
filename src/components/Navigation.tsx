@@ -24,7 +24,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const navLinks = [
     { name: "Building Blocks", path: "/building-blocks" },
-    { name: "Deployments", path: "/deployments" },
+    { name: "Adoption", path: "/adoption" },
     { name: "Events", path: "/events" },
     { name: "Registrations", path: "/registrations" },
     { name: "Engagements", path: "/engagements" },
