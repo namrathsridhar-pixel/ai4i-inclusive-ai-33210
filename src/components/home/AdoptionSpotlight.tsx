@@ -26,10 +26,10 @@ const AdoptionSpotlight = () => {
                 From building block to running infrastructure
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                A building block matters when an adopter takes it into production and runs it on
-                their own infrastructure. AI4I-Orchestrate has been adopted and deployed as AI
-                Switch — a governed layer between the institutions onboarded onto it and the AI
-                models they consume.
+                A building block proves itself when someone runs it for real. AI4I-Orchestrate is in
+                production today, operated by an adopter on their own infrastructure as AI Switch —
+                a governed layer between the institutions onboarded onto it and the AI models they
+                consume.
               </p>
               <Link
                 to="/adoption"

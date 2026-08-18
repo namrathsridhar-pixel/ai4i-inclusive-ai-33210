@@ -48,9 +48,9 @@ const Adoption = () => {
               Adoption
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A building block proves itself when an adopter takes it, renames it, and runs it on
-              their own infrastructure. AI4I-Orchestrate has done exactly that — it is in production
-              as AI Switch, operated by its adopter and serving the institutions onboarded onto it.
+              A building block proves itself when someone runs it for real. AI4I-Orchestrate is in
+              production today — deployed and operated by an adopter on their own infrastructure,
+              where it runs as AI Switch for the institutions onboarded onto it.
             </p>
           </motion.div>
         </div>
