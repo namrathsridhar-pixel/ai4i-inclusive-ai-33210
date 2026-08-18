@@ -159,7 +159,7 @@ const OrchestrateLineage = () => {
             AI Switch
           </div>
           <div style={{ fontSize: "12px", color: "#6B7280", marginTop: "4px" }}>
-            Governed AI access, deployed
+            Governed AI access, run by the adopter
           </div>
         </div>
       </div>
@@ -176,8 +176,8 @@ const OrchestrateLineage = () => {
       >
         AI4I Orchestrate is the language AI orchestration engine at the heart of AI4Inclusion's
         Core — the layer that governs how AI models are discovered, accessed, and consumed.
-        Orchestrate has since been adopted and rebranded as AI Switch, powering governed AI access
-        in production.
+        Orchestrate has since been adopted and rebranded as AI Switch, deployed on the adopter's
+        own infrastructure and serving the institutions onboarded onto it.
       </p>
       </motion.div>
     </section>

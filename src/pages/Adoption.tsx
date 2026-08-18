@@ -18,7 +18,7 @@ const OrchestrateLineage = lazy(() => import("@/components/OrchestrateLineage"))
 const AISwitchFlow = lazy(() => import("@/components/AISwitchFlow"));
 
 const functions = [
-  { icon: Building2, title: "Onboard", body: "Add institutions as tenants on the shared AI infrastructure." },
+  { icon: Building2, title: "Onboard", body: "Add institutions as tenants on the adopter's shared AI infrastructure." },
   { icon: ClipboardList, title: "Register", body: "Maintain a central registry of hosted models, including metadata, versions, and lifecycle state." },
   { icon: Search, title: "Discover", body: "Let institutions explore the models available to them for consumption." },
   { icon: Wallet, title: "Allocate", body: "Assign budgets to authorised institutions based on policy-driven entitlements." },
@@ -48,9 +48,9 @@ const Adoption = () => {
               Adoption
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A building block proves itself when an institution adopts it, renames it, and runs it as
+              A building block proves itself when an adopter takes it, renames it, and runs it on
               their own infrastructure. AI4I-Orchestrate has done exactly that — it is in production
-              as AI Switch.
+              as AI Switch, operated by its adopter and serving the institutions onboarded onto it.
             </p>
           </motion.div>
         </div>
@@ -69,11 +69,12 @@ const Adoption = () => {
               THE ADOPTION
             </p>
             <h2 className="mt-3 font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-              One governed layer between applications and models
+              One governed layer, run on the adopter's infrastructure
             </h2>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-              AI Switch sits in the path of every request: it knows who is asking, what they are
-              entitled to, and what it costs — without reading what the application is doing.
+              AI Switch runs inside the adopter's own environment and sits in the path of every
+              request: it knows who is asking, what they are entitled to, and what it costs — without
+              reading what the application is doing.
             </p>
           </motion.div>
 
@@ -93,7 +94,8 @@ const Adoption = () => {
               What AI Switch does
             </h2>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-              Nine core functions, from onboarding an institution to metering what it consumes.
+              Nine core functions, from onboarding an institution onto the adopter's infrastructure
+              to metering what it consumes.
             </p>
           </motion.div>
 

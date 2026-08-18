@@ -84,7 +84,7 @@ const AISwitchFlow = () => {
   return (
     <div className="rounded-3xl border border-border bg-card p-6 md:p-10">
       <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-center md:gap-0">
-        {column(consumers, Building2, "Institutional applications", "left")}
+        {column(consumers, Building2, "Onboarded institutions", "left")}
         {connector("in")}
 
         <motion.div
@@ -109,6 +109,9 @@ const AISwitchFlow = () => {
             <p className="mt-4 font-heading text-lg font-bold">AI Switch</p>
             <p className="mt-1 text-xs leading-relaxed text-white/70">
               Governed control plane — identity, entitlement, routing, metering
+            </p>
+            <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.12em] text-brand-cyan">
+              Adopter infrastructure
             </p>
           </div>
         </motion.div>
