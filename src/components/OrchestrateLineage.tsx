@@ -117,8 +117,8 @@ const OrchestrateLineage = () => {
               stroke="#0079C1"
               strokeWidth="1.5"
               strokeDasharray="3 3"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
+              initial={{ strokeDashoffset: 48 }}
+              whileInView={{ strokeDashoffset: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.35, ease: "easeInOut" }}
             />
