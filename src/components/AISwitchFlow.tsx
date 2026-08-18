@@ -64,7 +64,7 @@ const AISwitchFlow = () => {
         ))}
         {!reduceMotion &&
           [24, 60, 100, 136].map((y, i) => (
-            <circle key={`p-${y}`} r="3" fill="hsl(var(--brand-cyan-raw, 190 90% 45%))" className="text-brand-cyan">
+            <circle key={`p-${y}`} r="3" className="fill-brand-cyan">
               <animateMotion
                 dur="2.6s"
                 begin={`${i * 0.45}s`}
