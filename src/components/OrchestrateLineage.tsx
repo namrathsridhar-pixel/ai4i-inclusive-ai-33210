@@ -8,19 +8,21 @@ import { Network, Zap } from "lucide-react";
  */
 const OrchestrateLineage = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative mx-auto overflow-hidden rounded-2xl"
-      style={{
-        maxWidth: "760px",
-        background: "#F2F7FB",
-        borderRadius: "16px",
-        padding: "48px",
-      }}
-    >
+    <section className="px-4" style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative mx-auto overflow-hidden rounded-2xl"
+        style={{
+          maxWidth: "760px",
+          background: "#F2F7FB",
+          borderRadius: "16px",
+          padding: "48px",
+        }}
+      >
+
       {/* Decorative node/line motif — top right */}
       <svg
         aria-hidden="true"
