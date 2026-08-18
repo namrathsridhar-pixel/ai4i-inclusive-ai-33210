@@ -57,7 +57,7 @@ const OrchestrateLineage = () => {
           marginBottom: "12px",
         }}
       >
-        THE STORY
+        DEPLOYMENT
       </div>
 
       {/* Heading */}
@@ -71,7 +71,7 @@ const OrchestrateLineage = () => {
           marginBottom: "20px",
         }}
       >
-        From building block to running infrastructure
+        From building block to deployed infrastructure
       </h3>
 
       {/* Lineage visual */}
