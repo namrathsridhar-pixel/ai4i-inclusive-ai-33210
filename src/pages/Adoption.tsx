@@ -66,7 +66,7 @@ const Adoption = () => {
         <div className="container mx-auto max-w-5xl">
           <motion.div {...fadeUp}>
             <p className="font-heading text-xs font-bold tracking-[0.2em] text-brand-cyan">
-              THE DEPLOYMENT
+              THE ADOPTION
             </p>
             <h2 className="mt-3 font-heading text-3xl font-bold text-brand-ink md:text-4xl">
               One governed layer between applications and models
