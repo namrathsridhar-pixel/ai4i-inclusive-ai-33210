@@ -94,8 +94,7 @@ const Adoption = () => {
               What AI Switch does
             </h2>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-              Nine core functions, from onboarding an institution onto the adopter's infrastructure
-              to metering what it consumes.
+              Nine core functions. One governed layer.
             </p>
           </motion.div>
 
