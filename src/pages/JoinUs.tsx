@@ -73,7 +73,7 @@ const JoinUs = () => {
       console.error("Form submission error:", error);
       toast({
         title: "Submission failed",
-        description: error.message || "Something went wrong. Please try again.",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {

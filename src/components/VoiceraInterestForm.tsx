@@ -78,7 +78,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
     } catch (error: unknown) {
       toast({
         title: "Submission failed",
-        description: error.message || "Please try again later.",
+        description: error instanceof Error ? error.message : "Please try again later.",
         variant: "destructive",
       });
     } finally {
