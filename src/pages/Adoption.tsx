@@ -18,15 +18,15 @@ const OrchestrateLineage = lazy(() => import("@/components/OrchestrateLineage"))
 const AISwitchFlow = lazy(() => import("@/components/AISwitchFlow"));
 
 const functions = [
-  { icon: Building2, title: "Onboard", body: "Add institutions as tenants on the adopter's shared AI infrastructure." },
-  { icon: ClipboardList, title: "Register", body: "Maintain a central registry of hosted models, including metadata, versions, and lifecycle state." },
-  { icon: Search, title: "Discover", body: "Let institutions explore the models available to them for consumption." },
-  { icon: Wallet, title: "Allocate", body: "Assign budgets to authorised institutions based on policy-driven entitlements." },
-  { icon: KeyRound, title: "Authenticate", body: "Verify institutional identity on every request and enforce role-based access and budget checks." },
-  { icon: Gauge, title: "Prioritise", body: "Provide prioritised compute access for mission-critical applications." },
-  { icon: Shuffle, title: "Route", body: "Direct each request to the model the application has specified." },
-  { icon: Activity, title: "Monitor", body: "Track system health, latency, and utilisation through centralised operational dashboards." },
-  { icon: BarChart3, title: "Meter", body: "Attribute consumption — tokens and budget — by institution and application." },
+  { icon: Building2, title: "Onboard", body: "Add institutions as tenants on the AI Grid." },
+  { icon: ClipboardList, title: "Register", body: "Maintain the centralised registry of hosted LLMs, including model metadata, versions and deployment lifecycle information." },
+  { icon: Search, title: "Discover", body: "Explore LLMs available for consumption by institutions." },
+  { icon: Wallet, title: "Allocate", body: "Assign budget to authorised institutions based on policy-driven and approved entitlements." },
+  { icon: KeyRound, title: "Authenticate", body: "Verify the identity of every institution at every API request. Enforce role-based access controls and validate the configured budget associated with the institution and its applications." },
+  { icon: Gauge, title: "Prioritise", body: "Provide prioritised compute access for mission-critical applications for approved high-priority institutions." },
+  { icon: Shuffle, title: "Route", body: "Direct each request to the model specified by the application." },
+  { icon: Activity, title: "Monitor", body: "Track the health and performance of AI Switch by monitoring system health, latency, utilisation and performance through centralised operational dashboards. Contextless by design: infrastructure metrics only, never application content." },
+  { icon: BarChart3, title: "Meter", body: "Attribute consumption - tokens and budget - by institution and application. Basis for billing, tiered subsidy schedules, and governance accountability." },
 ];
 
 const fadeUp = {
