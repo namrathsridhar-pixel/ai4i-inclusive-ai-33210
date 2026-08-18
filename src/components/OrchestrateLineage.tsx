@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Network, Zap } from "lucide-react";
 
 /**
- * "From building block to deployed infrastructure"
+ * "From building block to running infrastructure"
  * Lineage visual: AI4I Orchestrate (foundational, outlined) -> AI Switch (deployed, filled).
  * Purely presentational, no CTAs or external links.
  */
@@ -57,7 +57,7 @@ const OrchestrateLineage = () => {
           marginBottom: "12px",
         }}
       >
-        IN PRODUCTION
+        THE STORY
       </div>
 
       {/* Heading */}
@@ -71,7 +71,7 @@ const OrchestrateLineage = () => {
           marginBottom: "20px",
         }}
       >
-        From building block to deployed infrastructure
+        From building block to running infrastructure
       </h3>
 
       {/* Lineage visual */}
