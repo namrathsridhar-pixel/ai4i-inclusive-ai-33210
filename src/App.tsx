@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense } from "react";
 import Navigation from "./components/Navigation";
 import PageTransition from "./components/PageTransition";
@@ -19,7 +19,7 @@ import Home from "./pages/Home";
 const About = lazy(() => import("./pages/About"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const BuildingBlocks = lazy(() => import("./pages/BuildingBlocks"));
-const Deployments = lazy(() => import("./pages/Deployments"));
+const Adoption = lazy(() => import("./pages/Adoption"));
 const GetInvolved = lazy(() => import("./pages/GetInvolved"));
 const JoinUs = lazy(() => import("./pages/JoinUs"));
 const Events = lazy(() => import("./pages/Events"));
@@ -58,9 +58,9 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Events – AI4Inclusion",
     description: "Upcoming and past AI4Inclusion events, workshops, and convenings on inclusive language AI and Digital Public Goods.",
   },
-  "/deployments": {
-    title: "Deployments – AI4Inclusion",
-    description: "Where AI4Inclusion building blocks run in production — including AI4I-Orchestrate, deployed as AI Switch for governed AI access.",
+  "/adoption": {
+    title: "Adoption – AI4Inclusion",
+    description: "How institutions adopt AI4Inclusion building blocks — including AI4I-Orchestrate, adopted and run as AI Switch for governed AI access.",
   },
   "/engagements": {
     title: "Engagements – AI4Inclusion",
@@ -188,7 +188,8 @@ const AppContent = () => {
           <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
           <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
           <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
-          <Route path="/deployments" element={<PageTransition><Deployments /></PageTransition>} />
+          <Route path="/adoption" element={<PageTransition><Adoption /></PageTransition>} />
+          <Route path="/deployments" element={<Navigate to="/adoption" replace />} />
           <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
           <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
           <Route path="/events" element={<PageTransition><Events /></PageTransition>} />

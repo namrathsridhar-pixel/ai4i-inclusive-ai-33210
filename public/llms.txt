@@ -8,7 +8,7 @@
 - [About](/about): Mission, vision, and the COSS team behind AI4Inclusion.
 - [Building Blocks](/building-blocks): AI4I building blocks (AI4I-Orchestrate and related components) for sovereign voice AI and public systems.
 - [Try VoicERA](/try-voicera): Interactive sandbox to talk to the AI4I sovereign voice AI agent.
-- [Deployments](/deployments): Where AI4Inclusion building blocks run in production, including AI4I-Orchestrate deployed as AI Switch.
+- [Adoption](/adoption): How institutions adopt AI4Inclusion building blocks, including AI4I-Orchestrate adopted and run as AI Switch.
 - [Engagements](/engagements): Active engagements and country deployments.
 - [Events](/events): Upcoming and past AI4Inclusion events.
 - [Get Involved](/get-involved): Ways to contribute and partner.

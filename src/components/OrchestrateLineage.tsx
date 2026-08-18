@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Network, Zap } from "lucide-react";
 
 /**
- * "From building block to deployed infrastructure"
+ * "From building block to running infrastructure"
  * Lineage visual: AI4I Orchestrate (foundational, outlined) -> AI Switch (deployed, filled).
  * Purely presentational, no CTAs or external links.
  */
@@ -57,7 +57,7 @@ const OrchestrateLineage = () => {
           marginBottom: "12px",
         }}
       >
-        IN PRODUCTION
+        THE STORY
       </div>
 
       {/* Heading */}
@@ -71,7 +71,7 @@ const OrchestrateLineage = () => {
           marginBottom: "20px",
         }}
       >
-        From building block to deployed infrastructure
+        From building block to running infrastructure
       </h3>
 
       {/* Lineage visual */}
@@ -177,7 +177,7 @@ const OrchestrateLineage = () => {
         AI4I Orchestrate is the language AI orchestration engine at the heart of AI4Inclusion's
         Core — the layer that governs how AI models are discovered, accessed, and consumed.
         Orchestrate has since been adopted and rebranded as AI Switch, powering governed AI access
-        for one of AI4I's real-world deployments.
+        in production.
       </p>
       </motion.div>
     </section>
