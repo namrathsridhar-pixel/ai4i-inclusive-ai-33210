@@ -91,7 +91,7 @@ const EventPromoBanner = () => {
         <VisuallyHidden>
           <DialogTitle>AI4Inclusion at India AI Impact Summit 2026</DialogTitle>
         </VisuallyHidden>
-        <div className="relative w-full bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#1a3a5c] rounded-xl overflow-hidden">
+        <div className="relative w-full bg-gradient-to-br from-brand-navy via-brand-navy-mid to-brand-navy-light rounded-xl overflow-hidden">
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -204,7 +204,7 @@ const EventPromoBanner = () => {
               >
                 <Link to="/get-in-touch" onClick={handleClose}>
                   <button 
-                    className="bg-[#0f2847] text-sm text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                    className="bg-brand-navy-mid text-sm text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
                   >
                     Get in Touch
                   </button>

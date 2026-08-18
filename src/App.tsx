@@ -12,7 +12,6 @@ const Footer = lazy(() => import("./components/Footer"));
 const LanguageParticles = lazy(() => import("./components/LanguageParticles"));
 const ScrollToTopButton = lazy(() => import("./components/ScrollToTopButton"));
 const CookieConsentBanner = lazy(() => import("./components/CookieConsentBanner"));
-// const AI4IAssistant = lazy(() => import("./components/AI4IAssistant"));
 
 import Home from "./pages/Home";
 
@@ -136,8 +135,9 @@ const ScrollToTop = () => {
     setMeta('meta[property="og:url"]', "content", url);
 
     // Track page view in GA4 for SPA route changes
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('config', 'G-X0CZVDK1KV', {
+    const gtag = typeof window !== 'undefined' ? window.gtag : undefined;
+    if (gtag) {
+      gtag('config', 'G-X0CZVDK1KV', {
         page_path: pathname,
       });
     }
@@ -207,7 +207,6 @@ const AppContent = () => {
           {!isTryVoicera && <Footer />}
           <ScrollToTopButton />
           <CookieConsentBanner />
-          {/* <AI4IAssistant /> */}
         </Suspense>
       )}
     </>

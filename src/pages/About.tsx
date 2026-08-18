@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-[#0a1628]">
+    <div className="min-h-screen bg-brand-navy">
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent" />
@@ -46,7 +46,7 @@ const About = () => {
       </section>
 
       {/* Why It Matters Section */}
-      <section className="py-20 px-4 bg-[#0d1d35]">
+      <section className="py-20 px-4 bg-brand-navy-deep">
         <div className="container mx-auto max-w-7xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -196,7 +196,7 @@ const About = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-20 px-4 bg-[#0d1d35]">
+      <section className="py-20 px-4 bg-brand-navy-deep">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -359,7 +359,7 @@ const About = () => {
       </section>
 
       {/* Get Involved Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/20 via-[#0d1d35] to-[#0a1628]">
+      <section className="py-20 px-4 bg-gradient-to-br from-primary/20 via-brand-navy-deep to-brand-navy">
         <div className="container mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -396,7 +396,7 @@ const About = () => {
       </section>
 
       {/* Values Bar */}
-      <section className="py-12 px-4 bg-[#0d1d35] border-t border-white/10">
+      <section className="py-12 px-4 bg-brand-navy-deep border-t border-white/10">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
             <motion.div

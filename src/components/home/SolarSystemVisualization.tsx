@@ -140,7 +140,7 @@ const SolarSystemVisualization = () => {
   const observePos = getOrbitPosition(60, midOrbitRadius, 0.12);
   const contributePos = getOrbitPosition(210, outerOrbitRadius, 0.06);
 
-  return <section className="py-20 px-4 bg-[#0a1628] relative overflow-hidden">
+  return <section className="py-20 px-4 bg-brand-navy relative overflow-hidden">
       {/* Background starfield */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(50)].map((_, i) => <motion.div key={i} className="absolute w-1 h-1 rounded-full bg-white/30" style={{

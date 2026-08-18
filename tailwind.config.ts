@@ -19,6 +19,16 @@ export default {
         gonzaga: ['Gonzaga', 'serif'],
       },
       colors: {
+        brand: {
+          navy: "#0a1628",
+          "navy-mid": "#0f2847",
+          "navy-light": "#1a3a5c",
+          "navy-deep": "#0d1d35",
+          blue: "#0041A5",
+          cyan: "#0079C1",
+          ink: "#1A1A1A",
+          mist: "#F2F7FB",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+type FooterLink = { name: string; path: string } | { name: string; href: string };
+
 import { Linkedin, Youtube, Github, Mail, ArrowUpRight } from "lucide-react";
 
-const footerNav = {
+const footerNav: Record<string, FooterLink[]> = {
   "Building Blocks": [
     { name: "AI4I-Orchestrate", path: "/building-blocks#ai4i-orchestrate" },
     { name: "AI4I-Observe", path: "/building-blocks#observe" },
@@ -26,7 +28,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0a1628] text-white border-t border-white/10">
+    <footer className="bg-brand-navy text-white border-t border-white/10">
       {/* Main footer */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
@@ -97,7 +99,7 @@ const Footer = () => {
                     return (
                       <li key={link.name}>
                         <a
-                          href={(link as any).href}
+                          href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-sm text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group"
@@ -111,7 +113,7 @@ const Footer = () => {
                   return (
                     <li key={link.name}>
                       <Link
-                        to={(link as any).path}
+                        to={link.path}
                         className="text-sm text-white/60 hover:text-white transition-colors"
                       >
                         {link.name}

@@ -61,7 +61,7 @@ const Events = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a1628] to-[#0f2847] pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-brand-navy to-brand-navy-mid pt-24 pb-16">
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <motion.div
@@ -87,7 +87,7 @@ const Events = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#1a3a5c]"
+            className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-brand-navy via-brand-navy-mid to-brand-navy-light"
           >
             {/* Content */}
             <div className="relative z-10 p-6 md:p-10 flex flex-col md:flex-row gap-8">
@@ -165,7 +165,7 @@ const Events = () => {
                 <div className="flex justify-center">
                   <Link to="/get-in-touch">
                     <button 
-                      className="bg-[#0f2847] text-sm md:text-base text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
+                      className="bg-brand-navy-mid text-sm md:text-base text-white/70 font-normal px-5 py-2.5 rounded-lg border border-white/20 hover:border-white/40 transition-all duration-300 whitespace-nowrap"
                     >
                       Get in Touch
                     </button>

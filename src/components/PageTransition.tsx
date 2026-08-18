@@ -6,9 +6,9 @@ interface PageTransitionProps {
 
 const PageTransition = ({ children }: PageTransitionProps) => {
   return (
-    <div>
+    <main>
       {children}
-    </div>
+    </main>
   );
 };
 

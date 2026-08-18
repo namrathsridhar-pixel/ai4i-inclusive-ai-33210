@@ -69,11 +69,11 @@ const JoinUs = () => {
         title: "Form submitted successfully!",
         description: successMessage,
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Form submission error:", error);
       toast({
         title: "Submission failed",
-        description: error.message || "Something went wrong. Please try again.",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -84,7 +84,7 @@ const JoinUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 px-4 bg-gradient-to-b from-[#0a1628] to-background">
+      <section className="relative pt-32 pb-16 px-4 bg-gradient-to-b from-brand-navy to-background">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
