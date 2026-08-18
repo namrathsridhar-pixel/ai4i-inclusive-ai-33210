@@ -134,8 +134,8 @@ const Adoption = () => {
           <motion.p {...fadeUp} className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             AI4Inclusion brings together governments, research institutions, and technology
             organisations working toward a common goal: ensuring AI serves everyone, regardless of
-            language or ability. Every deployment strengthens the shared Digital Public Good the
-            next one builds on.
+            language or ability. Every adoption strengthens the shared Digital Public Good the next
+            one builds on.
           </motion.p>
           <motion.div {...fadeUp} className="mt-8">
             <Link
