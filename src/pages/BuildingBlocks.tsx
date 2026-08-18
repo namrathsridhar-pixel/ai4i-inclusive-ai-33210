@@ -282,6 +282,7 @@ const BuildingBlocks = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <h1 className="sr-only">AI4Inclusion Building Blocks</h1>
       <div className="flex-1">
         {/* AI4I Orchestrate */}
         {activeSection === "ai4i-orchestrate" && (
