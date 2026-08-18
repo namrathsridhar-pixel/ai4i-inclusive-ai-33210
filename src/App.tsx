@@ -135,8 +135,9 @@ const ScrollToTop = () => {
     setMeta('meta[property="og:url"]', "content", url);
 
     // Track page view in GA4 for SPA route changes
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('config', 'G-X0CZVDK1KV', {
+    const gtag = typeof window !== 'undefined' ? window.gtag : undefined;
+    if (gtag) {
+      gtag('config', 'G-X0CZVDK1KV', {
         page_path: pathname,
       });
     }

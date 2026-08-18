@@ -69,7 +69,7 @@ const JoinUs = () => {
         title: "Form submitted successfully!",
         description: successMessage,
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Form submission error:", error);
       toast({
         title: "Submission failed",

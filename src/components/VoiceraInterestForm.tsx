@@ -75,7 +75,7 @@ const VoiceraInterestForm = ({ compact = false }: VoiceraInterestFormProps) => {
       setUseCase("");
       setConsentChecked(false);
       setConsentToContact(false);
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         title: "Submission failed",
         description: error.message || "Please try again later.",
