@@ -3,7 +3,7 @@ import { Mic } from "lucide-react";
 
 const Registrations = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a1628] to-[#0f2847] pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-brand-navy to-brand-navy-mid pt-24 pb-16">
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <motion.div
@@ -28,7 +28,7 @@ const Registrations = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#1a3a5c] p-8 md:p-10 opacity-70 shadow-2xl"
+            className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-brand-navy via-brand-navy-mid to-brand-navy-light p-8 md:p-10 opacity-70 shadow-2xl"
           >
             {/* Subtle background motif */}
             <div className="absolute inset-0 opacity-[0.03]">

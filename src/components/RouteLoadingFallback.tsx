@@ -1,5 +1,5 @@
 const RouteLoadingFallback = () => (
-  <div className="min-h-screen bg-[#0a1628] pt-16">
+  <div className="min-h-screen bg-brand-navy pt-16">
     {/* Hero skeleton */}
     <div className="container mx-auto px-4 py-20">
       <div className="animate-pulse space-y-6">

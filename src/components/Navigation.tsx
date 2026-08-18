@@ -42,7 +42,7 @@ const Navigation = () => {
       scrollToTop();
     }
   };
-  return <nav className="fixed top-0 w-full bg-[#0a1628] backdrop-blur-md border-b border-white/10 z-50 shadow-large rounded-b-2xl">
+  return <nav className="fixed top-0 w-full bg-brand-navy backdrop-blur-md border-b border-white/10 z-50 shadow-large rounded-b-2xl">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={handleHomeClick} className="flex items-center space-x-2">
@@ -87,7 +87,7 @@ const Navigation = () => {
                     </Link>
                     
                     {showBuildingBlocksMenu && (
-                      <div className="absolute top-full left-0 mt-1 w-56 bg-[#0a1628] border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
+                      <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
                         <div className="p-2">
                           {buildingBlocksMenu.map((item) => {
                             const Icon = item.icon;
@@ -119,7 +119,7 @@ const Navigation = () => {
                           {link.name}
                         </Button>
                       </TooltipTrigger>
-                      <TooltipContent className="bg-[#0a1628] text-white border-white/20">
+                      <TooltipContent className="bg-brand-navy text-white border-white/20">
                         <p>Coming soon...</p>
                       </TooltipContent>
                     </Tooltip>
@@ -191,7 +191,7 @@ const Navigation = () => {
                         {link.name}
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent className="bg-[#0a1628] text-white border-white/20">
+                    <TooltipContent className="bg-brand-navy text-white border-white/20">
                       <p>Coming soon...</p>
                     </TooltipContent>
                   </Tooltip>

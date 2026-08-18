@@ -134,7 +134,7 @@ const TryVoicERA = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden bg-gradient-to-b from-[#0a1628] via-[#0d1f3c] to-[#0f2847]">
+    <div className="min-h-screen flex flex-col relative overflow-hidden bg-gradient-to-b from-brand-navy via-[#0d1f3c] to-brand-navy-mid">
       {/* Background canvas for routing patterns, waves, globe arcs */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
 
@@ -169,7 +169,7 @@ const TryVoicERA = () => {
           {/* Mic icon with pulse glow */}
           <div className="flex justify-center mb-[-28px] z-20 relative">
             <motion.div
-              className="w-14 h-14 rounded-2xl bg-[#0f2847] border border-white/15 flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+              className="w-14 h-14 rounded-2xl bg-brand-navy-mid border border-white/15 flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.1)]"
               animate={{ boxShadow: ["0 0 30px rgba(255,255,255,0.08)", "0 0 50px rgba(255,255,255,0.18)", "0 0 30px rgba(255,255,255,0.08)"] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -178,7 +178,7 @@ const TryVoicERA = () => {
           </div>
 
           {/* Main card */}
-          <div className="rounded-2xl border border-white/10 bg-[#0a1628]/80 backdrop-blur-md shadow-2xl pt-10 pb-8 px-4 sm:px-8">
+          <div className="rounded-2xl border border-white/10 bg-brand-navy/80 backdrop-blur-md shadow-2xl pt-10 pb-8 px-4 sm:px-8">
             {status === "success" ? (
               <div className="text-center py-4">
                 <div className="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
