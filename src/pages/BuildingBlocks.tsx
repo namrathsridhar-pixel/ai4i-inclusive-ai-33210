@@ -26,7 +26,6 @@ import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.pn
 import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
 import voiceraEcosystemPillars from "@/assets/voicera-ecosystem-pillars.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
-import OrchestrateLineage from "@/components/OrchestrateLineage";
 
 // Preload only the first section's images eagerly; others load on-demand via PreloadedImage
 const preloadImages = [orchestrateHowItWorks, orchestrateArchitectureNew];
@@ -455,10 +454,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* IN PRODUCTION — From building block to deployed infrastructure */}
-              <div className="mb-16">
-                <OrchestrateLineage />
-              </div>
+
 
 
               {/* SECTION 5 — Orchestrate in the AI4Inclusion Ecosystem - Visual Flow */}
