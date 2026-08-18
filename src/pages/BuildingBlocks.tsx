@@ -6,7 +6,7 @@ import {
   Globe, BarChart3, Users, CheckCircle, Database, GitBranch, Shield, MessageCircle, 
   ArrowRight, Activity, Maximize2, Layers, Route, Gauge, Eye, RefreshCcw,
   AlertTriangle, TrendingUp, Zap, Network, Share2, FileCheck, Users2, Phone, 
-  Building2, Workflow, Sparkles, Target
+  Building2, Workflow, Sparkles, Target, Factory
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
