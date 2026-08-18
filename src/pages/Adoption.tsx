@@ -19,7 +19,7 @@ const AISwitchFlow = lazy(() => import("@/components/AISwitchFlow"));
 
 const functions = [
   { icon: Building2, title: "Onboard", body: "Add institutions as tenants on AI Switch." },
-  { icon: ClipboardList, title: "Register", body: "Maintain the centralised registry of hosted LLMs, including model metadata, versions and deployment lifecycle information." },
+  { icon: ClipboardList, title: "Register", body: "Maintain the centralised registry of hosted models, including model metadata, versions and deployment lifecycle information." },
   { icon: Search, title: "Discover", body: "Explore LLMs available for consumption by institutions." },
   { icon: Wallet, title: "Allocate", body: "Assign budget to authorised institutions based on policy-driven and approved entitlements." },
   { icon: KeyRound, title: "Authenticate", body: "Verify the identity of every institution at every API request. Enforce role-based access controls and validate the configured budget associated with the institution and its applications." },
