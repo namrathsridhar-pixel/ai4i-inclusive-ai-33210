@@ -108,10 +108,10 @@ const AdoptionLineage = () => {
         transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
         className="mx-auto mt-10 max-w-[620px] text-center leading-relaxed text-muted-foreground"
       >
-        AI4I Orchestrate is the language AI orchestration engine within AI4I Core. Deployed as AI
-        Switch, it runs inside the adopter's own environment and sits in the path of every request —
-        verifying identity, checking entitlement, and metering cost, without reading what the
-        application is doing.
+        AI4I Orchestrate is AI4I Core's governed access layer — the same engine now running in
+        production as AI Switch. It verifies the identity of every request, checks what the
+        requester is entitled to, and meters consumption of the models it routes to in real time,
+        giving adopters complete visibility and control over how their AI infrastructure is used.
       </motion.p>
     </div>
   );
