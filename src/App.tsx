@@ -19,7 +19,6 @@ import Home from "./pages/Home";
 const About = lazy(() => import("./pages/About"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const BuildingBlocks = lazy(() => import("./pages/BuildingBlocks"));
-const Adopters = lazy(() => import("./pages/Adopters"));
 const Deployments = lazy(() => import("./pages/Deployments"));
 const GetInvolved = lazy(() => import("./pages/GetInvolved"));
 const JoinUs = lazy(() => import("./pages/JoinUs"));
@@ -62,10 +61,6 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   "/deployments": {
     title: "Deployments – AI4Inclusion",
     description: "Where AI4Inclusion building blocks run in production — including AI4I-Orchestrate, deployed as AI Switch for governed AI access.",
-  },
-  "/adopters": {
-    title: "Adopters – AI4Inclusion",
-    description: "Governments, institutions, and organizations adopting AI4Inclusion to build sovereign, inclusive language AI for public systems.",
   },
   "/engagements": {
     title: "Engagements – AI4Inclusion",
@@ -194,7 +189,6 @@ const AppContent = () => {
           <Route path="/building-blocks" element={<PageTransition><BuildingBlocks /></PageTransition>} />
           <Route path="/try-voicera" element={<PageTransition><TryVoicERA /></PageTransition>} />
           <Route path="/deployments" element={<PageTransition><Deployments /></PageTransition>} />
-          <Route path="/adopters" element={<PageTransition><Adopters /></PageTransition>} />
           <Route path="/get-involved" element={<PageTransition><GetInvolved /></PageTransition>} />
           <Route path="/get-in-touch" element={<PageTransition><JoinUs /></PageTransition>} />
           <Route path="/events" element={<PageTransition><Events /></PageTransition>} />
