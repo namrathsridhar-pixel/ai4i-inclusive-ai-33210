@@ -183,7 +183,7 @@ const Adoption = () => {
             })}
           </motion.div>
 
-          <motion.div {...fadeUp} className="mt-10">
+          <motion.div {...fadeUp} className="mt-10 text-center">
             <Link
               to="/get-in-touch"
               className="group inline-flex items-center gap-2 rounded-full bg-brand-blue px-6 py-3 font-heading text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
