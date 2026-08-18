@@ -455,10 +455,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* IN PRODUCTION — From building block to deployed infrastructure */}
-              <div className="mb-16">
-                <OrchestrateLineage />
-              </div>
+
 
 
               {/* SECTION 5 — Orchestrate in the AI4Inclusion Ecosystem - Visual Flow */}
