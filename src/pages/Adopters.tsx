@@ -24,7 +24,7 @@ const Adopters = () => {
               Adopters & Ecosystem
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              AI4Inclusion is powered by a growing global ecosystem of governments, institutions, and organizations committed to inclusive AI innovation.
+              AI4Inclusion is powered by a growing global ecosystem of governments, institutions, and organizations committed to inclusive AI innovation. AI4I-Orchestrate is already being deployed in production environments, powering real-time, multilingual language AI workflows across public systems and citizen services.
             </p>
           </motion.div>
         </div>

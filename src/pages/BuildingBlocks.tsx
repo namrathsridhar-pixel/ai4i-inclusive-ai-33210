@@ -6,7 +6,7 @@ import {
   Globe, BarChart3, Users, CheckCircle, Database, GitBranch, Shield, MessageCircle, 
   ArrowRight, Activity, Maximize2, Layers, Route, Gauge, Eye, RefreshCcw,
   AlertTriangle, TrendingUp, Zap, Network, Share2, FileCheck, Users2, Phone, 
-  Building2, Workflow, Sparkles, Target
+  Building2, Workflow, Sparkles, Target, Factory
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -450,6 +450,31 @@ const BuildingBlocks = () => {
                       </Card>
                     </motion.div>
                   ))}
+                </div>
+              </motion.div>
+
+              {/* IN PRODUCTION — Adoption Snapshot */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-16"
+              >
+                <div className="bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl border border-primary/20 p-8 md:p-10">
+                  <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                    <div className="w-14 h-14 shrink-0 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                      <Factory size={28} />
+                    </div>
+                    <div>
+                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-3">
+                        IN PRODUCTION
+                      </div>
+                      <p className="text-lg text-muted-foreground leading-relaxed">
+                        AI4I-Orchestrate is already being deployed in production environments, powering real-time, multilingual language AI workflows across public systems and citizen services.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
 
