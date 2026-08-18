@@ -20,33 +20,6 @@ import {
 const OrchestrateLineage = lazy(() => import("@/components/OrchestrateLineage"));
 const AISwitchFlow = lazy(() => import("@/components/AISwitchFlow"));
 
-const blocks = [
-  {
-    name: "AI4I-Orchestrate",
-    icon: Globe,
-    note: "Governed access between institutional applications and the models they consume. In production as AI Switch.",
-    anchor: "/building-blocks#ai4i-orchestrate",
-  },
-  {
-    name: "AI4I-Observe",
-    icon: BarChart3,
-    note: "Observability and feedback for AI systems already serving people.",
-    anchor: "/building-blocks#observe",
-  },
-  {
-    name: "AI4I-Contribute",
-    icon: Users,
-    note: "Participatory data creation with the communities being served.",
-    anchor: "/building-blocks#contribute",
-  },
-  {
-    name: "AI4I-VoicERA",
-    icon: Phone,
-    note: "Sovereign voice interfaces for low-bandwidth, low-literacy access.",
-    anchor: "/building-blocks#voicera",
-  },
-];
-
 const functions = [
   { icon: Building2, title: "Onboard", body: "Add institutions as tenants on the shared AI infrastructure." },
   { icon: ClipboardList, title: "Register", body: "Maintain a central registry of hosted models, including metadata, versions, and lifecycle state." },
@@ -66,7 +39,7 @@ const fadeUp = {
   transition: { duration: 0.6, ease: "easeOut" as const },
 };
 
-const Deployments = () => {
+const Adoption = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -75,11 +48,12 @@ const Deployments = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="font-heading text-xs font-bold tracking-[0.2em] text-brand-cyan">IN PRODUCTION</p>
             <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
-              Deployments
+              Adoption
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              AI4Inclusion's building blocks are designed to be taken into production by institutions
-              and run as their own infrastructure. This page follows one of them all the way there.
+              A building block proves itself when an institution adopts it, renames it, and runs it as
+              their own infrastructure. AI4I-Orchestrate has done exactly that — it is in production
+              as AI Switch.
             </p>
           </motion.div>
         </div>
@@ -153,55 +127,6 @@ const Deployments = () => {
         </div>
       </section>
 
-      {/* The wider set of blocks */}
-      <section className="bg-brand-mist px-4 py-20">
-        <div className="container mx-auto max-w-5xl">
-          <motion.h2 {...fadeUp} className="font-heading text-2xl font-bold text-brand-ink md:text-3xl">
-            The blocks behind the deployments
-          </motion.h2>
-          <motion.p {...fadeUp} className="mt-3 max-w-2xl text-muted-foreground">
-            Each block is open source, independently useful, and designed to be run by institutions
-            on their own infrastructure.
-          </motion.p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {blocks.map((block, i) => {
-              const Icon = block.icon;
-              return (
-                <motion.div
-                  key={block.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
-                  className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-lg"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-mist text-brand-blue transition-colors group-hover:bg-brand-blue group-hover:text-white">
-                    <Icon size={20} strokeWidth={2} />
-                  </div>
-                  <h3 className="mt-4 font-heading text-lg font-bold text-brand-ink">
-                    {block.name === "AI4I-VoicERA" ? (
-                      <>
-                        AI4I-<span className="font-gonzaga">VoicERA</span>
-                      </>
-                    ) : (
-                      block.name
-                    )}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{block.note}</p>
-                  <Link
-                    to={block.anchor}
-                    className="mt-4 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-brand-blue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
-                  >
-                    Learn more
-                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Ecosystem */}
       <section className="px-4 py-20" id="ecosystem">
@@ -230,4 +155,4 @@ const Deployments = () => {
   );
 };
 
-export default Deployments;
+export default Adoption;
