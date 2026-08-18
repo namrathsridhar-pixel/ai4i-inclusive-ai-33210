@@ -177,7 +177,7 @@ const OrchestrateLineage = () => {
         AI4I Orchestrate is the language AI orchestration engine at the heart of AI4Inclusion's
         Core — the layer that governs how AI models are discovered, accessed, and consumed.
         Orchestrate has since been adopted and rebranded as AI Switch, powering governed AI access
-        for one of AI4I's real-world deployments.
+        in production.
       </p>
       </motion.div>
     </section>
