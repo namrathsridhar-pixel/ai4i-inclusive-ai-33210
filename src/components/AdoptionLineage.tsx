@@ -28,13 +28,13 @@ const CurvedConnector = ({ delay, begin }: { delay: number; begin: string }) => 
       <path
         id="lineagePath"
         d="M40 2 C40 22, 22 30, 40 44"
-        stroke="hsl(var(--brand-cyan))"
+        stroke="#0079C1"
         strokeWidth="2"
         strokeLinecap="round"
         fill="none"
       />
-      <path d="M40 44 L40 58" stroke="hsl(var(--brand-cyan))" strokeWidth="2" strokeLinecap="round" />
-      <path d="M35 55 L40 63 L45 55 Z" fill="hsl(var(--brand-cyan))" />
+      <path d="M40 44 L40 58" stroke="#0079C1" strokeWidth="2" strokeLinecap="round" />
+      <path d="M35 55 L40 63 L45 55 Z" fill="#0079C1" />
       <circle r="3.5" fill="#C8A24A">
         <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin={begin} repeatCount="indefinite" />
         <animateMotion dur="4s" begin={begin} repeatCount="indefinite" path="M40 2 C40 22, 22 30, 40 44 L40 60" />
