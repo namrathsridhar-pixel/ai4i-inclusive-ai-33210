@@ -92,7 +92,6 @@ const ChallengeConcept = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-            className="mt-8"
             aria-hidden="true"
           >
             {/* Row 1 — Institutions */}
