@@ -45,6 +45,10 @@ const ChallengeSection = () => {
           ongoing operations — before writing a single line of application logic. The result is
           duplication, fragmentation, higher entry barriers, and slower adoption.
         </p>
+        <p className="mt-4 max-w-[680px] text-[16px] leading-[1.7] text-muted-foreground">
+          The gap is the absence of a common operational layer that enables centralised governance
+          over AI consumption.
+        </p>
       </motion.div>
 
       <div

@@ -36,9 +36,9 @@ const ConceptSection = () => {
           of the entire economy.
         </p>
         <p className="mt-4 max-w-[680px] text-[16px] leading-[1.7] text-muted-foreground">
-          <span className="font-semibold text-brand-ink">AI Switch</span> is the same layer for the
-          AI grid — a governed access layer that lets institutions draw on shared sovereign compute
-          and models, metered and accountable, instead of each building their own from scratch.
+          A shared AI grid would consist of sovereign compute infrastructure, sovereign and open
+          models, and applications that deliver population-scale benefits efficiently via an{" "}
+          <span className="font-semibold text-brand-ink">AI Switch</span>.
         </p>
       </motion.div>
 
