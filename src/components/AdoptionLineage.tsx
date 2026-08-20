@@ -114,12 +114,26 @@ const AdoptionLineage = () => {
           />
           <Arrow color={TOP_COLOR} left="50%" />
           <PulseDot
+          <PulseDot
             color="#C8A24A"
             lefts={["12.5%", "12.5%", "31%", "50%", "50%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={0}
           />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["50%", "50%", "50%", "50%", "50%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={2}
+          />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["87.5%", "87.5%", "69%", "50%", "50%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={4}
+          />
         </div>
+
 
 
         {/* Center node: AI4I Orchestrate */}
