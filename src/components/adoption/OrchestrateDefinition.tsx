@@ -50,7 +50,7 @@ const OrchestrateDefinition = () => {
 
           <div className="flex items-center justify-center gap-2 rounded-xl bg-[#0041A5] px-4 py-4 text-center">
             <Zap size={18} strokeWidth={2} className="text-white" />
-            <span className="font-heading text-[13px] font-bold text-white">AI4I Orchestrate</span>
+            <span className="font-heading text-[13px] font-bold text-white">AI Switch</span>
           </div>
 
           <div className="flex justify-center py-2">
