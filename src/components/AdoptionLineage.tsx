@@ -114,19 +114,19 @@ const AdoptionLineage = () => {
           />
           <Arrow color={TOP_COLOR} left="50%" />
           <PulseDot
-            color="#C8A24A"
+            color="#0079C1"
             lefts={["12.5%", "12.5%", "31%", "50%", "50%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={0}
           />
           <PulseDot
-            color="#C8A24A"
+            color="#0079C1"
             lefts={["50%", "50%", "50%", "50%", "50%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={2}
           />
           <PulseDot
-            color="#C8A24A"
+            color="#0079C1"
             lefts={["87.5%", "87.5%", "69%", "50%", "50%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={4}
@@ -185,13 +185,13 @@ const AdoptionLineage = () => {
           <Arrow color={BOTTOM_COLOR} left="35%" />
           <Arrow color={BOTTOM_COLOR} left="64%" />
           <PulseDot
-            color="#C8A24A"
+            color="#0079C1"
             lefts={["50%", "50%", "42%", "35%", "35%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={1}
           />
           <PulseDot
-            color="#C8A24A"
+            color="#0079C1"
             lefts={["50%", "50%", "57%", "64%", "64%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={4}
