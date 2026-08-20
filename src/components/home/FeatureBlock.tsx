@@ -61,7 +61,7 @@ const FeatureBlock = ({
             <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-soft">
               {icon}
             </div>
-            <h3 className="font-bold text-2xl font-heading">{title === "AI4I-VoicERA" ? <>AI4I-<span className="font-gonzaga">VoicERA</span></> : title}</h3>
+            <h3 className="font-bold text-2xl font-heading">{title === "AI4I-VoicEra" ? <>AI4I-<span className="font-gonzaga">VoicEra</span></> : title}</h3>
           </div>
 
           <p className="text-muted-foreground mb-4 leading-relaxed">{description}</p>

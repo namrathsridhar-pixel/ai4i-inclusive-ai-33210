@@ -49,11 +49,11 @@ const Home = () => {
         </Suspense>
       )}
 
-      {/* VoicERA Interest Dialog */}
+      {/* VoicEra Interest Dialog */}
       <Dialog open={voiceraFormOpen} onOpenChange={setVoiceraFormOpen}>
         <DialogContent className="max-w-lg p-0 bg-background overflow-auto max-h-[90vh]" aria-describedby={undefined}>
           <VisuallyHidden>
-            <DialogTitle>Show Interest in VoicERA</DialogTitle>
+            <DialogTitle>Show Interest in VoicEra</DialogTitle>
           </VisuallyHidden>
           <div className="p-1">
             <Suspense fallback={null}><VoiceraInterestForm /></Suspense>
