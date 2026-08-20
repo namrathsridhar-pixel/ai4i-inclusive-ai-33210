@@ -179,7 +179,7 @@ export function PowerGridVisual() {
       <svg viewBox={`0 0 ${W} ${bottom}`} className="h-auto w-full overflow-visible" role="img"
         aria-label="Power grid layers compared with AI Switch: generation to transmission to consumption, and compute to AI Switch to applications.">
         <text x={COL.left} y={22} textAnchor="middle" fill="#6B7280" style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", fontFamily: "monospace" }}>POWER GRID</text>
-        <text x={COL.right} y={22} textAnchor="middle" fill="#0079C1" style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", fontFamily: "monospace" }}>AI SWITCH</text>
+        <text x={COL.right} y={22} textAnchor="middle" fill="#0079C1" style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", fontFamily: "monospace" }}>AI GRID</text>
 
         <Feeder cx={COL.left} from={ROWS[0] + ROW_H} to={ROWS[1]} tone="grey" delay={0.2} />
         <Feeder cx={COL.left} from={ROWS[1] + ROW_H} to={ROWS[2]} tone="grey" delay={0.7} />
