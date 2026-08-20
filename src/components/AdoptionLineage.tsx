@@ -43,11 +43,13 @@ const PulseDot = ({
   lefts,
   tops,
   delay,
+  repeatDelay = 4,
 }: {
   color: string;
   lefts: string[];
   tops: string[];
   delay: number;
+  repeatDelay?: number;
 }) => (
   <motion.span
     className="absolute z-20 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -62,12 +64,13 @@ const PulseDot = ({
       duration: 2,
       delay,
       repeat: Infinity,
-      repeatDelay: 2,
+      repeatDelay,
       ease: "linear",
       times: [0, 0.25, 0.5, 0.75, 1],
     }}
   />
 );
+
 
 const AdoptionLineage = () => {
   return (
@@ -116,7 +119,20 @@ const AdoptionLineage = () => {
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={0}
           />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["50%", "50%", "50%", "50%", "50%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={2}
+          />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["87.5%", "87.5%", "69%", "50%", "50%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={4}
+          />
         </div>
+
 
 
         {/* Center node: AI4I Orchestrate */}
@@ -170,6 +186,12 @@ const AdoptionLineage = () => {
             lefts={["50%", "50%", "42%", "35%", "35%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={1}
+          />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["50%", "50%", "57%", "64%", "64%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={4}
           />
         </div>
 
