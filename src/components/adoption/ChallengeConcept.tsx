@@ -20,8 +20,8 @@ const ChallengeConcept = () => {
               The challenge
             </h2>
             <p className="mt-4 max-w-[420px] text-[13.5px] leading-[1.65] text-[#6B7280]">
-              Every institution independently solves compute, model access, and metering — before a
-              single citizen is served.
+              Every institution independently solves compute, model access, and metering — before
+              it delivers a single service.
             </p>
           </motion.div>
 
