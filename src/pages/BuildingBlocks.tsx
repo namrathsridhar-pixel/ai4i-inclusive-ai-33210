@@ -1117,12 +1117,12 @@ const BuildingBlocks = () => {
                       <DialogDescription>Overview of AI4I-VoicEra architecture and capabilities</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
-                      <img 
-                        src={voiceraSovereignStack} 
-                        alt="AI4I-VoicEra: Creating a Sovereign Stack for Open Voice AI" 
-                        className="w-full h-auto"
-                        loading="eager"
-                      />
+                        <img 
+                          src={voiceraSovereignStack} 
+                          alt="AI4I-VoicEra: Creating a Sovereign Stack for Open Voice AI" 
+                          className="w-full h-auto"
+                          loading="eager"
+                        />
                     </div>
                   </DialogContent>
                 </Dialog>
