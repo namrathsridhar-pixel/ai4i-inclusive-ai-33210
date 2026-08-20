@@ -23,8 +23,8 @@ import observeInfographic from "@/assets/observe-infographic.png";
 import contributeHowItWorks from "@/assets/contribute-how-it-works.png";
 import voiceraOverview from "@/assets/voiceera-overview.png";
 import voiceraSovereignInfra from "@/assets/voiceera-sovereign-infrastructure.png";
-import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png.asset.json";
-import voiceraEcosystemPillars from "@/assets/voicera-ecosystem-pillars.png.asset.json";
+import voiceraSovereignStack from "@/assets/voicera-sovereign-stack.png";
+import voiceraEcosystemPillars from "@/assets/voicera-ecosystem-pillars.png";
 import VoiceraInterestForm from "@/components/VoiceraInterestForm";
 
 // Preload only the first section's images eagerly; others load on-demand via PreloadedImage
@@ -1102,7 +1102,7 @@ const BuildingBlocks = () => {
                           </div>
                         </div>
                         <PreloadedImage
-                          src={voiceraSovereignStack.url}
+                          src={voiceraSovereignStack}
                           alt="AI4I-VoicEra: Creating a Sovereign Stack for Open Voice AI"
                           className="rounded-lg"
                           containerClassName="rounded-lg"
@@ -1118,7 +1118,7 @@ const BuildingBlocks = () => {
                     </VisuallyHidden>
                     <div className="p-4">
                         <img 
-                          src={voiceraSovereignStack.url} 
+                          src={voiceraSovereignStack} 
                           alt="AI4I-VoicEra: Creating a Sovereign Stack for Open Voice AI" 
                           className="w-full h-auto"
                           loading="eager"
@@ -1170,7 +1170,7 @@ const BuildingBlocks = () => {
                           </div>
                         </div>
                         <PreloadedImage
-                          src={voiceraEcosystemPillars.url}
+                          src={voiceraEcosystemPillars}
                           alt="AI4I-VoicEra: India's Sovereign Voice Infrastructure"
                           className="rounded-lg"
                           containerClassName="rounded-lg"
@@ -1185,7 +1185,7 @@ const BuildingBlocks = () => {
                       <DialogDescription>Infrastructure diagram showing AI4I-VoicEra's sovereign architecture and performance</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
-                      <img src={voiceraEcosystemPillars.url} alt="AI4I-VoicEra: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
+                      <img src={voiceraEcosystemPillars} alt="AI4I-VoicEra: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
                     </div>
                   </DialogContent>
                 </Dialog>
