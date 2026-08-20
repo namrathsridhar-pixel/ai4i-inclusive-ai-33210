@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
+import { Menu, X, Globe, BarChart3, Users, Calendar, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { preloadRoute } from "@/lib/route-preloader";
@@ -86,11 +86,15 @@ const Navigation = () => {
                     onMouseEnter={() => { setShowBuildingBlocksMenu(true); preloadRoute("/building-blocks"); }}
                     onMouseLeave={() => setShowBuildingBlocksMenu(false)}
                   >
-                    <Link to={link.path}>
-                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
-                        {link.name}
-                      </Button>
-                    </Link>
+                    <Button
+                      variant={isActive(link.path) ? "default" : "ghost"}
+                      className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => setShowBuildingBlocksMenu(!showBuildingBlocksMenu)}
+                      aria-expanded={showBuildingBlocksMenu}
+                    >
+                      {link.name}
+                      <ChevronDown size={14} className={`ml-1 transition-transform duration-200 ${showBuildingBlocksMenu ? 'rotate-180' : ''}`} />
+                    </Button>
                     
                     {showBuildingBlocksMenu && (
                       <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
@@ -102,6 +106,7 @@ const Navigation = () => {
                                 key={item.id}
                                 to={`/building-blocks#${item.id}`}
                                 className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                                onClick={() => setShowBuildingBlocksMenu(false)}
                               >
                                 <Icon size={18} />
                                 <span>{item.label === "AI4I VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
@@ -123,11 +128,15 @@ const Navigation = () => {
                     onMouseEnter={() => { setShowAdoptionMenu(true); preloadRoute("/adoption"); }}
                     onMouseLeave={() => setShowAdoptionMenu(false)}
                   >
-                    <Link to={link.path}>
-                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
-                        {link.name}
-                      </Button>
-                    </Link>
+                    <Button
+                      variant={isActive(link.path) ? "default" : "ghost"}
+                      className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => setShowAdoptionMenu(!showAdoptionMenu)}
+                      aria-expanded={showAdoptionMenu}
+                    >
+                      {link.name}
+                      <ChevronDown size={14} className={`ml-1 transition-transform duration-200 ${showAdoptionMenu ? 'rotate-180' : ''}`} />
+                    </Button>
 
                     {showAdoptionMenu && (
                       <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
@@ -139,6 +148,7 @@ const Navigation = () => {
                                 key={item.path}
                                 to={item.path}
                                 className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                                onClick={() => setShowAdoptionMenu(false)}
                               >
                                 <Icon size={18} />
                                 <span>{item.label}</span>
@@ -201,27 +211,35 @@ const Navigation = () => {
               if (link.path === "/building-blocks") {
                 return (
                   <div key={link.path}>
-                    <Link to={link.path} onClick={() => setIsOpen(false)}>
-                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`w-full justify-start font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
+                    <Button
+                      variant={isActive(link.path) ? "default" : "ghost"}
+                      className={`w-full justify-between font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => setShowBuildingBlocksMenu(!showBuildingBlocksMenu)}
+                      aria-expanded={showBuildingBlocksMenu}
+                    >
+                      <span className="flex items-center">
                         {link.name}
-                      </Button>
-                    </Link>
-                    <div className="ml-4 space-y-1">
-                      {buildingBlocksMenu.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.id}
-                            to={`/building-blocks#${item.id}`}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-                          >
-                            <Icon size={16} />
-                            <span>{item.label === "AI4I VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
+                      </span>
+                      <ChevronDown size={14} className={`transition-transform duration-200 ${showBuildingBlocksMenu ? 'rotate-180' : ''}`} />
+                    </Button>
+                    {showBuildingBlocksMenu && (
+                      <div className="ml-4 space-y-1">
+                        {buildingBlocksMenu.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <Link
+                              key={item.id}
+                              to={`/building-blocks#${item.id}`}
+                              onClick={() => setIsOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                            >
+                              <Icon size={16} />
+                              <span>{item.label === "AI4I VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 );
               }
@@ -229,27 +247,35 @@ const Navigation = () => {
               if (link.path === "/adoption") {
                 return (
                   <div key={link.path}>
-                    <Link to={link.path} onClick={() => setIsOpen(false)}>
-                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`w-full justify-start font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
+                    <Button
+                      variant={isActive(link.path) ? "default" : "ghost"}
+                      className={`w-full justify-between font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => setShowAdoptionMenu(!showAdoptionMenu)}
+                      aria-expanded={showAdoptionMenu}
+                    >
+                      <span className="flex items-center">
                         {link.name}
-                      </Button>
-                    </Link>
-                    <div className="ml-4 space-y-1">
-                      {adoptionMenu.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.path}
-                            to={item.path}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-                          >
-                            <Icon size={16} />
-                            <span>{item.label}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
+                      </span>
+                      <ChevronDown size={14} className={`transition-transform duration-200 ${showAdoptionMenu ? 'rotate-180' : ''}`} />
+                    </Button>
+                    {showAdoptionMenu && (
+                      <div className="ml-4 space-y-1">
+                        {adoptionMenu.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <Link
+                              key={item.path}
+                              to={item.path}
+                              onClick={() => setIsOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                            >
+                              <Icon size={16} />
+                              <span>{item.label}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 );
               }
