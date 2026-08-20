@@ -75,13 +75,12 @@ const Adoption = () => {
         <div className="container mx-auto max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
-              AI4I Orchestrate
+              AI4I Orchestrate — adopted as AI Switch.
             </h1>
             <p className="mt-6 max-w-[660px] text-[17px] leading-[1.7] text-muted-foreground">
               <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is the governed
-              access layer within AI4I Core. It also operates as{" "}
-              <span className="font-bold text-brand-blue">AI Switch</span>, governing how institutions
-              access AI models.
+              access layer within AI4I Core — deployed by an adopter to govern how institutions access
+              AI models.
             </p>
           </motion.div>
         </div>
