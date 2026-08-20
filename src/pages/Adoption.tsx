@@ -19,8 +19,7 @@ import {
 } from "lucide-react";
 
 const AdoptionLineage = lazy(() => import("@/components/AdoptionLineage"));
-const ChallengeDiagram = lazy(() => import("@/components/adoption/ChallengeDiagram"));
-const ConceptDiagram = lazy(() => import("@/components/adoption/ConceptDiagram"));
+const ChallengeConcept = lazy(() => import("@/components/adoption/ChallengeConcept"));
 
 const groups = [
   {
@@ -86,85 +85,12 @@ const Adoption = () => {
         </div>
       </section>
 
-      {/* Section 2 — The Challenge */}
+      {/* Section 2 — Challenge & Concept */}
       <section className="bg-brand-mist px-4 py-20" id="challenge">
         <div className="container mx-auto max-w-5xl">
-          <motion.div {...fadeUp}>
-            <p className="font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
-              The Challenge
-            </p>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-              The challenge
-            </h2>
-            <p className="mt-5 max-w-[680px] text-[17px] leading-[1.7] text-muted-foreground">
-              Every department, state, and institution that wants to deploy language AI today must
-              independently solve compute procurement, model selection, safety evaluation, API
-              design, metering, and ongoing operations — before writing a single line of application
-              logic. The result is duplication, fragmentation, higher entry barriers, and slower
-              adoption.
-            </p>
-          </motion.div>
-
-          <motion.div {...fadeUp} className="mt-10">
-            <Suspense fallback={null}>
-              <ChallengeDiagram />
-            </Suspense>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section 3 — The Concept */}
-      <section className="bg-background px-4 py-20" id="concept">
-        <div className="container mx-auto max-w-5xl">
-          <motion.div {...fadeUp}>
-            <p className="font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
-              The Analogy
-            </p>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-              The concept
-            </h2>
-          </motion.div>
-
-          <div className="mt-10 grid items-start gap-10 md:grid-cols-[1.15fr_1fr]">
-            <motion.div {...fadeUp}>
-              <blockquote className="relative rounded-2xl bg-brand-mist px-8 py-7">
-                <span
-                  aria-hidden="true"
-                  className="absolute left-3 top-1 font-heading text-4xl leading-none text-[#C8A24A]"
-                >
-                  &ldquo;
-                </span>
-                <p className="font-heading text-[19px] font-semibold leading-[1.6] text-brand-ink">
-                  No factory builds its own power plant to run its machines. It connects to the grid
-                  and draws what it needs — metered and accountable.
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-0 right-4 font-heading text-4xl leading-none text-[#C8A24A]"
-                >
-                  &rdquo;
-                </span>
-              </blockquote>
-
-              <p className="mt-6 max-w-[660px] text-[17px] leading-[1.7] text-muted-foreground">
-                Before the grid existed, only the largest and most resourced institutions could
-                access electricity. With the emergence of sovereign power grids, electricity became
-                the substrate of the entire economy.
-              </p>
-              <p className="mt-4 max-w-[660px] text-[17px] leading-[1.7] text-muted-foreground">
-                <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> applies the
-                same principle to language AI — a governed access layer that lets institutions draw
-                on shared compute and models, metered and accountable, instead of each building
-                their own from scratch.
-              </p>
-            </motion.div>
-
-            <motion.div {...fadeUp}>
-              <Suspense fallback={null}>
-                <ConceptDiagram />
-              </Suspense>
-            </motion.div>
-          </div>
+          <Suspense fallback={null}>
+            <ChallengeConcept />
+          </Suspense>
         </div>
       </section>
 
