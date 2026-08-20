@@ -23,6 +23,7 @@ const TryVoicEra = () => {
   const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "rateLimit">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const isValid = /^\d{10}$/.test(phoneNumber);
