@@ -187,6 +187,12 @@ const AdoptionLineage = () => {
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={1}
           />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["50%", "50%", "57%", "64%", "64%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={4}
+          />
         </div>
 
         {/* Bottom: Hosted Models */}
