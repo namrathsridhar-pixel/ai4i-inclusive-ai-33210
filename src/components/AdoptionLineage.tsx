@@ -154,20 +154,20 @@ const AdoptionLineage = () => {
           />
           <span
             className="absolute h-[1.5px]"
-            style={{ top: 35, left: "30%", right: "30%", backgroundColor: BOTTOM_COLOR }}
+            style={{ top: 35, left: "35%", right: "36%", backgroundColor: BOTTOM_COLOR }}
           />
-          {["30%", "70%"].map((l) => (
+          {["35%", "64%"].map((l) => (
             <span
               key={l}
               className="absolute w-[1.5px]"
               style={{ top: 35, height: 28, left: l, backgroundColor: BOTTOM_COLOR }}
             />
           ))}
-          <Arrow color={BOTTOM_COLOR} left="30%" />
-          <Arrow color={BOTTOM_COLOR} left="70%" />
+          <Arrow color={BOTTOM_COLOR} left="35%" />
+          <Arrow color={BOTTOM_COLOR} left="64%" />
           <PulseDot
             color="#C8A24A"
-            lefts={["50%", "50%", "40%", "30%", "30%"]}
+            lefts={["50%", "50%", "42%", "35%", "35%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
             delay={1}
           />
