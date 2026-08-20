@@ -108,10 +108,11 @@ const AdoptionLineage = () => {
         transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
         className="mx-auto mt-10 max-w-[620px] text-left leading-relaxed text-muted-foreground"
       >
-        <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is AI4I Core's governed access layer — the same engine now running
-        as <span className="font-bold text-brand-blue">AI Switch</span>. It verifies the identity of every request, checks what the
-        requester is entitled to, and meters consumption of the models it routes to in real time,
-        giving adopters complete visibility and control over how their AI infrastructure is used.
+        <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> verifies the identity
+        of every request, checks what the requester is entitled to, and meters consumption of the
+        models it routes to in real time. It is also part of{" "}
+        <span className="font-bold text-brand-blue">AI Switch</span>, giving adopters complete
+        visibility and control over how their AI infrastructure is used.
 
       </motion.p>
     </div>
