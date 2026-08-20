@@ -82,8 +82,11 @@ const AdoptionLineage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex justify-between"
         >
+          <p className="mb-4 text-center font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
+            Institutional Applications
+          </p>
+          <div className="flex justify-between">
           {institutions.map((inst) => (
             <div
               key={inst.label}
