@@ -54,7 +54,7 @@ const ChallengeSection = () => {
       </motion.div>
 
       <div
-        className="mt-10 rounded-2xl border border-border bg-[#FAFAFA] p-6 md:p-10"
+        className="mt-12 rounded-2xl border border-border bg-[#FAFAFA] p-6 md:p-10"
         aria-hidden="true"
       >
         <div className="mx-auto max-w-[560px]">
