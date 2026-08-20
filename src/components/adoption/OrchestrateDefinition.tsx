@@ -124,45 +124,10 @@ const OrchestrateDefinition = () => {
 
       <motion.div
         {...fade(0.15)}
-        className="rounded-2xl border border-border bg-[#FAFAFA] p-6 md:p-8"
+        className="flex justify-center rounded-2xl border border-border bg-[#FAFAFA] p-6 md:p-8"
         aria-hidden="true"
       >
-        <div className="mx-auto max-w-[300px]">
-          <div className="grid grid-cols-3 gap-2">
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="flex items-center justify-center rounded-lg border border-[#0079C1] bg-white py-3"
-              >
-                <Building2 size={16} strokeWidth={1.75} className="text-[#0079C1]" />
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center py-2">
-            <div className="h-6 w-0 border-l-2 border-dotted border-[#CBD5E1]" />
-          </div>
-
-          <div className="flex items-center justify-center gap-2 rounded-xl bg-[#0041A5] px-4 py-4 text-center">
-            <Zap size={18} strokeWidth={2} className="text-white" />
-            <span className="font-heading text-[13px] font-bold text-white">AI Switch</span>
-          </div>
-
-          <div className="flex justify-center py-2">
-            <div className="h-6 w-0 border-l-2 border-dotted border-[#CBD5E1]" />
-          </div>
-
-          <div className="grid grid-cols-3 gap-2">
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="flex items-center justify-center rounded-lg border border-[#0041A5] bg-[#F2F7FB] py-3"
-              >
-                <Cpu size={16} strokeWidth={1.75} className="text-[#0041A5]" />
-              </div>
-            ))}
-          </div>
-        </div>
+        <ConceptDiagram />
       </motion.div>
     </div>
   );
