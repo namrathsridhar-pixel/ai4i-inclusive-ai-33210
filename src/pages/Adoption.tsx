@@ -117,15 +117,12 @@ const Adoption = () => {
               className="rounded-2xl border border-border bg-card/60 p-5 sm:p-6"
             >
               <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-3 sm:gap-4">
-                <div className="flex flex-col items-center rounded-xl border border-brand-blue/25 bg-background px-4 py-5 text-center">
+                <div className="flex flex-col items-center justify-center rounded-xl border border-brand-blue/25 bg-background px-4 py-6 text-center">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-blue/40 text-brand-blue">
                     <Network size={20} strokeWidth={2} />
                   </div>
                   <p className="mt-3 font-heading text-sm font-bold text-brand-ink">
                     AI4I Orchestrate
-                  </p>
-                  <p className="mt-1 text-xs leading-snug text-muted-foreground">
-                    Open source building block
                   </p>
                 </div>
 
@@ -139,16 +136,14 @@ const Adoption = () => {
                   />
                 </div>
 
-                <div className="flex flex-col items-center rounded-xl bg-brand-navy px-4 py-5 text-center text-white">
+                <div className="flex flex-col items-center justify-center rounded-xl bg-brand-navy px-4 py-6 text-center text-white">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-cyan/15 text-brand-cyan">
                     <Zap size={20} strokeWidth={2} />
                   </div>
                   <p className="mt-3 font-heading text-sm font-bold">AI Switch</p>
-                  <p className="mt-1 text-xs leading-snug text-white/70">
-                    Running on adopter infrastructure
-                  </p>
                 </div>
               </div>
+
             </motion.div>
           </div>
         </div>
