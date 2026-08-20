@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
+import { Menu, X, Globe, BarChart3, Users, Calendar, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { preloadRoute } from "@/lib/route-preloader";
@@ -27,6 +27,32 @@ const Navigation = () => {
   const [showAdoptionMenu, setShowAdoptionMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const closeTimers = useRef<Record<string, ReturnType<typeof setTimeout> | undefined>>({});
+
+  const openMenu = (key: "blocks" | "adoption") => {
+    if (closeTimers.current[key]) clearTimeout(closeTimers.current[key]);
+    if (key === "blocks") {
+      setShowBuildingBlocksMenu(true);
+      setShowAdoptionMenu(false);
+    } else {
+      setShowAdoptionMenu(true);
+      setShowBuildingBlocksMenu(false);
+    }
+  };
+
+  const scheduleClose = (key: "blocks" | "adoption") => {
+    if (closeTimers.current[key]) clearTimeout(closeTimers.current[key]);
+    closeTimers.current[key] = setTimeout(() => {
+      if (key === "blocks") setShowBuildingBlocksMenu(false);
+      else setShowAdoptionMenu(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    const timers = closeTimers.current;
+    return () => Object.values(timers).forEach((t) => t && clearTimeout(t));
+  }, []);
+
   const navLinks = [
     { name: "Building Blocks", path: "/building-blocks" },
     { name: "Adoption", path: "/adoption" },
@@ -83,28 +109,33 @@ const Navigation = () => {
                   <div 
                     key={link.path}
                     className={`relative ${!isLastItem ? "mr-2 xl:mr-6" : ""}`}
-                    onMouseEnter={() => { setShowBuildingBlocksMenu(true); preloadRoute("/building-blocks"); }}
-                    onMouseLeave={() => setShowBuildingBlocksMenu(false)}
+                    onMouseEnter={() => { openMenu("blocks"); preloadRoute("/building-blocks"); }}
+                    onMouseLeave={() => scheduleClose("blocks")}
                   >
                     <Button
                       variant={isActive(link.path) ? "default" : "ghost"}
-                      className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
-                      onClick={() => setShowBuildingBlocksMenu(!showBuildingBlocksMenu)}
+                      className={`font-medium gap-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => (showBuildingBlocksMenu ? setShowBuildingBlocksMenu(false) : openMenu("blocks"))}
                       aria-expanded={showBuildingBlocksMenu}
+                      aria-haspopup="menu"
                     >
                       {link.name}
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform duration-200 ${showBuildingBlocksMenu ? "rotate-180" : ""}`}
+                      />
                     </Button>
                     
                     {showBuildingBlocksMenu && (
-                      <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
-                        <div className="p-2">
+                      <div className="absolute top-full left-0 pt-2 w-60 z-50">
+                        <div className="bg-brand-navy border border-white/20 rounded-lg shadow-large animate-fade-in p-2">
                           {buildingBlocksMenu.map((item) => {
                             const Icon = item.icon;
                             return (
                               <Link
                                 key={item.id}
                                 to={`/building-blocks#${item.id}`}
-                                className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                                className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
                                 onClick={() => setShowBuildingBlocksMenu(false)}
                               >
                                 <Icon size={18} />
@@ -124,28 +155,33 @@ const Navigation = () => {
                   <div
                     key={link.path}
                     className={`relative ${!isLastItem ? "mr-2 xl:mr-6" : ""}`}
-                    onMouseEnter={() => { setShowAdoptionMenu(true); preloadRoute("/adoption"); }}
-                    onMouseLeave={() => setShowAdoptionMenu(false)}
+                    onMouseEnter={() => { openMenu("adoption"); preloadRoute("/adoption"); }}
+                    onMouseLeave={() => scheduleClose("adoption")}
                   >
                     <Button
                       variant={isActive(link.path) ? "default" : "ghost"}
-                      className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
-                      onClick={() => setShowAdoptionMenu(!showAdoptionMenu)}
+                      className={`font-medium gap-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => (showAdoptionMenu ? setShowAdoptionMenu(false) : openMenu("adoption"))}
                       aria-expanded={showAdoptionMenu}
+                      aria-haspopup="menu"
                     >
                       {link.name}
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform duration-200 ${showAdoptionMenu ? "rotate-180" : ""}`}
+                      />
                     </Button>
 
                     {showAdoptionMenu && (
-                      <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
-                        <div className="p-2">
+                      <div className="absolute top-full left-0 pt-2 w-60 z-50">
+                        <div className="bg-brand-navy border border-white/20 rounded-lg shadow-large animate-fade-in p-2">
                           {adoptionMenu.map((item) => {
                             const Icon = item.icon;
                             return (
                               <Link
                                 key={item.path}
                                 to={item.path}
-                                className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                                className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
                                 onClick={() => setShowAdoptionMenu(false)}
                               >
                                 <Icon size={18} />
@@ -158,6 +194,7 @@ const Navigation = () => {
                     )}
                   </div>
                 );
+
               }
 
 
