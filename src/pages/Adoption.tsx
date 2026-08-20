@@ -18,7 +18,7 @@ import {
   Wallet,
 } from "lucide-react";
 
-const AdoptionLineage = lazy(() => import("@/components/AdoptionLineage"));
+const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
 const OrchestrateDefinition = lazy(() => import("@/components/adoption/OrchestrateDefinition"));
@@ -176,9 +176,18 @@ const Adoption = () => {
           </motion.h2>
           <motion.div {...fadeUp} className="mt-8">
             <Suspense fallback={null}>
-              <AdoptionLineage />
+              <AdoptionArchitecture />
             </Suspense>
           </motion.div>
+          <motion.p
+            {...fadeUp}
+            className="mt-10 max-w-[620px] text-[16px] leading-[1.7] text-muted-foreground"
+          >
+            <span className="font-semibold text-brand-ink">AI Switch</span> verifies the identity of
+            every request, checks what the requester is entitled to, and meters consumption of the
+            models it routes to in real time — giving adopters complete visibility and control over
+            how their AI infrastructure is used.
+          </motion.p>
         </div>
       </section>
 
