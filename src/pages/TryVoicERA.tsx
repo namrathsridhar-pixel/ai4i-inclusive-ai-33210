@@ -228,7 +228,7 @@ const TryVoicEra = () => {
                   <AlertTriangle className="text-red-400" size={28} />
                 </div>
                 <p className="font-heading font-bold text-lg text-white mb-2">Unable to initiate call.</p>
-                <p className="text-sm text-white/50">Please try again in a few minutes.</p>
+                <p className="text-sm text-white/50">{errorMessage || "Please try again in a few minutes."}</p>
                 <Button
                   variant="outline"
                   className="mt-6 bg-transparent border-white/20 text-white/70 hover:bg-white/10 hover:text-white"
