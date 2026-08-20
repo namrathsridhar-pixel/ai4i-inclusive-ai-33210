@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
+import { Menu, X, Globe, BarChart3, Users, Calendar, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { preloadRoute } from "@/lib/route-preloader";
