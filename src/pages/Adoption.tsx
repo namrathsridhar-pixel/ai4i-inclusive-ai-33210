@@ -176,6 +176,15 @@ const Adoption = () => {
             language or ability. Every adoption strengthens the shared Digital Public Good the next
             one builds on.
           </motion.p>
+          <motion.p
+            {...fadeUp}
+            className="mt-4 max-w-[640px] text-[17px] leading-[1.7] text-muted-foreground"
+          >
+            <span className="font-semibold text-brand-ink">AI4I Orchestrate</span>'s adoption as{" "}
+            <span className="font-bold text-brand-blue">AI Switch</span> is one such example — proof
+            that a shared building block can operate at institutional scale, ready for the next
+            organisation to build on.
+          </motion.p>
 
           <motion.div
             {...fadeUp}
