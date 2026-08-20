@@ -21,7 +21,7 @@ const institutions = [
   { label: "Education" },
 ];
 
-const TOP_COLOR = "#93C5FD";
+const TOP_COLOR = "#0079C1";
 const BOTTOM_COLOR = "#0079C1";
 
 const Arrow = ({ color, left }: { color: string; left: string }) => (
@@ -82,8 +82,11 @@ const AdoptionLineage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex justify-between"
         >
+          <p className="mb-4 text-center font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
+            Institutional Applications
+          </p>
+          <div className="flex justify-between">
           {institutions.map((inst) => (
             <div
               key={inst.label}
@@ -93,6 +96,7 @@ const AdoptionLineage = () => {
               <span className="font-heading text-xs font-bold text-brand-ink">{inst.label}</span>
             </div>
           ))}
+          </div>
         </motion.div>
 
         {/* Connector: institutions -> center node */}
