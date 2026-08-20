@@ -13,9 +13,11 @@ import {
   Globe,
   KeyRound,
   Landmark,
+  Network,
   Search,
   Shuffle,
   Wallet,
+  Zap,
 } from "lucide-react";
 
 const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
