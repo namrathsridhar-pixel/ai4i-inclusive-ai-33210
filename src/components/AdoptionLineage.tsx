@@ -114,7 +114,6 @@ const AdoptionLineage = () => {
           />
           <Arrow color={TOP_COLOR} left="50%" />
           <PulseDot
-          <PulseDot
             color="#C8A24A"
             lefts={["12.5%", "12.5%", "31%", "50%", "50%"]}
             tops={["0px", "35px", "35px", "35px", "70px"]}
