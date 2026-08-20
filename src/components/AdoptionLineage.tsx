@@ -31,7 +31,7 @@ const AdoptionLineage = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="absolute inset-0 -z-10 h-full w-full"
+          className="absolute inset-0 z-0 h-full w-full"
           viewBox="0 0 500 400"
           preserveAspectRatio="xMidYMid meet"
           aria-hidden="true"
