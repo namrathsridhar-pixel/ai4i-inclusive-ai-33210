@@ -29,7 +29,7 @@ const Engagements = () => {
           </p>
         </motion.div>
 
-        {/* VoicERA Interest Card */}
+        {/* VoicEra Interest Card */}
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -81,12 +81,12 @@ const Engagements = () => {
         </div>
       </div>
 
-      {/* VoicERA Interest Dialog */}
+      {/* VoicEra Interest Dialog */}
       <Dialog open={voiceraOpen} onOpenChange={setVoiceraOpen}>
         <DialogContent className="max-w-lg p-0 bg-background overflow-auto max-h-[90vh]">
           <VisuallyHidden>
-            <DialogTitle>Show Interest in VoicERA</DialogTitle>
-            <DialogDescription>Register your interest in VoicERA</DialogDescription>
+            <DialogTitle>Show Interest in VoicEra</DialogTitle>
+            <DialogDescription>Register your interest in VoicEra</DialogDescription>
           </VisuallyHidden>
           <div className="p-1">
             <VoiceraInterestForm />

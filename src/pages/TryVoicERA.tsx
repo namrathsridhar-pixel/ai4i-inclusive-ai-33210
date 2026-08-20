@@ -19,7 +19,7 @@ const FloatingNode = ({ delay, x, y, size }: { delay: number; x: number; y: numb
   />
 );
 
-const TryVoicERA = () => {
+const TryVoicEra = () => {
   const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "rateLimit">("idle");
@@ -152,7 +152,7 @@ const TryVoicERA = () => {
           <div className="w-9 h-9 rounded-full bg-white/10 border border-white/15 flex items-center justify-center group-hover:bg-white/15 transition-colors">
             <Phone className="text-white/80" size={18} />
           </div>
-          <span className="text-lg font-gonzaga font-bold text-white tracking-wide">VoicERA</span>
+          <span className="text-lg font-gonzaga font-bold text-white tracking-wide">VoicEra</span>
         </Link>
         <Link
           to="/"
@@ -185,7 +185,7 @@ const TryVoicERA = () => {
                   <CheckCircle className="text-green-400" size={28} />
                 </div>
                 <p className="font-heading font-bold text-xl text-white mb-2">Call Initiated</p>
-                <p className="text-sm text-white/50 mb-1">You will receive a call shortly from VoicERA.</p>
+                <p className="text-sm text-white/50 mb-1">You will receive a call shortly from VoicEra.</p>
                 <p className="text-xs text-white/40">Please answer your phone to experience the real-time voice interaction.</p>
                 <Button
                   variant="outline"
@@ -280,4 +280,4 @@ const TryVoicERA = () => {
   );
 };
 
-export default TryVoicERA;
+export default TryVoicEra;

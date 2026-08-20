@@ -34,7 +34,7 @@ const featureBlocks = [{
   discussUrl: "https://github.com/COSS-India/ai4i-contribute/discussions",
   blockLink: "/building-blocks#contribute"
 }, {
-  title: "AI4I-VoicERA",
+  title: "AI4I-VoicEra",
   description: "India's sovereign Voice Operating System, a production-grade, open-source platform for citizen-scale, real-time, multilingual voice services with full on-premises data sovereignty.",
   bullets: ["Real-time streaming STT, LLM, and TTS pipeline", "Indic-first with native code-switching support", "On-premises Voice-in-a-Box deployment", "SIP / PSTN / VoIP telephony integration"],
   icon: <Phone className="text-primary-foreground" size={24} />,
