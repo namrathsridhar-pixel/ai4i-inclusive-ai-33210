@@ -1058,7 +1058,7 @@ const BuildingBlocks = () => {
           </section>
         )}
 
-        {/* VoicERA */}
+        {/* AI4I VoicEra */}
         {activeSection === "voicera" && (
           <section className="pt-32 pb-20 px-4" id="voicera">
             <div className="container mx-auto max-w-6xl">
@@ -1103,7 +1103,7 @@ const BuildingBlocks = () => {
                         </div>
                         <PreloadedImage
                           src={voiceraSovereignStack}
-                          alt="VoicERA: Creating a Sovereign Stack for Open Voice AI"
+                          alt="AI4I VoicEra: Creating a Sovereign Stack for Open Voice AI"
                           className="rounded-lg"
                           containerClassName="rounded-lg"
                           aspectRatio="16/9"
@@ -1113,13 +1113,13 @@ const BuildingBlocks = () => {
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                     <VisuallyHidden>
-                      <DialogTitle>VoicERA: India's Sovereign Voice Operating System</DialogTitle>
-                      <DialogDescription>Overview of VoicERA architecture and capabilities</DialogDescription>
+                      <DialogTitle>AI4I VoicEra: India's Sovereign Voice Operating System</DialogTitle>
+                      <DialogDescription>Overview of AI4I VoicEra architecture and capabilities</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
                       <img 
                         src={voiceraSovereignStack} 
-                        alt="VoicERA: Creating a Sovereign Stack for Open Voice AI" 
+                        alt="AI4I VoicEra: Creating a Sovereign Stack for Open Voice AI" 
                         className="w-full h-auto"
                         loading="eager"
                       />
@@ -1128,7 +1128,7 @@ const BuildingBlocks = () => {
                 </Dialog>
               </motion.div>
 
-              {/* SECTION 2 — Why VoicERA Matters */}
+              {/* SECTION 2 — Why AI4I VoicEra Matters */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1171,7 +1171,7 @@ const BuildingBlocks = () => {
                         </div>
                         <PreloadedImage
                           src={voiceraEcosystemPillars}
-                          alt="VoicERA: India's Sovereign Voice Infrastructure"
+                          alt="AI4I VoicEra: India's Sovereign Voice Infrastructure"
                           className="rounded-lg"
                           containerClassName="rounded-lg"
                           aspectRatio="16/9"
@@ -1181,17 +1181,17 @@ const BuildingBlocks = () => {
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background overflow-auto">
                     <VisuallyHidden>
-                      <DialogTitle>VoicERA: India's Sovereign Voice Infrastructure</DialogTitle>
-                      <DialogDescription>Infrastructure diagram showing VoicERA's sovereign architecture and performance</DialogDescription>
+                      <DialogTitle>AI4I VoicEra: India's Sovereign Voice Infrastructure</DialogTitle>
+                      <DialogDescription>Infrastructure diagram showing AI4I VoicEra's sovereign architecture and performance</DialogDescription>
                     </VisuallyHidden>
                     <div className="p-4">
-                      <img src={voiceraEcosystemPillars} alt="VoicERA: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
+                      <img src={voiceraEcosystemPillars} alt="AI4I VoicEra: India's Sovereign Voice Infrastructure" className="w-full h-auto" loading="eager" />
                     </div>
                   </DialogContent>
                 </Dialog>
               </motion.div>
 
-              {/* SECTION 4 — What VoicERA Enables */}
+              {/* SECTION 4 — What AI4I VoicEra Enables */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1234,7 +1234,7 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* SECTION 5 — VoicERA in the Ecosystem */}
+              {/* SECTION 5 — AI4I VoicEra in the Ecosystem */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1244,12 +1244,12 @@ const BuildingBlocks = () => {
               >
                 <div className="mb-8">
                   <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I VoicEra: The Sovereign Voice Layer for Language AI</h3>
-                  <p className="text-muted-foreground text-center max-w-2xl mx-auto">VoicERA adds the voice layer to the AI4Inclusion infrastructure stack.</p>
+                  <p className="text-muted-foreground text-center max-w-2xl mx-auto">AI4I VoicEra adds the voice layer to the AI4Inclusion infrastructure stack.</p>
                 </div>
                 <EcosystemFlow 
                   steps={[
                     { icon: <Users size={20} />, label: "Citizens", description: "Access services through natural voice calls" },
-                    { icon: <Zap size={20} />, label: "VoicERA", description: "Real-time speech processing and orchestration", highlight: true },
+                    { icon: <Zap size={20} />, label: "AI4I VoicEra", description: "Real-time speech processing and orchestration", highlight: true },
                     { icon: <Layers size={20} />, label: "Orchestrate", description: "Routes requests to appropriate AI models" },
                     { icon: <Eye size={20} />, label: "Observe", description: "Monitors quality, performance, and compliance" },
                   ]} 
@@ -1257,7 +1257,7 @@ const BuildingBlocks = () => {
                 />
               </motion.div>
 
-              {/* SECTION 6 — Explore More About VoicERA */}
+              {/* SECTION 6 — Explore More About AI4I VoicEra */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1271,7 +1271,7 @@ const BuildingBlocks = () => {
                     width="100%"
                     height="100%"
                     src="https://www.youtube.com/embed/PFPzxniv1p8"
-                    title="VoicERA Overview"
+                    title="AI4I VoicEra Overview"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
@@ -1313,12 +1313,12 @@ const BuildingBlocks = () => {
                 </div>
               </motion.div>
 
-              {/* VoicERA Interest Form Dialog */}
+              {/* AI4I VoicEra Interest Form Dialog */}
               <Dialog open={voiceraInterestOpen} onOpenChange={setVoiceraInterestOpen}>
                 <DialogContent className="max-w-lg p-0 bg-background overflow-auto max-h-[90vh]">
                   <VisuallyHidden>
-                    <DialogTitle>Show Interest in VoicERA</DialogTitle>
-                    <DialogDescription>Register your interest in VoicERA</DialogDescription>
+                    <DialogTitle>Show Interest in AI4I VoicEra</DialogTitle>
+                    <DialogDescription>Register your interest in AI4I VoicEra</DialogDescription>
                   </VisuallyHidden>
                   <div className="p-1">
                     <VoiceraInterestForm />
