@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 
 const AdoptionLineage = lazy(() => import("@/components/AdoptionLineage"));
+const ChallengeDiagram = lazy(() => import("@/components/adoption/ChallengeDiagram"));
+const ConceptDiagram = lazy(() => import("@/components/adoption/ConceptDiagram"));
 
 const groups = [
   {
@@ -71,45 +73,113 @@ const Adoption = () => {
       <section className="bg-background px-4 pb-[60px] pt-[100px]">
         <div className="container mx-auto max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="font-heading text-xs font-bold tracking-[0.16em] text-brand-cyan">
-              IN PRODUCTION
-            </p>
-            <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
-              Adoption
+            <h1 className="font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
+              AI4I Orchestrate
             </h1>
-            <p className="mt-6 max-w-[640px] text-[17px] leading-[1.7] text-muted-foreground">
-              <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is in production. Deployed and operated by an adopting organisation on
-              its own infrastructure, it runs there as <span className="font-bold text-brand-blue">AI Switch</span> — serving every institution
-              onboarded onto it.
+            <p className="mt-6 max-w-[660px] text-[17px] leading-[1.7] text-muted-foreground">
+              <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is the governed
+              access layer within AI4I Core — running today, branded as{" "}
+              <span className="font-bold text-brand-blue">AI Switch</span>.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Section 2 — The lineage */}
-      <section className="bg-brand-mist px-4 py-20" id="ai-switch">
+      {/* Section 2 — The Challenge */}
+      <section className="bg-brand-mist px-4 py-20" id="challenge">
         <div className="container mx-auto max-w-5xl">
           <motion.div {...fadeUp}>
+            <p className="font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
+              The Challenge
+            </p>
+            <h2 className="mt-3 font-heading text-3xl font-bold text-brand-ink md:text-4xl">
+              The challenge
+            </h2>
+            <p className="mt-5 max-w-[680px] text-[17px] leading-[1.7] text-muted-foreground">
+              Every department, state, and institution that wants to deploy language AI today must
+              independently solve compute procurement, model selection, safety evaluation, API
+              design, metering, and ongoing operations — before writing a single line of application
+              logic. The result is duplication, fragmentation, higher entry barriers, and slower
+              adoption.
+            </p>
+          </motion.div>
+
+          <motion.div {...fadeUp} className="mt-10">
             <Suspense fallback={null}>
-              <AdoptionLineage />
+              <ChallengeDiagram />
             </Suspense>
           </motion.div>
         </div>
       </section>
 
-      {/* Section 3 — What AI Switch does */}
-      <section className="bg-background px-4 py-20">
+      {/* Section 3 — The Concept */}
+      <section className="bg-background px-4 py-20" id="concept">
         <div className="container mx-auto max-w-5xl">
           <motion.div {...fadeUp}>
-            <h2 className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-              What AI Switch does
+            <p className="font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
+              The Analogy
+            </p>
+            <h2 className="mt-3 font-heading text-3xl font-bold text-brand-ink md:text-4xl">
+              The concept
             </h2>
-            <p className="mt-3 max-w-[620px] text-[17px] text-muted-foreground">
+          </motion.div>
+
+          <div className="mt-10 grid items-start gap-10 md:grid-cols-[1.15fr_1fr]">
+            <motion.div {...fadeUp}>
+              <blockquote className="relative rounded-2xl bg-brand-mist px-8 py-7">
+                <span
+                  aria-hidden="true"
+                  className="absolute left-3 top-1 font-heading text-4xl leading-none text-[#C8A24A]"
+                >
+                  &ldquo;
+                </span>
+                <p className="font-heading text-[19px] font-semibold leading-[1.6] text-brand-ink">
+                  No factory builds its own power plant to run its machines. It connects to the grid
+                  and draws what it needs — metered and accountable.
+                </p>
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-0 right-4 font-heading text-4xl leading-none text-[#C8A24A]"
+                >
+                  &rdquo;
+                </span>
+              </blockquote>
+
+              <p className="mt-6 max-w-[660px] text-[17px] leading-[1.7] text-muted-foreground">
+                Before the grid existed, only the largest and most resourced institutions could
+                access electricity. With the emergence of sovereign power grids, electricity became
+                the substrate of the entire economy.
+              </p>
+              <p className="mt-4 max-w-[660px] text-[17px] leading-[1.7] text-muted-foreground">
+                <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> applies the
+                same principle to language AI — a governed access layer that lets institutions draw
+                on shared compute and models, metered and accountable, instead of each building
+                their own from scratch.
+              </p>
+            </motion.div>
+
+            <motion.div {...fadeUp}>
+              <Suspense fallback={null}>
+                <ConceptDiagram />
+              </Suspense>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4 — What AI4I Orchestrate does */}
+      <section className="bg-brand-mist px-4 py-20" id="functions">
+        <div className="container mx-auto max-w-5xl">
+          <motion.div {...fadeUp}>
+            <h2 className="font-heading text-2xl font-bold text-brand-ink md:text-3xl">
+              What AI4I Orchestrate does
+            </h2>
+            <p className="mt-2 max-w-[620px] text-[15px] text-muted-foreground">
               Nine functions, in three groups
             </p>
           </motion.div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
             {groups.map((group, gi) => (
               <motion.div
                 key={group.label}
@@ -117,26 +187,26 @@ const Adoption = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: gi * 0.12, ease: "easeOut" }}
-                className="rounded-2xl bg-muted/40 p-8"
+                className="rounded-2xl bg-card p-6"
               >
-                <p className="font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
                   {group.label}
                 </p>
-                <div className="mt-6 space-y-6">
+                <div className="mt-4 space-y-4">
                   {group.items.map((item) => {
                     const Icon = item.icon;
                     return (
                       <div key={item.title} className="flex gap-3">
                         <span
-                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${group.tint}`}
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${group.tint}`}
                         >
-                          <Icon size={16} strokeWidth={2} />
+                          <Icon size={15} strokeWidth={2} />
                         </span>
                         <div>
-                          <h3 className="font-heading text-sm font-bold text-brand-ink">
+                          <h3 className="font-heading text-[13px] font-bold text-brand-ink">
                             {item.title}
                           </h3>
-                          <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                          <p className="mt-0.5 text-[12px] leading-relaxed text-muted-foreground">
                             {item.body}
                           </p>
                         </div>
@@ -150,7 +220,21 @@ const Adoption = () => {
         </div>
       </section>
 
-      {/* Section 4 — Ecosystem */}
+      {/* Section 5 — How it works */}
+      <section className="bg-background px-4 py-20" id="how-it-works">
+        <div className="container mx-auto max-w-5xl">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
+            How it works
+          </motion.h2>
+          <motion.div {...fadeUp} className="mt-8">
+            <Suspense fallback={null}>
+              <AdoptionLineage />
+            </Suspense>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 6 — Ecosystem */}
       <section className="bg-brand-mist px-4 py-20" id="ecosystem">
         <div className="container mx-auto max-w-4xl">
           <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">

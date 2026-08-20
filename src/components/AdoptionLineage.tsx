@@ -24,6 +24,7 @@ const AdoptionLineage = () => {
               Onboarded Institutions
             </span>
           </div>
+
           <p className="mt-3 text-center text-xs text-muted-foreground">
             Citizen services, health, education, agriculture
           </p>
