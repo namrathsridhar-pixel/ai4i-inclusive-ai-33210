@@ -145,9 +145,12 @@ const AdoptionLineage = () => {
         >
           <div className="animate-pulse-glow absolute inset-0 rounded-2xl bg-brand-blue/20" />
           <div className="relative flex flex-col items-center justify-center gap-1 rounded-2xl bg-brand-blue px-6 py-6 text-center shadow-[0_10px_30px_-12px_rgba(0,65,165,0.5)]">
+            <span className="absolute -right-2 -top-2 inline-flex items-center gap-1.5 rounded-full border border-brand-blue bg-white px-2.5 py-1 text-[10px] font-semibold text-brand-blue shadow-sm">
+              <span className="h-1 w-1 rounded-full bg-brand-blue" />
+              Also runs as AI Switch
+            </span>
             <Zap size={26} className="text-white" strokeWidth={2} />
             <span className="font-heading text-xl font-bold text-white">AI4I Orchestrate</span>
-            <span className="text-[10px] text-white/60">also runs as AI Switch</span>
 
             <div className="mt-3 grid w-full grid-cols-3 gap-1.5">
               {functionPills.map((p) => (
