@@ -122,7 +122,33 @@ const TryVoicEra = () => {
       });
 
       if (error || !data?.success) {
-        console.error("Call initiation failed:", error || data?.error);
+        let httpStatus: number | undefined;
+        let message: string | undefined = data?.error;
+
+        const ctx = (error as { context?: Response } | null)?.context;
+        if (ctx) {
+          httpStatus = ctx.status;
+          try {
+            const body = await ctx.clone().json();
+            message = body?.error || body?.message || message;
+          } catch {
+            /* ignore non-JSON error bodies */
+          }
+        }
+
+        console.error("Call initiation failed:", httpStatus, message || error);
+
+        if (httpStatus === 429 || /rate limit|concurrency/i.test(message ?? "")) {
+          setErrorMessage(
+            message?.toLowerCase().includes("concurrency")
+              ? "All demo lines are currently busy. Please try again in a minute."
+              : "Too many requests right now. Please try again in a minute.",
+          );
+          setStatus("rateLimit");
+          return;
+        }
+
+        setErrorMessage(message ?? "");
         setStatus("error");
         return;
       }
