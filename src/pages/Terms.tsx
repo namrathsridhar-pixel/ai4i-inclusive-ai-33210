@@ -21,7 +21,7 @@ const Terms = () => {
                 <a href="https://ai4inclusion.org" className="text-primary hover:underline">
                   https://ai4inclusion.org
                 </a>
-                ) is maintained by the Center for Open Societal Systems ("COSS"), formed at IIIT-Bangalore (IIIT-B) in partnership with EkStep Foundation, having its registered office at 26/C, COSS, IIIT Bangalore, Opposite of Infosys gate 1, Electronics City Phase 1, Hosur Road, Bengaluru - 560100, Karnataka, India.
+                ) is maintained by the Center for Open Societal Systems ("COSS"), formed at IIIT-Bangalore (IIIT-B) in partnership with EkStep Foundation, having its registered office at 26/C, COSS, IIIT Bangalore, Opposite of Infosys gate 1, Electronics City Phase 1, Hosur Road, Bengaluru — 560100, Karnataka, India.
               </p>
 
               <p className="text-muted-foreground">

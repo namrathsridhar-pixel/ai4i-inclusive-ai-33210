@@ -153,7 +153,7 @@ const Events = () => {
                   {/* Location Info - styled card */}
                   <div className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 space-y-1.5">
                     <p className="text-sm md:text-base text-white/80 font-semibold tracking-wide">
-                      📍 New Delhi · 16–20 February 2026
+                      📍 New Delhi · 16—20 February 2026
                     </p>
                     <p className="text-xs md:text-sm text-white/60 font-medium">
                       Pavilion: People+Possibilities Center 22, Hall 3, 1st Floor, Bharat Mandapam

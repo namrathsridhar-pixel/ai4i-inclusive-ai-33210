@@ -112,7 +112,7 @@ const JoinUs = () => {
             <div className="px-2 md:px-3 pt-4">
               <img 
                 src={joinUsHeroImage}
-                alt="AI4Inclusion Community - Multilingual Language Technology"
+                alt="AI4Inclusion Community — Multilingual Language Technology"
                 className="w-full h-auto object-cover rounded-lg max-h-[300px] md:max-h-[400px]"
                 loading="eager"
                 decoding="async"
