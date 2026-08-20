@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Globe, BarChart3, Users, Calendar, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Globe, BarChart3, Users, Calendar, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { preloadRoute } from "@/lib/route-preloader";
@@ -93,7 +93,6 @@ const Navigation = () => {
                       aria-expanded={showBuildingBlocksMenu}
                     >
                       {link.name}
-                      <ChevronDown size={14} className={`ml-1 transition-transform duration-200 ${showBuildingBlocksMenu ? 'rotate-180' : ''}`} />
                     </Button>
                     
                     {showBuildingBlocksMenu && (
@@ -135,7 +134,6 @@ const Navigation = () => {
                       aria-expanded={showAdoptionMenu}
                     >
                       {link.name}
-                      <ChevronDown size={14} className={`ml-1 transition-transform duration-200 ${showAdoptionMenu ? 'rotate-180' : ''}`} />
                     </Button>
 
                     {showAdoptionMenu && (
@@ -213,14 +211,11 @@ const Navigation = () => {
                   <div key={link.path}>
                     <Button
                       variant={isActive(link.path) ? "default" : "ghost"}
-                      className={`w-full justify-between font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      className={`w-full justify-start font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
                       onClick={() => setShowBuildingBlocksMenu(!showBuildingBlocksMenu)}
                       aria-expanded={showBuildingBlocksMenu}
                     >
-                      <span className="flex items-center">
-                        {link.name}
-                      </span>
-                      <ChevronDown size={14} className={`transition-transform duration-200 ${showBuildingBlocksMenu ? 'rotate-180' : ''}`} />
+                      {link.name}
                     </Button>
                     {showBuildingBlocksMenu && (
                       <div className="ml-4 space-y-1">
@@ -249,14 +244,11 @@ const Navigation = () => {
                   <div key={link.path}>
                     <Button
                       variant={isActive(link.path) ? "default" : "ghost"}
-                      className={`w-full justify-between font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      className={`w-full justify-start font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
                       onClick={() => setShowAdoptionMenu(!showAdoptionMenu)}
                       aria-expanded={showAdoptionMenu}
                     >
-                      <span className="flex items-center">
-                        {link.name}
-                      </span>
-                      <ChevronDown size={14} className={`transition-transform duration-200 ${showAdoptionMenu ? 'rotate-180' : ''}`} />
+                      {link.name}
                     </Button>
                     {showAdoptionMenu && (
                       <div className="ml-4 space-y-1">
