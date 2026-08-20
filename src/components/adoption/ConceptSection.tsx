@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { Factory, TowerControl, Home, Server, Zap, MessageSquare } from "lucide-react";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 14 },
@@ -8,64 +9,84 @@ const fade = (delay: number) => ({
   transition: { duration: 0.5, delay, ease: "easeOut" as const },
 });
 
-const Level = ({
-  title,
-  sub,
-  accent,
-  glow,
-}: {
+type Node = {
   title: string;
   sub?: string;
-  accent: boolean;
-  glow?: boolean;
-}) => (
-  <div className="relative">
-    {glow && (
-      <div className="animate-pulse-glow absolute inset-0 rounded-xl bg-brand-blue/20" />
-    )}
-    <div
-      className={`relative rounded-xl border px-4 py-4 text-center ${
-        accent
-          ? "border-[#0041A5] bg-[#F2F7FB]"
-          : "border-[#CBD5E1] bg-white"
-      }`}
-    >
-      <p
-        className={`font-heading text-[12.5px] font-bold ${
-          accent ? "text-[#0041A5]" : "text-[#64748B]"
-        }`}
-      >
-        {title}
-      </p>
-      {sub && (
-        <p className={`mt-1 text-[10.5px] ${accent ? "text-[#0079C1]" : "text-[#94A3B8]"}`}>
-          {sub}
-        </p>
-      )}
+  Icon: typeof Factory;
+};
+
+const left: Node[] = [
+  { title: "Power Generation", Icon: Factory },
+  { title: "Transmission Grid", sub: "meter · control", Icon: TowerControl },
+  { title: "Homes · Factories", Icon: Home },
+];
+
+const right: Node[] = [
+  { title: "Sovereign Compute", Icon: Server },
+  { title: "AI Switch", sub: "auth · route · meter", Icon: Zap },
+  { title: "Applications", Icon: MessageSquare },
+];
+
+const Card = ({
+  node,
+  variant,
+}: {
+  node: Node;
+  variant: "muted" | "accent" | "highlight";
+}) => {
+  const styles = {
+    muted: "border-[#E2E8F0] bg-[#F6F8FA]",
+    accent: "border-[#0079C1]/35 bg-[#F2F7FB]",
+    highlight: "border-[#0041A5] bg-white shadow-[0_0_0_3px_rgba(0,65,165,0.08)]",
+  }[variant];
+
+  const iconColor = {
+    muted: "text-[#94A3B8]",
+    accent: "text-[#0079C1]",
+    highlight: "text-[#0041A5]",
+  }[variant];
+
+  const { Icon } = node;
+
+  return (
+    <div className={`rounded-xl border px-4 py-6 text-center ${styles}`}>
+      <div className="flex justify-center">
+        <Icon size={34} strokeWidth={1.4} className={iconColor} />
+      </div>
+      <p className="mt-4 font-heading text-[13px] font-bold text-[#1A1A1A]">{node.title}</p>
+      {node.sub && <p className="mt-1 text-[11px] text-[#94A3B8]">{node.sub}</p>}
     </div>
-  </div>
-);
+  );
+};
 
-const Drop = ({ accent }: { accent: boolean }) => (
-  <div className="flex justify-center py-1.5" aria-hidden="true">
-    <div
-      className="h-5 w-0 border-l-2 border-dotted"
-      style={{ borderColor: accent ? "#0079C1" : "#CBD5E1" }}
-    />
-  </div>
-);
-
-const left = [
-  { title: "Power Generation" },
-  { title: "Transmission Grid", sub: "meter · control" },
-  { title: "Homes · Factories" },
-];
-
-const right = [
-  { title: "Sovereign Compute" },
-  { title: "AI Switch", sub: "auth · route · meter" },
-  { title: "Applications" },
-];
+const Connector = ({ accent, delay }: { accent: boolean; delay: number }) => {
+  const reduce = useReducedMotion();
+  const color = accent ? "#0079C1" : "#94A3B8";
+  return (
+    <div className="relative flex h-9 justify-center" aria-hidden="true">
+      <div className="h-full w-px" style={{ backgroundColor: accent ? "#BFDBFE" : "#E2E8F0" }} />
+      {!reduce && (
+        <motion.span
+          className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rounded-full"
+          style={{ backgroundColor: color }}
+          initial={{ y: 0, opacity: 0 }}
+          animate={{ y: [0, 28], opacity: [0, 1, 1, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 1.2, delay, ease: "easeInOut" }}
+        />
+      )}
+      <span
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+        style={{
+          width: 0,
+          height: 0,
+          borderLeft: "4px solid transparent",
+          borderRight: "4px solid transparent",
+          borderTop: `6px solid ${accent ? "#BFDBFE" : "#E2E8F0"}`,
+        }}
+      />
+    </div>
+  );
+};
 
 const ConceptSection = () => {
   return (
@@ -95,10 +116,9 @@ const ConceptSection = () => {
           of the entire economy.
         </p>
         <p className="mt-4 max-w-[680px] text-[16px] leading-[1.7] text-muted-foreground">
-          <span className="font-semibold text-brand-ink">AI Switch</span> applies the same
-          principle to language AI — a governed access layer that lets institutions draw on shared
-          compute and models, metered and accountable, instead of each building their own from
-          scratch.
+          <span className="font-semibold text-brand-ink">AI Switch</span> is the same layer for the
+          AI grid — a governed access layer that lets institutions draw on shared sovereign compute
+          and models, metered and accountable, instead of each building their own from scratch.
         </p>
       </motion.div>
 
@@ -108,32 +128,26 @@ const ConceptSection = () => {
         aria-hidden="true"
       >
         <div className="mx-auto grid max-w-[640px] grid-cols-[1fr_auto_1fr] gap-x-4 md:gap-x-8">
-          {/* headers */}
-          <p className="mb-4 text-center font-heading text-[11px] font-bold uppercase tracking-[2px] text-[#94A3B8]">
+          <p className="mb-5 text-center font-heading text-[11px] font-bold uppercase tracking-[3px] text-[#94A3B8]">
             Power Grid
           </p>
           <div />
-          <p className="mb-4 text-center font-heading text-[11px] font-bold uppercase tracking-[2px] text-[#0079C1]">
-            Language AI
+          <p className="mb-5 text-center font-heading text-[11px] font-bold uppercase tracking-[3px] text-[#0079C1]">
+            AI Grid
           </p>
 
           {[0, 1, 2].map((i) => (
             <Fragment key={i}>
               <div>
-                <Level title={left[i].title} sub={left[i].sub} accent={false} />
-                {i < 2 && <Drop accent={false} />}
+                <Card node={left[i]} variant="muted" />
+                {i < 2 && <Connector accent={false} delay={i * 0.5} />}
               </div>
-              <div className="flex items-start justify-center pt-4">
-                <span className="text-[15px] font-bold text-[#94A3B8]">&#8801;</span>
+              <div className="flex items-start justify-center pt-14">
+                <span className="text-[15px] font-bold text-[#CBD5E1]">&#8801;</span>
               </div>
               <div>
-                <Level
-                  title={right[i].title}
-                  sub={right[i].sub}
-                  accent
-                  glow={i === 1}
-                />
-                {i < 2 && <Drop accent />}
+                <Card node={right[i]} variant={i === 1 ? "highlight" : "accent"} />
+                {i < 2 && <Connector accent delay={0.25 + i * 0.5} />}
               </div>
             </Fragment>
           ))}
