@@ -87,17 +87,36 @@ const Adoption = () => {
         </div>
       </section>
 
-      {/* Section 2 — Challenge & Concept */}
+      {/* Section 2 — The Challenge */}
       <section className="bg-brand-mist px-4 py-20" id="challenge">
         <div className="container mx-auto max-w-5xl">
           <Suspense fallback={null}>
-            <ChallengeConcept />
+            <ChallengeSection />
           </Suspense>
         </div>
       </section>
 
-      {/* Section 4 — What AI4I Orchestrate does */}
-      <section className="bg-brand-mist px-4 py-20" id="functions">
+      {/* Section 3 — The Concept */}
+      <section className="bg-background px-4 py-20" id="concept">
+        <div className="container mx-auto max-w-5xl">
+          <Suspense fallback={null}>
+            <ConceptSection />
+          </Suspense>
+        </div>
+      </section>
+
+      {/* Section 4 — What is AI4I Orchestrate */}
+      <section className="bg-brand-mist px-4 py-20" id="what-is">
+        <div className="container mx-auto max-w-5xl">
+          <Suspense fallback={null}>
+            <OrchestrateDefinition />
+          </Suspense>
+        </div>
+      </section>
+
+      {/* Section 5 — What AI4I Orchestrate does */}
+      <section className="bg-background px-4 py-20" id="functions">
+
         <div className="container mx-auto max-w-5xl">
           <motion.div {...fadeUp}>
             <h2 className="font-heading text-2xl font-bold text-brand-ink md:text-3xl">
