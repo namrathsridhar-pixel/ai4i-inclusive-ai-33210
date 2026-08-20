@@ -27,6 +27,32 @@ const Navigation = () => {
   const [showAdoptionMenu, setShowAdoptionMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const closeTimers = useRef<Record<string, ReturnType<typeof setTimeout> | undefined>>({});
+
+  const openMenu = (key: "blocks" | "adoption") => {
+    if (closeTimers.current[key]) clearTimeout(closeTimers.current[key]);
+    if (key === "blocks") {
+      setShowBuildingBlocksMenu(true);
+      setShowAdoptionMenu(false);
+    } else {
+      setShowAdoptionMenu(true);
+      setShowBuildingBlocksMenu(false);
+    }
+  };
+
+  const scheduleClose = (key: "blocks" | "adoption") => {
+    if (closeTimers.current[key]) clearTimeout(closeTimers.current[key]);
+    closeTimers.current[key] = setTimeout(() => {
+      if (key === "blocks") setShowBuildingBlocksMenu(false);
+      else setShowAdoptionMenu(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    const timers = closeTimers.current;
+    return () => Object.values(timers).forEach((t) => t && clearTimeout(t));
+  }, []);
+
   const navLinks = [
     { name: "Building Blocks", path: "/building-blocks" },
     { name: "Adoption", path: "/adoption" },
