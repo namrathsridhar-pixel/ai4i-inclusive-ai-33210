@@ -86,11 +86,15 @@ const Navigation = () => {
                     onMouseEnter={() => { setShowBuildingBlocksMenu(true); preloadRoute("/building-blocks"); }}
                     onMouseLeave={() => setShowBuildingBlocksMenu(false)}
                   >
-                    <Link to={link.path}>
-                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
-                        {link.name}
-                      </Button>
-                    </Link>
+                    <Button
+                      variant={isActive(link.path) ? "default" : "ghost"}
+                      className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => setShowBuildingBlocksMenu(!showBuildingBlocksMenu)}
+                      aria-expanded={showBuildingBlocksMenu}
+                    >
+                      {link.name}
+                      <ChevronDown size={14} className={`ml-1 transition-transform duration-200 ${showBuildingBlocksMenu ? 'rotate-180' : ''}`} />
+                    </Button>
                     
                     {showBuildingBlocksMenu && (
                       <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
@@ -102,6 +106,7 @@ const Navigation = () => {
                                 key={item.id}
                                 to={`/building-blocks#${item.id}`}
                                 className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                                onClick={() => setShowBuildingBlocksMenu(false)}
                               >
                                 <Icon size={18} />
                                 <span>{item.label === "AI4I VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
