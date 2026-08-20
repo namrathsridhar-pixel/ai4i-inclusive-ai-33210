@@ -15,7 +15,7 @@ const buildingBlocksMenu = [
 ];
 
 const adoptionMenu = [
-  { path: "/adoption", label: "AI4I Orchestrate", icon: Globe },
+  { path: "/adoption", label: "AI4I-Orchestrate", icon: Globe },
 ];
 
 // Links that are coming soon and should not navigate

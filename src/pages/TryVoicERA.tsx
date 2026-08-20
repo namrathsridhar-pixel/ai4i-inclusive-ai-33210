@@ -23,6 +23,7 @@ const TryVoicEra = () => {
   const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "rateLimit">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const isValid = /^\d{10}$/.test(phoneNumber);
@@ -121,7 +122,33 @@ const TryVoicEra = () => {
       });
 
       if (error || !data?.success) {
-        console.error("Call initiation failed:", error || data?.error);
+        let httpStatus: number | undefined;
+        let message: string | undefined = data?.error;
+
+        const ctx = (error as { context?: Response } | null)?.context;
+        if (ctx) {
+          httpStatus = ctx.status;
+          try {
+            const body = await ctx.clone().json();
+            message = body?.error || body?.message || message;
+          } catch {
+            /* ignore non-JSON error bodies */
+          }
+        }
+
+        console.error("Call initiation failed:", httpStatus, message || error);
+
+        if (httpStatus === 429 || /rate limit|concurrency/i.test(message ?? "")) {
+          setErrorMessage(
+            message?.toLowerCase().includes("concurrency")
+              ? "All demo lines are currently busy. Please try again in a minute."
+              : "Too many requests right now. Please try again in a minute.",
+          );
+          setStatus("rateLimit");
+          return;
+        }
+
+        setErrorMessage(message ?? "");
         setStatus("error");
         return;
       }
@@ -201,7 +228,7 @@ const TryVoicEra = () => {
                   <AlertTriangle className="text-red-400" size={28} />
                 </div>
                 <p className="font-heading font-bold text-lg text-white mb-2">Unable to initiate call.</p>
-                <p className="text-sm text-white/50">Please try again in a few minutes.</p>
+                <p className="text-sm text-white/50">{errorMessage || "Please try again in a few minutes."}</p>
                 <Button
                   variant="outline"
                   className="mt-6 bg-transparent border-white/20 text-white/70 hover:bg-white/10 hover:text-white"
@@ -215,8 +242,15 @@ const TryVoicEra = () => {
                 <div className="w-14 h-14 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <AlertTriangle className="text-red-400" size={28} />
                 </div>
-                <p className="font-heading font-bold text-lg text-white mb-2">Maximum attempts reached.</p>
-                <p className="text-sm text-white/50">Please try again later.</p>
+                <p className="font-heading font-bold text-lg text-white mb-2">Demo lines are busy.</p>
+                <p className="text-sm text-white/50">{errorMessage || "Please try again in a minute."}</p>
+                <Button
+                  variant="outline"
+                  className="mt-6 bg-transparent border-white/20 text-white/70 hover:bg-white/10 hover:text-white"
+                  onClick={() => setStatus("idle")}
+                >
+                  Retry
+                </Button>
               </div>
             ) : (
               <>
