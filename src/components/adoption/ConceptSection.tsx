@@ -63,7 +63,7 @@ const left = [
 
 const right = [
   { title: "Sovereign Compute" },
-  { title: "AI4I Orchestrate", sub: "auth · route · meter" },
+  { title: "AI Switch", sub: "auth · route · meter" },
   { title: "Applications" },
 ];
 

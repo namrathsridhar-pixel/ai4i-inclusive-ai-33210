@@ -120,7 +120,7 @@ const Adoption = () => {
         <div className="container mx-auto max-w-5xl">
           <motion.div {...fadeUp}>
             <h2 className="font-heading text-2xl font-bold text-brand-ink md:text-3xl">
-              What AI4I Orchestrate does
+              What AI Switch does
             </h2>
             <p className="mt-2 max-w-[620px] text-[15px] text-muted-foreground">
               Nine functions, in three groups
