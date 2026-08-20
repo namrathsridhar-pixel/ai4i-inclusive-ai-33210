@@ -54,9 +54,10 @@ const AdoptionLineage = () => {
           <div className="animate-pulse-glow absolute inset-0 rounded-2xl bg-brand-blue/20" />
           <div className="relative flex h-[150px] flex-col items-center justify-center gap-2 rounded-2xl bg-brand-blue px-6 text-center shadow-[0_10px_30px_-12px_rgba(0,65,165,0.5)]">
             <Zap size={32} className="text-white" strokeWidth={2} />
-            <span className="font-heading text-xl font-bold text-white">AI Switch</span>
+            <span className="font-heading text-xl font-bold text-white">AI4I Orchestrate</span>
             <span className="text-sm text-white/80">Control plane, on adopter infrastructure</span>
           </div>
+
         </motion.div>
 
         {/* Arrow down */}
@@ -107,10 +108,11 @@ const AdoptionLineage = () => {
         transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
         className="mx-auto mt-10 max-w-[620px] text-left leading-relaxed text-muted-foreground"
       >
-        <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is AI4I Core's governed access layer — the same engine now running in
-        production as <span className="font-bold text-brand-blue">AI Switch</span>. It verifies the identity of every request, checks what the
+        <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is AI4I Core's governed access layer — the same engine now running
+        as <span className="font-bold text-brand-blue">AI Switch</span>. It verifies the identity of every request, checks what the
         requester is entitled to, and meters consumption of the models it routes to in real time,
         giving adopters complete visibility and control over how their AI infrastructure is used.
+
       </motion.p>
     </div>
   );
