@@ -23,7 +23,7 @@ const AdoptionSpotlight = () => {
                 ADOPTION
               </p>
               <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-brand-ink md:text-4xl">
-                AI4I Orchestrate, running as AI Switch
+                AI4I Orchestrate — also part of AI Switch
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
                 AI4I Orchestrate is deployed and operated by an adopter on its own infrastructure, where it
