@@ -21,7 +21,7 @@ const institutions = [
   { label: "Education" },
 ];
 
-const TOP_COLOR = "#93C5FD";
+const TOP_COLOR = "#0079C1";
 const BOTTOM_COLOR = "#0079C1";
 
 const Arrow = ({ color, left }: { color: string; left: string }) => (
