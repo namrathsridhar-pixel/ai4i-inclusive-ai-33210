@@ -30,7 +30,6 @@ const ChallengeConcept = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-            className="mt-8"
             aria-hidden="true"
           >
             {/* Row 1 — Departments */}
@@ -50,7 +49,7 @@ const ChallengeConcept = () => {
             <div className="grid grid-cols-3 gap-2">
               {[0, 1, 2].map((i) => (
                 <div key={i} className="flex justify-center py-1">
-                  <div className="h-4 w-0 border-l-[1.5px] border-dashed border-[#CBD5E1]" />
+                  <div className="h-4 w-0 border-l-[2px] border-dashed border-[#94A3B8] opacity-50" />
                 </div>
               ))}
             </div>
