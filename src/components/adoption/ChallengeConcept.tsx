@@ -64,7 +64,7 @@ const ChallengeConcept = () => {
         </div>
 
         {/* RIGHT — The Concept */}
-        <div className="bg-[#0041A5] px-10 py-11">
+        <div className="flex h-full flex-col justify-between bg-[#0041A5] px-10 py-11">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
