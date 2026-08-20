@@ -13,9 +13,11 @@ import {
   Globe,
   KeyRound,
   Landmark,
+  Network,
   Search,
   Shuffle,
   Wallet,
+  Zap,
 } from "lucide-react";
 
 const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
@@ -71,19 +73,103 @@ const Adoption = () => {
   return (
     <div className="min-h-screen">
       {/* Section 1 — Hero */}
-      <section className="bg-background px-4 pb-[60px] pt-[100px]">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
-              AI4I Orchestrate — adopted as AI Switch.
-            </h1>
-          </motion.div>
+      <section className="relative overflow-hidden bg-background px-4 py-20 md:py-[80px]">
+        {/* Subtle node/network background motif */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="adoptionHeroNodes"
+                x="0"
+                y="0"
+                width="60"
+                height="60"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle cx="30" cy="30" r="1" fill="#0041A5" />
+                <line x1="30" y1="30" x2="60" y2="0" stroke="#0041A5" strokeWidth="0.3" />
+                <line x1="30" y1="30" x2="0" y2="60" stroke="#0041A5" strokeWidth="0.3" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#adoptionHeroNodes)" />
+          </svg>
+        </div>
+
+        <div className="container relative mx-auto max-w-5xl">
+          <div className="grid items-center gap-10 md:grid-cols-[55fr_45fr]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="font-heading text-xs font-bold tracking-[0.2em] text-brand-cyan">
+                ADOPTION
+              </p>
+              <h1 className="mt-3 font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
+                AI4I Orchestrate — adopted as AI Switch.
+              </h1>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
+              className="flex items-center gap-3 sm:gap-4"
+            >
+              <div className="flex-1 rounded-2xl border border-brand-blue/25 bg-card p-5 text-center">
+                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-blue/40 text-brand-blue">
+                  <Network size={20} strokeWidth={2} />
+                </div>
+                <p className="mt-3 font-heading text-sm font-bold text-brand-ink">AI4I Orchestrate</p>
+                <p className="mt-1 text-xs text-muted-foreground">Open source building block</p>
+              </div>
+
+              <div className="relative h-px w-8 shrink-0 sm:w-12">
+                <div className="absolute inset-0 border-t border-dashed border-brand-blue/40" />
+                <motion.span
+                  aria-hidden="true"
+                  className="absolute -top-[3px] h-1.5 w-1.5 rounded-full bg-brand-cyan"
+                  animate={{ left: ["0%", "100%"], opacity: [0, 1, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </div>
+
+              <div className="flex-1 rounded-2xl bg-brand-navy p-5 text-center text-white">
+                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-brand-cyan/15 text-brand-cyan">
+                  <Zap size={20} strokeWidth={2} />
+                </div>
+                <p className="mt-3 font-heading text-sm font-bold">AI Switch</p>
+                <p className="mt-1 text-xs text-white/70">Running on adopter infrastructure</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Section 2 — The Challenge */}
-      <section className="bg-brand-mist px-4 py-20" id="challenge">
-        <div className="container mx-auto max-w-5xl">
+      <section className="relative bg-brand-mist px-4 py-20" id="challenge">
+        {/* Subtle node/network background motif */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="adoptionChallengeNodes"
+                x="0"
+                y="0"
+                width="60"
+                height="60"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle cx="30" cy="30" r="1" fill="#0041A5" />
+                <line x1="30" y1="30" x2="60" y2="0" stroke="#0041A5" strokeWidth="0.3" />
+                <line x1="30" y1="30" x2="0" y2="60" stroke="#0041A5" strokeWidth="0.3" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#adoptionChallengeNodes)" />
+          </svg>
+        </div>
+
+        <div className="container relative mx-auto max-w-5xl">
           <Suspense fallback={null}>
             <ChallengeSection />
           </Suspense>
