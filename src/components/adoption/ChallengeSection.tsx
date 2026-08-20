@@ -32,7 +32,7 @@ const LlmBox = ({ label }: { label: string }) => (
 const ChallengeSection = () => {
   return (
     <div>
-      <motion.div {...fade(0)}>
+      <motion.div {...fade(0)} className="mx-auto max-w-[680px]">
         <p className="mb-3 font-heading text-[11px] font-bold uppercase tracking-[2px] text-[#94A3B8]">
           The Problem
         </p>
