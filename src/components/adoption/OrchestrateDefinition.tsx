@@ -16,10 +16,10 @@ const OrchestrateDefinition = () => {
           The Definition
         </p>
         <h2 className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-          What is AI4I Orchestrate?
+          What is AI Switch?
         </h2>
         <p className="mt-5 max-w-[620px] text-[16px] leading-[1.7] text-muted-foreground">
-          AI4I Orchestrate provides a single, governed layer for secure, measurable, and scalable
+          AI Switch provides a single, governed layer for secure, measurable, and scalable
           consumption of open source and sovereign language AI models. It enables sovereign AI
           infrastructure to be consumed in a controlled and accountable manner while maintaining
           centralised governance, operational visibility, and consumption oversight across multiple
