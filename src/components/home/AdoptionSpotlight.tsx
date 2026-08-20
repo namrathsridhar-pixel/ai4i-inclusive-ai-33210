@@ -23,13 +23,8 @@ const AdoptionSpotlight = () => {
                 ADOPTION
               </p>
               <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-brand-ink md:text-4xl">
-                AI4I Orchestrate operates as AI Switch
+                AI4I Orchestrate — adopted as AI Switch.
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                AI4I Orchestrate is deployed and operated by an adopter on its own infrastructure, where it
-                operates as AI Switch — the governed layer between the institutions onboarded onto it
-                and the AI models they consume.
-              </p>
               <Link
                 to="/adoption"
                 className="group mt-7 inline-flex items-center gap-2 rounded-full bg-brand-blue px-5 py-2.5 font-heading text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
