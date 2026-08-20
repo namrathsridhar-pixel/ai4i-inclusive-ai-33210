@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { motion } from "framer-motion";
 
 const fade = (delay: number) => ({
@@ -117,15 +118,15 @@ const ConceptSection = () => {
           </p>
 
           {[0, 1, 2].map((i) => (
-            <>
-              <div key={`l${i}`}>
+            <Fragment key={i}>
+              <div>
                 <Level title={left[i].title} sub={left[i].sub} accent={false} />
                 {i < 2 && <Drop accent={false} />}
               </div>
-              <div key={`e${i}`} className="flex items-start justify-center pt-4">
+              <div className="flex items-start justify-center pt-4">
                 <span className="text-[15px] font-bold text-[#94A3B8]">&#8801;</span>
               </div>
-              <div key={`r${i}`}>
+              <div>
                 <Level
                   title={right[i].title}
                   sub={right[i].sub}
@@ -134,7 +135,7 @@ const ConceptSection = () => {
                 />
                 {i < 2 && <Drop accent />}
               </div>
-            </>
+            </Fragment>
           ))}
         </div>
       </motion.div>
