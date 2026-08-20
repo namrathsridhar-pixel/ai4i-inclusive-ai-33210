@@ -247,27 +247,35 @@ const Navigation = () => {
               if (link.path === "/adoption") {
                 return (
                   <div key={link.path}>
-                    <Link to={link.path} onClick={() => setIsOpen(false)}>
-                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`w-full justify-start font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
+                    <Button
+                      variant={isActive(link.path) ? "default" : "ghost"}
+                      className={`w-full justify-between font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => setShowAdoptionMenu(!showAdoptionMenu)}
+                      aria-expanded={showAdoptionMenu}
+                    >
+                      <span className="flex items-center">
                         {link.name}
-                      </Button>
-                    </Link>
-                    <div className="ml-4 space-y-1">
-                      {adoptionMenu.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.path}
-                            to={item.path}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-                          >
-                            <Icon size={16} />
-                            <span>{item.label}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
+                      </span>
+                      <ChevronDown size={14} className={`transition-transform duration-200 ${showAdoptionMenu ? 'rotate-180' : ''}`} />
+                    </Button>
+                    {showAdoptionMenu && (
+                      <div className="ml-4 space-y-1">
+                        {adoptionMenu.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <Link
+                              key={item.path}
+                              to={item.path}
+                              onClick={() => setIsOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                            >
+                              <Icon size={16} />
+                              <span>{item.label}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 );
               }
