@@ -63,7 +63,7 @@ const left = [
 
 const right = [
   { title: "Sovereign Compute" },
-  { title: "AI4I Orchestrate", sub: "auth · route · meter" },
+  { title: "AI Switch", sub: "auth · route · meter" },
   { title: "Applications" },
 ];
 
@@ -95,7 +95,7 @@ const ConceptSection = () => {
           of the entire economy.
         </p>
         <p className="mt-4 max-w-[680px] text-[16px] leading-[1.7] text-muted-foreground">
-          <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> applies the same
+          <span className="font-semibold text-brand-ink">AI Switch</span> applies the same
           principle to language AI — a governed access layer that lets institutions draw on shared
           compute and models, metered and accountable, instead of each building their own from
           scratch.
