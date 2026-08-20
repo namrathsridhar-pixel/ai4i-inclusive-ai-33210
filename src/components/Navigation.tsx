@@ -109,7 +109,45 @@ const Navigation = () => {
                   </div>
                 );
               }
-              
+
+              if (link.path === "/adoption") {
+                return (
+                  <div
+                    key={link.path}
+                    className={`relative ${!isLastItem ? "mr-2 xl:mr-6" : ""}`}
+                    onMouseEnter={() => { setShowAdoptionMenu(true); preloadRoute("/adoption"); }}
+                    onMouseLeave={() => setShowAdoptionMenu(false)}
+                  >
+                    <Link to={link.path}>
+                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
+                        {link.name}
+                      </Button>
+                    </Link>
+
+                    {showAdoptionMenu && (
+                      <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
+                        <div className="p-2">
+                          {adoptionMenu.map((item) => {
+                            const Icon = item.icon;
+                            return (
+                              <Link
+                                key={item.path}
+                                to={item.path}
+                                className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                              >
+                                <Icon size={18} />
+                                <span>{item.label}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+
               // Handle "Coming Soon" links
               if (comingSoonPaths.includes(link.path)) {
                 return (
