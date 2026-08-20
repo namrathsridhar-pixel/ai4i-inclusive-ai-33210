@@ -242,8 +242,15 @@ const TryVoicEra = () => {
                 <div className="w-14 h-14 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <AlertTriangle className="text-red-400" size={28} />
                 </div>
-                <p className="font-heading font-bold text-lg text-white mb-2">Maximum attempts reached.</p>
-                <p className="text-sm text-white/50">Please try again later.</p>
+                <p className="font-heading font-bold text-lg text-white mb-2">Demo lines are busy.</p>
+                <p className="text-sm text-white/50">{errorMessage || "Please try again in a minute."}</p>
+                <Button
+                  variant="outline"
+                  className="mt-6 bg-transparent border-white/20 text-white/70 hover:bg-white/10 hover:text-white"
+                  onClick={() => setStatus("idle")}
+                >
+                  Retry
+                </Button>
               </div>
             ) : (
               <>
