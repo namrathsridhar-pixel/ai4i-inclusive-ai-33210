@@ -21,68 +21,58 @@ const institutions = [
   { label: "Education" },
 ];
 
+const TOP_COLOR = "#93C5FD";
+const BOTTOM_COLOR = "#0079C1";
+
+const Arrow = ({ color, left }: { color: string; left: string }) => (
+  <span
+    className="absolute bottom-0 -translate-x-1/2"
+    style={{
+      left,
+      width: 0,
+      height: 0,
+      borderLeft: "5px solid transparent",
+      borderRight: "5px solid transparent",
+      borderTop: `7px solid ${color}`,
+    }}
+  />
+);
+
+const PulseDot = ({
+  color,
+  lefts,
+  tops,
+  delay,
+}: {
+  color: string;
+  lefts: string[];
+  tops: string[];
+  delay: number;
+}) => (
+  <motion.span
+    className="absolute z-20 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+    style={{ backgroundColor: color, boxShadow: `0 0 8px ${color}` }}
+    initial={{ opacity: 0 }}
+    animate={{
+      left: lefts,
+      top: tops,
+      opacity: [0, 1, 1, 1, 0],
+    }}
+    transition={{
+      duration: 2,
+      delay,
+      repeat: Infinity,
+      repeatDelay: 2,
+      ease: "linear",
+      times: [0, 0.25, 0.5, 0.75, 1],
+    }}
+  />
+);
+
 const AdoptionLineage = () => {
   return (
     <div className="rounded-[20px] bg-card p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] md:p-14">
       <div className="relative mx-auto max-w-[520px]">
-        {/* Connector lines — behind nodes */}
-        <motion.svg
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="absolute inset-0 z-0 h-full w-full"
-          viewBox="0 0 500 400"
-          preserveAspectRatio="xMidYMid meet"
-          aria-hidden="true"
-        >
-          {/* Vertical lines from institutions to top horizontal bar */}
-          <line x1="85" y1="60" x2="85" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
-          <line x1="250" y1="60" x2="250" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
-          <line x1="415" y1="60" x2="415" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
-
-          {/* Top horizontal bar */}
-          <line x1="85" y1="100" x2="415" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
-
-          {/* Vertical line from top bar into AI4I Orchestrate box */}
-          <line x1="250" y1="100" x2="250" y2="130" stroke="#93C5FD" strokeWidth="1.5" />
-
-          {/* Vertical line from AI4I Orchestrate box to bottom bar */}
-          <line x1="250" y1="270" x2="250" y2="300" stroke="#0079C1" strokeWidth="1.5" />
-
-          {/* Bottom horizontal bar */}
-          <line x1="180" y1="300" x2="320" y2="300" stroke="#0079C1" strokeWidth="1.5" />
-
-          {/* Vertical lines from bottom bar to model pills */}
-          <line x1="180" y1="300" x2="180" y2="330" stroke="#0079C1" strokeWidth="1.5" />
-          <line x1="320" y1="300" x2="320" y2="330" stroke="#0079C1" strokeWidth="1.5" />
-        </motion.svg>
-
-        {/* Pulse dot — on top of nodes */}
-        <motion.svg
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-          className="pointer-events-none absolute inset-0 z-20 h-full w-full"
-          viewBox="0 0 500 400"
-          preserveAspectRatio="xMidYMid meet"
-          aria-hidden="true"
-        >
-          <circle r="4" fill="#C8A24A">
-            <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin="0s" repeatCount="indefinite" />
-            <animateMotion
-              dur="4s"
-              begin="0s"
-              repeatCount="indefinite"
-              path="M85 60 L85 100 L250 100 L250 210 L250 300 L180 300 L180 330"
-              keyPoints="0;0.624;0.624;1"
-              keyTimes="0;0.42;0.52;1"
-              calcMode="linear"
-            />
-          </circle>
-        </motion.svg>
-
         {/* Top row: Institutions */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -102,8 +92,32 @@ const AdoptionLineage = () => {
           ))}
         </motion.div>
 
-        {/* Spacer: institutions down to center node */}
-        <div className="h-[70px]" />
+        {/* Connector: institutions -> center node */}
+        <div className="relative h-[70px] w-full">
+          {["12.5%", "50%", "87.5%"].map((l) => (
+            <span
+              key={l}
+              className="absolute top-0 h-[35px] w-[1.5px]"
+              style={{ left: l, backgroundColor: TOP_COLOR }}
+            />
+          ))}
+          <span
+            className="absolute h-[1.5px]"
+            style={{ top: 35, left: "12.5%", right: "12.5%", backgroundColor: TOP_COLOR }}
+          />
+          <span
+            className="absolute w-[1.5px]"
+            style={{ top: 35, height: 28, left: "50%", backgroundColor: TOP_COLOR }}
+          />
+          <Arrow color={TOP_COLOR} left="50%" />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["12.5%", "12.5%", "31%", "50%", "50%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={0}
+          />
+        </div>
+
 
         {/* Center node: AI4I Orchestrate */}
         <motion.div
