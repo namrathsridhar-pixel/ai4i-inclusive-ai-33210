@@ -128,11 +128,15 @@ const Navigation = () => {
                     onMouseEnter={() => { setShowAdoptionMenu(true); preloadRoute("/adoption"); }}
                     onMouseLeave={() => setShowAdoptionMenu(false)}
                   >
-                    <Link to={link.path}>
-                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
-                        {link.name}
-                      </Button>
-                    </Link>
+                    <Button
+                      variant={isActive(link.path) ? "default" : "ghost"}
+                      className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}
+                      onClick={() => setShowAdoptionMenu(!showAdoptionMenu)}
+                      aria-expanded={showAdoptionMenu}
+                    >
+                      {link.name}
+                      <ChevronDown size={14} className={`ml-1 transition-transform duration-200 ${showAdoptionMenu ? 'rotate-180' : ''}`} />
+                    </Button>
 
                     {showAdoptionMenu && (
                       <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
@@ -144,6 +148,7 @@ const Navigation = () => {
                                 key={item.path}
                                 to={item.path}
                                 className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                                onClick={() => setShowAdoptionMenu(false)}
                               >
                                 <Icon size={18} />
                                 <span>{item.label}</span>
