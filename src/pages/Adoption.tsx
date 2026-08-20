@@ -96,16 +96,16 @@ const Adoption = () => {
         </div>
 
         <div className="container relative mx-auto max-w-5xl">
-          <div className="grid items-center gap-10 md:grid-cols-[55fr_45fr]">
+          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="font-heading text-xs font-bold tracking-[0.2em] text-brand-cyan">
-                ADOPTION
+              <p className="font-heading text-[11px] font-bold uppercase tracking-[0.2em] text-brand-cyan">
+                Adoption
               </p>
-              <h1 className="mt-3 font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
+              <h1 className="mt-4 max-w-[520px] font-heading text-4xl font-bold leading-[1.12] tracking-tight text-brand-ink md:text-[44px]">
                 AI4I Orchestrate — adopted as AI Switch.
               </h1>
             </motion.div>
@@ -114,36 +114,49 @@ const Adoption = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
-              className="flex items-center gap-3 sm:gap-4"
+              className="rounded-2xl border border-border bg-card/60 p-5 sm:p-6"
             >
-              <div className="flex-1 rounded-2xl border border-brand-blue/25 bg-card p-5 text-center">
-                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-blue/40 text-brand-blue">
-                  <Network size={20} strokeWidth={2} />
+              <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-3 sm:gap-4">
+                <div className="flex flex-col items-center rounded-xl border border-brand-blue/25 bg-background px-4 py-5 text-center">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-blue/40 text-brand-blue">
+                    <Network size={20} strokeWidth={2} />
+                  </div>
+                  <p className="mt-3 font-heading text-sm font-bold text-brand-ink">
+                    AI4I Orchestrate
+                  </p>
+                  <p className="mt-1 text-xs leading-snug text-muted-foreground">
+                    Open source building block
+                  </p>
                 </div>
-                <p className="mt-3 font-heading text-sm font-bold text-brand-ink">AI4I Orchestrate</p>
-                <p className="mt-1 text-xs text-muted-foreground">Open source building block</p>
+
+                <div className="relative flex w-8 items-center sm:w-10">
+                  <div className="h-px w-full border-t border-dashed border-brand-blue/40" />
+                  <motion.span
+                    aria-hidden="true"
+                    className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-brand-cyan"
+                    animate={{ left: ["0%", "100%"], opacity: [0, 1, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </div>
+
+                <div className="flex flex-col items-center rounded-xl bg-brand-navy px-4 py-5 text-center text-white">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-cyan/15 text-brand-cyan">
+                    <Zap size={20} strokeWidth={2} />
+                  </div>
+                  <p className="mt-3 font-heading text-sm font-bold">AI Switch</p>
+                  <p className="mt-1 text-xs leading-snug text-white/70">
+                    Running on adopter infrastructure
+                  </p>
+                </div>
               </div>
 
-              <div className="relative h-px w-8 shrink-0 sm:w-12">
-                <div className="absolute inset-0 border-t border-dashed border-brand-blue/40" />
-                <motion.span
-                  aria-hidden="true"
-                  className="absolute -top-[3px] h-1.5 w-1.5 rounded-full bg-brand-cyan"
-                  animate={{ left: ["0%", "100%"], opacity: [0, 1, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </div>
-
-              <div className="flex-1 rounded-2xl bg-brand-navy p-5 text-center text-white">
-                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-brand-cyan/15 text-brand-cyan">
-                  <Zap size={20} strokeWidth={2} />
-                </div>
-                <p className="mt-3 font-heading text-sm font-bold">AI Switch</p>
-                <p className="mt-1 text-xs text-white/70">Running on adopter infrastructure</p>
-              </div>
+              <p className="mt-5 border-t border-border pt-4 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                Same building block — deployed by an adopter
+              </p>
             </motion.div>
           </div>
         </div>
+
       </section>
 
       {/* Section 2 — The Challenge */}
