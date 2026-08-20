@@ -14,12 +14,17 @@ const buildingBlocksMenu = [
   { id: "voicera", label: "AI4I VoicEra", icon: Phone },
 ];
 
+const adoptionMenu = [
+  { path: "/adoption", label: "AI4I Orchestrate", icon: Globe },
+];
+
 // Links that are coming soon and should not navigate
 const comingSoonPaths = ["/who-we-are", "/blogs"];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showBuildingBlocksMenu, setShowBuildingBlocksMenu] = useState(false);
+  const [showAdoptionMenu, setShowAdoptionMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const navLinks = [
