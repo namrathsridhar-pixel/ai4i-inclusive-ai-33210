@@ -27,7 +27,7 @@ const AdoptionSpotlight = () => {
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
                 AI4I Orchestrate is deployed and operated by an adopter on its own infrastructure, where it
-                runs as AI Switch — the governed layer between the institutions onboarded onto it
+                operates as AI Switch — the governed layer between the institutions onboarded onto it
                 and the AI models they consume.
               </p>
               <Link
