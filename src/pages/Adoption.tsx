@@ -18,7 +18,7 @@ import {
   Wallet,
 } from "lucide-react";
 
-const AdoptionLineage = lazy(() => import("@/components/AdoptionLineage"));
+const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
 const OrchestrateDefinition = lazy(() => import("@/components/adoption/OrchestrateDefinition"));
