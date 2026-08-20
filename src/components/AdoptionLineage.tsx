@@ -96,6 +96,7 @@ const AdoptionLineage = () => {
               <span className="font-heading text-xs font-bold text-brand-ink">{inst.label}</span>
             </div>
           ))}
+          </div>
         </motion.div>
 
         {/* Connector: institutions -> center node */}
