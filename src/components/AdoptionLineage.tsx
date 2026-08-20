@@ -146,8 +146,32 @@ const AdoptionLineage = () => {
           </div>
         </motion.div>
 
-        {/* Spacer: center node down to models */}
-        <div className="h-[70px]" />
+        {/* Connector: center node -> models */}
+        <div className="relative h-[70px] w-full">
+          <span
+            className="absolute w-[1.5px]"
+            style={{ top: 0, height: 35, left: "50%", backgroundColor: BOTTOM_COLOR }}
+          />
+          <span
+            className="absolute h-[1.5px]"
+            style={{ top: 35, left: "30%", right: "30%", backgroundColor: BOTTOM_COLOR }}
+          />
+          {["30%", "70%"].map((l) => (
+            <span
+              key={l}
+              className="absolute w-[1.5px]"
+              style={{ top: 35, height: 28, left: l, backgroundColor: BOTTOM_COLOR }}
+            />
+          ))}
+          <Arrow color={BOTTOM_COLOR} left="30%" />
+          <Arrow color={BOTTOM_COLOR} left="70%" />
+          <PulseDot
+            color="#C8A24A"
+            lefts={["50%", "50%", "40%", "30%", "30%"]}
+            tops={["0px", "35px", "35px", "35px", "70px"]}
+            delay={1}
+          />
+        </div>
 
         {/* Bottom: Hosted Models */}
         <motion.div
@@ -157,10 +181,7 @@ const AdoptionLineage = () => {
           transition={{ duration: 0.5, delay: 0.75, ease: "easeOut" }}
           className="w-full text-center"
         >
-          <p className="font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
-            Hosted Models
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {models.map((m, i) => (
               <motion.span
                 key={m}
@@ -174,7 +195,11 @@ const AdoptionLineage = () => {
               </motion.span>
             ))}
           </div>
+          <p className="mt-4 font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
+            Hosted Models
+          </p>
         </motion.div>
+
       </div>
 
       <motion.p
