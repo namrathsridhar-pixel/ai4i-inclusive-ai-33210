@@ -4,7 +4,6 @@ import LanguageNetworkHero from "@/components/home/LanguageNetworkHero";
 
 // Lazy-load below-the-fold sections
 const BuildingBlocksSection = lazy(() => import("@/components/home/BuildingBlocksSection"));
-const AdoptionSpotlight = lazy(() => import("@/components/home/AdoptionSpotlight"));
 const KeyCapabilities = lazy(() => import("@/components/home/KeyCapabilities"));
 const MediaStrip = lazy(() => import("@/components/home/MediaStrip"));
 const QuickStart = lazy(() => import("@/components/home/QuickStart"));
@@ -67,7 +66,6 @@ const Home = () => {
       {showDeferredSections && (
         <Suspense fallback={null}>
           <BuildingBlocksSection />
-          <AdoptionSpotlight />
           <SolarSystemVisualization />
           <KeyCapabilities />
           <MediaStrip />
