@@ -43,11 +43,13 @@ const PulseDot = ({
   lefts,
   tops,
   delay,
+  repeatDelay = 4,
 }: {
   color: string;
   lefts: string[];
   tops: string[];
   delay: number;
+  repeatDelay?: number;
 }) => (
   <motion.span
     className="absolute z-20 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -62,12 +64,13 @@ const PulseDot = ({
       duration: 2,
       delay,
       repeat: Infinity,
-      repeatDelay: 2,
+      repeatDelay,
       ease: "linear",
       times: [0, 0.25, 0.5, 0.75, 1],
     }}
   />
 );
+
 
 const AdoptionLineage = () => {
   return (
