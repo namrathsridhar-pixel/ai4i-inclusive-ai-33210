@@ -19,7 +19,9 @@ import {
 } from "lucide-react";
 
 const AdoptionLineage = lazy(() => import("@/components/AdoptionLineage"));
-const ChallengeConcept = lazy(() => import("@/components/adoption/ChallengeConcept"));
+const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
+const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
+const OrchestrateDefinition = lazy(() => import("@/components/adoption/OrchestrateDefinition"));
 
 const groups = [
   {
