@@ -108,7 +108,7 @@ const Navigation = () => {
                                 onClick={() => setShowBuildingBlocksMenu(false)}
                               >
                                 <Icon size={18} />
-                                <span>{item.label === "AI4I-VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
+                                <span>{item.label === "AI4I-VoicEra" ? <>AI4I-<span className="font-gonzaga">VoicEra</span></> : item.label}</span>
                               </Link>
                             );
                           })}
@@ -229,7 +229,7 @@ const Navigation = () => {
                               className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
                             >
                               <Icon size={16} />
-                              <span>{item.label === "AI4I-VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
+                              <span>{item.label === "AI4I-VoicEra" ? <>AI4I-<span className="font-gonzaga">VoicEra</span></> : item.label}</span>
                             </Link>
                           );
                         })}
