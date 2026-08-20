@@ -8,7 +8,7 @@ const footerNav: Record<string, FooterLink[]> = {
     { name: "AI4I-Orchestrate", path: "/building-blocks#ai4i-orchestrate" },
     { name: "AI4I-Observe", path: "/building-blocks#observe" },
     { name: "AI4I-Contribute", path: "/building-blocks#contribute" },
-    { name: "AI4I VoicEra", path: "/building-blocks#voicera" },
+    { name: "AI4I-VoicEra", path: "/building-blocks#voicera" },
   ],
   Explore: [
     { name: "Events", path: "/events" },
