@@ -1074,14 +1074,14 @@ const BuildingBlocks = () => {
                   <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-medium">
                     <Phone className="text-primary-foreground" size={24} />
                   </div>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">AI4I-<span className="font-gonzaga">VoicERA</span></h2>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">AI4I <span className="font-gonzaga">VoicEra</span></h2>
                 </div>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6">
                   Where a policy-governed voice stack powers real-time conversations.
                 </p>
               </motion.div>
 
-              {/* SECTION 1 — How AI4I-VoicERA Enables Sovereign Voice AI at National Scale */}
+              {/* SECTION 1 — How AI4I VoicEra Enables Sovereign Voice AI at National Scale */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1089,7 +1089,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I-VoicERA Enables Sovereign Voice AI at National Scale</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">How AI4I VoicEra Enables Sovereign Voice AI at National Scale</h3>
                 <p className="text-muted-foreground mb-6">Real-time, multilingual voice systems built for India's public and enterprise platforms.</p>
                 <Dialog>
                   <DialogTrigger asChild>
@@ -1137,7 +1137,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why AI4I-VoicERA Matters</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">Why AI4I VoicEra Matters</h3>
                   <p className="text-muted-foreground">Citizen-scale, real-time voice AI designed for secure and scalable public systems.</p>
                 </div>
                 <SaaSFeatureGrid cards={[
@@ -1150,7 +1150,7 @@ const BuildingBlocks = () => {
                 ]} />
               </motion.div>
 
-              {/* SECTION 3 — AI4I-VoicERA: The Sovereign Voice Layer for Language AI */}
+              {/* SECTION 3 — AI4I VoicEra: The Sovereign Voice Layer for Language AI */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1158,7 +1158,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.7 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I-VoicERA: The Sovereign Voice Layer for Language AI</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">AI4I VoicEra: The Sovereign Voice Layer for Language AI</h3>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Card className="cursor-pointer group hover:shadow-lg transition-all duration-300 bg-card p-2 md:p-4">
@@ -1199,7 +1199,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What AI4I-VoicERA Enables</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">What AI4I VoicEra Enables</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
                   {[
                     { icon: <Users size={24} />, title: "Large-Scale Voice Services", description: "Enables millions of users to securely access AI systems through natural voice interfaces across public and enterprise services." },
@@ -1243,7 +1243,7 @@ const BuildingBlocks = () => {
                 className="mb-16"
               >
                 <div className="mb-8">
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I-VoicERA: The Sovereign Voice Layer for Language AI</h3>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">AI4I VoicEra: The Sovereign Voice Layer for Language AI</h3>
                   <p className="text-muted-foreground text-center max-w-2xl mx-auto">VoicERA adds the voice layer to the AI4Inclusion infrastructure stack.</p>
                 </div>
                 <EcosystemFlow 
@@ -1265,7 +1265,7 @@ const BuildingBlocks = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-16"
               >
-                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About AI4I-VoicERA</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-bold mb-6">Explore More About AI4I VoicEra</h3>
                 <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-border" style={{ aspectRatio: '16/9' }}>
                   <iframe
                     width="100%"
@@ -1291,7 +1291,7 @@ const BuildingBlocks = () => {
               >
                 <div className="text-center max-w-2xl mx-auto">
                   <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                    Ready to explore AI4I-VoicERA?
+                    Ready to explore AI4I VoicEra?
                   </h3>
                   <p className="text-lg text-muted-foreground mb-8">
                     Learn how to implement sovereign voice AI in your applications.

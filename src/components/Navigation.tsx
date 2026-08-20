@@ -11,7 +11,11 @@ const buildingBlocksMenu = [
   { id: "ai4i-orchestrate", label: "AI4I-Orchestrate", icon: Globe },
   { id: "observe", label: "AI4I-Observe", icon: BarChart3 },
   { id: "contribute", label: "AI4I-Contribute", icon: Users },
-  { id: "voicera", label: "AI4I-VoicERA", icon: Phone },
+  { id: "voicera", label: "AI4I VoicEra", icon: Phone },
+];
+
+const adoptionMenu = [
+  { path: "/adoption", label: "AI4I Orchestrate", icon: Globe },
 ];
 
 // Links that are coming soon and should not navigate
@@ -20,6 +24,7 @@ const comingSoonPaths = ["/who-we-are", "/blogs"];
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showBuildingBlocksMenu, setShowBuildingBlocksMenu] = useState(false);
+  const [showAdoptionMenu, setShowAdoptionMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const navLinks = [
@@ -99,7 +104,7 @@ const Navigation = () => {
                                 className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
                               >
                                 <Icon size={18} />
-                                <span>{item.label === "AI4I-VoicERA" ? <>AI4I-<span className="font-gonzaga">VoicERA</span></> : item.label}</span>
+                                <span>{item.label === "AI4I VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
                               </Link>
                             );
                           })}
@@ -109,7 +114,45 @@ const Navigation = () => {
                   </div>
                 );
               }
-              
+
+              if (link.path === "/adoption") {
+                return (
+                  <div
+                    key={link.path}
+                    className={`relative ${!isLastItem ? "mr-2 xl:mr-6" : ""}`}
+                    onMouseEnter={() => { setShowAdoptionMenu(true); preloadRoute("/adoption"); }}
+                    onMouseLeave={() => setShowAdoptionMenu(false)}
+                  >
+                    <Link to={link.path}>
+                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`font-medium ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
+                        {link.name}
+                      </Button>
+                    </Link>
+
+                    {showAdoptionMenu && (
+                      <div className="absolute top-full left-0 mt-1 w-56 bg-brand-navy border border-white/20 rounded-lg shadow-large z-50 animate-fade-in">
+                        <div className="p-2">
+                          {adoptionMenu.map((item) => {
+                            const Icon = item.icon;
+                            return (
+                              <Link
+                                key={item.path}
+                                to={item.path}
+                                className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                              >
+                                <Icon size={18} />
+                                <span>{item.label}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+
               // Handle "Coming Soon" links
               if (comingSoonPaths.includes(link.path)) {
                 return (
@@ -174,7 +217,7 @@ const Navigation = () => {
                             className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
                           >
                             <Icon size={16} />
-                            <span>{item.label === "AI4I-VoicERA" ? <>AI4I-<span className="font-gonzaga">VoicERA</span></> : item.label}</span>
+                            <span>{item.label === "AI4I VoicEra" ? <>AI4I <span className="font-gonzaga">VoicEra</span></> : item.label}</span>
                           </Link>
                         );
                       })}
@@ -182,7 +225,36 @@ const Navigation = () => {
                   </div>
                 );
               }
-              
+
+              if (link.path === "/adoption") {
+                return (
+                  <div key={link.path}>
+                    <Link to={link.path} onClick={() => setIsOpen(false)}>
+                      <Button variant={isActive(link.path) ? "default" : "ghost"} className={`w-full justify-start font-medium mb-1 ${isActive(link.path) ? '' : 'text-white hover:text-white hover:bg-white/10'}`}>
+                        {link.name}
+                      </Button>
+                    </Link>
+                    <div className="ml-4 space-y-1">
+                      {adoptionMenu.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                          >
+                            <Icon size={16} />
+                            <span>{item.label}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              }
+
+
               // Handle "Coming Soon" links in mobile
               if (comingSoonPaths.includes(link.path)) {
                 return (

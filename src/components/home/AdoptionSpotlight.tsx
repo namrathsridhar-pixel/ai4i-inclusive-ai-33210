@@ -23,12 +23,12 @@ const AdoptionSpotlight = () => {
                 ADOPTION
               </p>
               <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-brand-ink md:text-4xl">
-                AI4I-Orchestrate in production
+                AI4I Orchestrate, running as AI Switch
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                AI4I-Orchestrate is deployed and operated by an adopting organisation on its own
-                infrastructure, where it runs as AI Switch — the governed layer between the
-                institutions onboarded onto it and the AI models they consume.
+                AI4I Orchestrate is deployed and operated by an adopter on its own infrastructure, where it
+                runs as AI Switch — the governed layer between the institutions onboarded onto it
+                and the AI models they consume.
               </p>
               <Link
                 to="/adoption"
@@ -51,7 +51,7 @@ const AdoptionSpotlight = () => {
                 <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-blue/40 text-brand-blue">
                   <Network size={20} strokeWidth={2} />
                 </div>
-                <p className="mt-3 font-heading text-sm font-bold text-brand-ink">AI4I-Orchestrate</p>
+                <p className="mt-3 font-heading text-sm font-bold text-brand-ink">AI4I Orchestrate</p>
                 <p className="mt-1 text-xs text-muted-foreground">Open source building block</p>
               </motion.div>
 
