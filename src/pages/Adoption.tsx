@@ -168,8 +168,8 @@ const Adoption = () => {
         </div>
       </section>
 
-      {/* Section 5 — How it works */}
-      <section className="bg-background px-4 py-20" id="how-it-works">
+      {/* Section 6 — How it works */}
+      <section className="bg-brand-mist px-4 py-20" id="how-it-works">
         <div className="container mx-auto max-w-5xl">
           <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
             How it works
@@ -182,8 +182,8 @@ const Adoption = () => {
         </div>
       </section>
 
-      {/* Section 6 — Ecosystem */}
-      <section className="bg-brand-mist px-4 py-20" id="ecosystem">
+      {/* Section 7 — Ecosystem */}
+      <section className="bg-background px-4 py-20" id="ecosystem">
         <div className="container mx-auto max-w-4xl">
           <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
             Collaborating for an inclusive digital future
