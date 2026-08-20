@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Building2, Landmark, Puzzle } from "lucide-react";
+import { Building2, Landmark, Layers } from "lucide-react";
 
 const ChallengeConcept = () => {
   return (
@@ -83,8 +83,8 @@ const ChallengeConcept = () => {
             </blockquote>
 
             <p className="mt-6 text-[13.5px] leading-[1.65] text-[#BFDBFE]">
-              AI4I Orchestrate applies the same principle: shared, reusable building blocks — not
-              every institution building its own.
+              AI4I Orchestrate applies the same principle: one governed layer — not every
+              organisation building its own.
             </p>
           </motion.div>
 
@@ -130,9 +130,9 @@ const ChallengeConcept = () => {
             </div>
 
             {/* Row 3 — Resolution card */}
-            <div className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-4 py-3">
-              <Puzzle size={18} strokeWidth={1.75} className="text-[#0041A5]" />
-              <span className="text-[10.5px] font-bold text-[#0041A5]">Shared building block</span>
+            <div className="flex flex-col items-center gap-1 rounded-[10px] bg-white px-4 py-3">
+              <Layers size={18} strokeWidth={1.75} className="text-[#0041A5]" />
+              <span className="text-[10.5px] font-bold text-[#0041A5]">One governed layer</span>
             </div>
           </motion.div>
         </div>
