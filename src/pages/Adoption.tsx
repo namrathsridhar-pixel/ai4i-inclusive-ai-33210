@@ -77,11 +77,6 @@ const Adoption = () => {
             <h1 className="font-heading text-4xl font-bold leading-tight text-brand-ink md:text-5xl">
               AI4I Orchestrate — adopted as AI Switch.
             </h1>
-            <p className="mt-6 max-w-[660px] text-[17px] leading-[1.7] text-muted-foreground">
-              <span className="font-semibold text-brand-ink">AI4I Orchestrate</span> is the governed
-              access layer within AI4I Core — deployed by an adopter to govern how institutions access
-              AI models.
-            </p>
           </motion.div>
         </div>
       </section>
