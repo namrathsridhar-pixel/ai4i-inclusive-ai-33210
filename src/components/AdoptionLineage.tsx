@@ -15,59 +15,95 @@ const functionPills = [
   "Meter",
 ];
 
-const CurvedConnector = ({ delay, begin }: { delay: number; begin: string }) => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.45, delay, ease: "easeOut" }}
-    className="my-1"
-    aria-hidden="true"
-  >
-    <svg width="80" height="66" viewBox="0 0 80 66" fill="none">
-      <path
-        id="lineagePath"
-        d="M40 2 C40 22, 22 30, 40 44"
-        stroke="#0079C1"
-        strokeWidth="2"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <path d="M40 44 L40 58" stroke="#0079C1" strokeWidth="2" strokeLinecap="round" />
-      <path d="M35 55 L40 63 L45 55 Z" fill="#0079C1" />
-      <circle r="3.5" fill="#C8A24A">
-        <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin={begin} repeatCount="indefinite" />
-        <animateMotion dur="4s" begin={begin} repeatCount="indefinite" path="M40 2 C40 22, 22 30, 40 44 L40 60" />
-      </circle>
-    </svg>
-  </motion.div>
-);
+const institutions = [
+  { label: "Citizen services" },
+  { label: "Health" },
+  { label: "Education" },
+];
 
 const AdoptionLineage = () => {
   return (
     <div className="rounded-[20px] bg-card p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] md:p-14">
-      <div className="mx-auto flex max-w-[500px] flex-col items-center">
-        {/* Top node: Onboarded Institutions */}
+      <div className="relative mx-auto max-w-[520px]">
+        {/* Connector lines — behind nodes */}
+        <motion.svg
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          className="absolute inset-0 z-0 h-full w-full"
+          viewBox="0 0 500 400"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          {/* Vertical lines from institutions to top horizontal bar */}
+          <line x1="85" y1="60" x2="85" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
+          <line x1="250" y1="60" x2="250" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
+          <line x1="415" y1="60" x2="415" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
+
+          {/* Top horizontal bar */}
+          <line x1="85" y1="100" x2="415" y2="100" stroke="#93C5FD" strokeWidth="1.5" />
+
+          {/* Vertical line from top bar into AI4I Orchestrate box */}
+          <line x1="250" y1="100" x2="250" y2="130" stroke="#93C5FD" strokeWidth="1.5" />
+
+          {/* Vertical line from AI4I Orchestrate box to bottom bar */}
+          <line x1="250" y1="270" x2="250" y2="300" stroke="#0079C1" strokeWidth="1.5" />
+
+          {/* Bottom horizontal bar */}
+          <line x1="180" y1="300" x2="320" y2="300" stroke="#0079C1" strokeWidth="1.5" />
+
+          {/* Vertical lines from bottom bar to model pills */}
+          <line x1="180" y1="300" x2="180" y2="330" stroke="#0079C1" strokeWidth="1.5" />
+          <line x1="320" y1="300" x2="320" y2="330" stroke="#0079C1" strokeWidth="1.5" />
+        </motion.svg>
+
+        {/* Pulse dot — on top of nodes */}
+        <motion.svg
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+          className="pointer-events-none absolute inset-0 z-20 h-full w-full"
+          viewBox="0 0 500 400"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          <circle r="4" fill="#C8A24A">
+            <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin="0s" repeatCount="indefinite" />
+            <animateMotion
+              dur="4s"
+              begin="0s"
+              repeatCount="indefinite"
+              path="M85 60 L85 100 L250 100 L250 210 L250 300 L180 300 L180 330"
+              keyPoints="0;0.624;0.624;1"
+              keyTimes="0;0.42;0.52;1"
+              calcMode="linear"
+            />
+          </circle>
+        </motion.svg>
+
+        {/* Top row: Institutions */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="w-full max-w-[280px]"
+          className="flex justify-between"
         >
-          <div className="flex h-[104px] flex-col items-center justify-center gap-2 rounded-2xl border-2 border-brand-cyan bg-card px-4 text-center">
-            <Building2 size={22} className="text-brand-cyan" strokeWidth={2} />
-            <span className="font-heading text-sm font-bold text-brand-ink">
-              Onboarded Institutions
-            </span>
-          </div>
-
-          <p className="mt-3 text-center text-xs text-muted-foreground">
-            Citizen services, health, education, agriculture
-          </p>
+          {institutions.map((inst) => (
+            <div
+              key={inst.label}
+              className="flex w-[130px] flex-col items-center justify-center gap-1.5 rounded-2xl border-2 border-brand-cyan bg-card py-3 text-center"
+            >
+              <Building2 size={20} className="text-brand-cyan" strokeWidth={2} />
+              <span className="font-heading text-xs font-bold text-brand-ink">{inst.label}</span>
+            </div>
+          ))}
         </motion.div>
 
-        <CurvedConnector delay={0.2} begin="0s" />
+        {/* Spacer: institutions down to center node */}
+        <div className="h-[70px]" />
 
         {/* Center node: AI4I Orchestrate */}
         <motion.div
@@ -75,13 +111,13 @@ const AdoptionLineage = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-          className="relative w-full max-w-[340px]"
+          className="relative z-10 mx-auto w-full max-w-[340px]"
         >
           <div className="animate-pulse-glow absolute inset-0 rounded-2xl bg-brand-blue/20" />
-          <div className="relative flex flex-col items-center justify-center gap-2 rounded-2xl bg-brand-blue px-6 py-6 text-center shadow-[0_10px_30px_-12px_rgba(0,65,165,0.5)]">
+          <div className="relative flex flex-col items-center justify-center gap-1 rounded-2xl bg-brand-blue px-6 py-6 text-center shadow-[0_10px_30px_-12px_rgba(0,65,165,0.5)]">
             <Zap size={26} className="text-white" strokeWidth={2} />
             <span className="font-heading text-xl font-bold text-white">AI4I Orchestrate</span>
-            <span className="text-sm text-white/80">Control plane, on adopter infrastructure</span>
+            <span className="text-[10px] text-white/60">also runs as AI Switch</span>
 
             <div className="mt-3 grid w-full grid-cols-3 gap-1.5">
               {functionPills.map((p) => (
@@ -96,7 +132,8 @@ const AdoptionLineage = () => {
           </div>
         </motion.div>
 
-        <CurvedConnector delay={0.65} begin="2s" />
+        {/* Spacer: center node down to models */}
+        <div className="h-[70px]" />
 
         {/* Bottom: Hosted Models */}
         <motion.div
