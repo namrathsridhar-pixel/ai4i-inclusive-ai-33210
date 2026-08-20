@@ -6,7 +6,7 @@ const ChallengeConcept = () => {
     <div className="overflow-hidden rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
       <div className="grid md:grid-cols-2">
         {/* LEFT — The Challenge */}
-        <div className="bg-[#FAFAFA] px-10 py-11">
+        <div className="flex h-full flex-col justify-between bg-[#FAFAFA] px-10 py-11">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
