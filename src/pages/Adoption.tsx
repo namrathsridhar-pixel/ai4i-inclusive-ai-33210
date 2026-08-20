@@ -149,10 +149,6 @@ const Adoption = () => {
                   </p>
                 </div>
               </div>
-
-              <p className="mt-5 border-t border-border pt-4 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                Same building block — deployed by an adopter
-              </p>
             </motion.div>
           </div>
         </div>
