@@ -13,10 +13,10 @@ const ChallengeConcept = () => {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <p className="font-heading text-[11px] font-bold uppercase tracking-[2px] text-[#94A3B8]">
+            <p className="mb-3 font-heading text-[11px] font-bold uppercase tracking-[2px] text-[#94A3B8]">
               The Problem
             </p>
-            <h2 className="mt-3 font-heading text-[22px] font-bold text-[#1A1A1A]">
+            <h2 className="font-heading text-[22px] font-bold text-[#1A1A1A]">
               The challenge
             </h2>
             <p className="mt-4 max-w-[420px] text-[13.5px] leading-[1.65] text-[#6B7280]">
@@ -72,10 +72,10 @@ const ChallengeConcept = () => {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <p className="font-heading text-[11px] font-bold uppercase tracking-[2px] text-[#93C5FD]">
+            <p className="mb-3 font-heading text-[11px] font-bold uppercase tracking-[2px] text-[#93C5FD]">
               The Analogy
             </p>
-            <h2 className="mt-3 font-heading text-[22px] font-bold text-white">The concept</h2>
+            <h2 className="font-heading text-[22px] font-bold text-white">The concept</h2>
 
             <blockquote className="mt-6 border-l-2 border-[#93C5FD] pl-[18px] text-[15px] italic leading-[1.6] text-white">
               No factory builds its own power plant. It connects to shared infrastructure — metered
