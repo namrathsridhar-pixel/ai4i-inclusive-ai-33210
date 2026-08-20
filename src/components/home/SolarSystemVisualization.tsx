@@ -21,7 +21,7 @@ const aiServices: Planet[] = [{
   id: "asr",
   name: "ASR",
   icon: <Mic size={16} />,
-  description: "Automatic Speech Recognition - Speech-to-Text conversion",
+  description: "Automatic Speech Recognition — Speech-to-Text conversion",
   angle: 0
 }, {
   id: "nmt",
@@ -81,7 +81,7 @@ const aiServices: Planet[] = [{
   id: "ner",
   name: "NER",
   icon: <Zap size={16} />,
-  description: "Named Entity Recognition - Extract entities from text",
+  description: "Named Entity Recognition — Extract entities from text",
   angle: 327
 }];
 
