@@ -50,12 +50,6 @@ const resources = [
   },
 ];
 
-const pillars = [
-  { icon: Landmark, label: "Governments" },
-  { icon: FlaskConical, label: "Research Institutions" },
-  { icon: Code2, label: "Technology Organisations" },
-  { icon: Globe, label: "Civil Society" },
-];
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
