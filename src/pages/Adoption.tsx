@@ -2,27 +2,53 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  Activity,
   ArrowRight,
-  BarChart3,
+  BookOpen,
   Building2,
-  ClipboardList,
   Code2,
   FlaskConical,
-  Gauge,
+  Github,
   Globe,
-  KeyRound,
   Landmark,
   Network,
-  Search,
-  Shuffle,
-  Wallet,
+  ShieldCheck,
   Zap,
 } from "lucide-react";
 
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
 const OrchestrateDefinition = lazy(() => import("@/components/adoption/OrchestrateDefinition"));
+
+const resources = [
+  {
+    icon: Github,
+    title: "GitHub Repository",
+    body: "Explore the source code and contribute.",
+    cta: "View Repository",
+    href: "#",
+  },
+  {
+    icon: BookOpen,
+    title: "Documentation Wiki",
+    body: "Technical documentation and setup guides.",
+    cta: "View Wiki",
+    href: "#",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Adopter Admin Guide",
+    body: "Deploy, configure, and govern AI Switch.",
+    cta: "View Guide",
+    href: "#",
+  },
+  {
+    icon: Building2,
+    title: "Institution Admin Guide",
+    body: "Onboard your institution and manage access.",
+    cta: "View Guide",
+    href: "#",
+  },
+];
 
 const pillars = [
   { icon: Landmark, label: "Governments" },
