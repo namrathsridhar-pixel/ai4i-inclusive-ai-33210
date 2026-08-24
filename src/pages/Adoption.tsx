@@ -1,19 +1,7 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  BookOpen,
-  Building2,
-  Code2,
-  FlaskConical,
-  Github,
-  Globe,
-  Landmark,
-  Network,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, BookOpen, Building2, Github, Network, ShieldCheck, Zap } from "lucide-react";
 
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
