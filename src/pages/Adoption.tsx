@@ -28,7 +28,7 @@ const resources = [
     icon: Building2,
     step: "03",
     title: "Enable",
-    body: "Institutions sign in, provide application access, and onboard their own users.",
+    body: "Enable institutions to sign in, gain application access, and onboard their own users.",
     cta: "View Institution Admin Guide",
     href: "/guides/institution-admin-guide.html",
   },
