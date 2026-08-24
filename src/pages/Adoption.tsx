@@ -27,16 +27,17 @@ const resources = [
   {
     icon: ShieldCheck,
     title: "Adopter Admin Guide",
-    body: "Deploy, configure, and govern AI Switch.",
+    body: "Register models, configure tiers, and onboard institutions.",
     cta: "View Guide",
     href: "#",
   },
   {
     icon: Building2,
     title: "Institution Admin Guide",
-    body: "The guide institutions use to onboard and manage access.",
+    body: "Verify your account, onboard applications, and create API keys.",
     cta: "View Guide",
-    href: "#",
+    href: "/institution-guide",
+    internal: true,
   },
 ];
 
@@ -221,8 +222,9 @@ const Adoption = () => {
               return (
                 <motion.a
                   key={r.title}
-                  href={r.href}
-                  {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  {...(r.internal
+                    ? { as: Link, to: r.href }
+                    : { href: r.href, ...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {}) })}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
