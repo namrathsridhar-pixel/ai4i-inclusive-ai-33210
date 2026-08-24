@@ -37,8 +37,6 @@ const resources = [
 ];
 
 
-const MotionLink = motion(Link);
-
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -83,7 +81,7 @@ const Adoption = () => {
                 Adoption
               </p>
               <h1 className="mt-4 max-w-[520px] font-heading text-4xl font-bold leading-[1.12] tracking-tight text-brand-ink md:text-[44px]">
-                AI Switch — adopted from AI4I Orchestrate.
+                AI Switch — powered by AI4I Orchestrate.
               </h1>
             </motion.div>
 
