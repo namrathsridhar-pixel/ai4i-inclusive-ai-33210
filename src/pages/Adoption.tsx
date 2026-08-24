@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Building2, Github, Network, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Building2, Network, Settings2, Terminal, Zap } from "lucide-react";
+import adopterGuide from "@/assets/adopter-admin-guide.html.asset.json";
+import institutionGuide from "@/assets/institution-admin-guide.html.asset.json";
 
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
@@ -9,35 +11,28 @@ const OrchestrateDefinition = lazy(() => import("@/components/adoption/Orchestra
 
 const resources = [
   {
-    icon: Github,
-    title: "GitHub Repository",
-    body: "Open source, transparent, and ready to deploy.",
-    cta: "View Repository",
-    href: "https://github.com/COSS-India/ai4i-core",
-    external: true,
+    icon: Terminal,
+    step: "01",
+    title: "Deploy",
+    body: "Set up, configure, and run the AI Switch codebase.",
+    cta: "View Setup Guide",
+    href: "https://github.com/COSS-India/ai4i-core/blob/master/docs/SETUP_GUIDE.md",
   },
   {
-    icon: BookOpen,
-    title: "GitHub Wiki",
-    body: "Setup guides, configuration, and technical reference.",
-    cta: "View Wiki",
-    href: "https://github.com/COSS-India/ai4i-core/wiki",
-    external: true,
-  },
-  {
-    icon: ShieldCheck,
-    title: "Adopter Admin Guide",
-    body: "Register models, configure tiers, and onboard institutions.",
-    cta: "View Guide",
-    href: "#",
+    icon: Settings2,
+    step: "02",
+    title: "Configure",
+    body: "Register models, configure services, and onboard your organisation.",
+    cta: "View Adopter Admin Guide",
+    href: adopterGuide.url,
   },
   {
     icon: Building2,
-    title: "Institution Admin Guide",
-    body: "Sign in, provide application access, and onboard institution users.",
-    cta: "View Guide",
-    href: "/institution-guide",
-    internal: true,
+    step: "03",
+    title: "Enable",
+    body: "Bring institutions onboard and enable them to access AI services.",
+    cta: "View Institution Admin Guide",
+    href: institutionGuide.url,
   },
 ];
 
