@@ -129,7 +129,7 @@ export function AdoptionArchitecture() {
         transition={{ duration: 0.5 }}
         className="mx-auto max-w-md rounded-t-xl rounded-b-[999px] border border-[#0079C1]/45 bg-[#0079C1]/[0.1] px-8 pb-7 pt-5"
       >
-        <p className="text-center text-sm font-bold">Sovereign LLMs</p>
+        <p className="text-center text-sm font-bold">Hosted Models</p>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
           {["LLM", "LLM", "LLM"].map((l, i) => (
             <span

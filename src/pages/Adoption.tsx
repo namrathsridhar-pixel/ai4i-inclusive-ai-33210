@@ -2,56 +2,51 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  Activity,
   ArrowRight,
-  BarChart3,
+  BookOpen,
   Building2,
-  ClipboardList,
   Code2,
   FlaskConical,
-  Gauge,
+  Github,
   Globe,
-  KeyRound,
   Landmark,
   Network,
-  Search,
-  Shuffle,
-  Wallet,
+  ShieldCheck,
   Zap,
 } from "lucide-react";
 
-const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
 const OrchestrateDefinition = lazy(() => import("@/components/adoption/OrchestrateDefinition"));
 
-const groups = [
+const resources = [
   {
-    label: "Setup",
-    tint: "bg-brand-cyan/10 text-brand-cyan",
-    items: [
-      { icon: Building2, title: "Onboard", body: "Add institutions as tenants on AI Switch" },
-      { icon: ClipboardList, title: "Register", body: "Maintain the centralised registry of hosted models" },
-      { icon: Search, title: "Discover", body: "Explore models available for consumption" },
-    ],
+    icon: Github,
+    title: "GitHub Repository",
+    body: "Explore the source code and contribute.",
+    cta: "View Repository",
+    href: "#",
   },
   {
-    label: "Governance",
-    tint: "bg-brand-blue/10 text-brand-blue",
-    items: [
-      { icon: Wallet, title: "Allocate", body: "Assign budget based on approved entitlements" },
-      { icon: KeyRound, title: "Authenticate", body: "Verify identity and validate budget on every request" },
-      { icon: Gauge, title: "Prioritise", body: "Provide priority compute access for critical institutions" },
-    ],
+    icon: BookOpen,
+    title: "Documentation Wiki",
+    body: "Technical documentation and setup guides.",
+    cta: "View Wiki",
+    href: "#",
   },
   {
-    label: "Operations",
-    tint: "bg-brand-navy/10 text-brand-navy",
-    items: [
-      { icon: Shuffle, title: "Route", body: "Direct each request to the specified model" },
-      { icon: Activity, title: "Monitor", body: "Track system health — contextless, infrastructure only" },
-      { icon: BarChart3, title: "Meter", body: "Attribute token and budget consumption by institution" },
-    ],
+    icon: ShieldCheck,
+    title: "Adopter Admin Guide",
+    body: "Deploy, configure, and govern AI Switch.",
+    cta: "View Guide",
+    href: "#",
+  },
+  {
+    icon: Building2,
+    title: "Institution Admin Guide",
+    body: "Onboard your institution and manage access.",
+    cta: "View Guide",
+    href: "#",
   },
 ];
 
@@ -198,83 +193,6 @@ const Adoption = () => {
         </div>
       </section>
 
-      {/* Section 5 — What AI4I Orchestrate does */}
-      <section className="bg-background px-4 py-20" id="functions">
-
-        <div className="container mx-auto max-w-5xl">
-          <motion.div {...fadeUp}>
-            <h2 className="font-heading text-2xl font-bold text-brand-ink md:text-3xl">
-              What AI Switch does
-            </h2>
-            <p className="mt-2 max-w-[620px] text-[15px] text-muted-foreground">
-              Nine functions, in three groups
-            </p>
-          </motion.div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {groups.map((group, gi) => (
-              <motion.div
-                key={group.label}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: gi * 0.12, ease: "easeOut" }}
-                className="rounded-2xl bg-card p-6"
-              >
-                <p className="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-brand-cyan">
-                  {group.label}
-                </p>
-                <div className="mt-4 space-y-4">
-                  {group.items.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.title} className="flex gap-3">
-                        <span
-                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${group.tint}`}
-                        >
-                          <Icon size={15} strokeWidth={2} />
-                        </span>
-                        <div>
-                          <h3 className="font-heading text-[13px] font-bold text-brand-ink">
-                            {item.title}
-                          </h3>
-                          <p className="mt-0.5 text-[12px] leading-relaxed text-muted-foreground">
-                            {item.body}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6 — How it works */}
-      <section className="bg-brand-mist px-4 py-20" id="how-it-works">
-        <div className="container mx-auto max-w-5xl">
-          <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-            How it works
-          </motion.h2>
-          <motion.div {...fadeUp} className="mt-8">
-            <Suspense fallback={null}>
-              <AdoptionArchitecture />
-            </Suspense>
-          </motion.div>
-          <motion.p
-            {...fadeUp}
-            className="mt-10 max-w-[620px] text-[16px] leading-[1.7] text-muted-foreground"
-          >
-            <span className="font-semibold text-brand-ink">AI Switch</span> verifies the identity of
-            every request, checks what the requester is entitled to, and meters consumption of the
-            models it routes to in real time — giving adopters complete visibility and control over
-            how their AI infrastructure is used.
-          </motion.p>
-        </div>
-      </section>
-
       {/* Section 7 — Ecosystem */}
       <section className="bg-background px-4 py-20" id="ecosystem">
         <div className="container mx-auto max-w-4xl">
@@ -317,7 +235,56 @@ const Adoption = () => {
             })}
           </motion.div>
 
-          <motion.div {...fadeUp} className="mt-10 text-center">
+        </div>
+      </section>
+
+      {/* Section 8 — Resources for Adopters */}
+      <section className="bg-brand-mist px-4 py-20" id="resources">
+        <div className="container mx-auto max-w-5xl">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
+            Resources for adopters
+          </motion.h2>
+          <motion.p {...fadeUp} className="mt-3 max-w-[640px] text-[16px] text-muted-foreground">
+            Everything you need to explore, deploy, and adopt AI Switch.
+          </motion.p>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {resources.map((r, i) => {
+              const Icon = r.icon;
+              return (
+                <motion.a
+                  key={r.title}
+                  href={r.href}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
+                  className="group block rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,65,165,0.10)]"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                    <Icon size={18} strokeWidth={2} />
+                  </span>
+                  <h3 className="mt-4 font-heading text-[15px] font-bold text-brand-ink">
+                    {r.title}
+                  </h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-muted-foreground">
+                    {r.body}
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1 font-heading text-[13px] font-bold text-brand-blue">
+                    {r.cta}
+                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </motion.a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 9 — CTA */}
+      <section className="bg-background px-4 py-16">
+        <div className="container mx-auto max-w-4xl">
+          <motion.div {...fadeUp} className="text-center">
             <Link
               to="/get-in-touch"
               className="group inline-flex items-center gap-2 rounded-full bg-brand-blue px-6 py-3 font-heading text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
@@ -328,6 +295,7 @@ const Adoption = () => {
           </motion.div>
         </div>
       </section>
+
     </div>
   );
 };
