@@ -218,23 +218,6 @@ const Adoption = () => {
             for the next organisation to build on.
           </motion.p>
 
-          <motion.div
-            {...fadeUp}
-            className="mt-10 flex flex-wrap items-start justify-center gap-x-10 gap-y-6"
-          >
-            {pillars.map((p) => {
-              const Icon = p.icon;
-              return (
-                <div key={p.label} className="flex w-[120px] flex-col items-center gap-2">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-card text-muted-foreground shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
-                    <Icon size={18} strokeWidth={1.75} />
-                  </span>
-                  <span className="text-xs leading-snug text-muted-foreground">{p.label}</span>
-                </div>
-              );
-            })}
-          </motion.div>
-
         </div>
       </section>
 
