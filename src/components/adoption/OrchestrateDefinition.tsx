@@ -15,15 +15,15 @@ import {
 const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
 
 const functions = [
-  { icon: Building2, title: "Onboard" },
-  { icon: ClipboardList, title: "Register" },
-  { icon: Search, title: "Discover" },
-  { icon: Wallet, title: "Allocate" },
-  { icon: KeyRound, title: "Authenticate" },
-  { icon: Gauge, title: "Prioritise" },
-  { icon: Shuffle, title: "Route" },
-  { icon: Activity, title: "Monitor" },
-  { icon: BarChart3, title: "Meter" },
+  { icon: Building2, title: "Onboard", body: "Bring institutions onto the governed layer." },
+  { icon: ClipboardList, title: "Register", body: "Register any model, open source or proprietary." },
+  { icon: Search, title: "Discover", body: "Browse the models and services available." },
+  { icon: Wallet, title: "Allocate", body: "Distribute capacity fairly across institutions." },
+  { icon: KeyRound, title: "Authenticate", body: "Verify every request before it is served." },
+  { icon: Gauge, title: "Prioritise", body: "Serve mission-critical workloads first." },
+  { icon: Shuffle, title: "Route", body: "Send each request to the chosen model." },
+  { icon: Activity, title: "Monitor", body: "Track health and performance continuously." },
+  { icon: BarChart3, title: "Meter", body: "Measure consumption by intensity of use." },
 ];
 
 const fade = (delay: number) => ({
@@ -58,26 +58,45 @@ const OrchestrateDefinition = () => {
         <p className="text-[15px] font-semibold text-brand-ink">
           Nine core functions. One governed layer.
         </p>
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-9">
-          {functions.map((f) => {
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {functions.map((f, i) => {
             const Icon = f.icon;
             return (
-              <div
+              <motion.div
                 key={f.title}
-                className="flex flex-col items-center gap-2 rounded-xl border border-border bg-card px-3 py-4 text-center"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.05 + (i % 3) * 0.06, ease: "easeOut" }}
+                className="flex items-start gap-3 rounded-xl border border-border bg-card px-4 py-4"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
                   <Icon size={16} strokeWidth={2} />
                 </span>
-                <span className="font-heading text-[12px] font-bold text-brand-ink">{f.title}</span>
-              </div>
+                <span>
+                  <span className="block font-heading text-[13px] font-bold text-brand-ink">
+                    {f.title}
+                  </span>
+                  <span className="mt-1 block text-[13px] leading-relaxed text-muted-foreground">
+                    {f.body}
+                  </span>
+                </span>
+              </motion.div>
             );
           })}
         </div>
       </motion.div>
 
       {/* Part C — Mechanics */}
-      <motion.div {...fade(0.15)} className="mt-[60px]">
+      <motion.div {...fade(0.15)} className="mt-[72px]">
+        {/* Transition cue so the diagram reads as a continuation, not a new topic */}
+        <div className="mb-6 flex items-center gap-4">
+          <span className="h-px w-10 shrink-0 bg-brand-blue/40" />
+          <p className="text-[14px] leading-[1.6] text-muted-foreground">
+            Together, those functions form a single path — from an institution's application,
+            through the switch, to the model that answers it.
+          </p>
+        </div>
         <Suspense fallback={null}>
           <AdoptionArchitecture />
         </Suspense>
