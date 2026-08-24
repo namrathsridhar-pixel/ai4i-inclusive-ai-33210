@@ -13,14 +13,16 @@ const resources = [
     title: "GitHub Repository",
     body: "Explore the source code and contribute.",
     cta: "View Repository",
-    href: "#",
+    href: "https://github.com/COSS-India/ai4i-core",
+    external: true,
   },
   {
     icon: BookOpen,
     title: "Documentation Wiki",
     body: "Technical documentation and setup guides.",
     cta: "View Wiki",
-    href: "#",
+    href: "https://github.com/COSS-India/ai4i-core/wiki",
+    external: true,
   },
   {
     icon: ShieldCheck,
@@ -220,6 +222,7 @@ const Adoption = () => {
                 <motion.a
                   key={r.title}
                   href={r.href}
+                  {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
