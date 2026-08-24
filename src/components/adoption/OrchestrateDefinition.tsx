@@ -88,19 +88,20 @@ const OrchestrateDefinition = () => {
       </motion.div>
 
       {/* Part C — Mechanics */}
-      <motion.div {...fade(0.15)} className="mt-[72px]">
-        {/* Transition cue so the diagram reads as a continuation, not a new topic */}
-        <div className="mb-6 flex items-center gap-4">
-          <span className="h-px w-10 shrink-0 bg-brand-blue/40" />
-          <p className="text-[14px] leading-[1.6] text-muted-foreground">
+      <motion.div {...fade(0.15)}>
+        <p className="mt-12 max-w-[680px] text-[16px] leading-[1.7]">
+          <span className="font-semibold text-brand-ink">
             Together, those functions form a single path — from an institution's application,
             through the switch, to the model that answers it.
-          </p>
+          </span>
+        </p>
+        <div className="mt-12">
+          <Suspense fallback={null}>
+            <AdoptionArchitecture />
+          </Suspense>
         </div>
-        <Suspense fallback={null}>
-          <AdoptionArchitecture />
-        </Suspense>
       </motion.div>
+
     </div>
   );
 };
