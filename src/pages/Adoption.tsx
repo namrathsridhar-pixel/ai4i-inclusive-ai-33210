@@ -2,8 +2,6 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Building2, Network, Settings2, Terminal, Zap } from "lucide-react";
-import adopterGuide from "@/assets/adopter-admin-guide.html.asset.json";
-import institutionGuide from "@/assets/institution-admin-guide.html.asset.json";
 
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
@@ -24,7 +22,7 @@ const resources = [
     title: "Configure",
     body: "Register models, configure services, and onboard your organisation.",
     cta: "View Adopter Admin Guide",
-    href: adopterGuide.url,
+    href: "/guides/adopter-admin-guide.html",
   },
   {
     icon: Building2,
@@ -32,7 +30,7 @@ const resources = [
     title: "Enable",
     body: "Bring institutions onboard and enable them to access AI services.",
     cta: "View Institution Admin Guide",
-    href: institutionGuide.url,
+    href: "/guides/institution-admin-guide.html",
   },
 ];
 
