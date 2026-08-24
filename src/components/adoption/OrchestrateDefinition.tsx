@@ -15,15 +15,15 @@ import {
 const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
 
 const functions = [
-  { icon: Building2, title: "Onboard", body: "Add institutions as tenants on the AI Grid." },
-  { icon: ClipboardList, title: "Register", body: "Maintain the centralised registry of hosted LLMs, including model metadata, versions and deployment lifecycle information." },
-  { icon: Search, title: "Discover", body: "Explore LLMs available for consumption by institutions." },
-  { icon: Wallet, title: "Allocate", body: "Assign budget to authorised institutions based on policy-driven and approved entitlements." },
-  { icon: KeyRound, title: "Authenticate", body: "Verify the identity of every institution at every API request. Enforce role-based access controls and validate the configured budget associated with the institution and its applications." },
-  { icon: Gauge, title: "Prioritise", body: "Provide prioritised compute access for mission-critical applications for approved high-priority institutions." },
-  { icon: Shuffle, title: "Route", body: "Direct each request to the model specified by the application." },
-  { icon: Activity, title: "Monitor", body: "Track the health and performance of AI Switch by monitoring system health, latency, utilisation and performance through centralised operational dashboards. Contextless by design: infrastructure metrics only, never application content." },
-  { icon: BarChart3, title: "Meter", body: "Attribute consumption — tokens and budget — by institution and application. Basis for billing, tiered subsidy schedules, and governance accountability." },
+  { icon: Building2, title: "Onboard", body: "Bring institutions onto the governed layer." },
+  { icon: ClipboardList, title: "Register", body: "Register any model, open source or proprietary." },
+  { icon: Search, title: "Discover", body: "Browse the models and services available." },
+  { icon: Wallet, title: "Allocate", body: "Distribute capacity fairly across institutions." },
+  { icon: KeyRound, title: "Authenticate", body: "Verify every request before it is served." },
+  { icon: Gauge, title: "Prioritise", body: "Serve mission-critical workloads first." },
+  { icon: Shuffle, title: "Route", body: "Send each request to the chosen model." },
+  { icon: Activity, title: "Monitor", body: "Track health and performance continuously." },
+  { icon: BarChart3, title: "Meter", body: "Measure consumption by intensity of use." },
 ];
 
 const fade = (delay: number) => ({
