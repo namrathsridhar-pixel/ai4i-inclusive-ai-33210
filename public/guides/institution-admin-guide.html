@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Switch — Institution Admin Guide</title>
+<style>
+:root{
+  --text:#1A1A2E; --muted:#6B7280; --accent:#2563EB; --accent-light:#EFF6FF;
+  --rule:#E5E7EB; --header-bg:#F8FAFC; --danger-border:#DC2626; --danger-bg:#FEF2F2;
+  --warn-border:#D97706; --warn-bg:#FFFBEB; --tip-border:#15803D; --tip-bg:#F0FDF4;
+  --sidebar-w:300px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text); background:#fff; font-size:16px; line-height:1.6;
+}
+.layout{display:flex; min-height:100vh;}
+/* Sidebar */
+.sidebar{
+  width:var(--sidebar-w); flex-shrink:0; background:var(--header-bg); border-right:1px solid var(--rule);
+  position:sticky; top:0; height:100vh; overflow-y:auto; padding:28px 20px;
+}
+.sidebar .brand{font-size:14px; font-weight:700; color:var(--text); margin-bottom:2px;}
+.sidebar .brand-sub{font-size:13px; color:var(--muted); margin-bottom:20px;}
+.sidebar .search{
+  width:100%; padding:9px 12px; border:1px solid var(--rule); border-radius:8px; font-size:13.5px;
+  margin-bottom:22px; background:#fff; color:var(--text);
+}
+.sidebar .part-label{
+  font-size:11.5px; font-weight:700; color:var(--accent); text-transform:uppercase;
+  letter-spacing:.04em; margin:20px 0 8px 0;
+}
+.sidebar .part-label:first-of-type{margin-top:0;}
+.sidebar a.nav-item{
+  display:block; padding:6px 10px; margin:1px 0; border-radius:6px; font-size:14px;
+  color:var(--text); text-decoration:none; border-left:2px solid transparent;
+}
+.sidebar a.nav-item:hover{background:#fff;}
+.sidebar a.nav-item.active{
+  background:#fff; border-left:2px solid var(--accent); color:var(--accent); font-weight:600;
+}
+.sidebar-toggle{display:none;}
+/* Main content */
+.main{flex:1; min-width:0; max-width:860px; padding:56px 64px 120px;}
+.doc-header{padding-bottom:8px; margin-bottom:8px;}
+.doc-header .eyebrow{font-size:13px; color:var(--muted);}
+.doc-header h1{font-size:34px; margin:6px 0 8px 0; font-weight:600;}
+.doc-header .tagline{font-size:16px; color:var(--muted); margin:0;}
+.part-block{margin-top:56px; padding-top:20px; border-top:1px solid var(--rule);}
+.doc-header + .part-block{margin-top:16px; padding-top:0; border-top:none;}
+.part-eyebrow{font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;}
+.part-title{font-size:28px; font-weight:600; margin:0 0 10px 0;}
+.part-desc{color:var(--muted); font-size:16px; margin:0 0 8px 0;}
+h2.section{font-size:22px; font-weight:600; margin:40px 0 16px 0; scroll-margin-top:24px;}
+h3.sub{font-size:16.5px; font-weight:700; margin:26px 0 10px 0;}
+p.body{margin:0 0 14px 0; font-size:15.5px;}
+p.body strong{font-weight:700;}
+ul.bullets{margin:0 0 14px 0; padding-left:22px;}
+ul.bullets li{margin-bottom:8px; font-size:15.5px;}
+.checklist-group{font-weight:700; font-size:15px; margin:16px 0 6px 0;}
+.checkbox-item{display:flex; gap:10px; align-items:flex-start; font-size:15px; margin-bottom:8px; cursor:pointer; user-select:none; padding:4px 6px; margin-left:-6px; border-radius:6px; transition:background .12s;}
+.checkbox-item:hover{background:var(--header-bg);}
+.checkbox-item input[type="checkbox"]{
+  width:17px; height:17px; margin:1px 0 0 0; flex-shrink:0; cursor:pointer;
+  accent-color:var(--accent);
+}
+.checkbox-item .ctext{transition:color .15s, text-decoration-color .15s;}
+.checkbox-item input[type="checkbox"]:checked ~ .ctext{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--rule);}
+.checklist-progress{
+  font-size:13.5px; color:var(--muted); margin:4px 0 18px 0; display:flex; align-items:center; gap:10px; font-weight:600;
+}
+.checklist-progress .bar{flex:1; max-width:180px; height:7px; background:var(--rule); border-radius:4px; overflow:hidden;}
+.checklist-progress .fill{height:100%; background:var(--accent); border-radius:4px; transition:width .25s, background .25s; width:0%;}
+.checklist-progress.complete{color:var(--tip-border);}
+.checklist-progress.complete .fill{background:var(--tip-border);}
+.checklist-reset{
+  font-size:12.5px; color:var(--accent); cursor:pointer; background:none; border:none; padding:0; text-decoration:underline; font-weight:400;
+}
+.callout .label .icon{margin-right:5px;}
+/* Meta table */
+table.meta{width:100%; border-collapse:collapse; margin:18px 0 24px 0;}
+table.meta td{padding:12px 0; border-bottom:1px solid var(--rule); vertical-align:top; font-size:15px;}
+table.meta td.k{width:150px; color:var(--muted); padding-right:16px;}
+/* Glossary / multi-col tables */
+table.data{width:100%; border-collapse:collapse; margin:14px 0 24px 0; font-size:14.5px;}
+table.data th{text-align:left; background:var(--header-bg); padding:10px 14px; font-weight:700; border-bottom:1px solid var(--rule);}
+table.data td{padding:10px 14px; border-bottom:1px solid var(--rule); vertical-align:top;}
+table.data tr:last-child td{border-bottom:none;}
+/* Callouts */
+.callout{border-left:3px solid var(--accent); background:var(--accent-light); border-radius:0 6px 6px 0; padding:14px 18px; margin:20px 0;}
+.callout.danger{border-color:var(--danger-border); background:var(--danger-bg);}
+.callout.tip{border-color:var(--tip-border); background:var(--tip-bg);}
+.callout .label{font-size:12.5px; font-weight:700; letter-spacing:.03em; margin-bottom:4px; color:var(--accent);}
+.callout.danger .label{color:var(--danger-border);}
+.callout.tip .label{color:var(--tip-border);}
+.callout .ctext{font-size:15px; line-height:1.55;}
+/* Step */
+.step{margin:22px 0 10px 0; font-size:15.5px;}
+.step .badge{color:var(--accent); font-weight:700; margin-right:6px;}
+/* Images */
+.imgcard{
+  border:1px solid var(--rule); border-radius:10px; padding:16px; margin:14px 0 6px 0;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04); text-align:center; background:#fff;
+}
+.imgcard img{max-width:100%; border-radius:4px; display:block; margin:0 auto;}
+.caption{text-align:center; color:var(--muted); font-size:13px; font-style:italic; margin:8px 0 26px 0;}
+hr.rule{border:none; border-top:1px solid var(--rule); margin:24px 0;}
+@media (max-width: 900px){
+  .sidebar{position:fixed; left:-320px; z-index:50; transition:left .2s; box-shadow:2px 0 12px rgba(0,0,0,.08);}
+  .sidebar.open{left:0;}
+  .main{padding:24px 20px 100px; max-width:100%;}
+  .sidebar-toggle{
+    display:flex; position:fixed; top:16px; left:16px; z-index:60; width:40px; height:40px;
+    background:var(--text); color:#fff; border-radius:8px; align-items:center; justify-content:center;
+    font-size:18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2);
+  }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-toggle">&#9776;</div>
+<div class="layout">
+  <div class="sidebar">
+  <div class="brand">AI Switch</div>
+  <div class="brand-sub">User Guide</div>
+  <input class="search" type="text" placeholder="Search sections...">
+  <div class="part-label">Part I · Plan &amp; Prepare</div>
+<a class="nav-item" href="#intro">Introduction</a>
+<a class="nav-item" href="#before-you-begin">Before You Begin</a>
+<a class="nav-item" href="#concepts">Key Terms</a>
+<div class="part-label">Part II · Onboard &amp; Provision</div>
+<a class="nav-item" href="#institution-creation">Institution Creation</a>
+<a class="nav-item" href="#signing-in">Signing In</a>
+<a class="nav-item" href="#create-api-key">Create an API Key</a>
+<a class="nav-item" href="#onboard-users">Onboard Institution Users</a>
+<div class="part-label">Part III · Track Budget &amp; Usage</div>
+<a class="nav-item" href="#metering">Metering Dashboard</a>
+<div class="part-label">Part IV · Manage &amp; Maintain</div>
+<a class="nav-item" href="#manage-api-keys">Manage API Keys</a>
+<a class="nav-item" href="#manage-users">Manage Institution Users</a>
+<a class="nav-item" href="#try-it-now">Try It Now</a>
+<a class="nav-item" href="#view-models">View Available Models</a>
+<a class="nav-item" href="#logs">Logs Dashboard</a>
+<a class="nav-item" href="#manage-profile">Manage Your Profile</a>
+</div>
+  <div class="main">
+    <div class="doc-header">
+  <div class="eyebrow">AI Switch</div>
+  <h1>Institution Admin Guide</h1>
+  <p class="tagline">Sign in, give your applications access to LLMs, and track usage · Version 1.0</p>
+</div>
+    <div class="part-block" id="part1">
+  <div class="part-eyebrow">Part I</div>
+  <div class="part-title">Plan &amp; Prepare</div>
+  <p class="part-desc">Understand your role as Institution Admin and gather what you need before you begin.</p>
+</div>
+<h2 class="section" id="intro">1. Introduction</h2>
+<h3 class="sub">About AI Switch</h3>
+<p class="body">AI Switch provides a single, governed layer for secure, measurable, and scalable consumption of open source and sovereign models. It enables sovereign AI infrastructure to be consumed in a controlled and accountable manner while maintaining centralized governance, operational visibility, and consumption oversight across multiple user institutions and applications.</p>
+<h3 class="sub">Purpose of this Guide</h3>
+<p class="body">This guide walks you through your institution's setup, in the order you'll typically do it:</p>
+<ul class="bullets"><li>Signing in</li><li>Creating an API key for each application</li><li>Onboarding your institution's users</li></ul>
+<p class="body">Part III covers tracking your institution's budget and usage, and Part IV covers the day-to-day account and access management you'll return to afterward.</p>
+<h3 class="sub">Intended Audience</h3>
+<p class="body">This guide is for the Institution Admin — the person responsible for managing your institution's access to AI Switch: signing in, giving your applications access to LLMs through API keys, onboarding your institution's users, and tracking budget and usage.</p>
+<h2 class="section" id="before-you-begin">2. Before You Begin</h2>
+<h3 class="sub">Roles &amp; Responsibilities</h3>
+<p class="body"><strong>Adopter Admin —</strong> the Adopter's representative, for context. They onboard your institution and assign the tier and budget that define what your institution can consume. You operate within those boundaries.</p>
+<p class="body"><strong>Institution Admin —</strong> you. Responsible for your own institution: creating the API keys that give your applications access to LLMs, onboarding your institution's users, and tracking your institution's budget and usage against your assigned tier.</p>
+<p class="body"><strong>Institution User —</strong> a user onboarded by the Institution Admin, who can sign in and explore available LLMs in the portal.</p>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>DATA RESPONSIBILITY</div>
+  <div class="ctext">Your institution is the data fiduciary for the application(s) you connect to AI Switch. AI Switch operates only as a routing and metering layer — it does not process, store, or retain your application's data. Compliance with the DPDP Act for any personal or sensitive data your application collects, uses, or processes remains your institution's responsibility.</div>
+</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Your institution account, and any institution users you add, are activated by your Adopter Admin, who shares sign-in credentials once activated.</div>
+</div>
+<h3 class="sub">Information to Keep Ready</h3>
+<p class="body">Before you begin, gather the following so you're ready to start:</p>
+<ul class="bullets"><li>Your sign-in credentials, shared by your Adopter Admin.</li><li>The applications that need access — you'll create an API key for each, so know its intended use, permissions, and expiry.</li><li>The institution users you'll onboard — their name and email; phone number is optional.</li></ul>
+<h3 class="sub">Readiness Checklist</h3>
+<p class="body">Confirm the items below before you begin Part II. Your progress is saved automatically.</p>
+<div class="checklist-progress" data-progress-for="inst-readiness">
+  <span class="progress-text">0 of 0 checked</span>
+  <div class="bar"><div class="fill"></div></div>
+  <button class="checklist-reset" data-reset-for="inst-readiness" type="button">Reset</button>
+</div>
+<div class="checklist-group">Access</div>
+<label class="checkbox-item" for="chk-inst-readiness-1">
+  <input type="checkbox" id="chk-inst-readiness-1" data-group="inst-readiness">
+  <span class="ctext">The AI Switch link, shared by your Adopter Admin, opens in a supported browser.</span>
+</label>
+<label class="checkbox-item" for="chk-inst-readiness-2">
+  <input type="checkbox" id="chk-inst-readiness-2" data-group="inst-readiness">
+  <span class="ctext">You have your sign-in credentials.</span>
+</label>
+<label class="checkbox-item" for="chk-inst-readiness-3">
+  <input type="checkbox" id="chk-inst-readiness-3" data-group="inst-readiness">
+  <span class="ctext">Your institution has been assigned a tier and budget.</span>
+</label>
+<div class="checklist-group">Applications (API Keys)</div>
+<label class="checkbox-item" for="chk-inst-readiness-4">
+  <input type="checkbox" id="chk-inst-readiness-4" data-group="inst-readiness">
+  <span class="ctext">The applications that need access are identified.</span>
+</label>
+<label class="checkbox-item" for="chk-inst-readiness-5">
+  <input type="checkbox" id="chk-inst-readiness-5" data-group="inst-readiness">
+  <span class="ctext">For each, you know the API key name (matching the application name), its permissions, and expiry.</span>
+</label>
+<div class="checklist-group">Institution Users</div>
+<label class="checkbox-item" for="chk-inst-readiness-6">
+  <input type="checkbox" id="chk-inst-readiness-6" data-group="inst-readiness">
+  <span class="ctext">The institution users you'll onboard are identified, along with their name and email (phone number is optional).</span>
+</label>
+<h2 class="section" id="concepts">3. Key Terms</h2>
+<p class="body">The following terms are used throughout this guide.</p>
+<table class="data"><tr><th>Term</th><th>Definition</th></tr><tr><td>Adopter</td><td>The organization that deploys and governs an AI Switch instance. It onboards Institutions and hosts the LLM Service they consume.</td></tr><tr><td>Institution</td><td>Your organization: onboarded by the Adopter to consume the LLM Service it hosts. It is allocated a Tier and Budget, which it extends to the Applications it registers.</td></tr><tr><td>Application</td><td>A solution built by your institution that consumes the LLM Service through an API Key. Your institution can register one or more Applications.</td></tr><tr><td>API Key</td><td>A credential your institution creates, used to authenticate an Application's requests to an LLM Service.</td></tr><tr><td>Service</td><td>A registered model version made available for consumption through a specific endpoint — the machine or GPU where that model version is hosted. The same model version hosted on a different machine is a distinct Service.</td></tr><tr><td>Tier</td><td>Defines the maximum consumption ceilings for requests and LLM Service usage. All Quotas and Rate Limits mapped to a Tier must stay within these ceilings. A Tier is assigned to your institution.</td></tr><tr><td>Budget</td><td>A monetary spend cap set for your institution, expressed in the currency defined on its assigned Tier. It governs how much your institution can spend in a billing period, regardless of how much Quota remains.</td></tr><tr><td>Quota</td><td>The maximum amount of LLM Service your institution is allowed to consume within a specified time period. Quotas help ensure fair usage of shared platform resources, prevent excessive consumption, and support controlled service entitlements. They reset automatically at the end of the configured time window.</td></tr><tr><td>Rate Limit</td><td>The maximum speed at which requests can be sent within a given period. Unlike Quotas, which control total monthly volume, Rate Limits control how fast your institution or an API Key can consume LLM Service within an hour — protecting platform stability and ensuring fair access for all institutions.</td></tr><tr><td>Metering</td><td>The recording of your institution's usage, including a rollup across all its Applications, tracked against its assigned Budget.</td></tr></table>
+<div class="part-block" id="part2">
+  <div class="part-eyebrow">Part II</div>
+  <div class="part-title">Onboard &amp; Provision</div>
+  <p class="part-desc">Sign in, give your applications access to LLMs, and onboard your institution's users.</p>
+</div>
+<h2 class="section" id="institution-creation">1. Institution Creation</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Understand how your institution gets set up on AI Switch before you can sign in.</td></tr><tr><td class="k">Role</td><td>Adopter Admin (performed on your behalf, before your onboarding begins)</td></tr><tr><td class="k">Prerequisites</td><td>None — this step precedes your involvement.</td></tr></table>
+<p class="body">Before you can sign in and begin onboarding, your institution must share the following with your Adopter Admin. Your Adopter Admin uses it to create your institution on AI Switch and assign it a Tier and Budget:</p>
+<h3 class="sub">Information to Share with Your Adopter Admin</h3>
+<ul class="bullets"><li>Name of the institution.</li><li>Name and email of the contact person who will act as Institution Admin.</li><li>The Tier your institution wants to operate on.</li><li>The Budget within which your institution wants to operate.</li></ul>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>Your institution is created on AI Switch with its Tier and Budget assigned, defining the consumption ceilings and spend cap your institution and its Applications will operate within.</td></tr><tr><td class="k">Next</td><td>Your Adopter Admin activates your institution account and shares your sign-in credentials. Proceed to Signing In.</td></tr></table>
+<h2 class="section" id="signing-in">2. Signing In</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Sign in to AI Switch using the credentials your Adopter Admin has shared with you.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>Your institution account has been activated.</li><li>Your Adopter Admin has shared your sign-in credentials.</li></ul></td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Sign in to AI Switch.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/ca6aa2c5b3c1cdaf.jpg" alt="Signing in to AI Switch."></div>
+<div class="caption">Signing in to AI Switch.</div>
+<div class="step"><span class="badge">Step 2</span>By default, you land on the Usage Dashboard.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/5a72c76cda231728.png" alt="The Usage Dashboard, your institution's landing page."></div>
+<div class="caption">The Usage Dashboard, your institution's landing page.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You're signed in and viewing the Usage Dashboard, your institution's landing page.</td></tr><tr><td class="k">Next</td><td>Proceed to Create an API Key.</td></tr></table>
+<h2 class="section" id="create-api-key">3. Create an API Key (Application Access)</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Create an API key so an application can access LLMs.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>Your institution has been assigned a tier and budget.</li><li>You know the application's name, the permissions it needs, and when the key should expire.</li></ul></td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "API Key Management" to create a key for your application.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/62ed6f4c37224643.jpg" alt="The API Key Management area."></div>
+<div class="caption">The API Key Management area.</div>
+<div class="step"><span class="badge">Step 2</span>The "Create API Key" tab opens by default.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/94f4c9a9cd2e95f4.png" alt="The Create API Key tab, ready for a new key."></div>
+<div class="caption">The Create API Key tab, ready for a new key.</div>
+<div class="step"><span class="badge">Step 3</span>Enter the required information — Key Name, Permissions, and Expiry — and click "Create API Key."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/e14bab8ec0473711.jpg" alt="Entering the key name, permissions, and expiry, and clicking Create API Key."></div>
+<div class="caption">Entering the key name, permissions, and expiry, and clicking Create API Key.</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Name each key the same as the application it's for — for example, "FieldSurveyApp" — so it stays easy to identify later, especially once your institution has more than one application.</div>
+</div>
+<div class="step"><span class="badge">Step 4</span>Once the API key is created, copy it and store it securely — it is shown only once.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">The full API key is displayed only at the moment of creation and cannot be retrieved again afterwards. Copy it and store it securely before leaving this screen. If it is lost, you will need to create a new key.</div>
+</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/26309d78679206ba.jpg" alt="The API key created, shown once with the option to copy it."></div>
+<div class="caption">The API key created, shown once with the option to copy it.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The application has an API key, ready to access LLMs, valid until its expiry.</td></tr><tr><td class="k">Next</td><td>Proceed to Onboard Institution Users.</td></tr></table>
+<h2 class="section" id="onboard-users">4. Onboard Institution Users</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Add an Institution User to your institution, so they can sign in to AI Switch.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have the new user's name and email; phone number is optional.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Institution Management" to onboard your institution's users.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/9da6bcbb6e1c26ef.jpg" alt="The Institution Management area."></div>
+<div class="caption">The Institution Management area.</div>
+<div class="step"><span class="badge">Step 2</span>Click "Add User" to onboard a new user.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/71e9a27c368477ed.jpg" alt="The Institution Management area, showing your institution's existing users."></div>
+<div class="caption">The Institution Management area, showing your institution's existing users.</div>
+<div class="step"><span class="badge">Step 3</span>Enter the required fields — Email, Full Name, and Role — and Phone Number if available, then agree to the policies by checking the consent box, and click "Add."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/1fd1368f536f1f65.jpg" alt="Entering the user's details, accepting the policies, and clicking Add."></div>
+<div class="caption">Entering the user's details, accepting the policies, and clicking Add.</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Choose "User" for an Institution User, who can sign in and explore available LLMs, or "Institution Admin" if they should have the same administrative access as you.</div>
+</div>
+<div class="step"><span class="badge">Step 4</span>The new entry appears with a status of "Pending activation." Contact your Adopter Admin to activate the account.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/ce081c14246b3f93.png" alt="The new entry, shown as pending activation among your institution's users."></div>
+<div class="caption">The new entry, shown as pending activation among your institution's users.</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">New institution users are activated by your Adopter Admin, who shares their sign-in credentials with you once the account is activated.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The user is added to your institution, initially pending activation, and becomes active once your Adopter Admin activates the account.</td></tr><tr><td class="k">Next</td><td>Proceed to Part III to track your institution's budget and usage.</td></tr></table>
+<div class="part-block" id="part3">
+  <div class="part-eyebrow">Part III</div>
+  <div class="part-title">Track Budget &amp; Usage</div>
+  <p class="part-desc">Track your institution's budget and usage against its assigned Tier.</p>
+</div>
+<h2 class="section" id="metering">1. Metering Dashboard</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Track your institution's budget and usage against its assigned tier.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>Your institution has at least one application in use.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Usage Dashboard" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/812f48cf42697518.jpg" alt="Opening the Usage Dashboard."></div>
+<div class="caption">Opening the Usage Dashboard.</div>
+<div class="step"><span class="badge">Step 2</span>Click "Overview" for a summary of your institution's usage — total requests, success and failure counts, and request volume over time.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/3b0bfcb230878f42.jpg" alt="The Overview tab."></div>
+<div class="caption">The Overview tab.</div>
+<div class="step"><span class="badge">Step 3</span>Click "Model Usage" to view usage broken down by model.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/5e94af2bd6bb8a58.jpg" alt="The Model Usage tab, showing the most used model and overall success rate."></div>
+<div class="caption">The Model Usage tab, showing the most used model and overall success rate.</div>
+<div class="step"><span class="badge">Step 4</span>Scroll down in the Model Usage tab to view the breakdown by model and service, showing total requests, consumption, and success and failure rates for each.</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">A Service is a specific model version made available through an endpoint — a single model can run as more than one Service. This view groups your Services by the model they run on, so you can see which Services fall under which model.</div>
+</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/889c97d38a4b6ac3.png" alt="The model breakdown, showing usage by individual service."></div>
+<div class="caption">The model breakdown, showing usage by individual service.</div>
+<div class="step"><span class="badge">Step 5</span>Click "Budget and usage" to view your institution's spend against its assigned tier and budget.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/784f6831a5ece3cb.jpg" alt="The Budget and usage view for your institution."></div>
+<div class="caption">The Budget and usage view for your institution.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can see your institution's budget and usage — Overview for a summary, Model Usage for a breakdown by model, and Budget and usage for spend against your assigned tier and budget.</td></tr><tr><td class="k">Next</td><td>Proceed to Part IV for day-to-day account and access management.</td></tr></table>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">If you need a different tier or a larger budget, contact your Adopter Admin — this is managed at the platform level.</div>
+</div>
+<div class="part-block" id="part4">
+  <div class="part-eyebrow">Part IV</div>
+  <div class="part-title">Manage &amp; Maintain</div>
+  <p class="part-desc">Day-to-day account, access, and testing tasks you'll return to after initial setup.</p>
+</div>
+<h2 class="section" id="manage-api-keys">1. Manage API Keys</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Update or revoke an existing API key.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have at least one existing API key.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "API Key Management," then click "Manage API Keys" to view your institution's application keys.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/f178cea7765c0abb.jpg" alt="Your API Keys, showing status, creation, and expiry for each."></div>
+<div class="caption">Your API Keys, showing status, creation, and expiry for each.</div>
+<div class="step"><span class="badge">Step 2</span>To rename a key or change its permissions, click the edit icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/0f7b207e2264c099.jpg" alt="Opening Update Key for an existing API key."></div>
+<div class="caption">Opening Update Key for an existing API key.</div>
+<div class="step"><span class="badge">Step 3</span>Update the key name or permissions, then click "Update." A key's expiry cannot be changed here.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/b284072649c299e6.jpg" alt="Updating the key name and permissions."></div>
+<div class="caption">Updating the key name and permissions.</div>
+<div class="step"><span class="badge">Step 4</span>To revoke a key, click the revoke icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/7943639a1ceee773.jpg" alt="Opening Revoke Key for an existing API key."></div>
+<div class="caption">Opening Revoke Key for an existing API key.</div>
+<div class="step"><span class="badge">Step 5</span>Confirm the revocation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/d9347e3f19f887c7.jpg" alt="Confirming the key revocation."></div>
+<div class="caption">Confirming the key revocation.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">Revoking a key is permanent — revoked keys cannot be reactivated. If the application still needs access, you'll need to create a new key and update the application with it.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The key is updated, or revoked and immediately stops authenticating requests.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Institution Users.</td></tr></table>
+<h2 class="section" id="manage-users">2. Manage Institution Users</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Change a user's role, suspend or activate an existing institution user, or delete one.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have at least one existing institution user.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Institution Management" to view your institution's users.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/b69e32fef277bd5a.jpg" alt="The Institution Management area, showing your institution's users."></div>
+<div class="caption">The Institution Management area, showing your institution's users.</div>
+<div class="step"><span class="badge">Step 2</span>To change a user's role, click the edit icon for that user.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/07e44ef9b85db033.jpg" alt="Opening Edit User for an existing user."></div>
+<div class="caption">Opening Edit User for an existing user.</div>
+<div class="step"><span class="badge">Step 3</span>Update their Role, then click "Save."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/a2623643afda71c4.jpg" alt="Updating a user's role."></div>
+<div class="caption">Updating a user's role.</div>
+<div class="step"><span class="badge">Step 4</span>To suspend a user, open the row's actions menu and click "Suspend."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/2d7fe6319b802538.jpg" alt="Opening the Suspend action for a user."></div>
+<div class="caption">Opening the Suspend action for a user.</div>
+<div class="step"><span class="badge">Step 5</span>Confirm the status change.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/b2ccb67bc16e7611.jpg" alt="Confirming the user's suspension."></div>
+<div class="caption">Confirming the user's suspension.</div>
+<div class="step"><span class="badge">Step 6</span>To activate a suspended user, open the row's actions menu and click "Activate."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/30fd37d7e4178b30.jpg" alt="Opening the Activate action for a suspended user."></div>
+<div class="caption">Opening the Activate action for a suspended user.</div>
+<div class="step"><span class="badge">Step 7</span>Confirm the status change.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/14ffc0ab667b8fbc.jpg" alt="Confirming the user's activation."></div>
+<div class="caption">Confirming the user's activation.</div>
+<div class="step"><span class="badge">Step 8</span>To delete a user, open the row's actions menu and click "Delete."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/a7fdc806af3a4794.jpg" alt="Opening the Delete action for a user."></div>
+<div class="caption">Opening the Delete action for a user.</div>
+<div class="step"><span class="badge">Step 9</span>Confirm the deletion.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/6a27f31fdf7943bf.jpg" alt="Confirming the user's deletion."></div>
+<div class="caption">Confirming the user's deletion.</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Suspending a user blocks their access immediately. You can restore it at any time using the Activate action.</div>
+</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">Deleting a user is permanent and irreversible. They lose access immediately, and the portal does not offer a way to restore a deleted user afterward.</div>
+</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">An institution must always have at least one active Institution Admin. You cannot suspend or delete a user if doing so would leave your institution without one.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The user's role is updated, or the user is suspended or deleted, depending on the action you took.</td></tr><tr><td class="k">Next</td><td>Proceed to Try It Now.</td></tr></table>
+<h2 class="section" id="try-it-now">3. Try It Now</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Explore and test an available LLM directly from the portal.</td></tr><tr><td class="k">Role</td><td>Institution Admin or Institution User</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>From Home, click "Try it now" on the Large Language Model (LLM) card to open AI Accessibility Studio.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/8eb60bd34d1b4943.jpg" alt="AI Accessibility Studio, on the Home page."></div>
+<div class="caption">AI Accessibility Studio, on the Home page.</div>
+<div class="step"><span class="badge">Step 2</span>Select the LLM service you want to test, then choose the source and target languages.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/ca8df5f372e4da79.jpg" alt="Selecting the LLM service, source language, and target language."></div>
+<div class="caption">Selecting the LLM service, source language, and target language.</div>
+<div class="step"><span class="badge">Step 3</span>Enter the text to process and click "Translate."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/530fccc8670a2084.jpg" alt="Entering source text and clicking Translate."></div>
+<div class="caption">Entering source text and clicking Translate.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can explore and test an available LLM directly in the portal.</td></tr><tr><td class="k">Next</td><td>Proceed to View Available Models.</td></tr></table>
+<h2 class="section" id="view-models">4. View Available Models</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>See which models your Adopter Admin has made available on the platform.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Model Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/a2269ec56db02d59.jpg" alt="The Model Management area."></div>
+<div class="caption">The Model Management area.</div>
+<div class="step"><span class="badge">Step 2</span>View the Model Registry.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/50b69c847a876539.jpg" alt="The Model Registry, listing every model registered on the platform."></div>
+<div class="caption">The Model Registry, listing every model registered on the platform.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can see every model currently registered on the platform.</td></tr><tr><td class="k">Next</td><td>Proceed to Logs Dashboard.</td></tr></table>
+<h2 class="section" id="logs">5. Logs Dashboard</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Review request logs and trace details for your institution's request activity.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one request has been made using your institution's API keys.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Logs Dashboard" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/cde796584caaa768.jpg" alt="The Logs Dashboard area."></div>
+<div class="caption">The Logs Dashboard area.</div>
+<div class="step"><span class="badge">Step 2</span>View your institution's request logs, filterable by task type, status, and time range, then click the view icon next to a log entry to see its trace details.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/fe371c6c82602424.jpg" alt="Opening the trace details for a log entry."></div>
+<div class="caption">Opening the trace details for a log entry.</div>
+<div class="step"><span class="badge">Step 3</span>Review the trace details, including timing for each stage of the request.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/226736a17e285495.png" alt="Trace details, showing request, model, and inference spans."></div>
+<div class="caption">Trace details, showing request, model, and inference spans.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can review your institution's request activity in detail — useful when debugging an application issue.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Your Profile.</td></tr></table>
+<h2 class="section" id="manage-profile">6. Manage Your Profile</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Update your profile, change your password, sign out, or delete your own account.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click the menu icon in the top right, then click "Profile."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/5671904ffce22643.jpg" alt="Opening Profile from the menu."></div>
+<div class="caption">Opening Profile from the menu.</div>
+<div class="step"><span class="badge">Step 2</span>View or edit your user details.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/4f0f5cc70e4f8ded.jpg" alt="The Profile page, showing your user details."></div>
+<div class="caption">The Profile page, showing your user details.</div>
+<div class="step"><span class="badge">Step 3</span>To change your password, click the "Change Password" tab, enter your current and new password, then click "Update Password."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/421f75ea7b503aec.jpg" alt="A new password meeting all requirements, ready to update."></div>
+<div class="caption">A new password meeting all requirements, ready to update.</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Your new password must meet every requirement shown — each one turns green as it's satisfied.</div>
+</div>
+<div class="step"><span class="badge">Step 4</span>To sign out, click the menu icon and click "Sign out." You're returned to the sign-in page.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/0b601b79410609df.jpg" alt="Opening Sign out from the menu."></div>
+<div class="caption">Opening Sign out from the menu.</div>
+<div class="step"><span class="badge">Step 5</span>To delete your account, scroll the user details page to "Delete Account" and click "Delete Account."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/3f628f3497d1f0e5.jpg" alt="The Delete Account section of your profile."></div>
+<div class="caption">The Delete Account section of your profile.</div>
+<div class="step"><span class="badge">Step 6</span>Confirm the deletion.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/f22f903c1890af1b.jpg" alt="Confirming the account deletion."></div>
+<div class="caption">Confirming the account deletion.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">You can only delete your own account if your institution has another active Institution Admin. If you're the sole Institution Admin, this action is blocked — ask your Adopter Admin to add another Institution Admin first.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>Your profile or password is updated, or your account is deleted, depending on the action you took.</td></tr></table>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var toggle = document.querySelector('.sidebar-toggle');
+  var sidebar = document.querySelector('.sidebar');
+  if(toggle){ toggle.addEventListener('click', function(){ sidebar.classList.toggle('open'); }); }
+  var links = document.querySelectorAll('.sidebar a.nav-item');
+  links.forEach(function(l){
+    l.addEventListener('click', function(){
+      if(window.innerWidth <= 900){ sidebar.classList.remove('open'); }
+    });
+  });
+  var sections = document.querySelectorAll('h2.section');
+  var map = {};
+  links.forEach(function(l){ map[l.getAttribute('href')] = l; });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var id = '#' + e.target.id;
+      if(e.isIntersecting && map[id]){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        map[id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -70% 0px' });
+  sections.forEach(function(s){ obs.observe(s); });
+  var searchBox = document.querySelector('.search');
+  if(searchBox){
+    searchBox.addEventListener('input', function(){
+      var q = this.value.toLowerCase();
+      links.forEach(function(l){
+        l.style.display = l.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+      });
+    });
+  }
+
+  // --- Real checklist: persist + progress ---
+  var STORAGE_KEY = 'ai-switch-guide-checklist';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ saved = {}; }
+
+  function saveState(){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); } catch(e){}
+  }
+
+  function updateProgress(groupId){
+    var boxes = document.querySelectorAll('input[type="checkbox"][data-group="' + groupId + '"]');
+    var total = boxes.length, checked = 0;
+    boxes.forEach(function(b){ if(b.checked) checked++; });
+    var bar = document.querySelector('.checklist-progress[data-progress-for="' + groupId + '"]');
+    if(bar){
+      var pct = total ? Math.round((checked/total)*100) : 0;
+      var isComplete = total > 0 && checked === total;
+      bar.querySelector('.progress-text').textContent = isComplete ? ('✓ All set — 100% ready') : (pct + '% ready (' + checked + ' of ' + total + ')');
+      bar.querySelector('.fill').style.width = pct + '%';
+      bar.classList.toggle('complete', isComplete);
+    }
+  }
+
+  var allCheckboxes = document.querySelectorAll('input[type="checkbox"][data-group]');
+  var groupIds = new Set();
+  allCheckboxes.forEach(function(box){
+    var gid = box.getAttribute('data-group');
+    groupIds.add(gid);
+    if(saved[box.id]){ box.checked = true; }
+    box.addEventListener('change', function(){
+      saved[box.id] = box.checked;
+      saveState();
+      updateProgress(gid);
+    });
+  });
+  groupIds.forEach(function(gid){ updateProgress(gid); });
+
+  document.querySelectorAll('[data-reset-for]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var gid = btn.getAttribute('data-reset-for');
+      document.querySelectorAll('input[type="checkbox"][data-group="' + gid + '"]').forEach(function(box){
+        box.checked = false;
+        delete saved[box.id];
+      });
+      saveState();
+      updateProgress(gid);
+    });
+  });
+});
+</script>
+</body>
+</html>
