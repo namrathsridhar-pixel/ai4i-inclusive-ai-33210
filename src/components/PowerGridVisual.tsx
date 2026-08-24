@@ -189,7 +189,7 @@ export function PowerGridVisual() {
         {ROWS.map((y) => (<Equivalence key={y} y={y + ROW_H / 2} />))}
 
         <Station cx={COL.left} y={ROWS[0]} tone="grey" label="Power Generation" delay={0}><PowerPlantIcon /></Station>
-        <Station cx={COL.right} y={ROWS[0]} tone="teal" label="Sovereign Compute" delay={0.25}><ServerRackIcon /></Station>
+        <Station cx={COL.right} y={ROWS[0]} tone="teal" label="Compute Infrastructure" delay={0.25}><ServerRackIcon /></Station>
 
         <Station cx={COL.left} y={ROWS[1]} tone="grey" label="Transmission Grid" sub="meter &middot; control" delay={0.1}><PylonIcon /></Station>
         <Station cx={COL.right} y={ROWS[1]} tone="gold" label="AI Switch" sub="auth &middot; route &middot; meter" delay={0.35}><SwitchgearIcon /></Station>
