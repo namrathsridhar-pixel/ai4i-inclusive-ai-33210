@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Switch — Adopter Admin Guide</title>
+<style>
+:root{
+  --text:#1A1A2E; --muted:#6B7280; --accent:#2563EB; --accent-light:#EFF6FF;
+  --rule:#E5E7EB; --header-bg:#F8FAFC; --danger-border:#DC2626; --danger-bg:#FEF2F2;
+  --warn-border:#D97706; --warn-bg:#FFFBEB; --tip-border:#15803D; --tip-bg:#F0FDF4;
+  --sidebar-w:300px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text); background:#fff; font-size:16px; line-height:1.6;
+}
+.layout{display:flex; min-height:100vh;}
+/* Sidebar */
+.sidebar{
+  width:var(--sidebar-w); flex-shrink:0; background:var(--header-bg); border-right:1px solid var(--rule);
+  position:sticky; top:0; height:100vh; overflow-y:auto; padding:28px 20px;
+}
+.sidebar .brand{font-size:14px; font-weight:700; color:var(--text); margin-bottom:2px;}
+.sidebar .brand-sub{font-size:13px; color:var(--muted); margin-bottom:20px;}
+.sidebar .search{
+  width:100%; padding:9px 12px; border:1px solid var(--rule); border-radius:8px; font-size:13.5px;
+  margin-bottom:22px; background:#fff; color:var(--text);
+}
+.sidebar .part-label{
+  font-size:11.5px; font-weight:700; color:var(--accent); text-transform:uppercase;
+  letter-spacing:.04em; margin:20px 0 8px 0;
+}
+.sidebar .part-label:first-of-type{margin-top:0;}
+.sidebar a.nav-item{
+  display:block; padding:6px 10px; margin:1px 0; border-radius:6px; font-size:14px;
+  color:var(--text); text-decoration:none; border-left:2px solid transparent;
+}
+.sidebar a.nav-item:hover{background:#fff;}
+.sidebar a.nav-item.active{
+  background:#fff; border-left:2px solid var(--accent); color:var(--accent); font-weight:600;
+}
+.sidebar-toggle{display:none;}
+/* Main content */
+.main{flex:1; min-width:0; max-width:860px; padding:56px 64px 120px;}
+.doc-header{border-bottom:1px solid var(--rule); padding-bottom:24px; margin-bottom:8px;}
+.doc-header .eyebrow{font-size:13px; color:var(--muted);}
+.doc-header h1{font-size:34px; margin:6px 0 8px 0; font-weight:600;}
+.doc-header .tagline{font-size:16px; color:var(--muted); margin:0;}
+.part-block{margin-top:56px; padding-top:20px; border-top:1px solid var(--rule);}
+#part1{margin-top:16px; padding-top:0; border-top:none;}
+.part-eyebrow{font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;}
+.part-title{font-size:28px; font-weight:600; margin:0 0 10px 0;}
+.part-desc{color:var(--muted); font-size:16px; margin:0 0 8px 0;}
+h2.section{font-size:22px; font-weight:600; margin:40px 0 16px 0; scroll-margin-top:24px;}
+h3.sub{font-size:16.5px; font-weight:700; margin:26px 0 10px 0;}
+p.body{margin:0 0 14px 0; font-size:15.5px;}
+p.body strong{font-weight:700;}
+ul.bullets{margin:0 0 14px 0; padding-left:22px;}
+ul.bullets li{margin-bottom:8px; font-size:15.5px;}
+.checklist-group{font-weight:700; font-size:15px; margin:16px 0 6px 0;}
+.checkbox-item{display:flex; gap:10px; align-items:flex-start; font-size:15px; margin-bottom:8px; cursor:pointer; user-select:none; padding:4px 6px; margin-left:-6px; border-radius:6px; transition:background .12s;}
+.checkbox-item:hover{background:var(--header-bg);}
+.checkbox-item input[type="checkbox"]{
+  width:17px; height:17px; margin:1px 0 0 0; flex-shrink:0; cursor:pointer;
+  accent-color:var(--accent);
+}
+.checkbox-item .ctext{transition:color .15s, text-decoration-color .15s;}
+.checkbox-item input[type="checkbox"]:checked ~ .ctext{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--rule);}
+.checklist-progress{
+  font-size:13.5px; color:var(--muted); margin:4px 0 18px 0; display:flex; align-items:center; gap:10px; font-weight:600;
+}
+.checklist-progress .bar{flex:1; max-width:180px; height:7px; background:var(--rule); border-radius:4px; overflow:hidden;}
+.checklist-progress .fill{height:100%; background:var(--accent); border-radius:4px; transition:width .25s, background .25s; width:0%;}
+.checklist-progress.complete{color:var(--tip-border);}
+.checklist-progress.complete .fill{background:var(--tip-border);}
+.checklist-reset{
+  font-size:12.5px; color:var(--accent); cursor:pointer; background:none; border:none; padding:0; text-decoration:underline; font-weight:400;
+}
+.callout .label .icon{margin-right:5px;}
+/* Meta table */
+table.meta{width:100%; border-collapse:collapse; margin:18px 0 24px 0;}
+table.meta td{padding:12px 0; border-bottom:1px solid var(--rule); vertical-align:top; font-size:15px;}
+table.meta td.k{width:150px; color:var(--muted); padding-right:16px;}
+/* Glossary / multi-col tables */
+table.data{width:100%; border-collapse:collapse; margin:14px 0 24px 0; font-size:14.5px;}
+table.data th{text-align:left; background:var(--header-bg); padding:10px 14px; font-weight:700; border-bottom:1px solid var(--rule);}
+table.data td{padding:10px 14px; border-bottom:1px solid var(--rule); vertical-align:top;}
+table.data tr:last-child td{border-bottom:none;}
+/* Callouts */
+.callout{border-left:3px solid var(--accent); background:var(--accent-light); border-radius:0 6px 6px 0; padding:14px 18px; margin:20px 0;}
+.callout.danger{border-color:var(--danger-border); background:var(--danger-bg);}
+.callout.tip{border-color:var(--tip-border); background:var(--tip-bg);}
+.callout .label{font-size:12.5px; font-weight:700; letter-spacing:.03em; margin-bottom:4px; color:var(--accent);}
+.callout.danger .label{color:var(--danger-border);}
+.callout.tip .label{color:var(--tip-border);}
+.callout .ctext{font-size:15px; line-height:1.55;}
+/* Step */
+.step{margin:22px 0 10px 0; font-size:15.5px;}
+.step .badge{color:var(--accent); font-weight:700; margin-right:6px;}
+/* Images */
+.imgcard{
+  border:1px solid var(--rule); border-radius:10px; padding:16px; margin:14px 0 6px 0;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04); text-align:center; background:#fff;
+}
+.imgcard img{max-width:100%; border-radius:4px; display:block; margin:0 auto;}
+.caption{text-align:center; color:var(--muted); font-size:13px; font-style:italic; margin:8px 0 26px 0;}
+hr.rule{border:none; border-top:1px solid var(--rule); margin:24px 0;}
+@media (max-width: 900px){
+  .sidebar{position:fixed; left:-320px; z-index:50; transition:left .2s; box-shadow:2px 0 12px rgba(0,0,0,.08);}
+  .sidebar.open{left:0;}
+  .main{padding:24px 20px 100px; max-width:100%;}
+  .sidebar-toggle{
+    display:flex; position:fixed; top:16px; left:16px; z-index:60; width:40px; height:40px;
+    background:var(--text); color:#fff; border-radius:8px; align-items:center; justify-content:center;
+    font-size:18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2);
+  }
+}
+</style>
+</head>
+<body>
+<div class="sidebar-toggle">&#9776;</div>
+<div class="layout">
+  <div class="sidebar">
+  <div class="brand">AI Switch Docs</div>
+  <div class="brand-sub">Adopter Admin Guide</div>
+  <input class="search" type="text" placeholder="Search sections...">
+  <div class="part-label">Part I · Plan &amp; Prepare</div>
+<a class="nav-item" href="#intro">Introduction</a>
+<a class="nav-item" href="#before-you-begin">Before You Begin</a>
+<a class="nav-item" href="#concepts">Key Terms</a>
+<div class="part-label">Part II · Set Up &amp; Onboard</div>
+<a class="nav-item" href="#getting-started">Getting Started</a>
+<a class="nav-item" href="#register-model">Register a Model</a>
+<a class="nav-item" href="#configure-tier">Configure a Tier</a>
+<a class="nav-item" href="#create-service">Create Service &amp; Pricing</a>
+<a class="nav-item" href="#onboard-institution">Onboard an Institution</a>
+<a class="nav-item" href="#assign-tier">Assign Tier &amp; Budget</a>
+<div class="part-label">Part III · Monitor &amp; Track</div>
+<a class="nav-item" href="#monitor">Monitoring Dashboard</a>
+<a class="nav-item" href="#metering">Metering Dashboard</a>
+<div class="part-label">Part IV · Manage &amp; Maintain</div>
+<a class="nav-item" href="#manage-institutions">Manage Institutions</a>
+<a class="nav-item" href="#manage-api-keys">Manage API Keys</a>
+<a class="nav-item" href="#manage-tiers">Manage Tiers</a>
+<a class="nav-item" href="#manage-models">Manage Models</a>
+<a class="nav-item" href="#manage-services">Manage Services</a>
+<a class="nav-item" href="#onboard-users">Onboard Your Organization's Users</a>
+<a class="nav-item" href="#manage-profile">Manage Your Profile</a>
+<a class="nav-item" href="#logs-dashboard">Logs Dashboard</a>
+<a class="nav-item" href="#try-it-now">Try It Now</a>
+</div>
+  <div class="main">
+    <div class="doc-header">
+  <div class="eyebrow">AI Switch</div>
+  <h1>Adopter Admin Guide</h1>
+  <p class="tagline">Set up, onboard, and operate AI Switch · Version 1.0</p>
+</div>
+    <div class="part-block" id="part1">
+  <div class="part-eyebrow">Part I</div>
+  <div class="part-title">Plan &amp; Prepare</div>
+  <p class="part-desc">Understand AI Switch, and gather everything required before you begin setup.</p>
+</div>
+<h2 class="section" id="intro">1. Introduction</h2>
+<h3 class="sub">About AI Switch</h3>
+<p class="body">AI Switch provides a single, governed layer for secure, measurable, and scalable consumption of open-source and sovereign AI models. It enables sovereign AI infrastructure to be consumed in a controlled and accountable manner while maintaining centralized governance, operational visibility, and consumption oversight across multiple institutions and applications.</p>
+<h3 class="sub">Purpose of this Guide</h3>
+<p class="body">This guide walks you through setting up AI Switch, in the order you'll typically do it:</p>
+<ul class="bullets"><li>Signing in to AI Switch</li><li>Registering models and configuring tiers and services</li><li>Onboarding institutions, and assigning their tiers and budgets</li></ul>
+<p class="body">Part III covers monitoring platform performance and tracking budget and usage, and Part IV covers the day-to-day management and maintenance you'll return to afterward.</p>
+<h3 class="sub">Intended Audience</h3>
+<p class="body">This guide is for the Adopter Admin — the person responsible for governing AI Switch on behalf of your organization: registering models, configuring tiers and services, onboarding institutions, and monitoring platform health, budget, and usage.</p>
+
+<h2 class="section" id="before-you-begin">2. Before You Begin</h2>
+<h3 class="sub">Roles &amp; Responsibilities</h3>
+<p class="body"><strong>Adopter Admin —</strong> you. Responsible for governing the platform: registering models, configuring tiers and services, onboarding institutions, and monitoring platform health, budget, and usage.</p>
+<p class="body"><strong>Adopter User —</strong> a member of your own organization, onboarded by you or self-registered, with regular user access to explore available LLMs in the portal.</p>
+<p class="body"><strong>Institution Admin —</strong> responsible for their own institution: creating the API keys that give their applications access to LLMs, onboarding their institution's users, and tracking their budget and usage against their assigned tier. You onboard their institution and assign the tier and budget that define what they can consume; they operate within those boundaries.</p>
+<p class="body"><strong>Institution User —</strong> a user onboarded by an Institution Admin, who can sign in and explore available LLMs in the portal.</p>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Your Adopter Admin credentials are shared with you by your Implementation team.</div>
+</div>
+<h3 class="sub">Information to Keep Ready</h3>
+<p class="body">Before you begin, gather the following so you're ready to start:</p>
+<ul class="bullets"><li>Your sign-in credentials, shared with you by your Implementation team.</li><li>The models to be offered — each one hosted and reachable on your own infrastructure.</li><li>The tiers you'll create — the quota and rate limit intended for each.</li><li>The institutions to onboard — each one's organization name and primary contact (name and email; phone number is optional).</li><li>The tier and budget you intend to assign each institution.</li></ul>
+<h3 class="sub">Readiness Checklist</h3>
+<p class="body">Confirm every item below before you begin Part II. Each step in Part II expects a decision or piece of information to already be in hand — without it, you will have to stop mid-workflow to go gather what's missing. Your progress is saved automatically.</p>
+<div class="checklist-progress" data-progress-for="adopter-readiness">
+  <span class="progress-text">0 of 0 checked</span>
+  <div class="bar"><div class="fill"></div></div>
+  <button class="checklist-reset" data-reset-for="adopter-readiness" type="button">Reset</button>
+</div>
+<div class="checklist-group">1. Access</div>
+<label class="checkbox-item" for="chk-adopter-readiness-1">
+  <input type="checkbox" id="chk-adopter-readiness-1" data-group="adopter-readiness">
+  <span class="ctext">You have received your Adopter Admin credentials.</span>
+</label>
+<label class="checkbox-item" for="chk-adopter-readiness-2">
+  <input type="checkbox" id="chk-adopter-readiness-2" data-group="adopter-readiness">
+  <span class="ctext">The admin portal's login page opens in a supported browser.</span>
+</label>
+<div class="checklist-group">2. Models</div>
+<label class="checkbox-item" for="chk-adopter-readiness-3">
+  <input type="checkbox" id="chk-adopter-readiness-3" data-group="adopter-readiness">
+  <span class="ctext">Each model to be offered is hosted and operational on your own infrastructure.</span>
+</label>
+<label class="checkbox-item" for="chk-adopter-readiness-4">
+  <input type="checkbox" id="chk-adopter-readiness-4" data-group="adopter-readiness">
+  <span class="ctext">You have the endpoint for each model, confirmed reachable from the platform.</span>
+</label>
+<label class="checkbox-item" for="chk-adopter-readiness-5">
+  <input type="checkbox" id="chk-adopter-readiness-5" data-group="adopter-readiness">
+  <span class="ctext">Model details are ready in JSON, one file per model, following the template in Model Management.</span>
+</label>
+<div class="checklist-group">3. Tiers</div>
+<label class="checkbox-item" for="chk-adopter-readiness-6">
+  <input type="checkbox" id="chk-adopter-readiness-6" data-group="adopter-readiness">
+  <span class="ctext">Tier values are decided — quota for LLMs, and the rate limit (configured on the backend).</span>
+</label>
+<div class="checklist-group">4. Services and pricing</div>
+<label class="checkbox-item" for="chk-adopter-readiness-7">
+  <input type="checkbox" id="chk-adopter-readiness-7" data-group="adopter-readiness">
+  <span class="ctext">Pricing is decided for each service — price per unit and unit size.</span>
+</label>
+<div class="checklist-group">5. Institutions</div>
+<label class="checkbox-item" for="chk-adopter-readiness-8">
+  <input type="checkbox" id="chk-adopter-readiness-8" data-group="adopter-readiness">
+  <span class="ctext">The institutions to onboard are identified.</span>
+</label>
+<label class="checkbox-item" for="chk-adopter-readiness-9">
+  <input type="checkbox" id="chk-adopter-readiness-9" data-group="adopter-readiness">
+  <span class="ctext">For each institution, you have its organization name and a primary contact — name and email; phone number is optional.</span>
+</label>
+<label class="checkbox-item" for="chk-adopter-readiness-9b">
+  <input type="checkbox" id="chk-adopter-readiness-9b" data-group="adopter-readiness">
+  <span class="ctext">The tier you will assign to each institution is identified.</span>
+</label>
+<div class="checklist-group">6. Budgets</div>
+<label class="checkbox-item" for="chk-adopter-readiness-10">
+  <input type="checkbox" id="chk-adopter-readiness-10" data-group="adopter-readiness">
+  <span class="ctext">The budget amount and period (Effective From and Effective To dates) are decided for each institution.</span>
+</label>
+<div class="checklist-group">7. Monitoring</div>
+<label class="checkbox-item" for="chk-adopter-readiness-11">
+  <input type="checkbox" id="chk-adopter-readiness-11" data-group="adopter-readiness">
+  <span class="ctext">You have received the Grafana link and login credentials from your deployment team.</span>
+</label>
+<h2 class="section" id="concepts">3. Key Terms</h2>
+<p class="body">The following terms are used throughout this guide.</p>
+<table class="data"><tr><th>Term</th><th>Definition</th></tr><tr><td>Adopter</td><td>Your organization: deploys and governs this AI Switch instance. It onboards Institutions and hosts the LLMs they consume.</td></tr><tr><td>Institution</td><td>An organization onboarded by you to consume the LLMs you host. It is allocated a Tier and Budget, which it extends to the Applications it registers.</td></tr><tr><td>Application</td><td>A solution built by an institution to consume an LLM through an API Key. An institution can register one or more Applications.</td></tr><tr><td>API Key</td><td>A credential an institution creates, used to authenticate an Application's requests to an LLM.</td></tr><tr><td>Service</td><td>A registered model version made available for consumption through a specific endpoint — the machine or GPU where that model version is hosted. The same model version hosted on a different machine is a distinct Service.</td></tr><tr><td>Tier</td><td>Defines the maximum consumption ceilings for requests and LLM usage. All Quotas and Rate Limits mapped to a Tier must stay within these ceilings. A Tier is assigned to an institution.</td></tr><tr><td>Budget</td><td>A monetary spend cap set for an institution, expressed in the currency defined on its assigned Tier. It governs how much the institution can spend in a billing period, regardless of how much Quota remains.</td></tr><tr><td>Quota</td><td>The maximum amount of LLM usage an institution is allowed to consume within a specified time period. Quotas help ensure fair usage of shared platform resources, prevent excessive consumption, and support controlled entitlements. They reset automatically at the end of the configured time window.</td></tr><tr><td>Rate Limit</td><td>The maximum speed at which requests can be sent within a given period. Unlike Quotas, which control total monthly volume, Rate Limits control how fast an institution or an API Key can send requests to an LLM within an hour — protecting platform stability and ensuring fair access for all institutions.</td></tr><tr><td>Metering</td><td>The recording of usage across every institution, including a rollup across each institution's Applications, tracked against its assigned Budget.</td></tr><tr><td>Monitoring</td><td>The ongoing tracking of system and application performance: latency, error rate, payload size, and CPU/disk utilization. Relevant to you as Adopter Admin, not to institutions.</td></tr></table>
+<div class="part-block" id="part2">
+  <div class="part-eyebrow">Part II</div>
+  <div class="part-title">Set Up &amp; Onboard</div>
+  <p class="part-desc">Register models, configure tiers and services, and onboard institutions.</p>
+</div>
+<h2 class="section" id="getting-started">1. Getting Started</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Sign in to AI Switch and reach the platform's landing page.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>AI Switch has been deployed; Adopter Admin credentials have been created and shared with you by your Implementation team.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>On the sign-in page, enter your email and password and click "Sign In." If your shared credentials use the same email as your Google account, you can also click "Sign in with Google."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/4cf7163c4fd855dd.jpg" alt="The AI Switch sign-in page."></div>
+<div class="caption">The AI Switch sign-in page.</div>
+<div class="step"><span class="badge">Step 2</span>On successful sign-in, you land on the Usage Dashboard — the platform's landing page.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/fb06f6f28210291f.jpg" alt="The Usage Dashboard, shown immediately after sign-in."></div>
+<div class="caption">The Usage Dashboard, shown immediately after sign-in.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You're signed in and viewing the Usage Dashboard. At this stage, no models, tiers, services, institutions, or budgets have been configured yet.</td></tr><tr><td class="k">Next</td><td>Proceed to Register a Model.</td></tr></table>
+<h2 class="section" id="register-model">2. Register a Model</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Add a hosted AI model to the platform's model registry, as the first step toward making it available to institutions.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>The model is hosted and operational on your infrastructure (hosting takes place outside AI Switch).</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Model Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/e3b6b5d1087390a7.jpg" alt="The Model Management area."></div>
+<div class="caption">The Model Management area.</div>
+<div class="step"><span class="badge">Step 2</span>Click "Register Model."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/55398555f4b39089.png" alt="The Register Model tab."></div>
+<div class="caption">The Register Model tab.</div>
+<div class="step"><span class="badge">Step 3</span>Click "Download Sample JSON" to get the template file.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/0083897ebf2b52cf.jpg" alt="Downloading the sample JSON template."></div>
+<div class="caption">Downloading the sample JSON template.</div>
+<div class="step"><span class="badge">Step 4</span>Fill in the model details in the downloaded JSON file.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/79b334e43a019c46.png" alt="The sample JSON file, completed with model details."></div>
+<div class="caption">The sample JSON file, completed with model details.</div>
+<div class="step"><span class="badge">Step 5</span>Click "Upload JSON File" and select your completed file.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/f2d84c5112e41dd3.jpg" alt="Uploading the completed JSON file."></div>
+<div class="caption">Uploading the completed JSON file.</div>
+<div class="step"><span class="badge">Step 6</span>Click "Register Model." The platform validates the file against the required schema and shows an error if any correction is needed.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/9dd4127668adbd0c.jpg" alt="The Model Registry, showing the newly registered model."></div>
+<div class="caption">The Model Registry, showing the newly registered model.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>Once all validations pass, you can see the model registered successfully in the Model Registry, showing its version, task type, and current status. It is not yet usable by institutions until a service is created for it.</td></tr><tr><td class="k">Next</td><td>Proceed to Configure a Tier.</td></tr></table>
+<h2 class="section" id="configure-tier">3. Configure a Tier</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Define a usage tier that determines the amount of LLM usage an institution is allowed.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>The relevant LLM model is registered on the platform.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Tier Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/6e79a527ce687a2e.jpg" alt="The Tier Management area."></div>
+<div class="caption">The Tier Management area.</div>
+<div class="step"><span class="badge">Step 2</span>Click "Create Tier."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/57cefea83c1e7541.png" alt="Opening the Create Tier panel."></div>
+<div class="caption">Opening the Create Tier panel.</div>
+<div class="step"><span class="badge">Step 3</span>Enter a tier name and description, and select the model task type — LLM — the unit is set automatically.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/af148524ceea7b14.png" alt="Entering tier details and selecting the model task type."></div>
+<div class="caption">Entering tier details and selecting the model task type.</div>
+<div class="step"><span class="badge">Step 4</span>Enter the quota limit for the selected model task type.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/1b2df6911ad204ed.png" alt="Entering the quota limit."></div>
+<div class="caption">Entering the quota limit.</div>
+<div class="step"><span class="badge">Step 5</span>Click "Create Tier."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/869c21408224c79a.png" alt="Creating the tier."></div>
+<div class="caption">Creating the tier.</div>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Rate limiting for a tier is configured separately, on the backend — not from this screen.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The tier appears in Tier Management, showing which model task types it covers. It is now available to be mapped when creating a service.</td></tr><tr><td class="k">Next</td><td>Proceed to Create Service and Configure Pricing.</td></tr></table>
+<h2 class="section" id="create-service">4. Create Service and Configure Pricing</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Make a registered model consumable by setting its endpoint, configuring its pricing, and mapping the tier that may access it.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>The model is registered; at least one tier exists to be mapped to this service; the endpoint where the model is hosted is reachable from the platform.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Services Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/6a7177f3dbcea5cf.jpg" alt="Opening Services Management."></div>
+<div class="caption">Opening Services Management.</div>
+<div class="step"><span class="badge">Step 2</span>Click "Create Service."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/15b4b6fed890a6af.jpg" alt="Opening the Create Service tab."></div>
+<div class="caption">Opening the Create Service tab.</div>
+<div class="step"><span class="badge">Step 3</span>Select the Model Task Type and Model Name. The Model ID and Model Submission Date are filled in automatically; the Service ID is pre-filled with the model name as a prefix — complete it, and enter a Service Description.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/a36e235f350ddb37.jpg" alt="Selecting the model and completing the Service ID and description."></div>
+<div class="caption">Selecting the model and completing the Service ID and description.</div>
+<div class="step"><span class="badge">Step 4</span>Enter the Endpoint where the model is hosted. The Unit Type defaults to tokens and Currency defaults to INR for LLMs. Enter the Unit Size and Price per Unit, then map the service to the relevant Tier, and click "Create Service."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/1aaed496a5b2cd77.jpg" alt="Entering the endpoint and pricing, and mapping the service to a tier."></div>
+<div class="caption">Entering the endpoint and pricing, and mapping the service to a tier.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">If you want to track usage in units (such as tokens) instead of actual cost, set the price per unit to ₹1. This makes the spend and units consumed match one-to-one in the Budget and usage dashboard.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The service is created for the selected model. It is unpublished by default — publish it from the Service Registry for institutions to consume.</td></tr><tr><td class="k">Next</td><td>Proceed to Onboard an Institution.</td></tr></table>
+<h2 class="section" id="onboard-institution">5. Onboard an Institution</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Bring a new institution onto the platform, so its Institution Admin can sign in and get started.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>The institution's organization name and primary contact details are available.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Institution Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/a4f125e28b1c34b5.jpg" alt="The Institution Management area."></div>
+<div class="caption">The Institution Management area.</div>
+<div class="step"><span class="badge">Step 2</span>Click "Create Institution."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/55eba3907dd2edfe.jpg" alt="Opening the Create Institution form."></div>
+<div class="caption">Opening the Create Institution form.</div>
+<div class="step"><span class="badge">Step 3</span>Fill in the institution's information — Organisation Name, Contact Name, and Email (Phone Number is optional) — then agree to the Terms of Service and Privacy Policy. These legal documents are owned and maintained by your organization.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/3227c862cb36cb6c.jpg" alt="Entering the institution details and agreeing to the Terms of Service and Privacy Policy."></div>
+<div class="caption">Entering the institution details and agreeing to the Terms of Service and Privacy Policy.</div>
+<div class="step"><span class="badge">Step 4</span>Click "Create" to create the institution.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/f0c005763fb8da0a.jpg" alt="Creating the institution."></div>
+<div class="caption">Creating the institution.</div>
+<div class="step"><span class="badge">Step 5</span>Your tech support team activates the institution's account and shares sign-in credentials with the institution's contact.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The institution is active, with sign-in credentials shared directly with its contact by your tech support team. Its Institution Admin can sign in and begin providing access to applications and onboarding their institution's users.</td></tr><tr><td class="k">Next</td><td>Proceed to Assign Tier &amp; Allocate Budget.</td></tr></table>
+<h2 class="section" id="assign-tier">6. Assign Tier &amp; Allocate Budget to an Institution</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Grant an onboarded institution the ability to consume LLMs, by assigning it a tier and a spending budget.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>The institution is onboarded; at least one tier exists.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Institution Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/a4f125e28b1c34b5.jpg" alt="The Institution Management area."></div>
+<div class="caption">The Institution Management area.</div>
+<div class="step"><span class="badge">Step 2</span>For the institution, click "Assign Tier."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/6a7de8cbc4f0ff93.jpg" alt="Opening the Assign Tier panel for an institution."></div>
+<div class="caption">Opening the Assign Tier panel for an institution.</div>
+<div class="step"><span class="badge">Step 3</span>Select the tier, enter the budget, and set the Effective From and Effective To dates.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/b9957c8c44a86747.png" alt="Selecting the tier and entering the budget and effective dates."></div>
+<div class="caption">Selecting the tier and entering the budget and effective dates.</div>
+<div class="step"><span class="badge">Step 4</span>Click "Assign" to assign the tier to the selected institution.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/cd5c458b5f0e2c2d.png" alt="Assigning the tier to the institution."></div>
+<div class="caption">Assigning the tier to the institution.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">A tier must have at least one published service mapped to it before it can be assigned to an institution. If assignment is not available, check that a service has been created and published for this tier.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The institution has an assigned tier and budget. Its Institution Admin may now provide access to applications to consume LLMs, scoped to what the tier permits.</td></tr><tr><td class="k">Next</td><td>Proceed to Part III to monitor platform performance and track usage.</td></tr></table>
+<div class="part-block" id="part3">
+  <div class="part-eyebrow">Part III</div>
+  <div class="part-title">Monitor &amp; Track</div>
+  <p class="part-desc">Monitor platform performance, and track budget and usage across institutions.</p>
+</div>
+<h2 class="section" id="monitor">1. Monitoring Dashboard</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Monitor the health and performance of the platform, using the default Grafana dashboards provided with your deployment.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>Grafana has been deployed as part of the platform's observability stack; you have received the Grafana link and your login credentials from your deployment team.</td></tr></table>
+<div class="callout ">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Grafana's setup, default dashboards, and your login credentials are provided by your deployment team as part of the platform's observability stack. Any new custom metrics or dashboards beyond the defaults can be configured directly within Grafana.</div>
+</div>
+<div class="step"><span class="badge">Step 1</span>Navigate to Grafana using the link shared by your deployment team, enter the credentials provided, and click "Log in."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/1377b274b7ab52c5.jpg" alt="The Grafana login screen."></div>
+<div class="caption">The Grafana login screen.</div>
+<div class="step"><span class="badge">Step 2</span>Once signed in, click "Dashboards" to view all available dashboards.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/3e545586e70fa278.jpg" alt="Opening Dashboards from the left navigation."></div>
+<div class="caption">Opening Dashboards from the left navigation.</div>
+<div class="step"><span class="badge">Step 3</span>Click "AI4ICore LLM Operations Dashboard" to view platform-wide latency, error rate, and payload size for LLM requests.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/d44a0e46793e25d0.jpg" alt="Selecting a dashboard from the list."></div>
+<div class="caption">Selecting a dashboard from the list.</div>
+<div class="step"><span class="badge">Step 4</span>By default, the dashboard shows key LLM metrics: Latency, Payload Size, Error Rate, and Error Breakdown by Status Code, over a selectable time range and refresh interval.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/35b8f3229c8a625a.jpg" alt="The default LLM Service dashboard, with a selectable time range."></div>
+<div class="caption">The default LLM Service dashboard, with a selectable time range.</div>
+<div class="step"><span class="badge">Step 5</span>Click "Pod Resources — Service-aware" dashboard to view CPU usage, memory usage, and disk usage.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/7d9c6c545a9d4229.jpg" alt="CPU, memory, and disk usage by service, on the Pod Resources dashboard."></div>
+<div class="caption">CPU, memory, and disk usage by service, on the Pod Resources dashboard.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can see system-level health and performance for the platform, using the default Grafana dashboards: latency, error rate, and payload size on the LLM Operations Dashboard, and CPU usage, memory usage, and disk usage on the Pod Resources dashboard.</td></tr><tr><td class="k">Next</td><td>Proceed to the Metering Dashboard.</td></tr></table>
+<h2 class="section" id="metering">2. Metering Dashboard</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>View each institution's consumption against its assigned tier and budget, broken down by individual model.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one service is published and being consumed by an institution that has been assigned a tier and budget.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Usage Dashboard" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/9c82bbc888f0237a.jpg" alt="Opening the Usage Dashboard."></div>
+<div class="caption">Opening the Usage Dashboard.</div>
+<div class="step"><span class="badge">Step 2</span>Click "Overview" for a summary of platform-wide usage — total requests, success and failure counts, and top institutions by volume.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/3cc5b7322c3ff568.jpg" alt="The Overview tab."></div>
+<div class="caption">The Overview tab.</div>
+<div class="step"><span class="badge">Step 3</span>Click "Institution Consumption" to view institutions ranked by consumption.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/e7dc5da065b8534c.jpg" alt="The Institution Consumption tab."></div>
+<div class="caption">The Institution Consumption tab.</div>
+<div class="step"><span class="badge">Step 4</span>Click "Model Usage" to view the most used model and overall success rate.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/75500da1d3b1ddf9.png" alt="The Model Usage tab."></div>
+<div class="caption">The Model Usage tab.</div>
+<div class="step"><span class="badge">Step 5</span>Scroll down in the Model Usage tab to view the breakdown by model and service — showing total requests, consumption, and success and failure rates for each.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">A Service is a specific model made available through an endpoint — a single model can run as more than one Service. This view groups Services by the model they run on, so you can see which Services fall under which model.</div>
+</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/ac8037ce713ab26a.png" alt="The model breakdown, showing usage by individual service."></div>
+<div class="caption">The model breakdown, showing usage by individual service.</div>
+<div class="step"><span class="badge">Step 6</span>Click "Budget and usage" to view spend and budget across all institutions, filterable by tier.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/545cf3992d379cdc.jpg" alt="The Budget and usage view, showing spend and budget across institutions."></div>
+<div class="caption">The Budget and usage view, showing spend and budget across institutions.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can see platform activity in the Usage Dashboard: Overview for an overall summary, Institution Consumption for institutions ranked by consumption, Model Usage for a breakdown by model and service, and Budget and usage for spend against tier and budget.</td></tr><tr><td class="k">Next</td><td>Proceed to Part IV for day-to-day management and maintenance.</td></tr></table>
+<div class="part-block" id="part4">
+  <div class="part-eyebrow">Part IV</div>
+  <div class="part-title">Manage &amp; Maintain</div>
+  <p class="part-desc">Day-to-day management and maintenance tasks you'll return to after initial setup.</p>
+</div>
+<h2 class="section" id="manage-institutions">1. Manage Institutions</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>View, edit, suspend, deactivate, or reactivate an onboarded institution.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>The institution is already onboarded.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Institution Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/29a6077dfc75dbd5.jpg" alt="Opening Institution Management from the left navigation."></div>
+<div class="caption">Opening Institution Management from the left navigation.</div>
+<div class="step"><span class="badge">Step 2</span>Find the institution in the list. To suspend it, click "Suspend."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/5be0a6e71a2257a0.jpg" alt="Opening the Suspend action for Vistaar Tenant."></div>
+<div class="caption">Opening the Suspend action for Vistaar Tenant.</div>
+<div class="step"><span class="badge">Step 3</span>Confirm to suspend.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/2947b0bbcfbfc433.jpg" alt="Confirming the suspension."></div>
+<div class="caption">Confirming the suspension.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">Suspending an institution makes its API keys (application access) inactive immediately — all requests from its applications are blocked, and its Institution Admin and users can no longer sign in to the portal.</div>
+</div>
+<div class="step"><span class="badge">Step 4</span>To reactivate a suspended institution, click "Activate."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/babbd7be6866dd1e.jpg" alt="Opening the Activate action for a suspended institution."></div>
+<div class="caption">Opening the Activate action for a suspended institution.</div>
+<div class="step"><span class="badge">Step 5</span>Confirm to activate.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/433655e5c25a7050.jpg" alt="Confirming reactivation."></div>
+<div class="caption">Confirming reactivation.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Reactivating an institution automatically resumes its existing API keys (application access) as Active.</div>
+</div>
+<div class="step"><span class="badge">Step 6</span>To deactivate an institution, click "Deactivate."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/840810979aab568a.jpg" alt="Opening the Deactivate action for an institution."></div>
+<div class="caption">Opening the Deactivate action for an institution.</div>
+<div class="step"><span class="badge">Step 7</span>Confirm to deactivate.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/20eed983df5b5c97.jpg" alt="Confirming deactivation."></div>
+<div class="caption">Confirming deactivation.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">Deactivating an institution revokes its API keys (application access). If the institution is reactivated later, its Institution Admin must create new API keys before applications can access LLMs again.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The institution's details or status are updated, depending on the action you took.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage API Keys.</td></tr></table>
+<h2 class="section" id="manage-api-keys">2. Manage API Keys</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Create, update, or revoke the API keys used by your own organization's internal applications.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>A default tier for your organization is assigned — without a tier, API key creation is blocked.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "API Key Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/7fa0e29b396b7d67.jpg" alt="Opening API Key Management from the left navigation."></div>
+<div class="caption">Opening API Key Management from the left navigation.</div>
+<div class="step"><span class="badge">Step 2</span>Click the "Create API Key" tab. Enter a Key Name, select the Permissions, set its Expiry in days, then click "Create API Key" to create the key.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/de74fb13d5ea6348.jpg" alt="Creating an API key for an internal application."></div>
+<div class="caption">Creating an API key for an internal application.</div>
+<div class="step"><span class="badge">Step 3</span>Copy the generated key immediately from the screen — it is shown only once — and store it securely.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/ed21de42431ffdbe.jpg" alt="The generated API key, shown once."></div>
+<div class="caption">The generated API key, shown once.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">The key is shown only once and cannot be retrieved later. If it is lost, revoke it and create a new one.</div>
+</div>
+<div class="step"><span class="badge">Step 4</span>Click the "Manage API Keys" tab to view, update, or revoke your existing keys.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/6dc6302ecf310e94.jpg" alt="The Manage API Keys tab, showing your organization's internal API keys."></div>
+<div class="caption">The Manage API Keys tab, showing your organization's internal API keys.</div>
+<div class="step"><span class="badge">Step 5</span>To rename a key or change its permissions, click the edit icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/b6613f9943338cde.jpg" alt="Opening Update Key for an existing API key."></div>
+<div class="caption">Opening Update Key for an existing API key.</div>
+<div class="step"><span class="badge">Step 6</span>Update the key name or permissions, then click "Update."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/58136f5906c6e2ec.jpg" alt="Updating the key name and permissions."></div>
+<div class="caption">Updating the key name and permissions.</div>
+<div class="step"><span class="badge">Step 7</span>To revoke a key, click the revoke icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/9a9b42ae57f627a0.jpg" alt="Opening Revoke Key for an existing API key."></div>
+<div class="caption">Opening Revoke Key for an existing API key.</div>
+<div class="step"><span class="badge">Step 8</span>Confirm the revocation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/30c41714e04bdc8d.jpg" alt="Confirming the key revocation."></div>
+<div class="caption">Confirming the key revocation.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">Revoking a key is permanent — revoked keys cannot be reactivated. If the application still needs access, create a new key and update the application with it.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The key is created, updated, or revoked and immediately stops authenticating requests, depending on the action you took.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Tiers.</td></tr></table>
+<h2 class="section" id="manage-tiers">3. Manage Tiers</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>View, edit, or delete a tier, or schedule a quota change.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one tier exists.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Tier Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/fc0fdc0cbc6d544a.jpg" alt="Opening Tier Management."></div>
+<div class="caption">Opening Tier Management.</div>
+<div class="step"><span class="badge">Step 2</span>To view a tier's details, click the view icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/2fd6307906741785.jpg" alt="Opening the View action for a tier."></div>
+<div class="caption">Opening the View action for a tier.</div>
+<div class="step"><span class="badge">Step 3</span>To update a tier's name, description, or quota, click the edit icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/da4a1a35ea0c8396.jpg" alt="Opening a tier for editing."></div>
+<div class="caption">Opening a tier for editing.</div>
+<div class="step"><span class="badge">Step 4</span>Update the Tier Name, Description, or quota limit as needed, then click "Save Changes."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/7b602ffc5eb69ecd.jpg" alt="Editing a tier's name, description, and quota."></div>
+<div class="caption">Editing a tier's name, description, and quota.</div>
+<div class="step"><span class="badge">Step 5</span>To schedule a quota change, click the schedule icon next to the quota, enter the new limit, then click "Confirm Schedule."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/aca199d8741fe5fb.jpg" alt="Scheduling a quota change."></div>
+<div class="caption">Scheduling a quota change.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">A scheduled quota change takes effect from the start of the next month.</div>
+</div>
+<div class="step"><span class="badge">Step 6</span>To delete a tier, click the delete icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/2738708703ae623a.jpg" alt="Opening the Delete action for a tier."></div>
+<div class="caption">Opening the Delete action for a tier.</div>
+<div class="step"><span class="badge">Step 7</span>Confirm the deletion.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/a164d1f71e296902.jpg" alt="Confirming tier deletion."></div>
+<div class="caption">Confirming tier deletion.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">A tier cannot be deleted if it is currently assigned to an institution. Reassign the institution to another tier first.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The tier's details or quota are updated, or the tier is deleted, depending on the action you took.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Models.</td></tr></table>
+<h2 class="section" id="manage-models">4. Manage Models</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>View a registered model's status, deprecate it, or activate a deprecated model.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one model is registered.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Model Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/3b320d42a50d0b3c.jpg" alt="Opening Model Management."></div>
+<div class="caption">Opening Model Management.</div>
+<div class="step"><span class="badge">Step 2</span>View each model's version, task type, and status in the Model Registry.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/b0c5162487714e5c.jpg" alt="The Model Registry."></div>
+<div class="caption">The Model Registry.</div>
+<div class="step"><span class="badge">Step 3</span>To deprecate a model, click the deprecate icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/79c842861cf9ac2c.jpg" alt="Opening the Deprecate action for a model."></div>
+<div class="caption">Opening the Deprecate action for a model.</div>
+<div class="step"><span class="badge">Step 4</span>Confirm the deprecation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/7b46e1e31bfa26e8.jpg" alt="Confirming model deprecation."></div>
+<div class="caption">Confirming model deprecation.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">A model cannot be deprecated while any service based on it is still published. Unpublish every service linked to that model first.</div>
+</div>
+<div class="step"><span class="badge">Step 5</span>To activate a deprecated model, click the activate icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/6a3852a1d277b9f5.jpg" alt="Opening the Activate action for a deprecated model."></div>
+<div class="caption">Opening the Activate action for a deprecated model.</div>
+<div class="step"><span class="badge">Step 6</span>Confirm the activation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/635107eca9945b68.jpg" alt="Confirming model activation."></div>
+<div class="caption">Confirming model activation.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The model is deprecated or activated, depending on the action you took.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Services.</td></tr></table>
+<h2 class="section" id="manage-services">5. Manage Services</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>View, edit, publish, unpublish, or delete a service.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one service is created.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Services Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/6a7177f3dbcea5cf.jpg" alt="Opening Services Management."></div>
+<div class="caption">Opening Services Management.</div>
+<div class="step"><span class="badge">Step 2</span>View a service's configuration by clicking its row in the Service Registry.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/f896d3402ef66a99.jpg" alt="The Service Registry."></div>
+<div class="caption">The Service Registry.</div>
+<div class="step"><span class="badge">Step 3</span>To edit a service, click the edit icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/48dd87a7b7b1c337.jpg" alt="Opening a service for editing."></div>
+<div class="caption">Opening a service for editing.</div>
+<div class="step"><span class="badge">Step 4</span>Update the endpoint, pricing, or mapped tiers, then click "Save Changes."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/ce7698fec3de434c.jpg" alt="Editing a service's endpoint, pricing, and tier mapping."></div>
+<div class="caption">Editing a service's endpoint, pricing, and tier mapping.</div>
+<div class="step"><span class="badge">Step 5</span>To unpublish a published service, click the unpublish icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/054ff31d072c9656.jpg" alt="Opening the Unpublish action for a service."></div>
+<div class="caption">Opening the Unpublish action for a service.</div>
+<div class="step"><span class="badge">Step 6</span>Confirm the action.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/8e88f00116891cc9.jpg" alt="Confirming the unpublish action."></div>
+<div class="caption">Confirming the unpublish action.</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
+  <div class="ctext">Unpublishing a service stops all institution and application access to it immediately, until it is published again.</div>
+</div>
+<div class="step"><span class="badge">Step 7</span>To publish an unpublished service, click the publish icon.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/5725c2b0ebfbe0e2.jpg" alt="Opening the Publish action for a service."></div>
+<div class="caption">Opening the Publish action for a service.</div>
+<div class="step"><span class="badge">Step 8</span>Confirm the action.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/908786bd28ee5c6b.jpg" alt="Confirming the publish action."></div>
+<div class="caption">Confirming the publish action.</div>
+<div class="step"><span class="badge">Step 9</span>To delete a service, click the delete icon.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">A service must be unpublished before it can be deleted. This action cannot be undone.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The service's configuration, publish status, or existence is updated, depending on the action you took.</td></tr><tr><td class="k">Next</td><td>Proceed to Onboard Your Organization's Users.</td></tr></table>
+<h2 class="section" id="onboard-users">6. Onboard Your Organization's Users</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Add a member to your own organization, either directly or by having them self-register.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Institution Management" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/29a6077dfc75dbd5.jpg" alt="Opening Institution Management from the left navigation."></div>
+<div class="caption">Opening Institution Management from the left navigation.</div>
+<div class="step"><span class="badge">Step 2</span>Open your organization's profile — shown as "default organisation" — then click "Add User."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/243bb0a72f17f60f.jpg" alt="Opening Add User from your organization's profile."></div>
+<div class="caption">Opening Add User from your organization's profile.</div>
+<div class="step"><span class="badge">Step 3</span>Enter the user's email and full name, select their role, and optionally their phone number, agree to the Terms of Service and Privacy Policy on their behalf, then click "Add."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/e6abc89d787f5b20.jpg" alt="Adding a new user to your organization."></div>
+<div class="caption">Adding a new user to your organization.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Your tech support team activates this account and confirms with the user, sharing their credentials.</div>
+</div>
+<p class="body">Alternatively, a new team member can create their own account directly.</p>
+<div class="step"><span class="badge">Step 4</span>The team member creates their own account from the Sign-Up page — entering their full name, email, and password, and agreeing to the Terms of Service and Privacy Policy.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/ebf250f856607a9c.png" alt="A new team member signing up for their own account."></div>
+<div class="caption">A new team member signing up for their own account.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Your tech support team activates this account and confirms with the user. Since the password is already set at signup, no credentials need to be shared.</div>
+</div>
+<div class="step"><span class="badge">Step 5</span>To change the user's role from the default of "User," click the menu icon, click "Profile," then click the "Roles" tab.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/928b4fff0af388b5.jpg" alt="The Roles tab under Profile."></div>
+<div class="caption">The Roles tab under Profile.</div>
+<div class="step"><span class="badge">Step 6</span>Select the user from the dropdown, then click "Manage Roles."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/2a478c61040e8f77.jpg" alt="Selecting a user and opening Manage Roles."></div>
+<div class="caption">Selecting a user and opening Manage Roles.</div>
+<div class="step"><span class="badge">Step 7</span>Choose the role to assign, then click "Save Changes."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/decf4bfe178d528f.jpg" alt="Assigning a role to a user."></div>
+<div class="caption">Assigning a role to a user.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">A single user can hold more than one role across the platform.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>The new team member's account is activated by your tech support team, either directly or once a role has been assigned.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Your Profile.</td></tr></table>
+<h2 class="section" id="manage-profile">7. Manage Your Profile</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Update your profile or change your password.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click the menu icon in the top right, then click "Profile."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/58c0eeba7860ca30.jpg" alt="Opening Profile from the menu."></div>
+<div class="caption">Opening Profile from the menu.</div>
+<div class="step"><span class="badge">Step 2</span>View or edit your user details.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/bdae757efdd33efd.jpg" alt="The Profile page, showing your user details."></div>
+<div class="caption">The Profile page, showing your user details.</div>
+<div class="step"><span class="badge">Step 3</span>To change your password, click the "Change Password" tab, enter your current and new password, then click "Update Password."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/c3c70b73e52ea736.jpg" alt="A new password meeting all requirements, ready to update."></div>
+<div class="caption">A new password meeting all requirements, ready to update.</div>
+<div class="callout">
+  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
+  <div class="ctext">Your new password must meet every requirement shown — each one turns green as it's satisfied.</div>
+</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>Your profile or password is updated.</td></tr><tr><td class="k">Next</td><td>Proceed to the Logs Dashboard.</td></tr></table>
+<h2 class="section" id="logs-dashboard">8. Logs Dashboard</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Review request logs across all institutions, and inspect trace details and spans for a specific request.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one request has been made on the platform.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Click "Logs Dashboard" from the left navigation.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/81621bcc9aac306d.jpg" alt="Opening the Logs Dashboard."></div>
+<div class="caption">Opening the Logs Dashboard.</div>
+<div class="step"><span class="badge">Step 2</span>Review total requests, successes, and failures. Filter by institution, task type, status, or a time range, then click the view icon on any request to see its trace.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/e76b39d60d6014f9.jpg" alt="The Logs Dashboard, filterable by institution."></div>
+<div class="caption">The Logs Dashboard, filterable by institution.</div>
+<div class="step"><span class="badge">Step 3</span>Review the trace details — including the individual spans — for the selected request.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/4eecadedbbc6f670.png" alt="Trace details for a single request, showing its spans."></div>
+<div class="caption">Trace details for a single request, showing its spans.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can review platform-wide request activity in detail, filtered by institution.</td></tr><tr><td class="k">Next</td><td>Proceed to Try It Now.</td></tr></table>
+<h2 class="section" id="try-it-now">9. Try It Now</h2>
+<table class="meta"><tr><td class="k">Objective</td><td>Explore and test an available LLM directly from the portal.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one service is published.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>From Home, or from "Model task type" in the left navigation, select Large Language Model (LLM).</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/93085edb16311425.jpg" alt="Opening Try It Now for LLM."></div>
+<div class="caption">Opening Try It Now for LLM.</div>
+<div class="step"><span class="badge">Step 2</span>Select the LLM service you want to test, then choose the source and target languages.</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/9926fe7624b989cc.jpg" alt="Selecting an LLM service to test."></div>
+<div class="caption">Selecting an LLM service to test.</div>
+<div class="step"><span class="badge">Step 3</span>Enter the text to process and click "Translate."</div>
+<div class="imgcard"><img loading="lazy" src="/guides/img/8659b6e90d1dc4ed.jpg" alt="Entering source text and clicking Translate."></div>
+<div class="caption">Entering source text and clicking Translate.</div>
+<hr class="rule">
+<table class="meta"><tr><td class="k">Outcome</td><td>You can explore and test any published LLM directly in the portal.</td></tr></table>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var toggle = document.querySelector('.sidebar-toggle');
+  var sidebar = document.querySelector('.sidebar');
+  if(toggle){ toggle.addEventListener('click', function(){ sidebar.classList.toggle('open'); }); }
+  var links = document.querySelectorAll('.sidebar a.nav-item');
+  links.forEach(function(l){
+    l.addEventListener('click', function(){
+      if(window.innerWidth <= 900){ sidebar.classList.remove('open'); }
+    });
+  });
+  var sections = document.querySelectorAll('h2.section');
+  var map = {};
+  links.forEach(function(l){ map[l.getAttribute('href')] = l; });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var id = '#' + e.target.id;
+      if(e.isIntersecting && map[id]){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        map[id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -70% 0px' });
+  sections.forEach(function(s){ obs.observe(s); });
+  var searchBox = document.querySelector('.search');
+  if(searchBox){
+    searchBox.addEventListener('input', function(){
+      var q = this.value.toLowerCase();
+      links.forEach(function(l){
+        l.style.display = l.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+      });
+    });
+  }
+
+  // --- Real checklist: persist + progress ---
+  var STORAGE_KEY = 'ai-switch-guide-checklist';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ saved = {}; }
+
+  function saveState(){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); } catch(e){}
+  }
+
+  function updateProgress(groupId){
+    var boxes = document.querySelectorAll('input[type="checkbox"][data-group="' + groupId + '"]');
+    var total = boxes.length, checked = 0;
+    boxes.forEach(function(b){ if(b.checked) checked++; });
+    var bar = document.querySelector('.checklist-progress[data-progress-for="' + groupId + '"]');
+    if(bar){
+      var pct = total ? Math.round((checked/total)*100) : 0;
+      var isComplete = total > 0 && checked === total;
+      bar.querySelector('.progress-text').textContent = isComplete ? ('✓ All set — 100% ready') : (pct + '% ready (' + checked + ' of ' + total + ')');
+      bar.querySelector('.fill').style.width = pct + '%';
+      bar.classList.toggle('complete', isComplete);
+    }
+  }
+
+  var allCheckboxes = document.querySelectorAll('input[type="checkbox"][data-group]');
+  var groupIds = new Set();
+  allCheckboxes.forEach(function(box){
+    var gid = box.getAttribute('data-group');
+    groupIds.add(gid);
+    if(saved[box.id]){ box.checked = true; }
+    box.addEventListener('change', function(){
+      saved[box.id] = box.checked;
+      saveState();
+      updateProgress(gid);
+    });
+  });
+  groupIds.forEach(function(gid){ updateProgress(gid); });
+
+  document.querySelectorAll('[data-reset-for]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var gid = btn.getAttribute('data-reset-for');
+      document.querySelectorAll('input[type="checkbox"][data-group="' + gid + '"]').forEach(function(box){
+        box.checked = false;
+        delete saved[box.id];
+      });
+      saveState();
+      updateProgress(gid);
+    });
+  });
+});
+</script>
+</body>
+</html>
