@@ -34,7 +34,7 @@ const resources = [
   {
     icon: Building2,
     title: "Institution Admin Guide",
-    body: "Verify your account, onboard applications, and create API keys.",
+    body: "Verify accounts, onboard applications, and create API keys.",
     cta: "View Guide",
     href: "/institution-guide",
     internal: true,
@@ -221,14 +221,16 @@ const Adoption = () => {
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {resources.map((r, i) => {
               const Icon = r.icon;
-              const Card = r.internal ? MotionLink : motion.a;
-              const linkProps = r.internal
+              const Card = (r.internal ? MotionLink : motion.a) as React.ElementType;
+              const linkProps: Record<string, string> = r.internal
                 ? { to: r.href }
-                : { href: r.href, ...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {}) };
+                : r.external
+                  ? { href: r.href, target: "_blank", rel: "noopener noreferrer" }
+                  : { href: r.href };
               return (
                 <Card
                   key={r.title}
-                  {...(linkProps as never)}
+                  {...linkProps}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
