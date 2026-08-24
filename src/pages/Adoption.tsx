@@ -101,7 +101,7 @@ const Adoption = () => {
                 Adoption
               </p>
               <h1 className="mt-4 max-w-[520px] font-heading text-4xl font-bold leading-[1.12] tracking-tight text-brand-ink md:text-[44px]">
-                AI4I Orchestrate — adopted as AI Switch.
+                AI Switch — adopted from AI4I Orchestrate.
               </h1>
             </motion.div>
 
@@ -214,8 +214,8 @@ const Adoption = () => {
           >
             <span className="font-semibold text-brand-ink">AI4I Orchestrate</span>'s adoption as{" "}
             <span className="font-bold text-brand-blue">AI Switch</span> is one such example — proof
-            that a shared building block can operate at institutional scale, ready for the next
-            organisation to build on.
+            that a shared building block can move from open source to real-world deployment, ready
+            for the next organisation to build on.
           </motion.p>
 
           <motion.div
