@@ -209,7 +209,56 @@ const Adoption = () => {
             })}
           </motion.div>
 
-          <motion.div {...fadeUp} className="mt-10 text-center">
+        </div>
+      </section>
+
+      {/* Section 8 — Resources for Adopters */}
+      <section className="bg-brand-mist px-4 py-20" id="resources">
+        <div className="container mx-auto max-w-5xl">
+          <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
+            Resources for adopters
+          </motion.h2>
+          <motion.p {...fadeUp} className="mt-3 max-w-[640px] text-[16px] text-muted-foreground">
+            Everything you need to explore, deploy, and adopt AI Switch.
+          </motion.p>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {resources.map((r, i) => {
+              const Icon = r.icon;
+              return (
+                <motion.a
+                  key={r.title}
+                  href={r.href}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
+                  className="group block rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,65,165,0.10)]"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                    <Icon size={18} strokeWidth={2} />
+                  </span>
+                  <h3 className="mt-4 font-heading text-[15px] font-bold text-brand-ink">
+                    {r.title}
+                  </h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-muted-foreground">
+                    {r.body}
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1 font-heading text-[13px] font-bold text-brand-blue">
+                    {r.cta}
+                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </motion.a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 9 — CTA */}
+      <section className="bg-background px-4 py-16">
+        <div className="container mx-auto max-w-4xl">
+          <motion.div {...fadeUp} className="text-center">
             <Link
               to="/get-in-touch"
               className="group inline-flex items-center gap-2 rounded-full bg-brand-blue px-6 py-3 font-heading text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
@@ -220,6 +269,7 @@ const Adoption = () => {
           </motion.div>
         </div>
       </section>
+
     </div>
   );
 };
