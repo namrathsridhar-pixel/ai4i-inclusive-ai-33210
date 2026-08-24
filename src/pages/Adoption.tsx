@@ -207,34 +207,35 @@ const Adoption = () => {
       <section className="bg-brand-mist px-4 py-20" id="resources">
         <div className="container mx-auto max-w-5xl">
           <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-            Resources for adopters
+            Resources for Adopters
           </motion.h2>
           <motion.p {...fadeUp} className="mt-3 max-w-[640px] text-[16px] text-muted-foreground">
-            Everything you need to explore, deploy, and adopt AI Switch.
+            Everything you need to deploy, configure, and run AI Switch.
           </motion.p>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {resources.map((r, i) => {
               const Icon = r.icon;
-              const Card = (r.internal ? MotionLink : motion.a) as React.ElementType;
-              const linkProps: Record<string, string> = r.internal
-                ? { to: r.href }
-                : r.external
-                  ? { href: r.href, target: "_blank", rel: "noopener noreferrer" }
-                  : { href: r.href };
               return (
-                <Card
+                <motion.a
                   key={r.title}
-                  {...linkProps}
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
                   className="group block rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,65,165,0.10)]"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
-                    <Icon size={18} strokeWidth={2} />
-                  </span>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                      <Icon size={18} strokeWidth={2} />
+                    </span>
+                    <span className="font-mono text-[12px] font-bold text-brand-blue/40">
+                      {r.step}
+                    </span>
+                  </div>
                   <h3 className="mt-4 font-heading text-[15px] font-bold text-brand-ink">
                     {r.title}
                   </h3>
@@ -245,7 +246,7 @@ const Adoption = () => {
                     {r.cta}
                     <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                   </span>
-                </Card>
+                </motion.a>
               );
             })}
           </div>
