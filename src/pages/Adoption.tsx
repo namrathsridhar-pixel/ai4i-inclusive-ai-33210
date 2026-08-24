@@ -11,7 +11,7 @@ const resources = [
   {
     icon: Github,
     title: "GitHub Repository",
-    body: "Open source, auditable, and ready to deploy.",
+    body: "Open source, transparent, and ready to deploy.",
     cta: "View Repository",
     href: "https://github.com/COSS-India/ai4i-core",
     external: true,
