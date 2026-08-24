@@ -209,10 +209,10 @@ const Adoption = () => {
       <section className="bg-brand-mist px-4 py-20" id="resources">
         <div className="container mx-auto max-w-5xl">
           <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-            Resources for adopters
+            Resources for adopters and institutions
           </motion.h2>
           <motion.p {...fadeUp} className="mt-3 max-w-[640px] text-[16px] text-muted-foreground">
-            Everything you need to explore, deploy, and adopt AI Switch.
+            Everything you need to explore, deploy, and get started with AI Switch.
           </motion.p>
 
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
