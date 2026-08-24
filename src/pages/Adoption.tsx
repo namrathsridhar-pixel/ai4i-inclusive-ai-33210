@@ -27,19 +27,22 @@ const resources = [
   {
     icon: ShieldCheck,
     title: "Adopter Admin Guide",
-    body: "Deploy, configure, and govern AI Switch.",
+    body: "Register models, configure tiers, and onboard institutions.",
     cta: "View Guide",
     href: "#",
   },
   {
     icon: Building2,
     title: "Institution Admin Guide",
-    body: "The guide institutions use to onboard and manage access.",
+    body: "Verify your account, onboard applications, and create API keys.",
     cta: "View Guide",
-    href: "#",
+    href: "/institution-guide",
+    internal: true,
   },
 ];
 
+
+const MotionLink = motion(Link);
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -218,11 +221,14 @@ const Adoption = () => {
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {resources.map((r, i) => {
               const Icon = r.icon;
+              const Card = r.internal ? MotionLink : motion.a;
+              const linkProps = r.internal
+                ? { to: r.href }
+                : { href: r.href, ...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {}) };
               return (
-                <motion.a
+                <Card
                   key={r.title}
-                  href={r.href}
-                  {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  {...(linkProps as never)}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -242,7 +248,7 @@ const Adoption = () => {
                     {r.cta}
                     <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                   </span>
-                </motion.a>
+                </Card>
               );
             })}
           </div>
