@@ -15,15 +15,15 @@ import {
 const AdoptionArchitecture = lazy(() => import("@/components/AdoptionArchitecture"));
 
 const functions = [
-  { icon: Building2, title: "Onboard", body: "Bring institutions onto the governed layer." },
-  { icon: ClipboardList, title: "Register", body: "Register any model, open source or proprietary." },
-  { icon: Search, title: "Discover", body: "Browse the models and services available." },
-  { icon: Wallet, title: "Allocate", body: "Distribute capacity fairly across institutions." },
-  { icon: KeyRound, title: "Authenticate", body: "Verify every request before it is served." },
-  { icon: Gauge, title: "Prioritise", body: "Serve mission-critical workloads first." },
-  { icon: Shuffle, title: "Route", body: "Send each request to the chosen model." },
-  { icon: Activity, title: "Monitor", body: "Track health and performance continuously." },
-  { icon: BarChart3, title: "Meter", body: "Measure consumption by intensity of use." },
+  { icon: Building2, title: "Onboard", body: "Add institutions onto AI Switch." },
+  { icon: ClipboardList, title: "Register", body: "Maintain the centralised registry of hosted models." },
+  { icon: Search, title: "Discover", body: "Explore models available for consumption." },
+  { icon: Wallet, title: "Allocate", body: "Assign budget based on approved entitlements." },
+  { icon: KeyRound, title: "Authenticate", body: "Verify identity and validate budget on every request." },
+  { icon: Gauge, title: "Prioritise", body: "Provide priority compute access for critical institutions." },
+  { icon: Shuffle, title: "Route", body: "Direct each request to the specified model." },
+  { icon: Activity, title: "Monitor", body: "Track system health — contextless, infrastructure only." },
+  { icon: BarChart3, title: "Meter", body: "Attribute token and budget consumption by institution." },
 ];
 
 const fade = (delay: number) => ({
@@ -91,8 +91,7 @@ const OrchestrateDefinition = () => {
       <motion.div {...fade(0.15)}>
         <p className="mt-12 max-w-[680px] text-[16px] leading-[1.7]">
           <span className="font-semibold text-brand-ink">
-            Together, those functions form a single path — from an institution's application,
-            through the switch, to the model that answers it.
+            One governed path, from application to model.
           </span>
         </p>
         <div className="mt-12">
