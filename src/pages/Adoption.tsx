@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Building2, Github, Network, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Building2, Network, Settings2, Terminal, Zap } from "lucide-react";
+import adopterGuide from "@/assets/adopter-admin-guide.html.asset.json";
+import institutionGuide from "@/assets/institution-admin-guide.html.asset.json";
 
 const ChallengeSection = lazy(() => import("@/components/adoption/ChallengeSection"));
 const ConceptSection = lazy(() => import("@/components/adoption/ConceptSection"));
@@ -9,40 +11,31 @@ const OrchestrateDefinition = lazy(() => import("@/components/adoption/Orchestra
 
 const resources = [
   {
-    icon: Github,
-    title: "GitHub Repository",
-    body: "Open source, transparent, and ready to deploy.",
-    cta: "View Repository",
-    href: "https://github.com/COSS-India/ai4i-core",
-    external: true,
+    icon: Terminal,
+    step: "01",
+    title: "Deploy",
+    body: "Set up, configure, and run the AI Switch codebase.",
+    cta: "View Setup Guide",
+    href: "https://github.com/COSS-India/ai4i-core/blob/master/docs/SETUP_GUIDE.md",
   },
   {
-    icon: BookOpen,
-    title: "GitHub Wiki",
-    body: "Setup guides, configuration, and technical reference.",
-    cta: "View Wiki",
-    href: "https://github.com/COSS-India/ai4i-core/wiki",
-    external: true,
-  },
-  {
-    icon: ShieldCheck,
-    title: "Adopter Admin Guide",
-    body: "Register models, configure tiers, and onboard institutions.",
-    cta: "View Guide",
-    href: "#",
+    icon: Settings2,
+    step: "02",
+    title: "Configure",
+    body: "Register models, configure services, and onboard your organisation.",
+    cta: "View Adopter Admin Guide",
+    href: adopterGuide.url,
   },
   {
     icon: Building2,
-    title: "Institution Admin Guide",
-    body: "Sign in, provide application access, and onboard institution users.",
-    cta: "View Guide",
-    href: "/institution-guide",
-    internal: true,
+    step: "03",
+    title: "Enable",
+    body: "Bring institutions onboard and enable them to access AI services.",
+    cta: "View Institution Admin Guide",
+    href: institutionGuide.url,
   },
 ];
 
-
-const MotionLink = motion(Link);
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -88,7 +81,7 @@ const Adoption = () => {
                 Adoption
               </p>
               <h1 className="mt-4 max-w-[520px] font-heading text-4xl font-bold leading-[1.12] tracking-tight text-brand-ink md:text-[44px]">
-                AI Switch — adopted from AI4I Orchestrate.
+                AI Switch — powered by AI4I Orchestrate.
               </h1>
             </motion.div>
 
@@ -212,34 +205,35 @@ const Adoption = () => {
       <section className="bg-brand-mist px-4 py-20" id="resources">
         <div className="container mx-auto max-w-5xl">
           <motion.h2 {...fadeUp} className="font-heading text-3xl font-bold text-brand-ink md:text-4xl">
-            Resources for adopters
+            Resources for Adopters
           </motion.h2>
           <motion.p {...fadeUp} className="mt-3 max-w-[640px] text-[16px] text-muted-foreground">
-            Everything you need to explore, deploy, and adopt AI Switch.
+            Everything you need to deploy, configure, and run AI Switch.
           </motion.p>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {resources.map((r, i) => {
               const Icon = r.icon;
-              const Card = (r.internal ? MotionLink : motion.a) as React.ElementType;
-              const linkProps: Record<string, string> = r.internal
-                ? { to: r.href }
-                : r.external
-                  ? { href: r.href, target: "_blank", rel: "noopener noreferrer" }
-                  : { href: r.href };
               return (
-                <Card
+                <motion.a
                   key={r.title}
-                  {...linkProps}
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
                   className="group block rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,65,165,0.10)]"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
-                    <Icon size={18} strokeWidth={2} />
-                  </span>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                      <Icon size={18} strokeWidth={2} />
+                    </span>
+                    <span className="font-mono text-[12px] font-bold text-brand-blue/40">
+                      {r.step}
+                    </span>
+                  </div>
                   <h3 className="mt-4 font-heading text-[15px] font-bold text-brand-ink">
                     {r.title}
                   </h3>
@@ -250,7 +244,7 @@ const Adoption = () => {
                     {r.cta}
                     <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                   </span>
-                </Card>
+                </motion.a>
               );
             })}
           </div>

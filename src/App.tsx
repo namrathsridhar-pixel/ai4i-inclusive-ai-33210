@@ -59,8 +59,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Upcoming and past AI4Inclusion events, workshops, and convenings on inclusive language AI and Digital Public Goods.",
   },
   "/adoption": {
-    title: "AI4I-Orchestrate – Adopted as AI Switch – AI4Inclusion",
-    description: "How adopters take AI4Inclusion building blocks into production on their own infrastructure — including AI4I-Orchestrate, run as AI Switch for governed AI access.",
+    title: "AI Switch – Powered by AI4I-Orchestrate – AI4Inclusion",
+    description: "How adopters take AI4Inclusion building blocks into production on their own infrastructure — including AI4I-Orchestrate, powering AI Switch for governed AI access.",
   },
   "/engagements": {
     title: "Engagements – AI4Inclusion",
