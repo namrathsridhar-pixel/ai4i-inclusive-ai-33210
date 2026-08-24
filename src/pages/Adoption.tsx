@@ -18,7 +18,7 @@ const resources = [
   },
   {
     icon: BookOpen,
-    title: "Documentation Wiki",
+    title: "GitHub Wiki",
     body: "Setup guides, configuration, and technical reference.",
     cta: "View Wiki",
     href: "https://github.com/COSS-India/ai4i-core/wiki",
@@ -34,7 +34,7 @@ const resources = [
   {
     icon: Building2,
     title: "Institution Admin Guide",
-    body: "Sign in, create API keys, and onboard institution users.",
+    body: "Sign in, provide application access, and onboard institution users.",
     cta: "View Guide",
     href: "/institution-guide",
     internal: true,
