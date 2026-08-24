@@ -34,7 +34,7 @@ const resources = [
   {
     icon: Building2,
     title: "Institution Admin Guide",
-    body: "Verify identity, onboard applications, and create API keys.",
+    body: "Sign in, create API keys, and onboard institution users.",
     cta: "View Guide",
     href: "/institution-guide",
     internal: true,
