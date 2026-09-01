@@ -10,6 +10,8 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   build: {
+    // Broad browser support (Safari 14+, older Chrome/Firefox/Edge)
+    target: ["es2019", "safari14", "chrome87", "firefox78", "edge88"],
     sourcemap: true,
     rollupOptions: {
       output: {

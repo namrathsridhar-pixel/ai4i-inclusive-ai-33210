@@ -24,12 +24,13 @@ const LanguageParticles = () => {
 
   // Defer mounting until after main content is interactive
   useEffect(() => {
-    const id = requestIdleCallback
-      ? requestIdleCallback(() => setMounted(true), { timeout: 3000 })
-      : setTimeout(() => setMounted(true), 2000) as unknown as number;
+    const hasIdle = typeof window !== "undefined" && typeof window.requestIdleCallback === "function";
+    const id = hasIdle
+      ? window.requestIdleCallback(() => setMounted(true), { timeout: 3000 })
+      : (window.setTimeout(() => setMounted(true), 2000) as unknown as number);
     return () => {
-      if (requestIdleCallback) cancelIdleCallback(id);
-      else clearTimeout(id);
+      if (hasIdle) window.cancelIdleCallback(id);
+      else window.clearTimeout(id);
     };
   }, []);
 
