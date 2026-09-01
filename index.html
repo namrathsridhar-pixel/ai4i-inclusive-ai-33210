@@ -123,17 +123,27 @@
     <script type="module" src="/src/main.tsx"></script>
     <script>
       // Remove preload elements once React renders
-      var observer = new MutationObserver(function() {
-        var nav = document.querySelector('#root nav');
-        if (nav) {
+      (function () {
+        function clearPreload() {
           var p = document.getElementById('preload-nav');
           var s = document.getElementById('preload-skeleton');
-          if (p) p.remove();
-          if (s) s.remove();
-          observer.disconnect();
+          if (p && p.parentNode) p.parentNode.removeChild(p);
+          if (s && s.parentNode) s.parentNode.removeChild(s);
         }
-      });
-      observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+        var root = document.getElementById('root');
+        var observer = new MutationObserver(function () {
+          if (root.querySelector('nav') || root.children.length) {
+            clearPreload();
+            observer.disconnect();
+          }
+        });
+        observer.observe(root, { childList: true, subtree: true });
+        // Safety net: never leave the skeleton covering the page forever
+        setTimeout(function () {
+          clearPreload();
+          observer.disconnect();
+        }, 8000);
+      })();
     </script>
   </body>
 </html>
