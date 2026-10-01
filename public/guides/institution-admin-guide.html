@@ -3,545 +3,544 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Switch — Institution Admin Guide</title>
-<style>
-:root{
-  --text:#1A1A2E; --muted:#6B7280; --accent:#2563EB; --accent-light:#EFF6FF;
-  --rule:#E5E7EB; --header-bg:#F8FAFC; --danger-border:#DC2626; --danger-bg:#FEF2F2;
-  --warn-border:#D97706; --warn-bg:#FFFBEB; --tip-border:#15803D; --tip-bg:#F0FDF4;
-  --sidebar-w:300px;
-}
-*{box-sizing:border-box;}
-body{
-  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  color:var(--text); background:#fff; font-size:16px; line-height:1.6;
-}
-.layout{display:flex; min-height:100vh;}
-/* Sidebar */
-.sidebar{
-  width:var(--sidebar-w); flex-shrink:0; background:var(--header-bg); border-right:1px solid var(--rule);
-  position:sticky; top:0; height:100vh; overflow-y:auto; padding:28px 20px;
-}
-.sidebar .brand{font-size:14px; font-weight:700; color:var(--text); margin-bottom:2px;}
-.sidebar .brand-sub{font-size:13px; color:var(--muted); margin-bottom:20px;}
-.sidebar .search{
-  width:100%; padding:9px 12px; border:1px solid var(--rule); border-radius:8px; font-size:13.5px;
-  margin-bottom:22px; background:#fff; color:var(--text);
-}
-.sidebar .part-label{
-  font-size:11.5px; font-weight:700; color:var(--accent); text-transform:uppercase;
-  letter-spacing:.04em; margin:20px 0 8px 0;
-}
-.sidebar .part-label:first-of-type{margin-top:0;}
-.sidebar a.nav-item{
-  display:block; padding:6px 10px; margin:1px 0; border-radius:6px; font-size:14px;
-  color:var(--text); text-decoration:none; border-left:2px solid transparent;
-}
-.sidebar a.nav-item:hover{background:#fff;}
-.sidebar a.nav-item.active{
-  background:#fff; border-left:2px solid var(--accent); color:var(--accent); font-weight:600;
-}
-.sidebar-toggle{display:none;}
-/* Main content */
-.main{flex:1; min-width:0; max-width:860px; padding:56px 64px 120px;}
-.doc-header{padding-bottom:8px; margin-bottom:8px;}
-.doc-header .eyebrow{font-size:13px; color:var(--muted);}
-.doc-header h1{font-size:34px; margin:6px 0 8px 0; font-weight:600;}
-.doc-header .tagline{font-size:16px; color:var(--muted); margin:0;}
-.part-block{margin-top:56px; padding-top:20px; border-top:1px solid var(--rule);}
-.doc-header + .part-block{margin-top:16px; padding-top:0; border-top:none;}
-.part-eyebrow{font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;}
-.part-title{font-size:28px; font-weight:600; margin:0 0 10px 0;}
-.part-desc{color:var(--muted); font-size:16px; margin:0 0 8px 0;}
-h2.section{font-size:22px; font-weight:600; margin:40px 0 16px 0; scroll-margin-top:24px;}
-h3.sub{font-size:16.5px; font-weight:700; margin:26px 0 10px 0;}
-p.body{margin:0 0 14px 0; font-size:15.5px;}
-p.body strong{font-weight:700;}
-ul.bullets{margin:0 0 14px 0; padding-left:22px;}
-ul.bullets li{margin-bottom:8px; font-size:15.5px;}
-.checklist-group{font-weight:700; font-size:15px; margin:16px 0 6px 0;}
-.checkbox-item{display:flex; gap:10px; align-items:flex-start; font-size:15px; margin-bottom:8px; cursor:pointer; user-select:none; padding:4px 6px; margin-left:-6px; border-radius:6px; transition:background .12s;}
-.checkbox-item:hover{background:var(--header-bg);}
-.checkbox-item input[type="checkbox"]{
-  width:17px; height:17px; margin:1px 0 0 0; flex-shrink:0; cursor:pointer;
-  accent-color:var(--accent);
-}
-.checkbox-item .ctext{transition:color .15s, text-decoration-color .15s;}
-.checkbox-item input[type="checkbox"]:checked ~ .ctext{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--rule);}
-.checklist-progress{
-  font-size:13.5px; color:var(--muted); margin:4px 0 18px 0; display:flex; align-items:center; gap:10px; font-weight:600;
-}
-.checklist-progress .bar{flex:1; max-width:180px; height:7px; background:var(--rule); border-radius:4px; overflow:hidden;}
-.checklist-progress .fill{height:100%; background:var(--accent); border-radius:4px; transition:width .25s, background .25s; width:0%;}
-.checklist-progress.complete{color:var(--tip-border);}
-.checklist-progress.complete .fill{background:var(--tip-border);}
-.checklist-reset{
-  font-size:12.5px; color:var(--accent); cursor:pointer; background:none; border:none; padding:0; text-decoration:underline; font-weight:400;
-}
-.callout .label .icon{margin-right:5px;}
-/* Meta table */
-table.meta{width:100%; border-collapse:collapse; margin:18px 0 24px 0;}
-table.meta td{padding:12px 0; border-bottom:1px solid var(--rule); vertical-align:top; font-size:15px;}
-table.meta td.k{width:150px; color:var(--muted); padding-right:16px;}
-/* Glossary / multi-col tables */
-table.data{width:100%; border-collapse:collapse; margin:14px 0 24px 0; font-size:14.5px;}
-table.data th{text-align:left; background:var(--header-bg); padding:10px 14px; font-weight:700; border-bottom:1px solid var(--rule);}
-table.data td{padding:10px 14px; border-bottom:1px solid var(--rule); vertical-align:top;}
-table.data tr:last-child td{border-bottom:none;}
-/* Callouts */
-.callout{border-left:3px solid var(--accent); background:var(--accent-light); border-radius:0 6px 6px 0; padding:14px 18px; margin:20px 0;}
-.callout.danger{border-color:var(--danger-border); background:var(--danger-bg);}
-.callout.tip{border-color:var(--tip-border); background:var(--tip-bg);}
-.callout .label{font-size:12.5px; font-weight:700; letter-spacing:.03em; margin-bottom:4px; color:var(--accent);}
-.callout.danger .label{color:var(--danger-border);}
-.callout.tip .label{color:var(--tip-border);}
-.callout .ctext{font-size:15px; line-height:1.55;}
-/* Step */
-.step{margin:22px 0 10px 0; font-size:15.5px;}
-.step .badge{color:var(--accent); font-weight:700; margin-right:6px;}
-/* Images */
-.imgcard{
-  border:1px solid var(--rule); border-radius:10px; padding:16px; margin:14px 0 6px 0;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04); text-align:center; background:#fff;
-}
-.imgcard img{max-width:100%; border-radius:4px; display:block; margin:0 auto;}
-.caption{text-align:center; color:var(--muted); font-size:13px; font-style:italic; margin:8px 0 26px 0;}
-hr.rule{border:none; border-top:1px solid var(--rule); margin:24px 0;}
-@media (max-width: 900px){
-  .sidebar{position:fixed; left:-320px; z-index:50; transition:left .2s; box-shadow:2px 0 12px rgba(0,0,0,.08);}
-  .sidebar.open{left:0;}
-  .main{padding:24px 20px 100px; max-width:100%;}
-  .sidebar-toggle{
-    display:flex; position:fixed; top:16px; left:16px; z-index:60; width:40px; height:40px;
-    background:var(--text); color:#fff; border-radius:8px; align-items:center; justify-content:center;
-    font-size:18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2);
-  }
-}
-</style>
-</head>
+<title>AI4I Orchestrate — Institution Admin Guide</title>
+<style>:root{--ink:#182a38;--body:#354652;--muted:#64747f;--accent:#b74e20;--accent-soft:#fff1e8;--line:#e2e7eb;--paper:#fff;--canvas:#f7f8fa;--sidebar-w:278px;--radius:12px}
+*{box-sizing:border-box}html{scroll-padding-top:94px}body{margin:0;background:var(--paper);color:var(--body);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}button,input{font:inherit}button,a,input{-webkit-tap-highlight-color:transparent}a{color:var(--accent);text-underline-offset:3px}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,img:focus-visible{outline:3px solid #de956c;outline-offset:4px}.layout{margin-left:var(--sidebar-w)}.sidebar{position:fixed;top:0;bottom:0;left:0;width:var(--sidebar-w);padding:28px 20px 24px;background:#f6f8fa;border-right:1px solid var(--line);overflow-y:auto;z-index:60;scrollbar-width:thin;scrollbar-color:#cbd3da transparent}.brand-mark{width:43px;height:39px;background:var(--ink);color:#fff;border-radius:9px;font-size:19px;font-weight:800;letter-spacing:-1px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}.brand-mark span{color:#f5bc98}.brand{font-weight:750;font-size:17px;letter-spacing:-.4px;color:var(--ink)}.brand-sub{font-size:12px;color:var(--muted);margin:1px 0 22px}.search-wrap{position:relative;margin-bottom:25px}.search{width:100%;height:42px;border:1px solid #d9e0e6;border-radius:8px;background:#fff;color:var(--ink);padding:0 12px 0 33px;font-size:13px;box-shadow:0 2px 3px #182a3803}.search::placeholder{color:#74828d}.search-icon{position:absolute;left:12px;top:5px;font-size:22px;color:#778792;pointer-events:none}.search-status{font-size:11px;color:var(--muted);line-height:1.4;margin-top:7px}.search-status:empty{display:none}.nav-group{margin-bottom:23px}.part-label{font-size:10px;font-weight:750;letter-spacing:1.05px;text-transform:uppercase;color:#77848e;margin:0 10px 8px}.nav-item{display:block;position:relative;padding:7px 11px;margin:2px 0;border-radius:7px;text-decoration:none;font-size:12.5px;line-height:1.45;color:#445562;transition:background .12s,color .12s}.nav-item:hover{background:#eaf0f4;color:var(--ink)}.nav-item.active{background:#fff0e6;color:#943f19;font-weight:650}.nav-item.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;background:#b74e20;border-radius:3px}.sidebar-foot{border-top:1px solid var(--line);padding-top:18px;margin:8px 10px 0;font-size:11px;color:var(--muted);display:flex;gap:7px;align-items:center}.status-dot{height:6px;width:6px;border-radius:50%;background:#b74e20}.topbar{height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:35;border-bottom:1px solid var(--line);padding:0 48px;background:rgba(255,255,255,.97)}.breadcrumb{display:flex;gap:12px;align-items:center;min-width:0;font-size:12px;color:var(--muted)}.breadcrumb strong{font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.breadcrumb>span:first-child{white-space:nowrap}.crumb-divider{color:#b0bdc6}.print-button{flex-shrink:0;background:#fff;border:1px solid #d8e0e6;color:#344955;border-radius:7px;font-size:12px;font-weight:600;padding:7px 13px}.print-button:hover{background:#f6f8fa}.reading-progress{position:absolute;left:0;bottom:-1px;right:0;height:2px}.reading-progress>div{height:100%;width:0;background:#b74e20}.main{max-width:1040px;margin:auto;padding:50px 56px 100px}.doc-header{margin-bottom:54px;padding-bottom:0}.eyebrow{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:1.7px;font-weight:750}.doc-header h1{font-size:43px;line-height:1.16;letter-spacing:-1.75px;font-weight:720;color:var(--ink);margin:11px 0 15px}.tagline{font-size:14px;color:var(--muted);margin:0;line-height:1.6;max-width:580px}.part-index{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:10px;margin-top:30px;overflow:hidden;background:#fff}.part-index a{padding:16px 14px;text-decoration:none;color:var(--ink);font-size:11px;line-height:1.45;font-weight:600;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:9px}.part-index a:last-child{border-right:0}.part-index a:hover{background:var(--accent-soft)}.part-index-number{font-size:10px;letter-spacing:1px;color:var(--accent);font-weight:700}.part-block{border-top:1px solid var(--line);padding-top:40px;margin:66px 0 38px;position:relative;scroll-margin-top:0}.part-block#part1{border-top:0;padding-top:0;margin-top:0}.part-eyebrow{color:var(--accent);font-size:11px;letter-spacing:1.5px;font-weight:700;text-transform:uppercase;margin-bottom:8px}.part-title{font-size:29px;line-height:1.2;font-weight:700;letter-spacing:-.9px;color:var(--ink);margin-bottom:12px}.part-desc{font-size:14px;color:var(--muted);line-height:1.7;margin:0;max-width:650px}.chapter{margin:0 0 54px}.chapter+.chapter{border-top:1px solid var(--line);padding-top:34px}h2.section{display:flex;gap:13px;align-items:baseline;font-size:23px;line-height:1.38;letter-spacing:-.5px;color:var(--ink);font-weight:700;margin:0 0 26px;scroll-margin-top:0}h2.section:focus{outline:0}.section-number{font-size:14px;font-weight:650;color:var(--accent);min-width:24px;letter-spacing:0}.section-title{max-width:740px}h3.sub{font-size:15px;color:var(--ink);font-weight:700;margin:25px 0 10px;line-height:1.5}p.body{font-size:15px;margin:0 0 16px;line-height:1.85}strong{font-weight:650;color:var(--ink)}ul.bullets{padding-left:20px;margin:10px 0 18px;font-size:15px;line-height:1.8}ul.bullets li{margin-bottom:7px;padding-left:3px}ul.bullets li::marker{color:#aab7c1}table{width:100%;border-collapse:separate;border-spacing:0}table.meta{margin:0 0 26px;font-size:13px;line-height:1.8}table.meta td{padding:10px 14px;vertical-align:top;border-bottom:1px solid var(--line)}table.meta td.k{width:135px;color:var(--muted);font-size:11px;letter-spacing:.15px;font-weight:600}table.meta tr:last-child td{border-bottom:0}.task-summary{background:#f6f8fa;border:1px solid #e7edf1;border-radius:10px;overflow:hidden}.task-summary td{background:transparent}.task-summary tr:first-child td{padding-top:14px}.task-summary tr:last-child td{padding-bottom:14px}.task-result{border:1px solid #dbe5e5;border-left:3px solid #6b9291;background:#f8fbfb;border-radius:0 9px 9px 0;overflow:hidden}.task-result td.k{color:#416d6b!important}.task-result a{text-decoration:none;font-weight:600}.task-result a:hover{text-decoration:underline}.meta ul.bullets{margin:0;padding-left:17px;font-size:13px;line-height:1.8}.meta ul.bullets li{margin:0 0 4px}table.data{border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px;line-height:1.8;margin:18px 0 28px}table.data th{background:#eef2f5;padding:11px 16px;text-align:left;color:#536774;font-size:10px;text-transform:uppercase;letter-spacing:.9px;font-weight:750}table.data td{padding:16px;border-top:1px solid var(--line);vertical-align:top}table.data td:first-child{width:135px;font-weight:650;color:var(--ink);background:#fafbfd}table.data tr:nth-child(even) td:not(:first-child){background:#fdfefe}.glossary-text{margin:0 0 9px}.glossary-text:last-child{margin-bottom:0}.callout{border-left:3px solid #709098;background:#f1f6f8;border-radius:0 8px 8px 0;padding:15px 18px;margin:23px 0}.callout .label{font-size:10px;font-weight:750;letter-spacing:1px;color:#41616d;line-height:1.4;margin-bottom:7px}.callout .icon{margin-right:6px}.callout .ctext{font-size:13px;line-height:1.85;color:#465c68}.callout.danger{border-color:#c4794f;background:#fff4eb}.callout.danger .label{color:#985022}.callout.danger .ctext{color:#724b34}.callout.tip{border-color:#699284;background:#f0f7f3}.callout.tip .label{color:#426c5c}.step{font-size:15px;line-height:1.85;color:#344753;margin:29px 0 15px}.step .badge{display:block;color:var(--accent);text-transform:uppercase;font-size:10px;letter-spacing:1px;font-weight:750;margin-bottom:8px}.step p{line-height:1.85}.imgcard{position:relative;background:#fff;border:1px solid #dce4ea;border-radius:10px;padding:9px 9px 0;margin:14px 0 30px;box-shadow:0 3px 12px #20344506;overflow:hidden}.imgcard img{display:block;width:100%;max-width:100%;height:auto;border-radius:5px;cursor:zoom-in;background:#f7f9fa}.caption{font-size:11px;line-height:1.6;color:#73838e;border-top:1px solid #edf0f3;text-align:left;margin:9px -9px 0;padding:10px 14px;background:#fbfcfd}.caption::before{content:attr(data-figure)}.imgcard figcaption::before{content:"SCREEN ";font-size:9px;letter-spacing:.75px;color:#8d9ba5;font-weight:650;margin-right:8px}.zoom-button{position:absolute;right:16px;top:16px;z-index:1;height:30px;width:30px;border:1px solid #d6dfe6;background:rgba(255,255,255,.96);border-radius:6px;color:#536775;font-size:20px;line-height:1;box-shadow:0 2px 6px #182a3810}.zoom-button:hover{background:var(--accent-soft);color:var(--accent);border-color:#e9c4ac}.rule{border:0;margin:24px 0 0}.checklist-group{font-size:12px;letter-spacing:.3px;color:var(--ink);font-weight:700;margin:21px 0 9px}.checkbox-item{display:flex;align-items:flex-start;gap:12px;font-size:13px;line-height:1.75;padding:9px 12px;margin:5px 0;border:1px solid #e5eaf0;border-radius:7px;cursor:pointer;background:#fff}.checkbox-item:hover{background:#f8fafb;border-color:#d6dfe7}.checkbox-item input{width:16px;height:16px;accent-color:var(--accent);flex-shrink:0;margin:4px 0 0}.checkbox-item input:checked~.ctext{color:#7b8992;text-decoration:line-through;text-decoration-color:#c5cfd7}.checklist-progress{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid #e1e8ed;border-radius:8px;background:#f5f8fa;font-size:11px;font-weight:650;margin:20px 0;color:#647580}.checklist-progress .bar{height:5px;background:#dce5ea;border-radius:4px;flex:1;max-width:170px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .15s}.checklist-progress.complete .fill{background:#497d68}.checklist-progress.complete{color:#497d68}.checklist-reset{border:0;background:transparent;color:var(--muted);font-size:11px;text-decoration:underline;margin-left:auto}.skip-link{position:fixed;z-index:200;top:-80px;left:18px;background:var(--ink);color:#fff;padding:10px 18px;border-radius:6px}.skip-link:focus{top:12px}.sidebar-toggle{display:none}.nav-backdrop{display:none}.screenshot-dialog{width:96vw;max-width:1800px;height:94vh;max-height:94vh;padding:0;border:1px solid #d9e1e7;border-radius:12px;background:#f2f5f7;color:var(--ink)}.screenshot-dialog::backdrop{background:rgba(15,27,38,.78)}.viewer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);background:#fff}.viewer-toolbar p{margin:0;font-size:13px;font-weight:600}.viewer-toolbar>div{display:flex;gap:8px;flex-shrink:0}.viewer-toolbar button{border:1px solid #d9e0e7;border-radius:6px;background:#fff;font-size:12px;color:#354c5a;padding:7px 11px}.viewer-toolbar button:hover{background:#f0f4f7}.viewer-canvas{height:calc(100% - 65px);overflow:auto;padding:20px;text-align:center}.viewer-canvas img{max-width:100%;height:auto;display:block;margin:auto}.viewer-canvas.actual img{max-width:none;margin:0;}.screenshot-dialog:not([open]){display:none}
+@media(min-width:1600px){.main{padding-left:60px;padding-right:60px}.topbar{padding-left:60px;padding-right:60px}}
+@media(max-width:1150px){:root{--sidebar-w:250px}.main{padding:38px 34px 90px}.topbar{padding:0 34px}.doc-header h1{font-size:38px}.part-index a{padding:14px 11px;font-size:10px}.sidebar{padding-left:16px;padding-right:16px}}
+@media(max-width:900px){.layout{margin-left:0}.sidebar{width:278px;transform:translateX(-100%);transition:transform .18s}.sidebar.open{transform:translateX(0)}.sidebar-toggle{display:block;border:1px solid #d9e0e6;border-radius:7px;background:#fff;font-size:17px;color:var(--ink);width:35px;height:34px;flex-shrink:0}.topbar{height:60px;padding:0 20px;gap:12px}.breadcrumb{font-size:11px;flex:1;gap:8px}.breadcrumb>span:first-child,.crumb-divider{display:none}.print-button{font-size:11px;padding:6px 10px}.main{padding:34px 24px 70px;max-width:880px}.doc-header h1{font-size:37px}.nav-backdrop.open{display:block;position:fixed;inset:0;background:#13263466;border:0;z-index:50}.viewer-toolbar p{font-size:11px}.viewer-toolbar{padding:10px;gap:10px}.viewer-toolbar button{font-size:11px}.viewer-canvas{padding:10px}}
+@media(max-width:520px){.main{padding:28px 19px 60px}.doc-header{margin-bottom:38px}.doc-header h1{font-size:33px;letter-spacing:-1.1px}.tagline{font-size:12px}.part-index{grid-template-columns:repeat(2,1fr);margin-top:24px}.part-index a{padding:13px 14px;font-size:11px;flex-direction:row;gap:10px;align-items:center}.part-index a:nth-child(2){border-right:0}.part-index a:nth-child(-n+2){border-bottom:1px solid var(--line)}.part-title{font-size:26px}.part-block{margin-top:44px;padding-top:30px}.part-desc{font-size:13px}h2.section{font-size:21px;gap:8px}.section-number{min-width:20px;font-size:12px}.chapter{margin-bottom:38px}p.body,ul.bullets,.step{font-size:14px}table.meta td{padding:10px}table.meta td.k{width:90px;font-size:10px}table.meta{font-size:12px}.meta ul.bullets{font-size:12px}table.data{font-size:12px}table.data td{padding:11px 10px}table.data td:first-child{width:93px}table.data th{padding:10px}.callout{padding:13px 14px}.callout .ctext{font-size:12px}.imgcard{padding:5px 5px 0;border-radius:7px}.caption{margin:5px -5px 0;padding:9px 10px;font-size:10px}.zoom-button{top:10px;right:10px;height:25px;width:25px;font-size:17px}.checklist-progress{flex-wrap:wrap;padding:12px;gap:9px}.checklist-progress .bar{max-width:none;min-width:70px}.viewer-toolbar{flex-wrap:wrap}.viewer-toolbar p{width:100%}.viewer-toolbar>div{margin-left:auto}.viewer-canvas{height:calc(100% - 100px)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{@page{size:A4;margin:17mm 17mm 20mm}.sidebar,.topbar,.part-index,.zoom-button,.sidebar-toggle,.nav-backdrop,.skip-link,.checklist-reset,.screenshot-dialog{display:none!important}.layout{margin:0}.main{max-width:none;padding:0}.doc-header{margin-bottom:28px}.doc-header h1{font-size:30px}.part-block{break-before:page;margin-top:0;padding-top:0;border-top:0}.part-block#part1{break-before:auto}.part-title{font-size:24px}.chapter+.chapter{padding-top:22px}.chapter{margin-bottom:28px}h2.section{font-size:20px;break-after:avoid}h3.sub,.step{break-after:avoid}.imgcard,.callout,.task-summary,.task-result{break-inside:avoid}body{font-size:10pt;line-height:1.6}p.body,ul.bullets,.step{font-size:10pt}table.data,table.meta{font-size:9pt}.imgcard{box-shadow:none}a{color:inherit;text-decoration:none}}
+[hidden]{display:none!important}.nav-close{display:none}.menu-open{overflow:hidden}
+@media(max-width:900px){.nav-close{display:block;position:absolute;right:15px;top:26px;width:28px;height:28px;border:1px solid #dce3e9;border-radius:6px;background:#fff;color:var(--muted);font-size:21px;line-height:1}}
+
+.budget-example td:first-child{width:120px}.budget-example td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:650}.print-button{line-height:1.5}
+@media print{table.data tr{break-inside:avoid}.imgcard img{max-height:225mm;object-fit:contain}}
+.callout .icon{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border:1px solid currentColor;border-radius:50%;font-size:0;vertical-align:middle;transform:translateY(-1px)}.callout .icon::before{content:"i";font-family:Arial,sans-serif;font-size:9px;font-weight:700;line-height:1}.callout.danger .icon::before{content:"!"}.print-button{height:34px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+@media(max-width:900px){.sidebar-toggle{height:40px;width:40px}.print-button{height:36px}}
+
+/* Fit the complete screenshot within the viewer, including tall screenshots. */
+.screenshot-dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+.viewer-toolbar{flex:0 0 auto}.viewer-canvas{height:auto;flex:1 1 0;min-height:0;display:flex;align-items:center;justify-content:center}
+.viewer-canvas img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.viewer-canvas.actual{display:block}.viewer-canvas.actual img{max-width:none;max-height:none;width:auto;height:auto;object-fit:initial;margin:0}
+
+
+/* AI4I Inclusion logo: the original artwork is embedded once for offline use. */
+.ai4i-logo{display:block;width:114.4px;height:82px;background-image:url("/guides/img/59787b2bfdbe956e1e2e.png");background-repeat:no-repeat;background-size:125.4px 125.4px;background-position:-6.2px -23.1px;flex-shrink:0;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.sidebar-logo{margin:0 0 16px}.doc-logo{display:none;margin:0 0 20px}
+@media(max-width:900px){.doc-logo{display:block}.doc-logo,.sidebar-logo{width:100px;height:71.68px;background-size:109.62px 109.62px;background-position:-5.42px -20.19px}}
+@media print{.doc-logo{display:block;width:85px;height:60.93px;margin-bottom:16px;background-size:93.17px 93.17px;background-position:-4.61px -17.16px}}
+</style></head>
 <body>
-<div class="sidebar-toggle">&#9776;</div>
-<div class="layout">
-  <div class="sidebar">
-  <div class="brand">AI Switch</div>
-  <div class="brand-sub">User Guide</div>
-  <input class="search" type="text" placeholder="Search sections...">
-  <div class="part-label">Part I · Plan &amp; Prepare</div>
+<a class="skip-link" href="#guide-content">Skip to guide content</a><div class="layout">
+  <nav class="sidebar" id="guide-nav" aria-label="Guide chapters">
+  <div class="ai4i-logo sidebar-logo" role="img" aria-label="AI4I Inclusion"></div><div class="brand">AI4I Orchestrate</div>
+  <div class="brand-sub">Institution Admin Guide</div>
+  <div class="search-wrap"><input class="search" type="search" placeholder="Search this guide" aria-label="Search this guide" id="guide-search">
+  <span class="search-icon" aria-hidden="true">⌕</span><div id="search-status" class="search-status" aria-live="polite"></div></div><div class="nav-group"><div class="part-label">Part I · Plan &amp; Prepare</div>
 <a class="nav-item" href="#intro">Introduction</a>
 <a class="nav-item" href="#before-you-begin">Before You Begin</a>
 <a class="nav-item" href="#concepts">Key Terms</a>
-<div class="part-label">Part II · Onboard &amp; Provision</div>
+</div><div class="nav-group"><div class="part-label">Part II · Onboard &amp; Provision</div>
 <a class="nav-item" href="#institution-creation">Institution Creation</a>
+<a class="nav-item" href="#activate-account">Activate Your Account</a>
 <a class="nav-item" href="#signing-in">Signing In</a>
+<a class="nav-item" href="#onboard-application">Onboard an Application</a>
 <a class="nav-item" href="#create-api-key">Create an API Key</a>
 <a class="nav-item" href="#onboard-users">Onboard Institution Users</a>
-<div class="part-label">Part III · Track Budget &amp; Usage</div>
-<a class="nav-item" href="#metering">Metering Dashboard</a>
-<div class="part-label">Part IV · Manage &amp; Maintain</div>
+</div><div class="nav-group"><div class="part-label">Part III · Track Budget &amp; Usage</div>
+<a class="nav-item" href="#metering">Usage Dashboard</a>
+</div><div class="nav-group"><div class="part-label">Part IV · Manage &amp; Maintain</div>
+<a class="nav-item" href="#manage-applications">Manage Applications</a>
 <a class="nav-item" href="#manage-api-keys">Manage API Keys</a>
 <a class="nav-item" href="#manage-users">Manage Institution Users</a>
 <a class="nav-item" href="#try-it-now">Try It Now</a>
 <a class="nav-item" href="#view-models">View Available Models</a>
 <a class="nav-item" href="#logs">Logs Dashboard</a>
 <a class="nav-item" href="#manage-profile">Manage Your Profile</a>
-</div>
-  <div class="main">
+</div><div class="sidebar-foot"><span class="status-dot"></span>Institution Admin Guide</div></nav>
+  <header class="topbar"><button type="button" class="sidebar-toggle" aria-controls="guide-nav" aria-expanded="false" aria-label="Open navigation">☰</button><div class="breadcrumb"><span>Institution Admin</span><span class="crumb-divider">/</span><strong id="current-section">Introduction</strong></div><button type="button" class="print-button" id="print-guide">Print guide</button><div class="reading-progress" aria-hidden="true"><div id="reading-fill"></div></div></header><main class="main" id="guide-content">
     <div class="doc-header">
-  <div class="eyebrow">AI Switch</div>
+  <div class="ai4i-logo doc-logo" role="img" aria-label="AI4I Inclusion"></div><div class="eyebrow">AI4I Orchestrate</div>
   <h1>Institution Admin Guide</h1>
-  <p class="tagline">Sign in, give your applications access to LLMs, and track usage · Version 1.0</p>
-</div>
-    <div class="part-block" id="part1">
+  <p class="tagline">Sign in, give your applications access to models, and track usage · Version 1.0</p>
+<div class="part-index" aria-label="Guide parts"><a href="#part1"><span class="part-index-number">01</span><span>Plan &amp; Prepare</span></a><a href="#part2"><span class="part-index-number">02</span><span>Onboard &amp; Provision</span></a><a href="#part3"><span class="part-index-number">03</span><span>Track Budget &amp; Usage</span></a><a href="#part4"><span class="part-index-number">04</span><span>Manage &amp; Maintain</span></a></div></div>
+    <div class="part-block" id="part1" data-part="1">
   <div class="part-eyebrow">Part I</div>
   <div class="part-title">Plan &amp; Prepare</div>
   <p class="part-desc">Understand your role as Institution Admin and gather what you need before you begin.</p>
 </div>
-<h2 class="section" id="intro">1. Introduction</h2>
-<h3 class="sub">About AI Switch</h3>
-<p class="body">AI Switch provides a single, governed layer for secure, measurable, and scalable consumption of open source and sovereign models. It enables sovereign AI infrastructure to be consumed in a controlled and accountable manner while maintaining centralized governance, operational visibility, and consumption oversight across multiple user institutions and applications.</p>
-<h3 class="sub">Purpose of this Guide</h3>
-<p class="body">This guide walks you through your institution's setup, in the order you'll typically do it:</p>
-<ul class="bullets"><li>Signing in</li><li>Creating an API key for each application</li><li>Onboarding your institution's users</li></ul>
-<p class="body">Part III covers tracking your institution's budget and usage, and Part IV covers the day-to-day account and access management you'll return to afterward.</p>
+<section class="chapter" data-part="part1" aria-labelledby="intro"><h2 class="section" id="intro" tabindex="-1"><span class="section-number">1. </span><span class="section-title">Introduction</span></h2>
+<h3 class="sub">About AI4I Orchestrate</h3>
+<p class="body">AI4I Orchestrate provides a single platform for secure, controlled use of hosted AI models at scale. Organizations can offer open-source and other hosted models to institutions and their applications while retaining control over access and the underlying AI infrastructure.</p>
+<p class="body">It brings access controls, usage tracking, and operational monitoring together, so organizations can manage model use, measure consumption, and maintain accountability across institutions and applications.</p><h3 class="sub">Purpose of this Guide</h3>
+<p class="body">Follow Part II to set up access for your institution:</p>
+<ul class="bullets"><li>Activate your account and sign in.</li><li>Onboard your applications and create API keys to give them access to models.</li><li>Onboard your institution's users.</li></ul>
+<p class="body">After setup, use the remaining parts for ongoing tasks:</p>
+<ul class="bullets"><li><strong>Part III — Track Budget &amp; Usage:</strong> review your institution's budget and usage.</li><li><strong>Part IV — Manage &amp; Maintain:</strong> manage applications, API keys, users, and your account.</li></ul>
 <h3 class="sub">Intended Audience</h3>
-<p class="body">This guide is for the Institution Admin — the person responsible for managing your institution's access to AI Switch: signing in, giving your applications access to LLMs through API keys, onboarding your institution's users, and tracking budget and usage.</p>
-<h2 class="section" id="before-you-begin">2. Before You Begin</h2>
+<p class="body">This guide is for the Institution Admin responsible for managing the institution's access to AI4I Orchestrate. It covers application and user onboarding, access to models through API keys, and budget and usage tracking.</p>
+</section><section class="chapter" data-part="part1" aria-labelledby="before-you-begin"><h2 class="section" id="before-you-begin" tabindex="-1"><span class="section-number">2. </span><span class="section-title">Before You Begin</span></h2>
 <h3 class="sub">Roles &amp; Responsibilities</h3>
-<p class="body"><strong>Adopter Admin —</strong> the Adopter's representative, for context. They onboard your institution and assign the tier and budget that define what your institution can consume. You operate within those boundaries.</p>
-<p class="body"><strong>Institution Admin —</strong> you. Responsible for your own institution: creating the API keys that give your applications access to LLMs, onboarding your institution's users, and tracking your institution's budget and usage against your assigned tier.</p>
-<p class="body"><strong>Institution User —</strong> a user onboarded by the Institution Admin, who can sign in and explore available LLMs in the portal.</p>
+<p class="body"><strong>Adopter Admin —</strong> onboards your institution and assigns its tier and budget. These define the usage limits and spending cap within which you manage your institution.</p>
+<p class="body"><strong>Institution Admin —</strong> manages your institution's applications, creates API keys for access to models, onboards institution users, and tracks budget and usage against the assigned tier.</p>
+<p class="body"><strong>Institution User —</strong> is onboarded by the Institution Admin and can sign in to explore available models in the portal.</p>
 <div class="callout danger">
-  <div class="label"><span class="icon">&#9888;</span>DATA RESPONSIBILITY</div>
-  <div class="ctext">Your institution is the data fiduciary for the application(s) you connect to AI Switch. AI Switch operates only as a routing and metering layer — it does not process, store, or retain your application's data. Compliance with the DPDP Act for any personal or sensitive data your application collects, uses, or processes remains your institution's responsibility.</div>
-</div>
+  <div class="label"><span class="icon">⚠</span>DATA RESPONSIBILITY</div>
+  <div class="ctext">Your institution is responsible for the data its applications collect, use, and share through AI4I Orchestrate. Follow your institution’s data-protection requirements. Confirm your deployment’s data handling, logging, and retention settings with your Adopter Admin.</div></div>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">Your institution account, and any institution users you add, are activated by your Adopter Admin, who shares sign-in credentials once activated.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">Your Adopter Admin onboards your institution, and you onboard your institution's users. Each account holder receives an activation email to verify their email address and set a password. If email is not configured for your deployment, your Adopter Admin activates your account and shares your sign-in credentials directly.</div>
 </div>
 <h3 class="sub">Information to Keep Ready</h3>
-<p class="body">Before you begin, gather the following so you're ready to start:</p>
-<ul class="bullets"><li>Your sign-in credentials, shared by your Adopter Admin.</li><li>The applications that need access — you'll create an API key for each, so know its intended use, permissions, and expiry.</li><li>The institution users you'll onboard — their name and email; phone number is optional.</li></ul>
+<p class="body">Keep the following information ready:</p>
+<ul class="bullets"><li>Access to the email address shared with your Adopter Admin. Your account activation email will be sent there.</li><li>Each application's name, the share of your institution's budget to allocate to it, and the permissions and expiry needed for its API key.</li><li>The name and email address of each institution user you want to add. Phone numbers are optional.</li></ul>
 <h3 class="sub">Readiness Checklist</h3>
-<p class="body">Confirm the items below before you begin Part II. Your progress is saved automatically.</p>
+<p class="body">Use this checklist to track your readiness for setup. Your progress is saved automatically.</p>
 <div class="checklist-progress" data-progress-for="inst-readiness">
-  <span class="progress-text">0 of 0 checked</span>
+  <span class="progress-text">0 of 6 items ready</span>
   <div class="bar"><div class="fill"></div></div>
   <button class="checklist-reset" data-reset-for="inst-readiness" type="button">Reset</button>
 </div>
 <div class="checklist-group">Access</div>
 <label class="checkbox-item" for="chk-inst-readiness-1">
   <input type="checkbox" id="chk-inst-readiness-1" data-group="inst-readiness">
-  <span class="ctext">The AI Switch link, shared by your Adopter Admin, opens in a supported browser.</span>
+  <span class="ctext">You can open the AI4I Orchestrate link shared by your Adopter Admin in a supported browser.</span>
 </label>
 <label class="checkbox-item" for="chk-inst-readiness-2">
   <input type="checkbox" id="chk-inst-readiness-2" data-group="inst-readiness">
-  <span class="ctext">You have your sign-in credentials.</span>
+  <span class="ctext">You have activated your account and set your password.</span>
 </label>
 <label class="checkbox-item" for="chk-inst-readiness-3">
   <input type="checkbox" id="chk-inst-readiness-3" data-group="inst-readiness">
   <span class="ctext">Your institution has been assigned a tier and budget.</span>
 </label>
-<div class="checklist-group">Applications (API Keys)</div>
+<div class="checklist-group">Applications &amp; API Keys</div>
 <label class="checkbox-item" for="chk-inst-readiness-4">
   <input type="checkbox" id="chk-inst-readiness-4" data-group="inst-readiness">
-  <span class="ctext">The applications that need access are identified.</span>
+  <span class="ctext">You have identified the applications that need access and the share of your institution's budget to allocate to each.</span>
 </label>
 <label class="checkbox-item" for="chk-inst-readiness-5">
   <input type="checkbox" id="chk-inst-readiness-5" data-group="inst-readiness">
-  <span class="ctext">For each, you know the API key name (matching the application name), its permissions, and expiry.</span>
+  <span class="ctext">You know the name, permissions, budget allocation, and expiry for each application's API key.</span>
 </label>
 <div class="checklist-group">Institution Users</div>
 <label class="checkbox-item" for="chk-inst-readiness-6">
   <input type="checkbox" id="chk-inst-readiness-6" data-group="inst-readiness">
-  <span class="ctext">The institution users you'll onboard are identified, along with their name and email (phone number is optional).</span>
+  <span class="ctext">You have each institution user's name and email address, and their phone number if available.</span>
 </label>
-<h2 class="section" id="concepts">3. Key Terms</h2>
+</section><section class="chapter" data-part="part1" aria-labelledby="concepts"><h2 class="section" id="concepts" tabindex="-1"><span class="section-number">3. </span><span class="section-title">Key Terms</span></h2>
 <p class="body">The following terms are used throughout this guide.</p>
-<table class="data"><tr><th>Term</th><th>Definition</th></tr><tr><td>Adopter</td><td>The organization that deploys and governs an AI Switch instance. It onboards Institutions and hosts the LLM Service they consume.</td></tr><tr><td>Institution</td><td>Your organization: onboarded by the Adopter to consume the LLM Service it hosts. It is allocated a Tier and Budget, which it extends to the Applications it registers.</td></tr><tr><td>Application</td><td>A solution built by your institution that consumes the LLM Service through an API Key. Your institution can register one or more Applications.</td></tr><tr><td>API Key</td><td>A credential your institution creates, used to authenticate an Application's requests to an LLM Service.</td></tr><tr><td>Service</td><td>A registered model version made available for consumption through a specific endpoint — the machine or GPU where that model version is hosted. The same model version hosted on a different machine is a distinct Service.</td></tr><tr><td>Tier</td><td>Defines the maximum consumption ceilings for requests and LLM Service usage. All Quotas and Rate Limits mapped to a Tier must stay within these ceilings. A Tier is assigned to your institution.</td></tr><tr><td>Budget</td><td>A monetary spend cap set for your institution, expressed in the currency defined on its assigned Tier. It governs how much your institution can spend in a billing period, regardless of how much Quota remains.</td></tr><tr><td>Quota</td><td>The maximum amount of LLM Service your institution is allowed to consume within a specified time period. Quotas help ensure fair usage of shared platform resources, prevent excessive consumption, and support controlled service entitlements. They reset automatically at the end of the configured time window.</td></tr><tr><td>Rate Limit</td><td>The maximum speed at which requests can be sent within a given period. Unlike Quotas, which control total monthly volume, Rate Limits control how fast your institution or an API Key can consume LLM Service within an hour — protecting platform stability and ensuring fair access for all institutions.</td></tr><tr><td>Metering</td><td>The recording of your institution's usage, including a rollup across all its Applications, tracked against its assigned Budget.</td></tr></table>
-<div class="part-block" id="part2">
+<table class="data"><tr><th>Term</th><th>Definition</th></tr><tr><td>Adopter</td><td><p class="glossary-text">The organization that deploys and governs an AI4I Orchestrate instance. It hosts models and onboards institutions that use them.</p></td></tr><tr><td>Institution</td><td><p class="glossary-text">Your organization, onboarded by the adopter to use its hosted models. It receives a tier and budget and allocates a share of that budget to its onboarded applications.</p></td></tr><tr><td>Application</td><td><p class="glossary-text">An application onboarded under your institution to access hosted models. It receives a share of your institution’s budget, which can then be allocated to its API keys.</p></td></tr><tr><td>API Key</td><td><p class="glossary-text">A credential that an application uses to authenticate and route requests to hosted models. Each key belongs to one onboarded application and receives a share of that application’s budget.</p></td></tr><tr><td>Service</td><td><p class="glossary-text">A model made available on a particular machine or GPU. The same model hosted on another machine is a separate service.</p></td></tr><tr><td>Tier</td><td><p class="glossary-text">A plan assigned to your institution that defines the quota and rate limit for each model task type. It sets how much your institution can use and how quickly it can send requests.</p></td></tr><tr><td>Budget</td><td><p class="glossary-text">A monetary spending limit assigned to your institution along with its tier. It limits total spend even when quota remains.</p></td></tr><tr><td>Quota</td><td><p class="glossary-text">The maximum amount of model usage your institution can consume each month, set for each model task type on its assigned tier.</p><p class="glossary-text">Quotas support fair access to shared resources. They reset automatically at the start of each month.</p></td></tr><tr><td>Rate Limit</td><td><p class="glossary-text">The maximum number of requests an institution or an API key can send to a model within an hour.</p><p class="glossary-text">Quota limits total monthly usage. Rate limits control how quickly requests are sent, helping protect platform stability and maintain fair access.</p></td></tr><tr><td>Metering</td><td><p class="glossary-text">The recording of your institution’s model usage, including the combined usage of its applications, tracked against its assigned budget.</p></td></tr></table>
+</section><div class="part-block" id="part2" data-part="2">
   <div class="part-eyebrow">Part II</div>
   <div class="part-title">Onboard &amp; Provision</div>
-  <p class="part-desc">Sign in, give your applications access to LLMs, and onboard your institution's users.</p>
+  <p class="part-desc">Sign in, give your applications access to models, and onboard your institution's users.</p>
 </div>
-<h2 class="section" id="institution-creation">1. Institution Creation</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Understand how your institution gets set up on AI Switch before you can sign in.</td></tr><tr><td class="k">Role</td><td>Adopter Admin (performed on your behalf, before your onboarding begins)</td></tr><tr><td class="k">Prerequisites</td><td>None — this step precedes your involvement.</td></tr></table>
-<p class="body">Before you can sign in and begin onboarding, your institution must share the following with your Adopter Admin. Your Adopter Admin uses it to create your institution on AI Switch and assign it a Tier and Budget:</p>
+<section class="chapter" data-part="part2" aria-labelledby="institution-creation"><h2 class="section" id="institution-creation" tabindex="-1"><span class="section-number">1. </span><span class="section-title">Institution Creation</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Understand how your Adopter Admin sets up your institution before you sign in.</td></tr><tr><td class="k">Role</td><td>Adopter Admin</td></tr><tr><td class="k">Prerequisites</td><td>None. Your Adopter Admin completes this setup before you sign in.</td></tr></table>
+<p class="body">Share the following information with your Adopter Admin. They use it to create your institution on AI4I Orchestrate and assign its tier and budget.</p>
 <h3 class="sub">Information to Share with Your Adopter Admin</h3>
-<ul class="bullets"><li>Name of the institution.</li><li>Name and email of the contact person who will act as Institution Admin.</li><li>The Tier your institution wants to operate on.</li><li>The Budget within which your institution wants to operate.</li></ul>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>Your institution is created on AI Switch with its Tier and Budget assigned, defining the consumption ceilings and spend cap your institution and its Applications will operate within.</td></tr><tr><td class="k">Next</td><td>Your Adopter Admin activates your institution account and shares your sign-in credentials. Proceed to Signing In.</td></tr></table>
-<h2 class="section" id="signing-in">2. Signing In</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Sign in to AI Switch using the credentials your Adopter Admin has shared with you.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>Your institution account has been activated.</li><li>Your Adopter Admin has shared your sign-in credentials.</li></ul></td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Sign in to AI Switch.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/ca6aa2c5b3c1cdaf.jpg" alt="Signing in to AI Switch."></div>
-<div class="caption">Signing in to AI Switch.</div>
-<div class="step"><span class="badge">Step 2</span>By default, you land on the Usage Dashboard.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/5a72c76cda231728.png" alt="The Usage Dashboard, your institution's landing page."></div>
-<div class="caption">The Usage Dashboard, your institution's landing page.</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>You're signed in and viewing the Usage Dashboard, your institution's landing page.</td></tr><tr><td class="k">Next</td><td>Proceed to Create an API Key.</td></tr></table>
-<h2 class="section" id="create-api-key">3. Create an API Key (Application Access)</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Create an API key so an application can access LLMs.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>Your institution has been assigned a tier and budget.</li><li>You know the application's name, the permissions it needs, and when the key should expire.</li></ul></td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click "API Key Management" to create a key for your application.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/62ed6f4c37224643.jpg" alt="The API Key Management area."></div>
-<div class="caption">The API Key Management area.</div>
-<div class="step"><span class="badge">Step 2</span>The "Create API Key" tab opens by default.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/94f4c9a9cd2e95f4.png" alt="The Create API Key tab, ready for a new key."></div>
-<div class="caption">The Create API Key tab, ready for a new key.</div>
-<div class="step"><span class="badge">Step 3</span>Enter the required information — Key Name, Permissions, and Expiry — and click "Create API Key."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/e14bab8ec0473711.jpg" alt="Entering the key name, permissions, and expiry, and clicking Create API Key."></div>
-<div class="caption">Entering the key name, permissions, and expiry, and clicking Create API Key.</div>
+<ul class="bullets"><li>Your institution's name.</li><li>The name and email address of the person who will act as Institution Admin.</li><li>Your expected usage and spend, so the Adopter Admin can assign a suitable tier and budget.</li></ul>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>Your institution is created with an assigned tier and budget. These set the usage limits and spending cap for your institution and its applications.</td></tr><tr><td class="k">Next</td><td>You receive an activation email when your Adopter Admin onboards your institution. Continue to <a href="#activate-account">Activate Your Account</a>.</td></tr></table>
+</section><section class="chapter" data-part="part2" aria-labelledby="activate-account"><h2 class="section" id="activate-account" tabindex="-1"><span class="section-number">2. </span><span class="section-title">Activate Your Account</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Verify your email and set your password so you can sign in to AI4I Orchestrate.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>Your Adopter Admin has onboarded your institution.</li><li>You can access the email address shared with your Adopter Admin.</li></ul></td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Open the activation email from AI4I Orchestrate to activate your institution and your Institution Admin account.</div>
+<figure class="imgcard" data-figure="01"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/40a55f793adaec59bbd5.jpg" alt="The Set Your Password activation email." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">The Set Your Password activation email.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Click <strong>Set Your Password</strong> in the email.</div>
+<figure class="imgcard" data-figure="02"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/81f581c67baf2e9d704b.jpg" alt="Opening the Set Your Password link." width="1438" height="802" loading="lazy" decoding="async"><figcaption class="caption">Opening the Set Your Password link.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Enter a password that meets the requirements shown. Enter it again in <strong>Confirm Password</strong>, then click <strong>Set Password</strong>.</div>
+<figure class="imgcard" data-figure="03"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/a123f359983844c4fa8f.jpg" alt="Setting a new password and confirming it." width="1437" height="802" loading="lazy" decoding="async"><figcaption class="caption">Setting a new password and confirming it.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 4</span>Once your password is set, click <strong>Go to sign in</strong>.</div>
+<figure class="imgcard" data-figure="04"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/982ba42b5fdbc21531ba.jpg" alt="Password set successfully, ready to sign in." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">Password set successfully, ready to sign in.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 5</span>Check the confirmation email sent after you set your password. It includes your institution name and sign-in email address; keep it for reference.</div>
+<figure class="imgcard" data-figure="05"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/923bc9671763b570556e.png" alt="The confirmation email sent after your password is set." width="1598" height="797" loading="lazy" decoding="async"><figcaption class="caption">The confirmation email sent after your password is set.</figcaption>
+</figure>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">Name each key the same as the application it's for — for example, "FieldSurveyApp" — so it stays easy to identify later, especially once your institution has more than one application.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">If email is not configured for your deployment, you will not receive these emails. Contact your Adopter Admin to activate your account and share your sign-in credentials directly.</div>
 </div>
-<div class="step"><span class="badge">Step 4</span>Once the API key is created, copy it and store it securely — it is shown only once.</div>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>Your account is activated and your password is set.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#signing-in">Signing In</a>.</td></tr></table>
+</section><section class="chapter" data-part="part2" aria-labelledby="signing-in"><h2 class="section" id="signing-in" tabindex="-1"><span class="section-number">3. </span><span class="section-title">Signing In</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Sign in to AI4I Orchestrate using your email and the password you set.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>Your institution account has been activated.</li><li>You have set your password.</li></ul></td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Open the AI4I Orchestrate link shared by your Adopter Admin. Enter your email address and password, then click <strong>Sign In</strong>.</div>
+<figure class="imgcard" data-figure="06"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/384d13c3be3ea165c440.jpg" alt="Signing in to AI4I Orchestrate." width="1437" height="802" loading="lazy" decoding="async"><figcaption class="caption">Signing in to AI4I Orchestrate.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>After you sign in, the <strong>Usage Dashboard</strong> opens. This is your institution's landing page.</div>
+<figure class="imgcard" data-figure="07"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/1d61560185a59b4fae5b.jpg" alt="The Usage Dashboard, your institution's landing page." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">The Usage Dashboard, your institution's landing page.</figcaption>
+</figure>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>You are signed in and viewing your institution's Usage Dashboard.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#onboard-application">Onboard an Application</a>.</td></tr></table>
+</section><section class="chapter" data-part="part2" aria-labelledby="onboard-application"><h2 class="section" id="onboard-application" tabindex="-1"><span class="section-number">4. </span><span class="section-title">Onboard an Application</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Onboard an application under your institution and allocate a share of the institution's budget to it.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>Your institution has an assigned tier and budget.</li><li>You know the application's name. You can also provide a description, domain, and budget allocation percentage.</li></ul></td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>Institution Management</strong>.</div>
+<figure class="imgcard" data-figure="08"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/50cc10907cdefebbdf42.jpg" alt="Opening Institution Management from the left navigation." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">Opening Institution Management from the left navigation.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Click the <strong>Applications</strong> tab.</div>
+<figure class="imgcard" data-figure="09"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/204f45d42aa8d8ee5ef2.jpg" alt="The Applications tab, showing your institution's applications and budget allocation." width="1634" height="911" loading="lazy" decoding="async"><figcaption class="caption">The Applications tab, showing your institution's applications and budget allocation.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Click <strong>New Application</strong>.</div>
+<figure class="imgcard" data-figure="10"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/a37a72b70f6c7ea57a97.jpg" alt="Opening the New Application form." width="1635" height="911" loading="lazy" decoding="async"><figcaption class="caption">Opening the New Application form.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 4</span>Enter the <strong>Application Name</strong>. Add a <strong>Description</strong>, <strong>Domain</strong>, and <strong>Budget Allocation</strong> if needed, then click <strong>Create Application</strong>.</div>
+<figure class="imgcard" data-figure="11"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/5318d6a2e8a0d4bd2b02.png" alt="Entering the application’s details and clicking Create Application." width="1679" height="937" loading="lazy" decoding="async"><figcaption class="caption">Entering the application’s details and clicking Create Application.</figcaption>
+</figure>
+<div class="callout ">
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext"><strong>Budget Allocation</strong> is optional and is a percentage of your institution's budget. Leave it blank to apply no separate spending cap to the application, or enter a percentage and adjust it later. Your institution's budget still applies.</div>
+</div>
+<h3 class="sub">How Budget Allocation Works</h3>
+<p class="body">Your institution's budget is shared with its applications. Each application can then share its budget with its API keys. Each percentage is calculated from the budget directly above it:</p>
+<table class="data budget-example"><thead><tr><th>Level</th><th>Allocation</th><th>Example budget</th></tr></thead><tbody><tr><td>Institution</td><td>Spending cap assigned by your Adopter Admin</td><td>₹10,000</td></tr><tr><td>Application</td><td>70% of the institution's budget</td><td>₹7,000</td></tr><tr><td>API key</td><td>60% of the application's budget</td><td>₹4,200</td></tr></tbody></table><p class="body">The amount available to allocate depends on what remains unassigned at the level above. Allocating more budget to one application leaves less for the others. The same applies to API keys within an application. When you edit an allocation, <strong>Minimum allowed</strong> shows the lowest value you can set, based on what the application or API key has already spent.</p>
+<div class="callout ">
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">Budget and quota are separate limits. Budget limits spend in currency; quota limits usage in units for each model task type. A request can be blocked when either limit is reached, even if the other still has capacity.</div>
+</div>
+
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>The application is onboarded under your institution, with a budget allocation if you entered one.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#create-api-key">Create an API Key</a>.</td></tr></table>
+</section><section class="chapter" data-part="part2" aria-labelledby="create-api-key"><h2 class="section" id="create-api-key" tabindex="-1"><span class="section-number">5. </span><span class="section-title">Create an API Key</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Create an API key that gives an onboarded application access to models.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td><ul class="bullets"><li>The application is already onboarded.</li><li>You know the API key's required permissions, budget allocation, and expiry.</li></ul></td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>API Key Management</strong>.</div>
+<figure class="imgcard" data-figure="12"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/eefed32b58963d8f8a98.jpg" alt="The API Key Management area." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">The API Key Management area.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Click the <strong>Create API Key</strong> tab. Enter a <strong>Key Name</strong>, select the <strong>Application</strong>, and choose the <strong>Permissions</strong> the key needs.</div>
+<figure class="imgcard" data-figure="13"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/15273bb66e958651dbac.jpg" alt="Entering the key name, selecting the application, and choosing permissions." width="1635" height="911" loading="lazy" decoding="async"><figcaption class="caption">Entering the key name, selecting the application, and choosing permissions.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Enter the <strong>Budget Allocation</strong> as a percentage of the application's budget. Set the <strong>Expiry</strong> in days, then click <strong>Create API Key</strong>.</div>
+<figure class="imgcard" data-figure="14"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/143cd9d119e5770c4295.jpg" alt="Setting the budget allocation and expiry, and clicking Create API Key." width="1634" height="912" loading="lazy" decoding="async"><figcaption class="caption">Setting the budget allocation and expiry, and clicking Create API Key.</figcaption>
+</figure>
+<div class="callout ">
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">Use a <strong>Key Name</strong> that identifies its purpose, such as <strong>Web App</strong> or <strong>Mobile App</strong> for two keys under one application. Each key belongs to the application selected when it is created and cannot be reassigned to another application.</div>
+</div>
+<div class="step"><span class="badge">Step 4</span>Copy the new API key and store it securely before leaving this screen.</div>
 <div class="callout danger">
-  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
-  <div class="ctext">The full API key is displayed only at the moment of creation and cannot be retrieved again afterwards. Copy it and store it securely before leaving this screen. If it is lost, you will need to create a new key.</div>
+  <div class="label"><span class="icon">⚠</span>IMPORTANT</div>
+  <div class="ctext">The full API key is shown only once and cannot be retrieved later. If you lose it, create a new key.</div>
 </div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/26309d78679206ba.jpg" alt="The API key created, shown once with the option to copy it."></div>
-<div class="caption">The API key created, shown once with the option to copy it.</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>The application has an API key, ready to access LLMs, valid until its expiry.</td></tr><tr><td class="k">Next</td><td>Proceed to Onboard Institution Users.</td></tr></table>
-<h2 class="section" id="onboard-users">4. Onboard Institution Users</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Add an Institution User to your institution, so they can sign in to AI Switch.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have the new user's name and email; phone number is optional.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click "Institution Management" to onboard your institution's users.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/9da6bcbb6e1c26ef.jpg" alt="The Institution Management area."></div>
-<div class="caption">The Institution Management area.</div>
-<div class="step"><span class="badge">Step 2</span>Click "Add User" to onboard a new user.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/71e9a27c368477ed.jpg" alt="The Institution Management area, showing your institution's existing users."></div>
-<div class="caption">The Institution Management area, showing your institution's existing users.</div>
-<div class="step"><span class="badge">Step 3</span>Enter the required fields — Email, Full Name, and Role — and Phone Number if available, then agree to the policies by checking the consent box, and click "Add."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/1fd1368f536f1f65.jpg" alt="Entering the user's details, accepting the policies, and clicking Add."></div>
-<div class="caption">Entering the user's details, accepting the policies, and clicking Add.</div>
+<figure class="imgcard" data-figure="15"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/53e23bb4814a23bca1e3.jpg" alt="The API key created, shown once with the option to copy it." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">The API key created, shown once with the option to copy it.</figcaption>
+</figure>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>The application has an API key with the permissions, budget allocation, and expiry you set.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#onboard-users">Onboard Institution Users</a>.</td></tr></table>
+</section><section class="chapter" data-part="part2" aria-labelledby="onboard-users"><h2 class="section" id="onboard-users" tabindex="-1"><span class="section-number">6. </span><span class="section-title">Onboard Institution Users</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Add users to your institution so they can sign in and test available models in Try It Now.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have the user's name and email address. A phone number is optional.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>Institution Management</strong> and click the <strong>Users</strong> tab.</div>
+<figure class="imgcard" data-figure="16"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/c5ce2a0d5cd249f31263.png" alt="The Institution Management area." width="1680" height="936" loading="lazy" decoding="async"><figcaption class="caption">The Institution Management area.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Click <strong>Add User</strong>.</div>
+<figure class="imgcard" data-figure="17"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/9f9f60b6f0963f73f474.png" alt="The Institution Management area, showing your institution's existing users." width="1380" height="768" loading="lazy" decoding="async"><figcaption class="caption">The Institution Management area, showing your institution's existing users.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Enter the user's <strong>Email</strong> and <strong>Full Name</strong>, and select their <strong>Role</strong>. Add a <strong>Phone Number</strong> if available. Select the consent checkbox to agree to the policies, then click <strong>Add</strong>.</div>
+<figure class="imgcard" data-figure="18"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/a2933519cd91c4ac90ca.png" alt="Entering the user's details, accepting the policies, and clicking Add." width="1438" height="802" loading="lazy" decoding="async"><figcaption class="caption">Entering the user's details, accepting the policies, and clicking Add.</figcaption>
+</figure>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">Choose "User" for an Institution User, who can sign in and explore available LLMs, or "Institution Admin" if they should have the same administrative access as you.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">Select <strong>User</strong> for someone who needs to explore available models. Select <strong>Institution Admin</strong> for someone who needs the same administrative access as you.</div>
 </div>
-<div class="step"><span class="badge">Step 4</span>The new entry appears with a status of "Pending activation." Contact your Adopter Admin to activate the account.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/ce081c14246b3f93.png" alt="The new entry, shown as pending activation among your institution's users."></div>
-<div class="caption">The new entry, shown as pending activation among your institution's users.</div>
+<div class="step"><span class="badge">Step 4</span>The user appears with the status <strong>Pending activation</strong>. They receive an activation email to verify their email address and set their password.</div>
+<figure class="imgcard" data-figure="19"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/a2a38d9de8705df89d78.png" alt="The new entry, shown as pending activation among your institution's users." width="2171" height="724" loading="lazy" decoding="async"><figcaption class="caption">The new entry, shown as pending activation among your institution's users.</figcaption>
+</figure>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">New institution users are activated by your Adopter Admin, who shares their sign-in credentials with you once the account is activated.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">If email is not configured for your deployment, the user will not receive an activation email. Contact your Adopter Admin to activate the account and share the credentials with you directly.</div>
 </div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>The user is added to your institution, initially pending activation, and becomes active once your Adopter Admin activates the account.</td></tr><tr><td class="k">Next</td><td>Proceed to Part III to track your institution's budget and usage.</td></tr></table>
-<div class="part-block" id="part3">
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>The user is added with the selected role. Their account becomes active after they verify their email address and set their password through the activation email.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#part3">Part III</a> to track your institution's budget and usage.</td></tr></table>
+</section><div class="part-block" id="part3" data-part="3">
   <div class="part-eyebrow">Part III</div>
   <div class="part-title">Track Budget &amp; Usage</div>
-  <p class="part-desc">Track your institution's budget and usage against its assigned Tier.</p>
+  <p class="part-desc">Track your institution's budget and usage against its assigned tier.</p>
 </div>
-<h2 class="section" id="metering">1. Metering Dashboard</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Track your institution's budget and usage against its assigned tier.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>Your institution has at least one application in use.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click "Usage Dashboard" from the left navigation.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/812f48cf42697518.jpg" alt="Opening the Usage Dashboard."></div>
-<div class="caption">Opening the Usage Dashboard.</div>
-<div class="step"><span class="badge">Step 2</span>Click "Overview" for a summary of your institution's usage — total requests, success and failure counts, and request volume over time.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/3b0bfcb230878f42.jpg" alt="The Overview tab."></div>
-<div class="caption">The Overview tab.</div>
-<div class="step"><span class="badge">Step 3</span>Click "Model Usage" to view usage broken down by model.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/5e94af2bd6bb8a58.jpg" alt="The Model Usage tab, showing the most used model and overall success rate."></div>
-<div class="caption">The Model Usage tab, showing the most used model and overall success rate.</div>
-<div class="step"><span class="badge">Step 4</span>Scroll down in the Model Usage tab to view the breakdown by model and service, showing total requests, consumption, and success and failure rates for each.</div>
+<section class="chapter" data-part="part3" aria-labelledby="metering"><h2 class="section" id="metering" tabindex="-1"><span class="section-number">1. </span><span class="section-title">Usage Dashboard</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Track your institution's usage and spend against its assigned tier and budget, including usage by model and application.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>Your institution has at least one application in use.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>Usage Dashboard</strong>.</div>
+<figure class="imgcard" data-figure="20"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/5df64fe9eb13d284023f.jpg" alt="Opening the Usage Dashboard." width="1438" height="901" loading="lazy" decoding="async"><figcaption class="caption">Opening the Usage Dashboard.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Click the <strong>Institution</strong> tab to review your institution's total requests, successful and failed requests, and request volume over time.</div>
+<figure class="imgcard" data-figure="21"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/1d61560185a59b4fae5b.jpg" alt="The Institution tab." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">The Institution tab.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Click the <strong>Model</strong> tab to review usage and performance across your institution's models. You can see the overall success rate, the most-used model, and models ranked by request volume.</div>
+<figure class="imgcard" data-figure="22"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/dd6c6b56bf592e3f61dc.jpg" alt="The Model tab, showing the most used model and overall success rate." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">The Model tab, showing the most used model and overall success rate.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 4</span>Scroll down to see the breakdown by model and service. Review total requests, consumption, and success and failure rates for each.</div>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">A Service is a specific model version made available through an endpoint — a single model can run as more than one Service. This view groups your Services by the model they run on, so you can see which Services fall under which model.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">One model can be available through more than one service. Each service is a deployment on a particular machine or GPU. This view groups services under the model they use.</div>
 </div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/889c97d38a4b6ac3.png" alt="The model breakdown, showing usage by individual service."></div>
-<div class="caption">The model breakdown, showing usage by individual service.</div>
-<div class="step"><span class="badge">Step 5</span>Click "Budget and usage" to view your institution's spend against its assigned tier and budget.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/784f6831a5ece3cb.jpg" alt="The Budget and usage view for your institution."></div>
-<div class="caption">The Budget and usage view for your institution.</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>You can see your institution's budget and usage — Overview for a summary, Model Usage for a breakdown by model, and Budget and usage for spend against your assigned tier and budget.</td></tr><tr><td class="k">Next</td><td>Proceed to Part IV for day-to-day account and access management.</td></tr></table>
+<figure class="imgcard" data-figure="23"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/edd8a15e6c139e7f3320.png" alt="The model breakdown, showing usage by individual service." width="1820" height="864" loading="lazy" decoding="async"><figcaption class="caption">The model breakdown, showing usage by individual service.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 5</span>Click the <strong>Budget</strong> tab to compare your institution's spend with its allocated budget and review usage against its assigned tier.</div>
+<figure class="imgcard" data-figure="24"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/48630b9685ee9fdd1b9a.jpg" alt="The Budget tab for your institution." width="1438" height="901" loading="lazy" decoding="async"><figcaption class="caption">The Budget tab for your institution.</figcaption>
+</figure>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">If you need a different tier or a larger budget, contact your Adopter Admin — this is managed at the platform level.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">The Budget tab shows all-time budget usage and cumulative usage by model task type. These figures do not change when you switch months.</div></div>
+<div class="step"><span class="badge">Step 6</span>Click the <strong>Applications</strong> tab to compare each application's allocated budget with its spend.</div>
+<figure class="imgcard" data-figure="25"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/3c92ca0b7f81cbbc2e38.jpg" alt="The Applications tab, showing budget allocation and spend for each application." width="1438" height="901" loading="lazy" decoding="async"><figcaption class="caption">The Applications tab, showing budget allocation and spend for each application.</figcaption>
+</figure>
+<hr class="rule" aria-hidden="true">
+<div class="callout ">
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">Contact your Adopter Admin if your institution needs a different tier or a larger budget.</div>
 </div>
-<div class="part-block" id="part4">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>You can review your institution's overall usage, model performance, budget consumption, and application spend.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#part4">Part IV</a> for day-to-day account and access management.</td></tr></table>
+</section><div class="part-block" id="part4" data-part="4">
   <div class="part-eyebrow">Part IV</div>
   <div class="part-title">Manage &amp; Maintain</div>
-  <p class="part-desc">Day-to-day account, access, and testing tasks you'll return to after initial setup.</p>
+  <p class="part-desc">Day-to-day account, access, and testing tasks you will return to after initial setup.</p>
 </div>
-<h2 class="section" id="manage-api-keys">1. Manage API Keys</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Update or revoke an existing API key.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have at least one existing API key.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click "API Key Management," then click "Manage API Keys" to view your institution's application keys.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/f178cea7765c0abb.jpg" alt="Your API Keys, showing status, creation, and expiry for each."></div>
-<div class="caption">Your API Keys, showing status, creation, and expiry for each.</div>
-<div class="step"><span class="badge">Step 2</span>To rename a key or change its permissions, click the edit icon.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/0f7b207e2264c099.jpg" alt="Opening Update Key for an existing API key."></div>
-<div class="caption">Opening Update Key for an existing API key.</div>
-<div class="step"><span class="badge">Step 3</span>Update the key name or permissions, then click "Update." A key's expiry cannot be changed here.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/b284072649c299e6.jpg" alt="Updating the key name and permissions."></div>
-<div class="caption">Updating the key name and permissions.</div>
-<div class="step"><span class="badge">Step 4</span>To revoke a key, click the revoke icon.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/7943639a1ceee773.jpg" alt="Opening Revoke Key for an existing API key."></div>
-<div class="caption">Opening Revoke Key for an existing API key.</div>
-<div class="step"><span class="badge">Step 5</span>Confirm the revocation.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/d9347e3f19f887c7.jpg" alt="Confirming the key revocation."></div>
-<div class="caption">Confirming the key revocation.</div>
-<div class="callout danger">
-  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
-  <div class="ctext">Revoking a key is permanent — revoked keys cannot be reactivated. If the application still needs access, you'll need to create a new key and update the application with it.</div>
-</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>The key is updated, or revoked and immediately stops authenticating requests.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Institution Users.</td></tr></table>
-<h2 class="section" id="manage-users">2. Manage Institution Users</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Change a user's role, suspend or activate an existing institution user, or delete one.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have at least one existing institution user.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click "Institution Management" to view your institution's users.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/b69e32fef277bd5a.jpg" alt="The Institution Management area, showing your institution's users."></div>
-<div class="caption">The Institution Management area, showing your institution's users.</div>
-<div class="step"><span class="badge">Step 2</span>To change a user's role, click the edit icon for that user.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/07e44ef9b85db033.jpg" alt="Opening Edit User for an existing user."></div>
-<div class="caption">Opening Edit User for an existing user.</div>
-<div class="step"><span class="badge">Step 3</span>Update their Role, then click "Save."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/a2623643afda71c4.jpg" alt="Updating a user's role."></div>
-<div class="caption">Updating a user's role.</div>
-<div class="step"><span class="badge">Step 4</span>To suspend a user, open the row's actions menu and click "Suspend."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/2d7fe6319b802538.jpg" alt="Opening the Suspend action for a user."></div>
-<div class="caption">Opening the Suspend action for a user.</div>
-<div class="step"><span class="badge">Step 5</span>Confirm the status change.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/b2ccb67bc16e7611.jpg" alt="Confirming the user's suspension."></div>
-<div class="caption">Confirming the user's suspension.</div>
-<div class="step"><span class="badge">Step 6</span>To activate a suspended user, open the row's actions menu and click "Activate."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/30fd37d7e4178b30.jpg" alt="Opening the Activate action for a suspended user."></div>
-<div class="caption">Opening the Activate action for a suspended user.</div>
-<div class="step"><span class="badge">Step 7</span>Confirm the status change.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/14ffc0ab667b8fbc.jpg" alt="Confirming the user's activation."></div>
-<div class="caption">Confirming the user's activation.</div>
-<div class="step"><span class="badge">Step 8</span>To delete a user, open the row's actions menu and click "Delete."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/a7fdc806af3a4794.jpg" alt="Opening the Delete action for a user."></div>
-<div class="caption">Opening the Delete action for a user.</div>
-<div class="step"><span class="badge">Step 9</span>Confirm the deletion.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/6a27f31fdf7943bf.jpg" alt="Confirming the user's deletion."></div>
-<div class="caption">Confirming the user's deletion.</div>
+<section class="chapter" data-part="part4" aria-labelledby="manage-applications"><h2 class="section" id="manage-applications" tabindex="-1"><span class="section-number">1. </span><span class="section-title">Manage Applications</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>View your institution's applications and adjust their budget allocations.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>Your institution has at least one onboarded application.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>Institution Management</strong>.</div>
+<figure class="imgcard" data-figure="26"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/2471bd42e35402ca2d2c.jpg" alt="Opening Institution Management from the left navigation." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">Opening Institution Management from the left navigation.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Click the <strong>Applications</strong> tab to view your applications and their budget allocations.</div>
+<figure class="imgcard" data-figure="27"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/204f45d42aa8d8ee5ef2.jpg" alt="The Applications tab and institution budget overview." width="1634" height="911" loading="lazy" decoding="async"><figcaption class="caption">The Applications tab and institution budget overview.</figcaption>
+</figure>
+<h3 class="sub">Change an Application Budget</h3><div class="step"><span class="badge">Step 3</span>Click the <strong>Edit Budget</strong> sliders icon next to the application you want to update.</div>
+<figure class="imgcard" data-figure="28"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/3e2610e0b30b8bc66a19.jpg" alt="Opening Edit Budget for an application." width="1438" height="802" loading="lazy" decoding="async"><figcaption class="caption">Opening Edit Budget for an application.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 4</span>Enter the new budget percentage, then click <strong>Save changes</strong>. The allocation must stay within the amount available at the institution level and cannot fall below what the application has already spent.</div>
+<figure class="imgcard" data-figure="29"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/d572d076c551646d206e.jpg" alt="Updating an application's budget allocation and saving the change." width="1438" height="802" loading="lazy" decoding="async"><figcaption class="caption">Updating an application's budget allocation and saving the change.</figcaption>
+</figure>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">Suspending a user blocks their access immediately. You can restore it at any time using the Activate action.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">The <strong>Edit Budget</strong> window shows <strong>Minimum allowed</strong>, based on the application's spend, and the budget still <strong>Available at Institution level</strong>. Review these values before saving.</div>
 </div>
-<div class="callout danger">
-  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
-  <div class="ctext">Deleting a user is permanent and irreversible. They lose access immediately, and the portal does not offer a way to restore a deleted user afterward.</div>
-</div>
-<div class="callout danger">
-  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
-  <div class="ctext">An institution must always have at least one active Institution Admin. You cannot suspend or delete a user if doing so would leave your institution without one.</div>
-</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>The user's role is updated, or the user is suspended or deleted, depending on the action you took.</td></tr><tr><td class="k">Next</td><td>Proceed to Try It Now.</td></tr></table>
-<h2 class="section" id="try-it-now">3. Try It Now</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Explore and test an available LLM directly from the portal.</td></tr><tr><td class="k">Role</td><td>Institution Admin or Institution User</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>From Home, click "Try it now" on the Large Language Model (LLM) card to open AI Accessibility Studio.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/8eb60bd34d1b4943.jpg" alt="AI Accessibility Studio, on the Home page."></div>
-<div class="caption">AI Accessibility Studio, on the Home page.</div>
-<div class="step"><span class="badge">Step 2</span>Select the LLM service you want to test, then choose the source and target languages.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/ca8df5f372e4da79.jpg" alt="Selecting the LLM service, source language, and target language."></div>
-<div class="caption">Selecting the LLM service, source language, and target language.</div>
-<div class="step"><span class="badge">Step 3</span>Enter the text to process and click "Translate."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/530fccc8670a2084.jpg" alt="Entering source text and clicking Translate."></div>
-<div class="caption">Entering source text and clicking Translate.</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>You can explore and test an available LLM directly in the portal.</td></tr><tr><td class="k">Next</td><td>Proceed to View Available Models.</td></tr></table>
-<h2 class="section" id="view-models">4. View Available Models</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>See which models your Adopter Admin has made available on the platform.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click "Model Management" from the left navigation.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/a2269ec56db02d59.jpg" alt="The Model Management area."></div>
-<div class="caption">The Model Management area.</div>
-<div class="step"><span class="badge">Step 2</span>View the Model Registry.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/50b69c847a876539.jpg" alt="The Model Registry, listing every model registered on the platform."></div>
-<div class="caption">The Model Registry, listing every model registered on the platform.</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>You can see every model currently registered on the platform.</td></tr><tr><td class="k">Next</td><td>Proceed to Logs Dashboard.</td></tr></table>
-<h2 class="section" id="logs">5. Logs Dashboard</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Review request logs and trace details for your institution's request activity.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one request has been made using your institution's API keys.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click "Logs Dashboard" from the left navigation.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/cde796584caaa768.jpg" alt="The Logs Dashboard area."></div>
-<div class="caption">The Logs Dashboard area.</div>
-<div class="step"><span class="badge">Step 2</span>View your institution's request logs, filterable by task type, status, and time range, then click the view icon next to a log entry to see its trace details.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/fe371c6c82602424.jpg" alt="Opening the trace details for a log entry."></div>
-<div class="caption">Opening the trace details for a log entry.</div>
-<div class="step"><span class="badge">Step 3</span>Review the trace details, including timing for each stage of the request.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/226736a17e285495.png" alt="Trace details, showing request, model, and inference spans."></div>
-<div class="caption">Trace details, showing request, model, and inference spans.</div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>You can review your institution's request activity in detail — useful when debugging an application issue.</td></tr><tr><td class="k">Next</td><td>Proceed to Manage Your Profile.</td></tr></table>
-<h2 class="section" id="manage-profile">6. Manage Your Profile</h2>
-<table class="meta"><tr><td class="k">Objective</td><td>Update your profile, change your password, sign out, or delete your own account.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
-<div class="step"><span class="badge">Step 1</span>Click the menu icon in the top right, then click "Profile."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/5671904ffce22643.jpg" alt="Opening Profile from the menu."></div>
-<div class="caption">Opening Profile from the menu.</div>
-<div class="step"><span class="badge">Step 2</span>View or edit your user details.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/4f0f5cc70e4f8ded.jpg" alt="The Profile page, showing your user details."></div>
-<div class="caption">The Profile page, showing your user details.</div>
-<div class="step"><span class="badge">Step 3</span>To change your password, click the "Change Password" tab, enter your current and new password, then click "Update Password."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/421f75ea7b503aec.jpg" alt="A new password meeting all requirements, ready to update."></div>
-<div class="caption">A new password meeting all requirements, ready to update.</div>
+<h3 class="sub">View Application Details</h3><div class="step"><span class="badge">Step 5</span>Click the view icon next to an application to view its budget allocation percentage and amount.</div>
+<figure class="imgcard" data-figure="30"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/c6057842b88c9bd6748b.png" alt="Application details, showing its budget allocation and amount." width="1678" height="937" loading="lazy" decoding="async"><figcaption class="caption">Application details, showing its budget allocation and amount.</figcaption>
+</figure>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>You can view each application's budget and save changes to its allocation.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#manage-api-keys">Manage API Keys</a>.</td></tr></table>
+</section><section class="chapter" data-part="part4" aria-labelledby="manage-api-keys"><h2 class="section" id="manage-api-keys" tabindex="-1"><span class="section-number">2. </span><span class="section-title">Manage API Keys</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>View your applications' API keys, adjust their budgets or permissions, rename them, or revoke access.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have at least one existing API key.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>API Key Management</strong>.</div>
+<figure class="imgcard" data-figure="31"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/c3e074648757433b16a3.jpg" alt="Opening API Key Management from the left navigation." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Opening API Key Management from the left navigation.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Click the <strong>Manage API Keys</strong> tab. Use the <strong>Key Name</strong>, <strong>Application</strong>, <strong>Permission</strong>, and <strong>Status</strong> filters to find a key.</div>
+<figure class="imgcard" data-figure="32"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/ab1c7b1342bc772dd91b.jpg" alt="Your API Keys, showing Application and budget for each key, with filters above." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Your API Keys, showing Application and budget for each key, with filters above.</figcaption>
+</figure>
+<h3 class="sub">Change API Key Budgets</h3><div class="step"><span class="badge">Step 3</span>Click <strong>Edit Budget</strong> to adjust how an application's budget is shared among its API keys.</div>
+<figure class="imgcard" data-figure="33"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/49df2524227bf57681f4.jpg" alt="Opening Edit Budget to change API key budgets." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Opening Edit Budget to change API key budgets.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 4</span>Select the <strong>Application</strong> and update the <strong>Budget %</strong> for each key you want to change. The amount in rupees updates automatically. Click <strong>Save changes</strong>.</div>
+<figure class="imgcard" data-figure="34"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/04094092ae6e8f64261b.jpg" alt="Updating a key's budget share and saving the change." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Updating a key's budget share and saving the change.</figcaption>
+</figure>
 <div class="callout ">
-  <div class="label"><span class="icon">&#9432;</span>NOTE</div>
-  <div class="ctext">Your new password must meet every requirement shown — each one turns green as it's satisfied.</div>
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">An API key's allocation must stay within the unallocated portion of its application's budget. You cannot reduce it below what the key has already spent.</div>
 </div>
-<div class="step"><span class="badge">Step 4</span>To sign out, click the menu icon and click "Sign out." You're returned to the sign-in page.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/0b601b79410609df.jpg" alt="Opening Sign out from the menu."></div>
-<div class="caption">Opening Sign out from the menu.</div>
-<div class="step"><span class="badge">Step 5</span>To delete your account, scroll the user details page to "Delete Account" and click "Delete Account."</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/3f628f3497d1f0e5.jpg" alt="The Delete Account section of your profile."></div>
-<div class="caption">The Delete Account section of your profile.</div>
-<div class="step"><span class="badge">Step 6</span>Confirm the deletion.</div>
-<div class="imgcard"><img loading="lazy" src="/guides/img/f22f903c1890af1b.jpg" alt="Confirming the account deletion."></div>
-<div class="caption">Confirming the account deletion.</div>
+<h3 class="sub">Update a Key Name or Permissions</h3><div class="step"><span class="badge">Step 5</span>To rename an API key or change its permissions, click the edit icon next to it.</div>
+<figure class="imgcard" data-figure="35"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/bb5df150e6b42f7d4ff6.jpg" alt="Opening Update Key for an existing API key." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Opening Update Key for an existing API key.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 6</span>Update the <strong>Key Name</strong> or <strong>Permissions</strong>, then click <strong>Update</strong>. You cannot change the application, budget, or expiry in this window.</div>
+<figure class="imgcard" data-figure="36"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/4dad500ddc0d4c1bf714.jpg" alt="Updating the key name and permissions." width="1635" height="912" loading="lazy" decoding="async"><figcaption class="caption">Updating the key name and permissions.</figcaption>
+</figure>
+<h3 class="sub">Revoke an API Key</h3><div class="step"><span class="badge">Step 7</span>To stop an API key from granting access, click the revoke icon next to it.</div>
+<figure class="imgcard" data-figure="37"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/4bb74ae8cee97e98e9ba.jpg" alt="The Revoke key action for an existing API key." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">The Revoke key action for an existing API key.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 8</span>In the confirmation dialog, click <strong>Revoke</strong>.</div>
+<figure class="imgcard" data-figure="38"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/65bd7c9657bfcde323bf.jpg" alt="Confirming the key revocation." width="1635" height="912" loading="lazy" decoding="async"><figcaption class="caption">Confirming the key revocation.</figcaption>
+</figure>
 <div class="callout danger">
-  <div class="label"><span class="icon">&#9888;</span>IMPORTANT</div>
-  <div class="ctext">You can only delete your own account if your institution has another active Institution Admin. If you're the sole Institution Admin, this action is blocked — ask your Adopter Admin to add another Institution Admin first.</div>
+  <div class="label"><span class="icon">⚠</span>IMPORTANT</div>
+  <div class="ctext">Revoking an API key is permanent. If the application still needs access, create a new key and update the application to use it.</div>
 </div>
-<hr class="rule">
-<table class="meta"><tr><td class="k">Outcome</td><td>Your profile or password is updated, or your account is deleted, depending on the action you took.</td></tr></table>
-  </div>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>The selected key's budget, name, or permissions are updated. If you revoked the key, it immediately stops authenticating requests.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#manage-users">Manage Institution Users</a>.</td></tr></table>
+</section><section class="chapter" data-part="part4" aria-labelledby="manage-users"><h2 class="section" id="manage-users" tabindex="-1"><span class="section-number">3. </span><span class="section-title">Manage Institution Users</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Update a user's details or role, suspend or restore their access, or delete their account.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>You have at least one existing institution user.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>Institution Management</strong> and click the <strong>Users</strong> tab.</div>
+<figure class="imgcard" data-figure="39"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/3acdbb2e1d5926823156.png" alt="The Institution Management area, showing your institution's users." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">The Institution Management area, showing your institution's users.</figcaption>
+</figure>
+<h3 class="sub">Edit User Details</h3><div class="step"><span class="badge">Step 2</span>Click the edit icon next to the user you want to update.</div>
+<figure class="imgcard" data-figure="40"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/1c553288c702799c4f2a.png" alt="Opening Edit User for an existing user." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Opening Edit User for an existing user.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Update the <strong>Username</strong>, <strong>Full Name</strong>, <strong>Role</strong>, or <strong>Phone Number</strong>, then click <strong>Save</strong>.</div><figure class="imgcard" data-figure="41"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/3b281c7f8fce64e50c08.png" alt="Updating a user’s username, full name, role, or phone number." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Updating a user’s username, full name, role, or phone number.</figcaption>
+</figure>
+<h3 class="sub">Suspend a User</h3><div class="step"><span class="badge">Step 4</span>To suspend a user, click the <strong>Suspend</strong> action next to their account.</div>
+<figure class="imgcard" data-figure="42"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/ef224f03c0d77268e1eb.png" alt="Opening the Suspend action for a user." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Opening the Suspend action for a user.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 5</span>Check that the confirmation shows <strong>Suspended</strong>, then click <strong>Update</strong>.</div>
+<figure class="imgcard" data-figure="43"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/3ce3dd7ef7ced9d50997.png" alt="Confirming the user's suspension." width="1635" height="911" loading="lazy" decoding="async"><figcaption class="caption">Confirming the user's suspension.</figcaption>
+</figure>
+<h3 class="sub">Activate a Suspended User</h3><div class="step"><span class="badge">Step 6</span>To restore a suspended user's access, click the <strong>Activate</strong> action next to their account.</div>
+<figure class="imgcard" data-figure="44"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/658cb2067ea8e209b6ef.png" alt="Opening the Activate action for a suspended user." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Opening the Activate action for a suspended user.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 7</span>Check that the confirmation shows <strong>Active</strong>, then click <strong>Update</strong>.</div>
+<figure class="imgcard" data-figure="45"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/cd02cb390043c8cddbe7.png" alt="Confirming the user's activation." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Confirming the user's activation.</figcaption>
+</figure>
+<h3 class="sub">Delete a User</h3><div class="step"><span class="badge">Step 8</span>To delete a user, click the <strong>Delete</strong> action next to their account.</div>
+<figure class="imgcard" data-figure="46"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/bef160deae1b131cdbee.png" alt="Opening the Delete action for a user." width="1819" height="865" loading="lazy" decoding="async"><figcaption class="caption">Opening the Delete action for a user.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 9</span>In the confirmation dialog, click <strong>Delete</strong>.</div>
+<figure class="imgcard" data-figure="47"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/a0f4c008501c6b587928.png" alt="Confirming the user's deletion." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">Confirming the user's deletion.</figcaption>
+</figure>
+<div class="callout ">
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">Suspending a user blocks their access immediately. Use <strong>Activate</strong> to restore access when needed.</div>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  var toggle = document.querySelector('.sidebar-toggle');
-  var sidebar = document.querySelector('.sidebar');
-  if(toggle){ toggle.addEventListener('click', function(){ sidebar.classList.toggle('open'); }); }
-  var links = document.querySelectorAll('.sidebar a.nav-item');
-  links.forEach(function(l){
-    l.addEventListener('click', function(){
-      if(window.innerWidth <= 900){ sidebar.classList.remove('open'); }
-    });
-  });
-  var sections = document.querySelectorAll('h2.section');
-  var map = {};
-  links.forEach(function(l){ map[l.getAttribute('href')] = l; });
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      var id = '#' + e.target.id;
-      if(e.isIntersecting && map[id]){
-        links.forEach(function(l){ l.classList.remove('active'); });
-        map[id].classList.add('active');
-      }
-    });
-  }, { rootMargin: '-10% 0px -70% 0px' });
-  sections.forEach(function(s){ obs.observe(s); });
-  var searchBox = document.querySelector('.search');
-  if(searchBox){
-    searchBox.addEventListener('input', function(){
-      var q = this.value.toLowerCase();
-      links.forEach(function(l){
-        l.style.display = l.textContent.toLowerCase().includes(q) ? 'block' : 'none';
-      });
-    });
-  }
-
-  // --- Real checklist: persist + progress ---
-  var STORAGE_KEY = 'ai-switch-guide-checklist';
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ saved = {}; }
-
-  function saveState(){
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); } catch(e){}
-  }
-
-  function updateProgress(groupId){
-    var boxes = document.querySelectorAll('input[type="checkbox"][data-group="' + groupId + '"]');
-    var total = boxes.length, checked = 0;
-    boxes.forEach(function(b){ if(b.checked) checked++; });
-    var bar = document.querySelector('.checklist-progress[data-progress-for="' + groupId + '"]');
-    if(bar){
-      var pct = total ? Math.round((checked/total)*100) : 0;
-      var isComplete = total > 0 && checked === total;
-      bar.querySelector('.progress-text').textContent = isComplete ? ('✓ All set — 100% ready') : (pct + '% ready (' + checked + ' of ' + total + ')');
-      bar.querySelector('.fill').style.width = pct + '%';
-      bar.classList.toggle('complete', isComplete);
-    }
-  }
-
-  var allCheckboxes = document.querySelectorAll('input[type="checkbox"][data-group]');
-  var groupIds = new Set();
-  allCheckboxes.forEach(function(box){
-    var gid = box.getAttribute('data-group');
-    groupIds.add(gid);
-    if(saved[box.id]){ box.checked = true; }
-    box.addEventListener('change', function(){
-      saved[box.id] = box.checked;
-      saveState();
-      updateProgress(gid);
-    });
-  });
-  groupIds.forEach(function(gid){ updateProgress(gid); });
-
-  document.querySelectorAll('[data-reset-for]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var gid = btn.getAttribute('data-reset-for');
-      document.querySelectorAll('input[type="checkbox"][data-group="' + gid + '"]').forEach(function(box){
-        box.checked = false;
-        delete saved[box.id];
-      });
-      saveState();
-      updateProgress(gid);
-    });
-  });
+<div class="callout danger">
+  <div class="label"><span class="icon">⚠</span>IMPORTANT</div>
+  <div class="ctext">Deleting a user permanently removes their account and blocks their access immediately. You cannot restore a deleted user from the portal.</div>
+</div>
+<div class="callout danger">
+  <div class="label"><span class="icon">⚠</span>IMPORTANT</div>
+  <div class="ctext">Your institution must have at least one active Institution Admin. You cannot suspend or delete a user if this would leave the institution without an active Institution Admin.</div>
+</div>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>The user's details or role are updated, or their account is suspended, activated, or deleted, depending on the action you completed.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#try-it-now">Try It Now</a>.</td></tr></table>
+</section><section class="chapter" data-part="part4" aria-labelledby="try-it-now"><h2 class="section" id="try-it-now" tabindex="-1"><span class="section-number">4. </span><span class="section-title">Try It Now</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Explore and test an available model directly in the portal.</td></tr><tr><td class="k">Role</td><td>Institution Admin or Institution User</td></tr><tr><td class="k">Prerequisites</td><td>At least one service is available to your institution’s tier.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Open <strong>Explore</strong> and click <strong>Try it now</strong> on a model task type card. The following example uses <strong>Large Language Model (LLM)</strong>.</div>
+<figure class="imgcard" data-figure="48"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/b349eeff3efd0e7968b9.jpg" alt="The Explore page, showing every model task type available to test." width="1920" height="912" loading="lazy" decoding="async"><figcaption class="caption">The Explore page, showing every model task type available to test.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Select an <strong>LLM Service</strong>, then choose the <strong>Source Language</strong> and <strong>Target Language</strong>.</div>
+<figure class="imgcard" data-figure="49"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/9376d13d89c480e9d6d3.jpg" alt="Selecting the LLM service, source language, and target language." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">Selecting the LLM service, source language, and target language.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Enter your text in <strong>Source Text</strong>, then click <strong>Translate</strong>.</div>
+<figure class="imgcard" data-figure="50"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/a3c81c1b8040f46e10aa.jpg" alt="Entering source text and clicking Translate." width="1437" height="802" loading="lazy" decoding="async"><figcaption class="caption">Entering source text and clicking Translate.</figcaption>
+</figure>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>You have submitted text to the selected model and can review its response in the portal.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#view-models">View Available Models</a>.</td></tr></table>
+</section><section class="chapter" data-part="part4" aria-labelledby="view-models"><h2 class="section" id="view-models" tabindex="-1"><span class="section-number">5. </span><span class="section-title">View Available Models</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>View the models registered on the platform by your Adopter Admin.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>Model Management</strong>.</div>
+<figure class="imgcard" data-figure="51"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/5ce8d09a4712c832852a.jpg" alt="The Model Management area." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">The Model Management area.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Review the <strong>Model Registry</strong> to see the registered models and their versions, statuses, and task types.</div>
+<figure class="imgcard" data-figure="52"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/5536b702b559f157b631.jpg" alt="The Model Registry, listing every model registered on the platform." width="1080" height="802" loading="lazy" decoding="async"><figcaption class="caption">The Model Registry, listing every model registered on the platform.</figcaption>
+</figure>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>You can view the models currently registered on the platform.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#logs">Logs Dashboard</a>.</td></tr></table>
+</section><section class="chapter" data-part="part4" aria-labelledby="logs"><h2 class="section" id="logs" tabindex="-1"><span class="section-number">6. </span><span class="section-title">Logs Dashboard</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Review your institution's request logs and trace details.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>At least one request has been made using your institution's API keys.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>In the left navigation, click <strong>Logs Dashboard</strong>.</div>
+<figure class="imgcard" data-figure="53"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/3e3bc2b3813737c2c021.jpg" alt="The Logs Dashboard area." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">The Logs Dashboard area.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Filter your institution’s request logs by <strong>Task Type</strong>, <strong>Status</strong>, or time range. Click the view icon next to a request to open its trace details.</div><figure class="imgcard" data-figure="54"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/35e1a6d45d88b741a442.jpg" alt="Opening the trace details for a log entry." width="1438" height="801" loading="lazy" decoding="async"><figcaption class="caption">Opening the trace details for a log entry.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 3</span>Review the trace details to see the timing of each request stage, including the request, model, and inference spans.</div>
+<figure class="imgcard" data-figure="55"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/5ab6a7d71b26fa3ed582.png" alt="Trace details, showing request, model, and inference spans." width="1438" height="802" loading="lazy" decoding="async"><figcaption class="caption">Trace details, showing request, model, and inference spans.</figcaption>
+</figure>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>You can trace your institution's requests and review their timing when investigating an application issue.</td></tr><tr><td class="k">Next</td><td>Continue to <a href="#manage-profile">Manage Your Profile</a>.</td></tr></table>
+</section><section class="chapter" data-part="part4" aria-labelledby="manage-profile"><h2 class="section" id="manage-profile" tabindex="-1"><span class="section-number">7. </span><span class="section-title">Manage Your Profile</span></h2>
+<table class="meta task-summary"><tr><td class="k">Objective</td><td>Update your profile, change your password, sign out, or delete your own account.</td></tr><tr><td class="k">Role</td><td>Institution Admin</td></tr><tr><td class="k">Prerequisites</td><td>None.</td></tr></table>
+<div class="step"><span class="badge">Step 1</span>Open the menu in the top-right corner and click <strong>Profile</strong>.</div>
+<figure class="imgcard" data-figure="56"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/41ce64a2ba5c32f20ab3.jpg" alt="Opening Profile from the menu." width="1438" height="801" loading="lazy" decoding="async"><figcaption class="caption">Opening Profile from the menu.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 2</span>Review your details on the <strong>User Details</strong> tab. Click <strong>Edit</strong> to make changes.</div>
+<figure class="imgcard" data-figure="57"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/1e3cba9ca0252ab4d19b.jpg" alt="The Profile page, showing your user details." width="1437" height="801" loading="lazy" decoding="async"><figcaption class="caption">The Profile page, showing your user details.</figcaption>
+</figure>
+<h3 class="sub">Change Your Password</h3><div class="step"><span class="badge">Step 3</span>Click the <strong>Change Password</strong> tab. Enter your <strong>Current Password</strong> and <strong>New Password</strong>, then enter the new password again in <strong>Confirm New Password</strong>. Click <strong>Update Password</strong>.</div>
+<figure class="imgcard" data-figure="58"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/eaa784c5165927a76f7d.jpg" alt="A new password meeting all requirements, ready to update." width="1437" height="802" loading="lazy" decoding="async"><figcaption class="caption">A new password meeting all requirements, ready to update.</figcaption>
+</figure>
+<div class="callout ">
+  <div class="label"><span class="icon">ⓘ</span>NOTE</div>
+  <div class="ctext">Your new password must meet every requirement shown. Each requirement turns green when it is met.</div>
+</div>
+<h3 class="sub">Sign Out</h3><div class="step"><span class="badge">Step 4</span>To sign out, open the menu in the top-right corner and click <strong>Sign out</strong>. You return to the sign-in page.</div>
+<figure class="imgcard" data-figure="59"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/df7d60ca04fc26da05b2.jpg" alt="Opening Sign out from the menu." width="1438" height="801" loading="lazy" decoding="async"><figcaption class="caption">Opening Sign out from the menu.</figcaption>
+</figure>
+<h3 class="sub">Delete Your Account</h3><div class="step"><span class="badge">Step 5</span>To delete your account, click the <strong>User Details</strong> tab, scroll to <strong>Delete Account</strong>, and click <strong>Delete Account</strong>.</div>
+<figure class="imgcard" data-figure="60"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/3dd9354d529951852675.jpg" alt="The Delete Account section of your profile." width="1437" height="802" loading="lazy" decoding="async"><figcaption class="caption">The Delete Account section of your profile.</figcaption>
+</figure>
+<div class="step"><span class="badge">Step 6</span>Read the confirmation and select the acknowledgement checkboxes, then click <strong>Delete Account</strong>.</div>
+<figure class="imgcard" data-figure="61"><button type="button" class="zoom-button" aria-label="Enlarge screenshot">↗</button><img src="/guides/img/80142f59fbb317541842.jpg" alt="Confirming the account deletion." width="1438" height="802" loading="lazy" decoding="async"><figcaption class="caption">Confirming the account deletion.</figcaption>
+</figure>
+<div class="callout danger">
+  <div class="label"><span class="icon">⚠</span>IMPORTANT</div>
+  <div class="ctext">You can delete your account only if your institution has another active Institution Admin. If you are the only Institution Admin, assign that role to another active user first.</div>
+</div>
+<hr class="rule" aria-hidden="true">
+<table class="meta task-result"><tr><td class="k">Outcome</td><td>Your profile or password is updated, you are signed out, or your account is deleted, depending on the action you completed.</td></tr></table>
+  </section></main>
+</div>
+<button class="nav-backdrop" type="button" aria-label="Close navigation" tabindex="-1"></button><dialog class="screenshot-dialog" aria-labelledby="viewer-caption"><div class="viewer-toolbar"><p id="viewer-caption"></p><div><button type="button" id="viewer-size" aria-pressed="false">Actual size</button><button type="button" id="viewer-close" aria-label="Close screenshot">Close ×</button></div></div><div class="viewer-canvas"><img alt="" id="viewer-image"></div></dialog><script>'use strict';
+document.addEventListener('DOMContentLoaded',function(){
+ const nav=document.querySelector('.sidebar');
+ const toggle=document.querySelector('.sidebar-toggle');
+ const backdrop=document.querySelector('.nav-backdrop');
+ const mobile=window.matchMedia('(max-width:900px)');
+ const links=[...nav.querySelectorAll('.nav-item')];
+ const headings=[...document.querySelectorAll('h2.section')];
+ const search=document.getElementById('guide-search');
+ const searchStatus=document.getElementById('search-status');
+ const chapters=[...document.querySelectorAll('.chapter')];
+ const normalizeSearch=text=>text.toLowerCase().replace(/\s+/g,' ').trim();
+ const contentIndex=new Map(chapters.map(ch=>['#'+ch.querySelector('h2').id,normalizeSearch(ch.textContent)]));
+ const closeNav=document.createElement('button');closeNav.type='button';closeNav.className='nav-close';closeNav.textContent='×';closeNav.setAttribute('aria-label','Close navigation');nav.prepend(closeNav);
+ function setMenu(open,focus=true){
+  nav.classList.toggle('open',open);backdrop.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));
+  toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');
+  nav.inert=mobile.matches&&!open;document.body.classList.toggle('menu-open',open&&mobile.matches);
+  if(focus){if(open)search.focus();else toggle.focus();}
+ }
+ toggle.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+ closeNav.addEventListener('click',()=>setMenu(false));backdrop.addEventListener('click',()=>setMenu(false));
+ function layoutChanged(){setMenu(false,false);nav.inert=mobile.matches;}
+ mobile.addEventListener('change',layoutChanged);layoutChanged();
+ links.forEach(link=>link.addEventListener('click',()=>{
+  if(mobile.matches){setMenu(false,false);const heading=document.querySelector(link.getAttribute('href'));if(heading)heading.focus({preventScroll:true});}
+ }));
+ search.addEventListener('input',()=>{
+  const q=normalizeSearch(search.value);let count=0;
+  links.forEach(link=>{const match=!q||(contentIndex.get(link.getAttribute('href'))||link.textContent.toLowerCase()).includes(q);link.hidden=!match;if(match)count++;});
+  nav.querySelectorAll('.nav-group').forEach(group=>{group.hidden=![...group.querySelectorAll('.nav-item')].some(l=>!l.hidden);});
+  searchStatus.textContent=q?(count?count+' matching section'+(count===1?'':'s'):'No matching sections'):'';
+ });
+ let framePending=false;
+ function updateReading(){
+  framePending=false;let current=headings[0];
+  for(const h of headings){if(h.getBoundingClientRect().top<=140)current=h;else break;}
+  if(current){const id='#'+current.id;links.forEach(l=>{const active=l.getAttribute('href')===id;l.classList.toggle('active',active);if(active)l.setAttribute('aria-current','location');else l.removeAttribute('aria-current');});document.getElementById('current-section').textContent=current.querySelector('.section-title').textContent;}
+  const max=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('reading-fill').style.width=(max>0?Math.min(100,Math.max(0,window.scrollY/max*100)):100)+'%';
+ }
+ function scheduleReading(){if(!framePending){framePending=true;requestAnimationFrame(updateReading);}}
+ window.addEventListener('scroll',scheduleReading,{passive:true});window.addEventListener('resize',scheduleReading);updateReading();
+ document.getElementById('print-guide').addEventListener('click',()=>window.print());
+ // Preserve readiness progress stored by earlier versions of this guide.
+ const storageKey='ai-switch-guide-checklist';let saved={};
+ try{const parsed=JSON.parse(localStorage.getItem(storageKey)||'{}');if(parsed&&typeof parsed==='object'&&!Array.isArray(parsed))saved=parsed;}catch(e){}
+ function persist(){try{
+  const latest=JSON.parse(localStorage.getItem(storageKey)||'{}');
+  const merged=latest&&typeof latest==='object'&&!Array.isArray(latest)?latest:{};
+  document.querySelectorAll('input[type="checkbox"][data-group]').forEach(box=>{merged[box.id]=box.checked;});
+  saved=merged;localStorage.setItem(storageKey,JSON.stringify(saved));
+ }catch(e){try{localStorage.setItem(storageKey,JSON.stringify(saved));}catch(ignore){}}}
+ function progress(group){
+  const boxes=[...document.querySelectorAll('input[type="checkbox"][data-group="'+group+'"]')];const checked=boxes.filter(b=>b.checked).length;const total=boxes.length;const pct=total?Math.round(checked/total*100):0;
+  const bar=document.querySelector('.checklist-progress[data-progress-for="'+group+'"]');if(!bar)return;
+  bar.setAttribute('aria-live','polite');bar.querySelector('.progress-text').textContent=checked===total&&total?'All '+total+' items ready':checked+' of '+total+' items ready';bar.querySelector('.fill').style.width=pct+'%';bar.classList.toggle('complete',total>0&&checked===total);
+ }
+ const groups=new Set();document.querySelectorAll('input[type="checkbox"][data-group]').forEach(box=>{const group=box.dataset.group;groups.add(group);box.checked=Boolean(saved[box.id]);box.addEventListener('change',()=>{saved[box.id]=box.checked;persist();progress(group);});});groups.forEach(progress);
+ document.querySelectorAll('[data-reset-for]').forEach(button=>button.addEventListener('click',()=>{const group=button.dataset.resetFor;document.querySelectorAll('input[type="checkbox"][data-group="'+group+'"]').forEach(box=>{box.checked=false;delete saved[box.id];});persist();progress(group);}));
+ // Full-resolution screenshot viewer with native Escape and focus handling.
+ const dialog=document.querySelector('.screenshot-dialog');const viewer=document.getElementById('viewer-image');const canvas=document.querySelector('.viewer-canvas');const sizeButton=document.getElementById('viewer-size');let opener=null;
+ document.querySelectorAll('.imgcard').forEach(figure=>{
+  const img=figure.querySelector('img');const button=figure.querySelector('.zoom-button');button.setAttribute('aria-label','Enlarge screenshot: '+img.alt);img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label','Enlarge screenshot: '+img.alt);
+  function show(event){opener=event.currentTarget;viewer.src=img.src;viewer.alt=img.alt;document.getElementById('viewer-caption').textContent=figure.querySelector('figcaption').textContent;canvas.classList.remove('actual');sizeButton.setAttribute('aria-pressed','false');sizeButton.textContent='Actual size';dialog.showModal();canvas.scrollTop=0;canvas.scrollLeft=0;}
+  img.addEventListener('click',show);button.addEventListener('click',show);img.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();show(event);}});
+ });
+ sizeButton.addEventListener('click',()=>{const actual=canvas.classList.toggle('actual');sizeButton.setAttribute('aria-pressed',String(actual));sizeButton.textContent=actual?'Fit to screen':'Actual size';});
+ document.getElementById('viewer-close').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
+ dialog.addEventListener('close',()=>{viewer.removeAttribute('src');if(opener)opener.focus({preventScroll:true});});
+ document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&nav.classList.contains('open')){setMenu(false);return;}
+  if(event.key==='Escape'&&document.activeElement===search){search.value='';search.dispatchEvent(new Event('input'));search.blur();}
+  if(event.key==='/'&&!event.ctrlKey&&!event.metaKey&&!dialog.open&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)&&!document.activeElement.isContentEditable){event.preventDefault();if(mobile.matches)setMenu(true);else search.focus();}
+  if(event.key==='Tab'&&mobile.matches&&nav.classList.contains('open')){const items=[...nav.querySelectorAll('button,input,a')].filter(el=>!el.hidden&&el.getClientRects().length);const first=items[0],last=items[items.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
+ });
 });
-</script>
-</body>
+</script></body>
 </html>
